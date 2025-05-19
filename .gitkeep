@@ -1,0 +1,3 @@
+echo "" > path/to/empty-folder/.gitkeep
+git add path/to/empty-folder/.gitkeep
+git commit -m "Keep empty folder with .gitkeep"
