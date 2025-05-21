@@ -1,0 +1,153 @@
+🧠 Blog / Insights Page — Complete Copy & UI/UX Layout
+Goal: Educate founders & investors, improve SEO, and showcase your platform’s authority through original insights, product updates, and expert interviews.
+
+🎨 Design Theme
+Background: Clean white #FFFFFF or soft #F8FAFC for readability
+
+Text: Dark Slate #1E293B, Secondary #475569
+
+Accent Colors: Indigo #3B0D8B and Electric Blue #00B8F4
+
+Font: Sora or Inter for a modern, startup vibe
+
+Card Shadows: Soft neumorphic shadows for depth
+
+Blog Thumbnails: High-resolution illustrations or photos with gradients
+
+🧱 Page Structure
+1️⃣ 🔍 Banner + Intro
+Headline:
+
+plaintext
+Copy
+Edit
+Insights to Build, Fund & Scale Your Startup
+Subtext:
+
+Dive into founder stories, investor interviews, funding tips, and platform updates—curated to empower both builders and backers.
+
+Animation:
+
+Fade-in text
+
+Subtle underline animation on hover for links
+
+2️⃣ 🧰 Category Filters (Tabs or Dropdown)
+plaintext
+Copy
+Edit
+[ 🧑‍💻 Founder Tips ]  [ 💼 Investor Corner ]  [ 🛠 Platform Updates ]
+Interaction:
+
+Tabs slide left/right on mobile
+
+Animated highlight bar under selected tab
+
+Content below updates without full reload (JS/React or AlpineJS)
+
+3️⃣ 📚 Blog Cards Grid (3 per row on desktop, 1 per row mobile)
+Each card includes:
+
+Blog thumbnail (animated SVG or gradient overlay image)
+
+Title (2-line limit)
+
+Snippet (max 200 characters)
+
+Author photo + name + date
+
+"Read More →" hover underline
+
+Example Card:
+
+plaintext
+Copy
+Edit
+📸 Thumbnail
+🔥 5 Fundraising Mistakes First-Time Founders Make
+“You’re probably doing #3 without realizing it...”
+👤 by Priya Jain · May 20, 2025
+[ Read More → ]
+Card Hover Effects:
+
+Lift with shadow
+
+Image slight zoom-in
+
+CTA underline animation
+
+4️⃣ 📈 Popular/Trending Sidebar (Desktop View)
+Sticky sidebar on desktop:
+
+🔥 Top 3 Trending Blogs (auto-updated by views)
+
+🏷 Tags: #AI #FinTech #SaaS #SeedStage
+
+🔎 Search Bar: “Find topics…”
+
+5️⃣ 📥 Newsletter CTA (Bottom of Page)
+Card-style section with form:
+
+Headline:
+
+plaintext
+Copy
+Edit
+📰 Get Weekly Startup Insights, Straight to Your Inbox
+Subtext:
+
+One email a week. No fluff. Just actionable tips, trends, and tactics.
+
+Form:
+
+Email Input
+
+CTA: [ Subscribe Now ]
+
+Animation:
+
+Input bounce on focus
+
+Success message with tick
+
+6️⃣ 🧑‍💻 Blog Page (Individual Blog View)
+Once a blog is clicked:
+
+Hero banner with full-width feature image
+
+Blog Title
+
+Author Info + Date
+
+Body content: Sections, subheadings, inline links
+
+Share buttons (LinkedIn, Twitter, Copy Link)
+
+CTA at bottom: [ Join FoundrFuse ] or [ Subscribe for More ]
+
+🌀 Micro-Animations Summary
+Element	Animation
+Page Load	Fade-in + slide from bottom
+Tabs Switching	Smooth swipe left-right
+Cards Hover	Elevate + zoom-in image
+Subscribe Button	Glow + scale
+Read More Hover	Underline grow left→right
+
+🛠 Sample Blog Titles (Seed Content)
+“5 Fundraising Mistakes First-Time Founders Make”
+
+“What Early-Stage Investors Really Want to See in a Pitch Deck”
+
+“From Swipe to Seed: How Our First 10 Matches Raised $1M”
+
+“Behind the Algorithm: How FoundrFuse Suggests the Right Match”
+
+“Why Tier-2 Cities Are the Next Startup Goldmine”
+
+✅ Final CTA Footer
+plaintext
+Copy
+Edit
+🚀 Ready to Match with the Right Investor or Founder?
+
+[ Create Your Profile ] or [ Request Investor Access ]

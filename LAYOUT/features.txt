@@ -1,0 +1,187 @@
+📄 Features Page – Full Content + UI/UX Design
+Purpose: Explain each core feature in detail, reinforce credibility, and push users to sign up.
+
+🎨 Theme, Color, Animation Guidelines
+Color Palette:
+
+Primary: Deep Indigo (#3B0D8B)
+
+Accent: Electric Violet (#7F00FF)
+
+CTA Gradient: Pink (#F72585) to Orange (#FF6B00)
+
+Background: White / Light Gray (#FAFAFA)
+
+Icons: Minimal, gradient-line based or animated Lottie icons
+
+Typography:
+Use Inter or Poppins for clarity and professionalism.
+
+Animation Suggestions:
+
+Scroll Reveal: Fade-in + slide from bottom or sides (use AOS or Framer Motion)
+
+Icons: On-hover glow & bounce
+
+Cards: Swipe interaction simulation (auto-play swipe loop using Lottie)
+
+Tables: Soft zoom-in row on hover
+
+Call-to-action buttons: Pulse or glow on hover
+
+Mobile First:
+Card-based layout stacks vertically, swipe gestures supported on touch, bottom-fixed CTA always visible.
+
+🧩 Page Structure + Content
+1️⃣ Overview Banner
+Headline:
+Smart Networking Designed for Builders.
+
+Subtext:
+Whether you're raising capital or deploying it, FoundrFuse empowers both sides with tools built for modern startup matchmaking.
+
+Visual:
+
+Side-by-side mobile UI mockup: Investor swiping up for a startup, founder swiping right for an investor
+
+Animated stars or spark lines in background
+
+2️⃣ Swipe to Connect
+Section Title:
+It All Starts with a Swipe
+
+Content:
+Think dating app—but for innovation. With our intuitive swipe-to-match system, founders and investors can explore opportunities and express interest effortlessly.
+
+Visual:
+
+Animated Lottie showing swipe-right & swipe-up gestures
+
+UI showing "It’s a Match!" screen between founder & investor
+
+Features:
+
+Mutual opt-in before chat opens
+
+Visual pitch decks in swipe cards
+
+One-click connect, no cold emails
+
+3️⃣ AI-Powered Matching
+Section Title:
+Smarter Matches with Every Swipe
+
+Content:
+Let our intelligent engine do the matchmaking. FoundrFuse uses AI to pair founders with investors based on deep criteria, not just luck.
+
+Filter Criteria:
+
+🚀 Startup Stage (Idea, MVP, Pre-Seed, Series A…)
+
+🌍 Geography Preferences
+
+🧬 Sector Focus (SaaS, HealthTech, D2C, Web3...)
+
+Visual:
+
+Interactive filter UI or animation of filters adjusting and suggestions appearing
+
+Dynamic card preview: “Recommended for You”
+
+Microcopy:
+“Your next investor could be two swipes away—powered by intelligence, not coincidence.”
+
+4️⃣ Profile Verification
+Section Title:
+Trust Built Into Every Profile
+
+Content:
+We ensure every user is real and relevant. Our verification process builds confidence on both ends of the table.
+
+Verification Layers:
+
+🆔 Govt-Issued ID (PAN, Aadhaar, Passport)
+
+🏢 CIN Verification (for startups)
+
+📈 Pitch Deck Review (founders upload for internal validation)
+
+📃 SEBI-Angel/VC Badge (investor compliance)
+
+Visual:
+
+Lock symbol morphing into a verified badge animation
+
+Profile card with "Verified" tags glowing on scroll-in
+
+Bonus:
+
+Profiles that complete verification get priority in AI matching
+
+5️⃣ Gamified Interface
+Section Title:
+Make Networking Fun Again
+
+Content:
+FoundrFuse adds a touch of play to the serious business of investing. Engage with features that make swiping and connecting fun and goal-oriented.
+
+Gamification Features:
+
+🏅 Badges for active users (e.g., “Pitch Pro,” “Investor Scout”)
+
+🔥 Streaks for daily login & matches
+
+🚫 Swipe Limits to keep matches meaningful
+
+📈 XP Leveling – Level up by connecting, chatting, or pitching
+
+Visual:
+
+Progress bar animation or badge reveal
+
+Floating emoji/icons during scroll
+
+6️⃣ Comparison Table
+Section Title:
+How FoundrFuse Stacks Up
+
+Feature	FoundrFuse ✅	LinkedIn ❌	AngelList ❌
+Swipe to Match	✅	❌	❌
+Verified Investor IDs	✅	❌	✅
+AI-Based Matchmaking	✅	❌	❌
+Gamified Experience	✅	❌	❌
+Pitch Deck Integration	✅	❌	✅ (partial)
+Freemium Access	✅	❌ (paid msg)	✅
+
+Design Tip:
+
+Animated rows highlight on hover
+
+Icons in table rows for fast visual recognition
+
+Sticky first column on mobile
+
+7️⃣ Final CTA Section
+Headline:
+🚀 Ready to Match Smarter?
+
+Subtext:
+Whether you're building or backing the next big thing, FoundrFuse puts the power of modern networking at your fingertips.
+
+Buttons:
+[Create Your Profile] (primary CTA – gradient glowing)
+[Join Waitlist] (secondary – outlined with icon)
+
+Visual:
+
+Mobile phone animation showing a real match happening
+
+Confetti or burst effect on button hover
+
+✅ Final Checklist
+Feature	Included
+Fully mobile-responsive	✅
+Swipe + Animation Feel	✅
+Clean, Trust-Driven Messaging	✅
+AI, Verified, Gamified	✅
+CTA focus for conversions	✅

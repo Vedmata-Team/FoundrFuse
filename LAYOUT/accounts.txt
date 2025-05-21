@@ -1,0 +1,97 @@
+🔐 Join Beta / Login Page – Full Content, UI/UX Design & Animation Plan
+Purpose: Collect verified early users — both startup founders & investors — and funnel them into the waitlist or login. Keep it professional, sleek, and trustworthy.
+
+🎨 Design Theme
+Background: Gradient blend of #0F172A (navy blue) → #1E293B (slate gray)
+
+Card Color: Pure White #FFFFFF with soft drop shadow
+
+Primary CTA Color: Rich Indigo #3B0D8B
+
+Accent: Electric Blue #00B8F4 for links and button highlights
+
+Typography: Inter or Sora for modern, clean look
+
+📱 Mobile-First Responsive Layout
+Sticky login button at the top for mobile
+
+Form stacked cleanly with dropdowns and drag-drop pitch deck upload
+
+Animations optimized for touch
+
+🧱 Sections + Content
+1️⃣ 📝 Signup Form Section
+🔒 Headline:
+Join the Beta. Match Early.
+🧩 Subtext:
+We’re bringing investors and founders closer, smarter, faster.
+
+🔧 Form Fields:
+Full Name (*)
+
+Email Address (*)
+
+Role (*) (Dropdown: Founder / Investor)
+
+LinkedIn Profile (*)
+
+Upload Pitch Deck (Founder only) — PDF Upload or Drag & Drop
+
+Verify with ID (Optional for now) — Upload ID (Govt ID, CIN, etc.)
+
+Checkbox: ✅ I agree to the [Terms] and [Privacy Policy]
+
+CTA Button:
+diff
+Copy
+Edit
+[ Request Early Access ]
+✅ On click: “Thank you! We’re reviewing your profile. Check your inbox soon.”
+📤 Animation: Upload loader for pitch deck → green tick confirmation.
+
+2️⃣ 📢 Waitlist Info Section
+Banner Style below form (with subtle icon or rocket emoji):
+
+🚀 We’re onboarding in curated batches.
+You’ll hear from us shortly as we match Founders & Investors in waves.
+
+Note: Show estimated wait time dynamically if possible (e.g., "Expected in: 3–5 days")
+
+3️⃣ 🔑 Existing User Login
+Subtext:
+Already matched? Continue your journey.
+
+Button:
+
+diff
+Copy
+Edit
+[ Login to FoundrFuse ]
+Placed at top-right corner (desktop) & fixed bottom bar (mobile)
+Action: Modal or redirect to secure login page
+
+🌀 Animation + UX Microinteractions
+Element	Animation
+Page Load	Fade in with slide from bottom
+Upload Pitch Deck	Drag-drop animation with preview
+Button Hover	Glow border + scale-up
+Form Validation	Shake + red underline
+Success Submit	Confetti burst or checkmark pop
+
+🎨 Optional Lottie / SVG Visuals
+Animated icons next to:
+
+Pitch deck upload
+
+ID verification
+
+Role selection
+
+A clean illustration of Founder ↔ Investor handshake on mobile top
+
+✅ Accessibility + Trust Cues
+Add “Secure & private” badge next to email field
+
+Show LinkedIn + email are only used for verification
+
+Display mini badge below: “Powered by FoundrFuse Beta · v1.0”

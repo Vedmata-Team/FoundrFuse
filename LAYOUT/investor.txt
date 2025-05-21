@@ -1,0 +1,128 @@
+🧭 Investors Page – Full Content + Design + Motion Plan
+Purpose: Convince VCs, angel investors, incubators, and syndicates to subscribe, explore high-potential startups early, and create a domain-specific deal flow.
+
+🎨 Design Theme & Color Palette
+Primary Color: Royal Indigo #3B0D8B
+
+Secondary: Deep Emerald #136F63, Gold Accent #FFD700
+
+Background: Subtle gradient from dark navy → purple mist
+
+Typography: Space Grotesk or DM Sans – for clarity + trust
+
+🎞️ Animation & UI Effects
+Banner: Slow zoom-in on a rising unicorn (Lottie or SVG), glowing CTA
+
+Perk Cards: Hover-based slide-in from bottom with icon animation
+
+SaaS Dashboard Section: Interactive hover-to-reveal tooltips over images
+
+Pricing Cards: Pulse + subtle scale on hover
+
+Mobile Swipe Animation: Horizontal “match” animation mock like Tinder
+
+🧱 Page Structure + Content
+1️⃣ Hero Banner
+Headline:
+
+Back Tomorrow’s Unicorns — Early.
+Subheadline:
+“Join the smart investor network where innovation meets curation. Swipe. Match. Fund.”
+
+Visual:
+
+Background animation of rising line graph, stars glowing, unicorn silhouette
+
+Mobile mockup of an investor swiping on a startup profile
+
+CTA Button:
+[Request Investor Access] (primary glowing gold + indigo)
+
+2️⃣ Investor Perks
+Section Title:
+
+Why Investors Trust FoundrFuse
+Four Benefit Cards – with Icons:
+
+📊 Precision Filters
+Narrow your discovery by startup revenue, traction metrics, sector, and geography. Build your custom pipeline.
+
+📂 Verified Pitch Deck Access
+No cold emails. Access pre-uploaded decks from verified founders who meet your criteria.
+
+🌆 Emerging Founder Discovery
+Get early visibility into rising startups from Tier 2 & 3 cities before the mainstream.
+
+🔔 Domain Alert Engine
+Set custom alerts for domains you care about—AI, Cleantech, D2C, or Health. Be the first to engage.
+
+Visuals:
+Each card glows gently on scroll, icons animate in. Use consistent color-coded icons.
+
+3️⃣ Dashboard Sneak Peek
+Section Title:
+
+Your Curated Deal Flow Command Center
+Layout:
+
+2–3 horizontal SaaS dashboard mockups
+
+Tooltip overlays with these taglines:
+
+“Startup Matching Feed”
+
+“One-click pitch deck access”
+
+“Smart Alerts by Sector”
+
+“Investor Inbox & Match History”
+
+Design Note:
+Use blurred cards and neon outlines for modern SaaS vibe
+
+Subtle shimmer on hover reveals investor-centric UX
+
+4️⃣ Plans & Pricing Preview
+Section Title:
+
+Plans Built for Every Stage of Investor
+Plan	Access Level	Features Highlight
+Free	Explorer	Browse 2 matches/day, basic filters, no deck access
+Pro	Deal Digger	Unlimited swipes, deck access, filter + alerts
+Elite	Syndicate	Dedicated success manager, founder introductions
+
+Layout:
+
+Cards with floating icons (e.g., rocket, magnifier, crown)
+
+Gold crown on “Elite” plan with bounce effect
+
+Add toggle: Monthly vs Yearly Pricing
+
+5️⃣ Final CTA
+Headline:
+🚀 Join FoundrFuse. Fund Smarter.
+
+Subtext:
+You don’t have time to scout every founder. We bring the right ones to you.
+
+CTA Button:
+[Request Investor Access] (Gold gradient button)
+
+Visual:
+Mobile animation of investor swiping → match → chat bubble saying “Let’s talk!”
+
+✅ Mobile-First + Swipe-Centric UI Notes
+Component	Mobile-Ready	Animated
+Swipe mockup	✅	✅
+Investor Perk cards	✅	✅
+SaaS Sneak Peek	✅	✅
+Pricing cards	✅	✅
+Final CTA zone	✅	✅
+
+💡 Pro Tips for Conversion
+Add trust markers: "Used by 50+ active investors" or "Partnered with 3 incubators"
+
+Highlight founder-investor match success stories (Phase-2 idea)
+
+Gamify investor dashboard later: XP, badges for top investors, invite leaderboard

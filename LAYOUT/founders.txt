@@ -1,0 +1,148 @@
+📄 Founders Page – Full Content + Design System
+Purpose: Showcase the benefits for startup founders, explain freemium model, journey timeline, and nudge them to sign up.
+
+🎨 Visual Theme, Color & Animation
+Primary Color: Royal Indigo #3B0D8B
+
+Accent Color: Warm Violet #7F00FF, Flame Orange #FF6B00
+
+Background: Gradient soft white → light purple haze
+
+Typography: Poppins or Space Grotesk for energetic modern vibe
+
+🎞️ Animation & Interaction
+Hero Section: Parallax background + animated swipe mockup
+
+Icons: Animate with scroll (use Lottie or Framer Motion)
+
+Timeline: Horizontal animated scroll with cards sliding into view
+
+CTA Buttons: Pulsing glow, haptic bounce effect
+
+Flow Diagram: Swipe → Match → Chat → Invest flow with kinetic arrows
+
+🧱 Page Structure + Content
+1️⃣ Banner
+Title:
+
+Built for Builders.
+Subtext:
+“Meet VCs who care about your domain, your city, and your journey.”
+
+Visual:
+
+Lottie: Founder holding pitch deck → app UI showing a swipe right from an investor
+
+Background sparkles + animated network lines
+
+CTA Button:
+[Create Your Founder Profile] (glowing gradient)
+
+2️⃣ Founder Perks
+Section Title:
+
+Why Founders Love FoundrFuse
+Grid Format – 4 Cards with Icons + Microcopy:
+
+🧭 Domain-Based Investor Search
+Get matched with VCs actively investing in your industry—whether it's Web3, D2C, SaaS, or DeepTech.
+
+🏙️ Metro / Non-Metro Targeting
+From Mumbai to Guwahati—filter investors by region for geo-aligned support and growth.
+
+🚀 Visibility Boosts
+Stand out in investor swipes with profile boosts powered by XP points or premium upgrades.
+
+💬 Swipe → Match → Chat Flow
+Intuitive interface to get discovered, swipe with intent, and start funding conversations instantly.
+
+Animation:
+Each card slides in from the side + scale on hover with icon morph animation
+
+3️⃣ Freemium Model Explained
+Section Title:
+
+Start Free. Scale with Premium.
+Two-column layout:
+
+🆓 Free Plan
+
+5 swipes/day
+
+View basic investor info
+
+Match & chat with mutual interest
+
+💎 Premium Plan
+
+Unlimited swipes
+
+Advanced filters (Sector, Ticket Size, Geo)
+
+Weekly Boosts
+
+Match History
+
+Profile Insights & XP Analytics
+
+Design:
+
+Freemium plan card on the left, Premium plan card glows slightly with crown icon
+
+Toggle switch to compare plans (Free vs Premium)
+
+4️⃣ Founder Journey Timeline
+Section Title:
+
+Your Startup Journey with FoundrFuse
+Horizontal Scroll Timeline with Icons and Arrows:
+
+➡️ Step 1: Idea or MVP
+Upload your pitch & create your profile.
+
+➡️ Step 2: Swipe Smart
+Use AI filters to match with aligned investors.
+
+➡️ Step 3: It’s a Match!
+Mutual interest? Start real-time chat immediately.
+
+➡️ Step 4: Raise Capital
+Pitch directly. Close faster. No middlemen.
+
+Visual:
+Cards animate in on scroll, connecting line glows as user scrolls
+Add floating confetti/spark icons when reaching last step
+
+5️⃣ Final CTA
+Headline:
+🚀 Ready to Meet Your First (or Next) Investor?
+
+Subtext:
+No more cold emails. Just warm matches. Build with momentum.
+
+CTA Buttons:
+[Create Founder Profile] (primary glowing button)
+[Explore Features] (secondary outline button)
+
+Visual:
+
+Animated success screen showing investor + founder matched
+
+Confetti burst on hover
+
+✅ Responsive + Conversion-Ready Design Elements
+Feature	Included
+Swipe animations for mobile feel	✅
+Funnel-style storytelling	✅
+Founder-centric copy	✅
+Animated diagrams & timeline	✅
+Premium value highlighting	✅
+Mobile-responsive, card-based UI	✅
+Conversion-focused final CTA	✅
+
+🔧 Optional Enhancements (Optional Phase-2)
+Add video testimonial sliders from real founders
+
+Founder leaderboard for most matches this week (gamification)
+
+Startup Showcase Carousel → “Featured Startups Raising Now”
