@@ -41,7 +41,18 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'django.contrib.humanize',
+    # Your custom apps here:
+    'about',
+    'accounts',
+    'blog',
+    'features',
+    'founders',
+    'home',
+    'investors',
+    'pricing',
 ]
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
