@@ -48,9 +48,14 @@
 
   <!-- Stylesheets -->
   <link rel="stylesheet" href="{% static 'css/theme-base.css' %}" />
+    {% block extra_css %}{% endblock %}
+
+
 
   <!-- Scripts -->
   <script defer src="{% static 'js/scripts.js' %}"></script>
+    <!-- Scripts (head) -->
+  {% block head_scripts %}{% endblock %}
 </head>
 <body>
 
@@ -94,6 +99,6 @@
       <div class="credits">© 2025 P by Parth Pangtey</div>
     </div>
   </footer>
-
+  {% block extra_js %}{% endblock %}
 </body>
 </html>
