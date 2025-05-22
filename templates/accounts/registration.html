@@ -1,0 +1,140 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Join FoundrFuse Beta{% endblock %}
+
+{% block content %}
+<section class="join-beta-section">
+  <div class="form-card">
+    <h1 class="headline">Join the Beta. Match Early.</h1>
+    <p class="subtext">We’re bringing investors and founders closer, smarter, faster.</p>
+
+    <form id="registration-form" method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+      <label for="full_name">Full Name *</label>
+      <input type="text" id="full_name" name="full_name" required />
+
+      <label for="email">Email Address *</label>
+      <input type="email" id="email" name="email" required />
+
+      <label for="role">Role *</label>
+      <select id="role" name="role" required>
+        <option value="">Select Role</option>
+        <option value="Founder">Founder</option>
+        <option value="Investor">Investor</option>
+      </select>
+
+      <label for="linkedin">LinkedIn Profile *</label>
+      <input type="url" id="linkedin" name="linkedin" placeholder="https://linkedin.com/in/yourname" required />
+
+      <div id="pitch-deck-upload" style="display:none;">
+        <label for="pitch_deck">Upload Pitch Deck (PDF)</label>
+        <input type="file" id="pitch_deck" name="pitch_deck" accept="application/pdf" />
+      </div>
+
+      <label for="id_doc">Verify with ID (Optional)</label>
+      <input type="file" id="id_doc" name="id_doc" accept="image/*,application/pdf" />
+
+      <div class="checkbox">
+        <label>
+          <input type="checkbox" required /> I agree to the <a href="/terms">Terms</a> and <a href="/privacy">Privacy Policy</a>
+        </label>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Request Early Access</button>
+      <p id="submit-msg" style="display:none;">Thank you! We’re reviewing your profile. Check your inbox soon.</p>
+    </form>
+  </div>
+
+  <div class="waitlist-banner">
+    <p>🚀 We’re onboarding in curated batches. Expected wait: <span id="wait-time">3–5 days</span>
+    </p>
+  </div>
+
+  <div class="existing-user-login">
+    <p>Already matched? <a href="/login">Login to FoundrFuse</a></p>
+  </div>
+</section>
+
+<script>
+  document.getElementById('role').addEventListener('change', function () {
+    const pitchDeckField = document.getElementById('pitch-deck-upload');
+    pitchDeckField.style.display = this.value === 'Founder' ? 'block' : 'none';
+  });
+
+  document.getElementById('registration-form').addEventListener('submit', function (e) {
+    e.preventDefault();
+    // Simulated success
+    document.getElementById('submit-msg').style.display = 'block';
+    this.querySelector('button').disabled = true;
+  });
+</script>
+
+<style>
+  body {
+    background: linear-gradient(to bottom, #0F172A, #1E293B);
+    font-family: 'Inter', sans-serif;
+  }
+  .form-card {
+    background: #fff;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    max-width: 500px;
+    margin: auto;
+    margin-top: 3rem;
+  }
+  .btn-primary {
+    background: #3B0D8B;
+    color: #fff;
+    padding: 0.75rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    cursor: pointer;
+  }
+  .btn-primary:hover {
+    background: #4f19a8;
+  }
+  .headline {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: #0F172A;
+  }
+  .subtext {
+    color: #475569;
+    margin-bottom: 1.5rem;
+  }
+  label {
+    display: block;
+    margin-top: 1rem;
+    color: #0F172A;
+  }
+  input, select {
+    width: 100%;
+    padding: 0.5rem;
+    margin-top: 0.25rem;
+    border: 1px solid #CBD5E1;
+    border-radius: 0.375rem;
+  }
+  .checkbox {
+    margin-top: 1rem;
+  }
+  .waitlist-banner {
+    background: #3B0D8B;
+    color: white;
+    padding: 1rem;
+    text-align: center;
+    border-radius: 0.5rem;
+    margin: 2rem auto;
+    max-width: 500px;
+  }
+  .existing-user-login {
+    text-align: center;
+    color: #CBD5E1;
+  }
+  .existing-user-login a {
+    color: #00B8F4;
+  }
+</style>
+{% endblock %}

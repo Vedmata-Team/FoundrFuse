@@ -1,0 +1,132 @@
+🔐 Subscription App — Full Feature Content & Flow (Django)
+🧱 Page Name: Upgrade to Premium
+🎯 Headline:
+plaintext
+Copy
+Edit
+💎 Go Premium — Unlock Real Connections
+🧠 Typing Animation Suggestions (can rotate in loop):
+plaintext
+Copy
+Edit
+"Swipe smart. Raise faster. 🚀"
+"Post your founder story, not just your pitch."
+"Invest where it matters—beyond just the metro cities."
+"Get discovered by the right backers."
+"Visibility. Filters. Instant Matches."
+Use a JavaScript typewriter plugin like typed.js or Django + React component to animate.
+
+💳 Plan Comparison Section
+html
+Copy
+Edit
+<h2 class="text-xl font-bold">Choose Your Growth Path</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+  <!-- Free Plan -->
+  <div class="border p-6 rounded-xl shadow bg-white">
+    <h3 class="text-lg font-bold">🆓 Free Plan</h3>
+    <ul class="mt-4 text-gray-600 space-y-2">
+      <li>✅ 5 Swipes/Day</li>
+      <li>✅ View Basic Profiles</li>
+      <li>✅ Match If Both Swipe</li>
+      <li>❌ No Blog Posting Access</li>
+      <li>❌ No Advanced Filters</li>
+      <li>❌ No Profile Boosts</li>
+    </ul>
+    <button class="mt-4 px-4 py-2 bg-gray-300 rounded cursor-not-allowed" disabled>You're on Free Plan</button>
+  </div>
+
+  <!-- Premium Plan -->
+  <div class="border-2 border-indigo-600 p-6 rounded-xl shadow bg-indigo-50">
+    <h3 class="text-lg font-bold text-indigo-700">💎 Premium Plan</h3>
+    <ul class="mt-4 text-indigo-800 space-y-2">
+      <li>🔥 Unlimited Swipes</li>
+      <li>🎯 Advanced Filters (Sector, City, Ticket Size)</li>
+      <li>🚀 Profile Boost & Visibility</li>
+      <li>📝 Post Blogs & Stories</li>
+      <li>📈 Match History + Profile Analytics</li>
+      <li>💬 Swipe → Match → Chat Flow</li>
+    </ul>
+    <form action="{% url 'create-checkout-session' %}" method="POST">
+      {% csrf_token %}
+      <button class="mt-4 px-6 py-3 bg-indigo-600 text-white rounded hover:scale-105 transition-all">Upgrade to Premium</button>
+    </form>
+  </div>
+</div>
+📜 Order History Page (/subscription/history)
+🧾 Heading:
+plaintext
+Copy
+Edit
+🧾 Your Subscription History
+🧑‍💻 Table (Django Template + Bootstrap or Tailwind):
+html
+Copy
+Edit
+<table class="w-full mt-6 table-auto border text-sm">
+  <thead>
+    <tr class="bg-gray-100 text-gray-700">
+      <th class="p-2">Order ID</th>
+      <th class="p-2">Date</th>
+      <th class="p-2">Amount</th>
+      <th class="p-2">Status</th>
+      <th class="p-2">Plan</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for order in orders %}
+    <tr class="border-b">
+      <td class="p-2">{{ order.id }}</td>
+      <td class="p-2">{{ order.date|date:"M d, Y" }}</td>
+      <td class="p-2">₹{{ order.amount }}</td>
+      <td class="p-2">
+        {% if order.status == 'success' %}
+          <span class="text-green-600 font-medium">Success</span>
+        {% else %}
+          <span class="text-red-500 font-medium">Failed</span>
+        {% endif %}
+      </td>
+      <td class="p-2">{{ order.plan_name }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="5" class="text-center text-gray-400 p-4">No subscription history found.</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+⚙️ Django Backend — Models Suggestion
+python
+Copy
+Edit
+# models.py
+
+class SubscriptionPlan(models.Model):
+    name = models.CharField(max_length=50)
+    price = models.DecimalField(max_digits=10, decimal_places=2)
+    description = models.TextField()
+    is_active = models.BooleanField(default=True)
+
+class UserSubscription(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    plan = models.ForeignKey(SubscriptionPlan, on_delete=models.SET_NULL, null=True)
+    is_active = models.BooleanField(default=False)
+    start_date = models.DateTimeField(auto_now_add=True)
+    end_date = models.DateTimeField(null=True, blank=True)
+
+class Order(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    order_id = models.CharField(max_length=100)
+    amount = models.DecimalField(max_digits=10, decimal_places=2)
+    status = models.CharField(max_length=20, choices=[('success', 'Success'), ('failed', 'Failed')])
+    plan_name = models.CharField(max_length=100)
+    date = models.DateTimeField(auto_now_add=True)
+✅ Optional: Success Animation After Upgrade
+html
+Copy
+Edit
+<div class="text-center mt-10">
+  <h2 class="text-2xl font-bold text-green-600">🎉 Subscription Successful!</h2>
+  <p class="mt-2 text-gray-600">You’re now a Premium member. Start swiping smarter!</p>
+  <lottie-player src="success-checkmark.json" background="transparent" speed="1" loop autoplay></lottie-player>
+</div>

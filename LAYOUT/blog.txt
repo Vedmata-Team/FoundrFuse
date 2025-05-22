@@ -1,153 +1,156 @@
-🧠 Blog / Insights Page — Complete Copy & UI/UX Layout
-Goal: Educate founders & investors, improve SEO, and showcase your platform’s authority through original insights, product updates, and expert interviews.
+🧠 Blog / Insights Page — Updated for Premium Access Model
+🎯 Goal
+Educate startup founders and investors, improve SEO, and showcase platform authority with original insights, expert takes, and product updates—while limiting blog contribution access to premium users and Superusers only.
 
 🎨 Design Theme
-Background: Clean white #FFFFFF or soft #F8FAFC for readability
+Background: #FFFFFF (clean white) or #F8FAFC (soft light gray)
 
-Text: Dark Slate #1E293B, Secondary #475569
+Text: Dark Slate #1E293B, Secondary Text #475569
 
-Accent Colors: Indigo #3B0D8B and Electric Blue #00B8F4
+Accent Colors: Rich Indigo #3B0D8B, Electric Blue #00B8F4
 
-Font: Sora or Inter for a modern, startup vibe
+Typography: Inter or Sora (modern, clean, and startup-ready)
 
-Card Shadows: Soft neumorphic shadows for depth
+Cards: Neumorphic shadows for subtle 3D depth
 
-Blog Thumbnails: High-resolution illustrations or photos with gradients
+Visuals: High-res illustrations/photos with gradient overlays
 
 🧱 Page Structure
 1️⃣ 🔍 Banner + Intro
 Headline:
 
-plaintext
-Copy
-Edit
 Insights to Build, Fund & Scale Your Startup
+
 Subtext:
 
-Dive into founder stories, investor interviews, funding tips, and platform updates—curated to empower both builders and backers.
+Discover founder stories, investor wisdom, funding playbooks, and platform updates—curated for both builders and backers.
 
-Animation:
+Animations:
 
-Fade-in text
+Fade-in text on load
 
-Subtle underline animation on hover for links
+Underline hover animation on links
 
 2️⃣ 🧰 Category Filters (Tabs or Dropdown)
-plaintext
+Tabs:
+
+css
 Copy
 Edit
-[ 🧑‍💻 Founder Tips ]  [ 💼 Investor Corner ]  [ 🛠 Platform Updates ]
-Interaction:
+[ 🧑‍💻 Founder Tips ] [ 💼 Investor Corner ] [ 🛠 Platform Updates ]
+Interactions:
 
-Tabs slide left/right on mobile
+Animated highlight bar under active tab
 
-Animated highlight bar under selected tab
+Mobile-friendly slideable tabs
 
-Content below updates without full reload (JS/React or AlpineJS)
+Dynamic content switching without full reload (JS/React preferred)
 
-3️⃣ 📚 Blog Cards Grid (3 per row on desktop, 1 per row mobile)
-Each card includes:
+3️⃣ 📚 Blog Cards Grid
+Responsive Layout:
 
-Blog thumbnail (animated SVG or gradient overlay image)
+3 per row (desktop)
 
-Title (2-line limit)
+1 per row (mobile)
 
-Snippet (max 200 characters)
+Each Blog Card Contains:
 
-Author photo + name + date
+Blog thumbnail with animated overlay
 
-"Read More →" hover underline
+Blog title (2-line limit)
 
-Example Card:
+Short snippet (max 200 characters)
 
-plaintext
-Copy
-Edit
-📸 Thumbnail
-🔥 5 Fundraising Mistakes First-Time Founders Make
-“You’re probably doing #3 without realizing it...”
-👤 by Priya Jain · May 20, 2025
-[ Read More → ]
-Card Hover Effects:
+Author info: Photo, Name, Date
 
-Lift with shadow
+Read More → link with hover underline
 
-Image slight zoom-in
+Hover Effects:
 
-CTA underline animation
+Card lifts with soft shadow
 
-4️⃣ 📈 Popular/Trending Sidebar (Desktop View)
-Sticky sidebar on desktop:
+Thumbnail zooms in slightly
 
-🔥 Top 3 Trending Blogs (auto-updated by views)
+"Read More" underline animates left→right
 
-🏷 Tags: #AI #FinTech #SaaS #SeedStage
+🔐 Posting Access:
 
-🔎 Search Bar: “Find topics…”
+✅ Superusers: Full access to publish/edit blogs
 
-5️⃣ 📥 Newsletter CTA (Bottom of Page)
-Card-style section with form:
+🔒 Founders & Investors:
 
+Free Plan: Can read only
+
+Premium Plan: Can contribute posts (subject to review/approval)
+
+4️⃣ 📈 Trending Sidebar (Desktop Only)
+Sticky right-side panel with:
+
+🔥 Top 3 Blogs (based on views or engagement)
+
+🏷 Popular Tags: #AI #FinTech #SaaS #SeedStage #SeriesA
+
+🔎 Search Bar: "Find topics..."
+
+5️⃣ 📥 Newsletter CTA (Bottom)
 Headline:
 
-plaintext
-Copy
-Edit
 📰 Get Weekly Startup Insights, Straight to Your Inbox
+
 Subtext:
 
-One email a week. No fluff. Just actionable tips, trends, and tactics.
+No spam. Just expert content & platform updates once a week.
 
 Form:
 
-Email Input
+Email input field
 
-CTA: [ Subscribe Now ]
+CTA Button: [ Subscribe Now ]
 
 Animation:
 
-Input bounce on focus
+Input bounces on focus
 
-Success message with tick
+Success tick icon on subscribe
 
-6️⃣ 🧑‍💻 Blog Page (Individual Blog View)
-Once a blog is clicked:
+6️⃣ 🧑‍💻 Individual Blog View
+When a blog post is clicked:
 
-Hero banner with full-width feature image
+Hero Banner: Full-width featured image
 
-Blog Title
+Title + Author Info + Date
 
-Author Info + Date
+Full Blog Content:
 
-Body content: Sections, subheadings, inline links
+Headings, inline links, quotes
 
-Share buttons (LinkedIn, Twitter, Copy Link)
+Embedded visuals or videos (if premium)
 
-CTA at bottom: [ Join FoundrFuse ] or [ Subscribe for More ]
+Share Buttons: LinkedIn, Twitter, Copy Link
+
+CTA Footer:
+[ Join FoundrFuse ] or [ Upgrade to Premium to Contribute ]
+
+🔄 Access Logic Summary
+Role	Read Blogs	Post Blogs	Add Media/Visuals
+Superuser	✅ Yes	✅ Yes	✅ Full access
+Founder (Free)	✅ Yes	❌ No	❌ Not allowed
+Founder (Premium)	✅ Yes	✅ Yes (subject to moderation)	✅ Limited access
+Investor (Free)	✅ Yes	❌ No	❌ Not allowed
+Investor (Premium)	✅ Yes	✅ Yes (subject to moderation)	✅ Limited access
 
 🌀 Micro-Animations Summary
 Element	Animation
-Page Load	Fade-in + slide from bottom
-Tabs Switching	Smooth swipe left-right
-Cards Hover	Elevate + zoom-in image
-Subscribe Button	Glow + scale
-Read More Hover	Underline grow left→right
-
-🛠 Sample Blog Titles (Seed Content)
-“5 Fundraising Mistakes First-Time Founders Make”
-
-“What Early-Stage Investors Really Want to See in a Pitch Deck”
-
-“From Swipe to Seed: How Our First 10 Matches Raised $1M”
-
-“Behind the Algorithm: How FoundrFuse Suggests the Right Match”
-
-“Why Tier-2 Cities Are the Next Startup Goldmine”
+Page Load	Fade-in + upward slide
+Tabs Switching	Smooth slide left-right
+Card Hover	Elevate with image zoom-in
+Read More Link	Underline grow left→right
+Subscribe Button	Glow + pulse on hover
+Post Blog Button	(Premium only) Bounce & glow on hover
 
 ✅ Final CTA Footer
 plaintext
 Copy
 Edit
-🚀 Ready to Match with the Right Investor or Founder?
-
-[ Create Your Profile ] or [ Request Investor Access ]
+🚀 Ready to Match, Learn & Grow with the Right Network?
+[ Create Your Profile ]    [ Upgrade to Premium ]

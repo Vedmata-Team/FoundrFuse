@@ -59,36 +59,21 @@ Intuitive interface to get discovered, swipe with intent, and start funding conv
 Animation:
 Each card slides in from the side + scale on hover with icon morph animation
 
-3️⃣ Freemium Model Explained
-Section Title:
+🔐 Platform Access Models
+🎯 For Both Investors & Startup Founders
+You’ll offer:
 
-Start Free. Scale with Premium.
-Two-column layout:
+Feature	Free Access 🆓	Premium Access 💎
+View Public Blog Content	✅	✅
+View Startup/Investor Profiles	✅ (limited info)	✅ (full access)
+Post Blogs, Updates, Interviews	❌	✅
+Create or Reply to Matches	❌	✅
+Profile Visibility Boosts	❌	✅
+Access Match History & Insights	❌	✅
 
-🆓 Free Plan
+💡 “Reading is free. Contributing is premium.”
 
-5 swipes/day
-
-View basic investor info
-
-Match & chat with mutual interest
-
-💎 Premium Plan
-
-Unlimited swipes
-
-Advanced filters (Sector, Ticket Size, Geo)
-
-Weekly Boosts
-
-Match History
-
-Profile Insights & XP Analytics
-
-Design:
-
-Freemium plan card on the left, Premium plan card glows slightly with crown icon
-
+Premiumthen it verify back endif user buy alreadythen access otherwise redirect to payment page
 Toggle switch to compare plans (Free vs Premium)
 
 4️⃣ Founder Journey Timeline
