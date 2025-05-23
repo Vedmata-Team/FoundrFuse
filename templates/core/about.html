@@ -1,0 +1,496 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}About Us | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<style>
+    .about-hero {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/gb22d9442f3dc9f8599eca5ebb5f06b188e05ada37a7f39a479033146b7f12a36a009ebdcbba8e28d38f899559fdf2efdfd50ccfbd6d19d4b0993d7ca6ad7bd5f_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0;
+        color: white;
+    }
+    
+    .founder-img {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    }
+    
+    .founder-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+    }
+    
+    .founder-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .founder-img-sm {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .mission-card {
+        border-radius: 15px;
+        padding: 40px;
+        height: 100%;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .mission-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .value-card {
+        border-radius: 15px;
+        padding: 40px;
+        height: 100%;
+        transition: all 0.3s ease;
+        border: none;
+        color: white;
+    }
+    
+    .value-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    }
+    
+    .value-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        border-radius: 15px;
+        background-color: rgba(255, 255, 255, 0.2);
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+    }
+    
+    .value-card:hover .value-icon {
+        transform: rotate(10deg);
+        background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .timeline-item {
+        position: relative;
+        padding-left: 50px;
+        margin-bottom: 50px;
+    }
+    
+    .timeline-item:before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 15px;
+        height: 100%;
+        width: 2px;
+        background: linear-gradient(to bottom, var(--primary-color), var(--secondary-color));
+    }
+    
+    .timeline-item:last-child:before {
+        height: 50%;
+    }
+    
+    .timeline-dot {
+        position: absolute;
+        left: 0;
+        top: 0;
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);
+    }
+    
+    .timeline-date {
+        display: inline-block;
+        padding: 5px 15px;
+        border-radius: 20px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        font-weight: 500;
+        margin-bottom: 10px;
+    }
+    
+    .metric-card {
+        padding: 30px;
+        border-radius: 15px;
+        background: #fff;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .metric-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .metric-number {
+        font-size: 3rem;
+        font-weight: bold;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        margin-bottom: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="about-hero">
+    <div class="container">
+        <div class="row justify-content-center text-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Building the Future of Fundraising</h1>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">FoundrFuse connects passionate startup founders with visionary investors — instantly, intelligently, and inclusively.</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Founder Story Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Meet the Builder Behind FoundrFuse</h2>
+            </div>
+        </div>
+        
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-4 mb-lg-0">
+                <div class="founder-img animated-on-scroll slide-in-left">
+                    <img src="https://pixabay.com/get/gc63138f6b553e278df70f57514f2bebdd3c285f0f023b2b5b6fb080f492ea423cc83d04384608571a58cd59c8d6ad19c78ea75d061ec24c25adc6be2a5b961c2_1280.jpg" alt="Parth Pangtey" class="img-fluid rounded-3">
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="ps-lg-4 animated-on-scroll slide-in-right">
+                    <h3 class="mb-4">Parth Pangtey</h3>
+                    <p class="lead mb-4">Parth Pangtey, a serial entrepreneur and passionate technologist, faced the same bottleneck as many early-stage founders — hours of cold emails, no responses, and a lack of warm, timely connections with investors who actually cared.</p>
+                    <p class="mb-4">So he built FoundrFuse — a platform inspired by real startup struggles, designed with empathy, and engineered for efficiency. It's not just a tool, it's a movement to give every builder a fair shot at getting funded.</p>
+                    <div class="d-flex mt-4">
+                        <a href="#" class="btn btn-outline-primary me-3 rounded-pill px-4 py-2">
+                            <i class="fab fa-linkedin me-2"></i> Connect on LinkedIn
+                        </a>
+                        <a href="#" class="btn btn-outline-secondary rounded-pill px-4 py-2">
+                            <i class="fab fa-twitter me-2"></i> Follow
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Gap Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Startups Don't Need More Noise. They Need the Right Signal.</h2>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6">
+                <div class="card mission-card shadow-sm h-100 animated-on-scroll fade-in-up">
+                    <h4 class="mb-4">The Problem</h4>
+                    <p class="mb-4">Traditional networking platforms are outdated, bloated, and biased towards already-funded players. Cold emails go unanswered, networking events are time-consuming, and many talented founders outside major hubs struggle to get noticed.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-times-circle text-danger me-3"></i>
+                            <span>Endless cold emails with low response rates</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-times-circle text-danger me-3"></i>
+                            <span>Network bias favoring established connections</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-times-circle text-danger me-3"></i>
+                            <span>Geographic disadvantages for non-hub founders</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fas fa-times-circle text-danger me-3"></i>
+                            <span>Time-consuming fundraising process</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="card mission-card shadow-sm h-100 animated-on-scroll fade-in-up delay-1">
+                    <h4 class="mb-4">Our Solution</h4>
+                    <p class="mb-4">FoundrFuse levels the field with mutual swipe-based matching, AI-powered discovery, and transparent pitch verification — helping startups in Tier-2/3 cities get seen and investors discover hidden gems before anyone else.</p>
+                    <ul class="list-unstyled mb-0">
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <span>Intuitive, mobile-first swipe interface</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <span>AI-powered matching based on compatibility</span>
+                        </li>
+                        <li class="d-flex align-items-center mb-3">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <span>Equal visibility regardless of location</span>
+                        </li>
+                        <li class="d-flex align-items-center">
+                            <i class="fas fa-check-circle text-success me-3"></i>
+                            <span>Verified profiles for trust and transparency</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Vision Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row align-items-center">
+            <div class="col-lg-6 mb-5 mb-lg-0">
+                <div class="pe-lg-5 animated-on-scroll slide-in-left">
+                    <h2 class="fw-bold mb-4">Our Vision: 10,000 Funded Founders by 2027</h2>
+                    <div class="p-4 mb-4 rounded-3" style="background-color: #f8f9fa;">
+                        <p class="lead font-italic mb-0">"We believe the next unicorn isn't sitting in a Silicon Valley office. They're prototyping in Lucknow, pitching in Guwahati, and iterating in Pune. We're here to power their journey."</p>
+                        <p class="mb-0 mt-2 text-end">— Parth Pangtey, Founder & CEO</p>
+                    </div>
+                    <div class="row g-4 mt-2">
+                        <div class="col-sm-4">
+                            <div class="metric-card text-center">
+                                <div class="metric-number">10K+</div>
+                                <p class="mb-0">Founders Funded</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="metric-card text-center">
+                                <div class="metric-number">250+</div>
+                                <p class="mb-0">Cities</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-4">
+                            <div class="metric-card text-center">
+                                <div class="metric-number">1000+</div>
+                                <p class="mb-0">Investors</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="founder-img animated-on-scroll slide-in-right">
+                    <img src="https://pixabay.com/get/g9ce0a2f5851aa63d65b155a9846ec90d277faa8763e5d77250c3d6518c3ddc9534c681682006ec72686c3ba438339bd6c0115d013fbf94a88e3bf71b080e208e_1280.jpg" alt="Startup Team" class="img-fluid rounded-3">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Core Values Section -->
+<section class="py-5" style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3 text-white">Core Values That Drive Us</h2>
+                <p class="lead text-white-50">The principles that guide every feature we build and decision we make</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="value-card animated-on-scroll zoom-in">
+                    <div class="value-icon mx-auto">
+                        <i class="fas fa-lightbulb"></i>
+                    </div>
+                    <h4 class="mb-3">Empowerment</h4>
+                    <p class="mb-0 text-white-50">Every founder deserves a shot, no matter their zip code. We believe in democratizing access to capital and connections.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card animated-on-scroll zoom-in delay-1">
+                    <div class="value-icon mx-auto">
+                        <i class="fas fa-globe"></i>
+                    </div>
+                    <h4 class="mb-3">Inclusion</h4>
+                    <p class="mb-0 text-white-50">Diversity is a superpower. We prioritize accessibility and opportunity for founders from all backgrounds, industries, and locations.</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="value-card animated-on-scroll zoom-in delay-2">
+                    <div class="value-icon mx-auto">
+                        <i class="fas fa-rocket"></i>
+                    </div>
+                    <h4 class="mb-3">Innovation</h4>
+                    <p class="mb-0 text-white-50">We iterate fast, learn from users, and stay ahead of the curve. Status quo is never good enough for us or our community.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Journey Timeline Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Our Journey So Far</h2>
+                <p class="lead text-muted">From idea to impact</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="timeline">
+                    <div class="timeline-item animated-on-scroll fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 Q1</div>
+                        <h4>The Idea Takes Shape</h4>
+                        <p>After struggling to connect with investors for his own startup, Parth conceptualizes FoundrFuse as a mobile-first matching platform for founders and investors.</p>
+                    </div>
+                    
+                    <div class="timeline-item animated-on-scroll fade-in-up delay-1">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 Q2</div>
+                        <h4>First MVP Launch</h4>
+                        <p>The first version of FoundrFuse launches with basic profile creation and swipe functionality. 100 beta users test the platform and provide valuable feedback.</p>
+                    </div>
+                    
+                    <div class="timeline-item animated-on-scroll fade-in-up delay-2">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 Q3</div>
+                        <h4>Seed Funding & Expansion</h4>
+                        <p>FoundrFuse secures seed funding and expands the team. Enhanced matching algorithms and verification systems are implemented.</p>
+                    </div>
+                    
+                    <div class="timeline-item animated-on-scroll fade-in-up delay-3">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2023 Q4</div>
+                        <h4>1,000 Users Milestone</h4>
+                        <p>Platform reaches 1,000 active users with a 30% match rate. First batch of successful funding stories emerge from early matches.</p>
+                    </div>
+                    
+                    <div class="timeline-item animated-on-scroll fade-in-up delay-4">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">2024 Q1</div>
+                        <h4>Premium Features Launch</h4>
+                        <p>Introduction of premium subscription model with advanced filters, unlimited swipes, and analytics dashboard. AI matching algorithm improves compatibility.</p>
+                    </div>
+                    
+                    <div class="timeline-item animated-on-scroll fade-in-up delay-5">
+                        <div class="timeline-dot"></div>
+                        <div class="timeline-date">Present</div>
+                        <h4>Growing Community</h4>
+                        <p>FoundrFuse continues to grow with thousands of active users across multiple countries. The platform has facilitated over $50 million in funding deals.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Team Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Meet Our Team</h2>
+                <p class="lead text-muted">The people behind FoundrFuse</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-3 col-md-6">
+                <div class="card founder-card border-0 text-center animated-on-scroll zoom-in">
+                    <div class="card-body p-4">
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Parth Pangtey" class="founder-img-sm mb-4">
+                        <h5 class="mb-1">Parth Pangtey</h5>
+                        <p class="text-muted mb-3">Founder & CEO</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card founder-card border-0 text-center animated-on-scroll zoom-in delay-1">
+                    <div class="card-body p-4">
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Aisha Khan" class="founder-img-sm mb-4">
+                        <h5 class="mb-1">Aisha Khan</h5>
+                        <p class="text-muted mb-3">CTO</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-github"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card founder-card border-0 text-center animated-on-scroll zoom-in delay-2">
+                    <div class="card-body p-4">
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Raj Mehta" class="founder-img-sm mb-4">
+                        <h5 class="mb-1">Raj Mehta</h5>
+                        <p class="text-muted mb-3">Head of Growth</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-twitter"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-3 col-md-6">
+                <div class="card founder-card border-0 text-center animated-on-scroll zoom-in delay-3">
+                    <div class="card-body p-4">
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Sarah Chen" class="founder-img-sm mb-4">
+                        <h5 class="mb-1">Sarah Chen</h5>
+                        <p class="text-muted mb-3">Product Designer</p>
+                        <div class="d-flex justify-content-center">
+                            <a href="#" class="social-icon me-2"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon me-2"><i class="fab fa-dribbble"></i></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary)); color: white;">
+    <div class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up">Let's Build the Future — Together</h2>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Whether you're raising your first round or backing the next big thing, FoundrFuse is your launchpad.</p>
+                <div class="d-flex justify-content-center gap-3 flex-wrap animated-on-scroll fade-in-up delay-2">
+                    <a href="{% url 'accounts:register' %}?user_type=founder" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="fas fa-rocket me-2"></i> Create Founder Profile
+                    </a>
+                    <a href="{% url 'accounts:register' %}?user_type=investor" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="fas fa-chart-line me-2"></i> Register as Investor
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

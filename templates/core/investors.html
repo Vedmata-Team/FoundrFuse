@@ -1,0 +1,695 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}For Investors | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<style>
+    .investors-hero {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/gc63138f6b553e278df70f57514f2bebdd3c285f0f023b2b5b6fb080f492ea423cc83d04384608571a58cd59c8d6ad19c78ea75d061ec24c25adc6be2a5b961c2_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0;
+        color: white;
+    }
+    
+    .feature-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+        border: none;
+    }
+    
+    .feature-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-icon {
+        width: 70px;
+        height: 70px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-bottom: 1.5rem;
+        border-radius: 50%;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        font-size: 1.8rem;
+        transition: all 0.3s ease;
+    }
+    
+    .feature-card:hover .feature-icon {
+        transform: rotate(10deg);
+    }
+    
+    .step-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .step-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .step-number {
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: white;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        border-radius: 50%;
+        margin-bottom: 1rem;
+    }
+    
+    .testimonial-card {
+        border-radius: 15px;
+        overflow: hidden;
+        position: relative;
+        border: none;
+    }
+    
+    .testimonial-content {
+        position: relative;
+        z-index: 1;
+    }
+    
+    .testimonial-card::before {
+        content: '\201C';
+        position: absolute;
+        top: 20px;
+        left: 20px;
+        font-size: 5rem;
+        font-family: serif;
+        color: rgba(0, 0, 0, 0.1);
+        line-height: 1;
+    }
+    
+    .testimonial-img {
+        width: 80px;
+        height: 80px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .plan-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+    }
+    
+    .plan-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .premium-card {
+        border: 2px solid var(--accent-color);
+        transform: scale(1.05);
+    }
+    
+    .premium-header {
+        background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary));
+        color: white;
+        padding: 20px;
+    }
+    
+    .free-header {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 20px;
+    }
+    
+    .stats-card {
+        border-radius: 15px;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .stat-number {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0.5rem;
+    }
+    
+    .startup-card {
+        transition: all 0.3s ease;
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    
+    .startup-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+    
+    .startup-logo {
+        height: 60px;
+        width: 60px;
+        object-fit: contain;
+        border-radius: 10px;
+        background-color: #f8f9fa;
+        padding: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="investors-hero">
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Discover Your Next Investment</h1>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">FoundrFuse helps investors efficiently find promising startups aligned with their investment thesis and portfolio strategy.</p>
+                <div class="d-flex flex-wrap gap-3 animated-on-scroll fade-in-up delay-2">
+                    <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-4 py-3 rounded-pill">
+                        <i class="fas fa-user-plus me-2"></i> Create Investor Profile
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                        <i class="fas fa-info-circle me-2"></i> Learn How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-flex justify-content-center">
+                <div class="animated-on-scroll slide-in-right">
+                    <img src="https://pixabay.com/get/g9ce0a2f5851aa63d65b155a9846ec90d277faa8763e5d77250c3d6518c3ddc9534c681682006ec72686c3ba438339bd6c0115d013fbf94a88e3bf71b080e208e_1280.jpg" alt="Investment Meeting" class="img-fluid rounded-3 shadow" style="max-height: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Stats Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row g-4">
+            <div class="col-md-4">
+                <div class="stats-card animated-on-scroll fade-in-up">
+                    <div class="stat-number">1,800+</div>
+                    <p class="mb-0">Verified Investors</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card animated-on-scroll fade-in-up delay-1">
+                    <div class="stat-number">15+</div>
+                    <p class="mb-0">Industries Represented</p>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="stats-card animated-on-scroll fade-in-up delay-2">
+                    <div class="stat-number">30%</div>
+                    <p class="mb-0">Average Meeting Conversion</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Benefits Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Why Investors Choose FoundrFuse</h2>
+                <p class="lead text-muted">Streamline your deal flow and discover hidden gems</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-funnel-dollar"></i>
+                        </div>
+                        <h4 class="mb-3">Quality Deal Flow</h4>
+                        <p class="text-muted">Access pre-screened startups that match your specific investment criteria and focus areas.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-1">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-filter"></i>
+                        </div>
+                        <h4 class="mb-3">Advanced Filtering</h4>
+                        <p class="text-muted">Filter by industry, location, funding stage, traction metrics, and team composition.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-2">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h4 class="mb-3">Discover Hidden Gems</h4>
+                        <p class="text-muted">Find promising startups outside traditional tech hubs and network connections.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-1">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-tachometer-alt"></i>
+                        </div>
+                        <h4 class="mb-3">Efficient Process</h4>
+                        <p class="text-muted">Mobile-first swipe interface lets you review startups anywhere, anytime.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-2">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-file-download"></i>
+                        </div>
+                        <h4 class="mb-3">One-Tap Access</h4>
+                        <p class="text-muted">Download pitch decks, financial projections, and company documents with a single tap.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-3">
+                    <div class="card-body p-4 text-center">
+                        <div class="feature-icon mx-auto">
+                            <i class="fas fa-chart-bar"></i>
+                        </div>
+                        <h4 class="mb-3">Performance Tracking</h4>
+                        <p class="text-muted">Track metrics on which startups you view, match with, and ultimately invest in.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- How It Works Section -->
+<section class="py-5" id="how-it-works">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">How It Works for Investors</h2>
+                <p class="lead text-muted">Four simple steps to optimize your deal flow</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-3">
+                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up">
+                    <div class="card-body p-4">
+                        <div class="step-number mx-auto">1</div>
+                        <h4 class="mb-3">Create Your Profile</h4>
+                        <p class="text-muted">Set up your investor profile with investment focus, check size, portfolio strategy, and value-add.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-1">
+                    <div class="card-body p-4">
+                        <div class="step-number mx-auto">2</div>
+                        <h4 class="mb-3">Discover Startups</h4>
+                        <p class="text-muted">Browse through curated startup matches and swipe right on those that interest you.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-2">
+                    <div class="card-body p-4">
+                        <div class="step-number mx-auto">3</div>
+                        <h4 class="mb-3">Match & Connect</h4>
+                        <p class="text-muted">When a founder also swipes right, it's a match! Start a conversation through our secure messaging system.</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-3">
+                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-3">
+                    <div class="card-body p-4">
+                        <div class="step-number mx-auto">4</div>
+                        <h4 class="mb-3">Evaluate & Invest</h4>
+                        <p class="text-muted">Access detailed startup information, schedule meetings, and pursue investments.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="text-center mt-5">
+            <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-5 py-3 rounded-pill animated-on-scroll zoom-in">
+                <i class="fas fa-briefcase me-2"></i> Build Your Portfolio
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- Featured Startups -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Startups You Could Discover</h2>
+                <p class="lead text-muted">Examples of innovative companies on our platform</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-md-6 col-lg-4">
+                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll slide-in-left">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="startup-logo me-3 border shadow-sm">
+                                <i class="fas fa-leaf fa-2x text-success"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">EcoTech Solutions</h5>
+                                <p class="text-muted mb-0">Cleantech / Series A</p>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-3">Developing scalable carbon capture technology with 40% better efficiency than current solutions.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark">Cleantech</span>
+                            <span class="badge bg-light text-dark">Sustainability</span>
+                            <span class="badge bg-light text-dark">B2B</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll fade-in-up">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="startup-logo me-3 border shadow-sm">
+                                <i class="fas fa-heartbeat fa-2x text-danger"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">HealthPulse</h5>
+                                <p class="text-muted mb-0">Health Tech / Seed</p>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-3">AI-powered diagnostic platform for early disease detection with 94% accuracy in clinical trials.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark">Healthcare</span>
+                            <span class="badge bg-light text-dark">AI</span>
+                            <span class="badge bg-light text-dark">B2B2C</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-6 col-lg-4">
+                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll slide-in-right">
+                    <div class="card-body p-4">
+                        <div class="d-flex align-items-center mb-4">
+                            <div class="startup-logo me-3 border shadow-sm">
+                                <i class="fas fa-robot fa-2x text-primary"></i>
+                            </div>
+                            <div>
+                                <h5 class="mb-0">RoboLogistics</h5>
+                                <p class="text-muted mb-0">Supply Chain / Pre-Series A</p>
+                            </div>
+                        </div>
+                        <p class="text-muted mb-3">Autonomous warehouse robots that reduce fulfillment costs by 32% with proprietary navigation technology.</p>
+                        <div class="d-flex flex-wrap gap-2">
+                            <span class="badge bg-light text-dark">Robotics</span>
+                            <span class="badge bg-light text-dark">Logistics</span>
+                            <span class="badge bg-light text-dark">Enterprise</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Testimonials Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Investor Success Stories</h2>
+                <p class="lead text-muted">Hear from investors who found great opportunities</p>
+            </div>
+        </div>
+        
+        <div class="row g-4">
+            <div class="col-lg-6">
+                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-left">
+                    <div class="card-body p-4">
+                        <div class="testimonial-content">
+                            <p class="lead mb-4">"FoundrFuse has completely transformed our early-stage sourcing strategy. We've invested in three startups we found through the platform, two of which were outside our typical network."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Michael Wong" class="testimonial-img me-3">
+                                <div>
+                                    <h5 class="mb-1">Michael Wong</h5>
+                                    <p class="text-muted mb-0">Partner, Horizon Ventures</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-lg-6">
+                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-right">
+                    <div class="card-body p-4">
+                        <div class="testimonial-content">
+                            <p class="lead mb-4">"As an angel investor with limited time, the swipe-based interface helps me efficiently review potential investments on the go. I've found quality deals that I wouldn't have seen otherwise."</p>
+                            <div class="d-flex align-items-center">
+                                <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Priya Sharma" class="testimonial-img me-3">
+                                <div>
+                                    <h5 class="mb-1">Priya Sharma</h5>
+                                    <p class="text-muted mb-0">Angel Investor, Former CTO</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Premium vs Free Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Choose Your Plan</h2>
+                <p class="lead text-muted">Get started for free or upgrade for premium features</p>
+            </div>
+        </div>
+        
+        <div class="row g-4 justify-content-center">
+            <div class="col-md-5">
+                <div class="card plan-card border-0 shadow-sm animated-on-scroll slide-in-left">
+                    <div class="free-header text-center">
+                        <h3 class="mb-0">Free Plan</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h4 class="mb-0">$0</h4>
+                            <p class="text-muted">Forever free</p>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Basic investor profile</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>5 swipes per day</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>View startup profiles</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Basic matching algorithm</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-times-circle text-danger me-2"></i>
+                                <span class="text-muted">No advanced filters</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-times-circle text-danger me-2"></i>
+                                <span class="text-muted">No portfolio tracking</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-times-circle text-danger me-2"></i>
+                                <span class="text-muted">No content publishing</span>
+                            </li>
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg w-100 py-3">
+                                Sign Up Free
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="col-md-5">
+                <div class="card plan-card border-0 shadow-sm premium-card animated-on-scroll slide-in-right">
+                    <div class="premium-header text-center">
+                        <span class="badge bg-white text-primary mb-2">RECOMMENDED</span>
+                        <h3 class="mb-0">Premium Plan</h3>
+                    </div>
+                    <div class="card-body p-4">
+                        <div class="text-center mb-4">
+                            <h4 class="mb-0">$49.99</h4>
+                            <p class="text-muted">per month</p>
+                        </div>
+                        <ul class="list-unstyled">
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Enhanced investor profile</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span><strong>Unlimited</strong> swipes</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Advanced startup filters</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>AI-powered matching</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Deal flow analytics</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Portfolio tracking</span>
+                            </li>
+                            <li class="d-flex align-items-center mb-3">
+                                <i class="fas fa-check-circle text-success me-2"></i>
+                                <span>Post blogs & investment insights</span>
+                            </li>
+                        </ul>
+                        <div class="text-center mt-4">
+                            <a href="{% url 'subscription:upgrade' %}" class="btn btn-gradient btn-lg w-100 py-3">
+                                <i class="fas fa-crown me-2"></i> Upgrade to Premium
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Answers to common questions from investors</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="investorFaqAccordion">
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                What types of startups will I see on FoundrFuse?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#investorFaqAccordion">
+                            <div class="accordion-body">
+                                <p>FoundrFuse has startups across all industries and stages, from pre-seed to Series B. As an investor, you'll be able to filter and see startups that match your investment criteria. Premium users can apply additional filters for business model, traction metrics, geographic focus, and more.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                How does FoundrFuse verify startup information?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#investorFaqAccordion">
+                            <div class="accordion-body">
+                                <p>We employ a rigorous verification process for all startups on the platform. This includes business registration verification, founder background checks, LinkedIn profile verification, and review of key metrics. Premium startups undergo additional verification, including financial review and reference checks. While we verify basic information, we recommend conducting your own due diligence before investing.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Can I manage my investment team on the platform?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#investorFaqAccordion">
+                            <div class="accordion-body">
+                                <p>Yes, premium accounts include team collaboration features. You can add team members, share startup profiles, leave internal notes, and track team interactions with potential investments. Each team member gets their own login with customizable permissions to protect sensitive information.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item border rounded-3 shadow-sm">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                How does FoundrFuse compare to traditional sourcing methods?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#investorFaqAccordion">
+                            <div class="accordion-body">
+                                <p>FoundrFuse complements traditional sourcing by providing access to startups outside your existing network. Many investors use FoundrFuse alongside their usual channels to expand their reach. Our platform is particularly valuable for discovering startups in emerging markets, underrepresented founders, or niche industries. The mobile-first approach also means you can review potential investments anytime, anywhere.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary)); color: white;">
+    <div class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up">Ready to Optimize Your Deal Flow?</h2>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Create your investor profile today and start discovering promising startups that match your investment thesis.</p>
+                <div class="animated-on-scroll fade-in-up delay-2">
+                    <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="fas fa-briefcase me-2"></i> Create Investor Profile
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

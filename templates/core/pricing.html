@@ -1,0 +1,746 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Pricing | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<style>
+    .pricing-hero {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/gff7a8a17644d042489aede50dd473c2c1d0ed990e5ddbe271672c0ae9275db36285da24f804ba1da90b38bc86474a125868cdd859d935a94c3741e04923fe6db_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0;
+        color: white;
+    }
+    
+    .pricing-toggle {
+        display: inline-flex;
+        background-color: #f0f0f0;
+        border-radius: 30px;
+        padding: 5px;
+        margin-bottom: 40px;
+    }
+    
+    .pricing-toggle-btn {
+        padding: 10px 25px;
+        border-radius: 30px;
+        border: none;
+        background: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .pricing-toggle-btn.active {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-card {
+        border-radius: 15px;
+        overflow: hidden;
+        transition: all 0.3s ease;
+        height: 100%;
+        border: none;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-header {
+        padding: 30px;
+        text-align: center;
+        color: white;
+    }
+    
+    .free-header {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .premium-header {
+        background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary));
+    }
+    
+    .pricing-price {
+        font-size: 3rem;
+        font-weight: bold;
+        margin-bottom: 0;
+    }
+    
+    .price-period {
+        font-size: 1rem;
+        opacity: 0.7;
+    }
+    
+    .popular-badge {
+        position: absolute;
+        top: 0;
+        right: 30px;
+        background-color: #FF6B00;
+        color: white;
+        padding: 8px 15px;
+        font-weight: 500;
+        border-radius: 0 0 10px 10px;
+        box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .feature-check {
+        color: var(--primary-color);
+        margin-right: 10px;
+    }
+    
+    .feature-times {
+        color: #ccc;
+        margin-right: 10px;
+    }
+    
+    .comparison-table th {
+        background-color: #f8f9fa;
+        font-weight: 600;
+    }
+    
+    .comparison-table .check-icon {
+        color: var(--primary-color);
+        font-size: 1.2rem;
+    }
+    
+    .comparison-table .times-icon {
+        color: #ccc;
+        font-size: 1.2rem;
+    }
+    
+    .faq-card {
+        border-radius: 15px;
+        overflow: hidden;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+    }
+    
+    .faq-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .premium-btn {
+        background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary));
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .premium-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+        color: white;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Hero Section -->
+<section class="pricing-hero">
+    <div class="container text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Simple, Transparent Pricing</h1>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Choose the plan that's right for your journey, whether you're a founder or investor</p>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Pricing Toggle Section -->
+<section class="py-5">
+    <div class="container py-5 text-center">
+        <!-- User Type Toggle -->
+        <div class="pricing-toggle animated-on-scroll fade-in-up">
+            <button class="pricing-toggle-btn active" id="founderBtn">For Founders</button>
+            <button class="pricing-toggle-btn" id="investorBtn">For Investors</button>
+        </div>
+        
+        <!-- Founder Pricing -->
+        <div id="founderPricing">
+            <div class="row g-4 justify-content-center">
+                <!-- Free Plan -->
+                <div class="col-lg-5">
+                    <div class="card pricing-card shadow-sm animated-on-scroll slide-in-left">
+                        <div class="pricing-header free-header">
+                            <h3 class="mb-4">Free Plan</h3>
+                            <h2 class="pricing-price mb-0">$0</h2>
+                            <span class="price-period">Forever Free</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="py-3">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Basic founder profile</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>5 swipes per day</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>View investor profiles (limited info)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Basic matching</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Read blog content</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No advanced filters</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No analytics dashboard</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No profile boosts</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No blog publishing</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill w-100">
+                                    Sign Up Free
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="col-lg-5">
+                    <div class="card pricing-card shadow-sm position-relative animated-on-scroll slide-in-right">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header premium-header">
+                            <h3 class="mb-4">Premium Plan</h3>
+                            <h2 class="pricing-price mb-0">$29.99</h2>
+                            <span class="price-period">per month</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="py-3">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span><strong>Enhanced</strong> founder profile</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span><strong>Unlimited</strong> swipes</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Full investor profile access</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Advanced filters (industry, location, stage)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Analytics dashboard</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Profile boost (2x visibility)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>AI-powered matching</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Publish blog posts & founder stories</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Priority support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="{% url 'subscription:upgrade' %}" class="btn premium-btn btn-lg px-5 py-3 rounded-pill w-100">
+                                    <i class="fas fa-crown me-2"></i> Upgrade to Premium
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Investor Pricing -->
+        <div id="investorPricing" style="display: none;">
+            <div class="row g-4 justify-content-center">
+                <!-- Free Plan -->
+                <div class="col-lg-5">
+                    <div class="card pricing-card shadow-sm animated-on-scroll slide-in-left">
+                        <div class="pricing-header free-header">
+                            <h3 class="mb-4">Free Plan</h3>
+                            <h2 class="pricing-price mb-0">$0</h2>
+                            <span class="price-period">Forever Free</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="py-3">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Basic investor profile</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>5 swipes per day</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>View startup profiles (limited info)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Basic matching</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Read blog content</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No advanced filters</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No deal flow analytics</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No team collaboration</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="text-muted">No blog publishing</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill w-100">
+                                    Sign Up Free
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Premium Plan -->
+                <div class="col-lg-5">
+                    <div class="card pricing-card shadow-sm position-relative animated-on-scroll slide-in-right">
+                        <div class="popular-badge">Most Popular</div>
+                        <div class="pricing-header premium-header">
+                            <h3 class="mb-4">Premium Plan</h3>
+                            <h2 class="pricing-price mb-0">$49.99</h2>
+                            <span class="price-period">per month</span>
+                        </div>
+                        <div class="card-body p-4">
+                            <div class="py-3">
+                                <ul class="list-unstyled">
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span><strong>Enhanced</strong> investor profile</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span><strong>Unlimited</strong> swipes</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Full startup profile access</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Advanced filters (industry, traction, team)</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Deal flow analytics</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Team collaboration tools</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>AI-powered matching</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Publish blog posts & investment insights</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-3">
+                                        <i class="fas fa-check feature-check"></i>
+                                        <span>Priority support</span>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="text-center mt-4">
+                                <a href="{% url 'subscription:upgrade' %}" class="btn premium-btn btn-lg px-5 py-3 rounded-pill w-100">
+                                    <i class="fas fa-crown me-2"></i> Upgrade to Premium
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Feature Comparison Section -->
+<section class="py-5 bg-light">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-4">Feature Comparison</h2>
+                <p class="lead text-muted">A detailed look at what's included in each plan</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="table-responsive animated-on-scroll fade-in-up">
+                    <table class="table comparison-table">
+                        <thead>
+                            <tr>
+                                <th scope="col">Features</th>
+                                <th scope="col" class="text-center">Free</th>
+                                <th scope="col" class="text-center">Premium</th>
+                            </tr>
+                        </thead>
+                        <tbody class="founder-features">
+                            <tr>
+                                <th colspan="3" class="bg-light">Profile & Discovery</th>
+                            </tr>
+                            <tr>
+                                <td>Daily Swipes</td>
+                                <td class="text-center">5</td>
+                                <td class="text-center">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Profile Creation</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Enhanced Profile (Video Pitch, Team Section)</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Profile Visibility Boost</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Matching & Filters</th>
+                            </tr>
+                            <tr>
+                                <td>Basic Matching</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>AI-Powered Matching</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Industry Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Location Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Investment Stage Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Content & Analytics</th>
+                            </tr>
+                            <tr>
+                                <td>Read Blog Content</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Publish Blog Posts</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Profile Analytics</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Match History & Insights</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Support</th>
+                            </tr>
+                            <tr>
+                                <td>Email Support</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Priority Support</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                        </tbody>
+                        
+                        <tbody class="investor-features" style="display: none;">
+                            <tr>
+                                <th colspan="3" class="bg-light">Profile & Discovery</th>
+                            </tr>
+                            <tr>
+                                <td>Daily Swipes</td>
+                                <td class="text-center">5</td>
+                                <td class="text-center">Unlimited</td>
+                            </tr>
+                            <tr>
+                                <td>Profile Creation</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Enhanced Profile (Portfolio Showcase)</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Matching & Filters</th>
+                            </tr>
+                            <tr>
+                                <td>Basic Matching</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>AI-Powered Matching</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Industry Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Traction Metrics Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Team Composition Filters</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Content & Analytics</th>
+                            </tr>
+                            <tr>
+                                <td>Read Blog Content</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Publish Investment Insights</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Deal Flow Analytics</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Team Collaboration Tools</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <th colspan="3" class="bg-light">Support</th>
+                            </tr>
+                            <tr>
+                                <td>Email Support</td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                            <tr>
+                                <td>Priority Support</td>
+                                <td class="text-center"><i class="fas fa-times times-icon"></i></td>
+                                <td class="text-center"><i class="fas fa-check check-icon"></i></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- FAQ Section -->
+<section class="py-5">
+    <div class="container py-5">
+        <div class="row mb-5 text-center">
+            <div class="col-lg-8 mx-auto">
+                <h2 class="fw-bold mb-4">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Answers to common questions about our plans</p>
+            </div>
+        </div>
+        
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <div class="accordion" id="pricingFaq">
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up">
+                        <h2 class="accordion-header" id="headingOne">
+                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                How does the free plan work?
+                            </button>
+                        </h2>
+                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">
+                                <p>Our free plan gives you access to the platform with basic features - create a profile, swipe up to 5 times per day, and match with potential founders or investors. You can view profiles with limited information and read all our blog content. This plan is perfect for those just getting started or testing the waters.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-1">
+                        <h2 class="accordion-header" id="headingTwo">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                Can I cancel my premium subscription anytime?
+                            </button>
+                        </h2>
+                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">
+                                <p>Yes, you can cancel your premium subscription at any time. Your premium access will continue until the end of your current billing period. After that, your account will automatically revert to the free plan without any further charges.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-2">
+                        <h2 class="accordion-header" id="headingThree">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                Are there any hidden fees?
+                            </button>
+                        </h2>
+                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">
+                                <p>No, there are no hidden fees. The pricing you see is what you pay. The free plan is completely free, and the premium plan has a transparent monthly fee. We don't charge any additional fees for matches, connections, or basic usage of the platform's features.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-3">
+                        <h2 class="accordion-header" id="headingFour">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                Do you offer annual billing?
+                            </button>
+                        </h2>
+                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">
+                                <p>Yes, we offer annual billing with a 20% discount compared to paying monthly. You can select the annual option during checkout or switch to annual billing in your account settings at any time. Annual billing is a great way to save while enjoying all premium features.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="accordion-item border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-4">
+                        <h2 class="accordion-header" id="headingFive">
+                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                Do you offer discounts for startups?
+                            </button>
+                        </h2>
+                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#pricingFaq">
+                            <div class="accordion-body">
+                                <p>Yes, we offer special startup discounts for early-stage companies. If you're a pre-seed or seed-stage startup, you can apply for our Startup Program which offers a 50% discount on premium plans for the first six months. Contact our support team with your company details to apply.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- CTA Section -->
+<section class="py-5" style="background: linear-gradient(45deg, var(--primary-color), var(--secondary-color)); color: white;">
+    <div class="container py-5 text-center">
+        <div class="row justify-content-center">
+            <div class="col-lg-8">
+                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up">Ready to Get Started?</h2>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Choose the plan that fits your needs and start connecting with the right people today.</p>
+                <div class="d-flex flex-wrap justify-content-center gap-3 animated-on-scroll fade-in-up delay-2">
+                    <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="fas fa-user-plus me-2"></i> Create Free Account
+                    </a>
+                    <a href="{% url 'subscription:upgrade' %}" class="btn btn-outline-light btn-lg px-5 py-3 rounded-pill">
+                        <i class="fas fa-crown me-2"></i> Go Premium
+                    </a>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const founderBtn = document.getElementById('founderBtn');
+        const investorBtn = document.getElementById('investorBtn');
+        const founderPricing = document.getElementById('founderPricing');
+        const investorPricing = document.getElementById('investorPricing');
+        const founderFeatures = document.querySelector('.founder-features');
+        const investorFeatures = document.querySelector('.investor-features');
+        
+        founderBtn.addEventListener('click', function() {
+            founderBtn.classList.add('active');
+            investorBtn.classList.remove('active');
+            founderPricing.style.display = 'block';
+            investorPricing.style.display = 'none';
+            founderFeatures.style.display = 'table-row-group';
+            investorFeatures.style.display = 'none';
+        });
+        
+        investorBtn.addEventListener('click', function() {
+            investorBtn.classList.add('active');
+            founderBtn.classList.remove('active');
+            investorPricing.style.display = 'block';
+            founderPricing.style.display = 'none';
+            investorFeatures.style.display = 'table-row-group';
+            founderFeatures.style.display = 'none';
+        });
+    });
+</script>
+{% endblock %}

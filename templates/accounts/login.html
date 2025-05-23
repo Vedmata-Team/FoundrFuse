@@ -1,0 +1,233 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Login | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<style>
+    .login-container {
+        min-height: calc(100vh - 76px - 300px);
+        display: flex;
+        align-items: center;
+    }
+    
+    .login-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
+    
+    .login-header {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .login-body {
+        padding: 40px;
+    }
+    
+    .form-control {
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border: 1px solid #e0e0e0;
+        background-color: #f8f9fa;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(127, 0, 255, 0.25);
+    }
+    
+    .btn-login {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: 500;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-login:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-divider {
+        text-align: center;
+        position: relative;
+        margin: 30px 0;
+    }
+    
+    .social-divider:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e0e0e0;
+    }
+    
+    .social-divider span {
+        position: relative;
+        background-color: white;
+        padding: 0 15px;
+        color: #6c757d;
+    }
+    
+    .social-login-btn {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: 500;
+        border: 1px solid #e0e0e0;
+        background-color: white;
+        transition: all 0.3s ease;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .social-login-btn:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .social-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    
+    .account-links {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .account-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .account-links a:hover {
+        text-decoration: underline;
+    }
+    
+    .login-image {
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://pixabay.com/get/g9ce0a2f5851aa63d65b155a9846ec90d277faa8763e5d77250c3d6518c3ddc9534c681682006ec72686c3ba438339bd6c0115d013fbf94a88e3bf71b080e208e_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+    
+    .login-quote {
+        color: white;
+        text-align: center;
+    }
+    
+    .login-quote-text {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+    
+    .login-quote-author {
+        font-size: 1rem;
+    }
+    
+    @media (max-width: 991px) {
+        .login-image {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="login-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card login-card animated-on-scroll fade-in-up">
+                    <div class="row g-0">
+                        <div class="col-lg-6">
+                            <div class="login-body">
+                                <div class="text-center mb-4">
+                                    <h2 class="mb-1">Welcome Back</h2>
+                                    <p class="text-muted">Login to your FoundrFuse account</p>
+                                </div>
+                                
+                                {% if form.errors %}
+                                <div class="alert alert-danger" role="alert">
+                                    <p class="mb-0">Your username or password is incorrect. Please try again.</p>
+                                </div>
+                                {% endif %}
+                                
+                                <form method="post" action="{% url 'accounts:login' %}">
+                                    {% csrf_token %}
+                                    <div class="mb-3">
+                                        <label for="id_username" class="form-label">Username or Email</label>
+                                        <input type="text" name="username" class="form-control" id="id_username" required autofocus>
+                                    </div>
+                                    <div class="mb-3">
+                                        <label for="id_password" class="form-label">Password</label>
+                                        <input type="password" name="password" class="form-control" id="id_password" required>
+                                    </div>
+                                    <div class="d-flex justify-content-between align-items-center mb-4">
+                                        <div class="form-check">
+                                            <input class="form-check-input" type="checkbox" id="remember-me">
+                                            <label class="form-check-label" for="remember-me">Remember me</label>
+                                        </div>
+                                        <a href="#" class="text-decoration-none" style="color: var(--primary-color);">Forgot password?</a>
+                                    </div>
+                                    <button type="submit" class="btn btn-login w-100">Log In</button>
+                                    
+                                    <input type="hidden" name="next" value="{{ next }}">
+                                </form>
+                                
+                                <div class="social-divider">
+                                    <span>Or login with</span>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <button type="button" class="social-login-btn">
+                                            <i class="fab fa-google social-icon"></i> Google
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="social-login-btn">
+                                            <i class="fab fa-linkedin-in social-icon"></i> LinkedIn
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="account-links">
+                                    <p>Don't have an account? <a href="{% url 'accounts:register' %}">Register now</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-6 login-image">
+                            <div class="login-quote">
+                                <p class="login-quote-text">"Connecting the right founders with the right investors is the key to unlocking innovation."</p>
+                                <p class="login-quote-author">- FoundrFuse Team</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,384 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Register | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<style>
+    .register-container {
+        min-height: calc(100vh - 76px - 300px);
+        display: flex;
+        align-items: center;
+        padding: 50px 0;
+    }
+    
+    .register-card {
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+        border: none;
+    }
+    
+    .register-header {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 30px;
+        text-align: center;
+    }
+    
+    .register-body {
+        padding: 40px;
+    }
+    
+    .form-control {
+        border-radius: 8px;
+        padding: 12px 15px;
+        font-size: 1rem;
+        border: 1px solid #e0e0e0;
+        background-color: #f8f9fa;
+    }
+    
+    .form-control:focus {
+        border-color: var(--primary-color);
+        box-shadow: 0 0 0 0.25rem rgba(127, 0, 255, 0.25);
+    }
+    
+    .btn-register {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: 500;
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        border: none;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .btn-register:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+    }
+    
+    .social-divider {
+        text-align: center;
+        position: relative;
+        margin: 30px 0;
+    }
+    
+    .social-divider:before {
+        content: '';
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        height: 1px;
+        background-color: #e0e0e0;
+    }
+    
+    .social-divider span {
+        position: relative;
+        background-color: white;
+        padding: 0 15px;
+        color: #6c757d;
+    }
+    
+    .social-register-btn {
+        border-radius: 8px;
+        padding: 12px 20px;
+        font-weight: 500;
+        border: 1px solid #e0e0e0;
+        background-color: white;
+        transition: all 0.3s ease;
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    
+    .social-register-btn:hover {
+        background-color: #f8f9fa;
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .social-icon {
+        width: 24px;
+        height: 24px;
+        margin-right: 10px;
+    }
+    
+    .account-links {
+        margin-top: 20px;
+        text-align: center;
+    }
+    
+    .account-links a {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+    }
+    
+    .account-links a:hover {
+        text-decoration: underline;
+    }
+    
+    .register-image {
+        background: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url('https://pixabay.com/get/gb22d9442f3dc9f8599eca5ebb5f06b188e05ada37a7f39a479033146b7f12a36a009ebdcbba8e28d38f899559fdf2efdfd50ccfbd6d19d4b0993d7ca6ad7bd5f_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        min-height: 300px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 30px;
+    }
+    
+    .register-quote {
+        color: white;
+        text-align: center;
+    }
+    
+    .register-quote-text {
+        font-size: 1.5rem;
+        font-style: italic;
+        margin-bottom: 1rem;
+    }
+    
+    .register-quote-author {
+        font-size: 1rem;
+    }
+    
+    .user-type-toggle {
+        display: flex;
+        margin-bottom: 20px;
+        border-radius: 10px;
+        overflow: hidden;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .user-type-btn {
+        flex: 1;
+        padding: 15px;
+        text-align: center;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        background-color: #f8f9fa;
+        font-weight: 500;
+    }
+    
+    .user-type-btn.active {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+    }
+    
+    .user-type-btn:first-child {
+        border-right: 1px solid #e0e0e0;
+    }
+    
+    .helptext {
+        font-size: 0.85rem;
+        color: #6c757d;
+        margin-top: 5px;
+    }
+    
+    .errorlist {
+        color: #dc3545;
+        font-size: 0.85rem;
+        padding-left: 1.5rem;
+        margin-top: 5px;
+    }
+    
+    @media (max-width: 991px) {
+        .register-image {
+            display: none;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="register-container">
+    <div class="container">
+        <div class="row justify-content-center">
+            <div class="col-lg-10">
+                <div class="card register-card animated-on-scroll fade-in-up">
+                    <div class="row g-0">
+                        <div class="col-lg-7">
+                            <div class="register-body">
+                                <div class="text-center mb-4">
+                                    <h2 class="mb-1">Create Your Account</h2>
+                                    <p class="text-muted">Join FoundrFuse today and start connecting</p>
+                                </div>
+                                
+                                <div class="user-type-toggle">
+                                    <div class="user-type-btn {% if request.GET.user_type != 'investor' %}active{% endif %}" id="founderBtn">
+                                        <i class="fas fa-rocket me-2"></i> I'm a Founder
+                                    </div>
+                                    <div class="user-type-btn {% if request.GET.user_type == 'investor' %}active{% endif %}" id="investorBtn">
+                                        <i class="fas fa-chart-line me-2"></i> I'm an Investor
+                                    </div>
+                                </div>
+                                
+                                <form method="post" action="{% url 'accounts:register' %}">
+                                    {% csrf_token %}
+                                    
+                                    <div class="row">
+                                        <div class="col-md-6 mb-3">
+                                            <label for="id_first_name" class="form-label">First Name</label>
+                                            <input type="text" name="first_name" class="form-control" id="id_first_name" required>
+                                            {% if form.first_name.errors %}
+                                                <ul class="errorlist">
+                                                    {% for error in form.first_name.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                        <div class="col-md-6 mb-3">
+                                            <label for="id_last_name" class="form-label">Last Name</label>
+                                            <input type="text" name="last_name" class="form-control" id="id_last_name" required>
+                                            {% if form.last_name.errors %}
+                                                <ul class="errorlist">
+                                                    {% for error in form.last_name.errors %}
+                                                        <li>{{ error }}</li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% endif %}
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="id_email" class="form-label">Email</label>
+                                        <input type="email" name="email" class="form-control" id="id_email" required>
+                                        {% if form.email.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.email.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                        <div class="helptext">We'll never share your email with anyone else.</div>
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="id_username" class="form-label">Username</label>
+                                        <input type="text" name="username" class="form-control" id="id_username" required>
+                                        {% if form.username.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.username.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <div class="mb-3">
+                                        <label for="id_password1" class="form-label">Password</label>
+                                        <input type="password" name="password1" class="form-control" id="id_password1" required>
+                                        {% if form.password1.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.password1.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                        <div class="helptext">
+                                            <ul>
+                                                <li>Your password can't be too similar to your personal information.</li>
+                                                <li>Your password must contain at least 8 characters.</li>
+                                                <li>Your password can't be a commonly used password.</li>
+                                                <li>Your password can't be entirely numeric.</li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    
+                                    <div class="mb-4">
+                                        <label for="id_password2" class="form-label">Confirm Password</label>
+                                        <input type="password" name="password2" class="form-control" id="id_password2" required>
+                                        {% if form.password2.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.password2.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+                                    
+                                    <input type="hidden" name="user_type" id="id_user_type" value="{% if request.GET.user_type == 'investor' %}investor{% else %}founder{% endif %}">
+                                    
+                                    <div class="mb-3 form-check">
+                                        <input type="checkbox" class="form-check-input" id="termsCheck" required>
+                                        <label class="form-check-label" for="termsCheck">I agree to the <a href="#" class="text-decoration-none">Terms of Service</a> and <a href="#" class="text-decoration-none">Privacy Policy</a></label>
+                                    </div>
+                                    
+                                    <button type="submit" class="btn btn-register w-100">Create Account</button>
+                                </form>
+                                
+                                <div class="social-divider">
+                                    <span>Or register with</span>
+                                </div>
+                                
+                                <div class="row g-3">
+                                    <div class="col-6">
+                                        <button type="button" class="social-register-btn">
+                                            <i class="fab fa-google social-icon"></i> Google
+                                        </button>
+                                    </div>
+                                    <div class="col-6">
+                                        <button type="button" class="social-register-btn">
+                                            <i class="fab fa-linkedin-in social-icon"></i> LinkedIn
+                                        </button>
+                                    </div>
+                                </div>
+                                
+                                <div class="account-links">
+                                    <p>Already have an account? <a href="{% url 'accounts:login' %}">Login</a></p>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-lg-5 register-image">
+                            <div class="register-quote">
+                                <div id="founderQuote">
+                                    <p class="register-quote-text">"Great ideas need great investors. Find yours today."</p>
+                                    <p class="register-quote-author">- For Founders</p>
+                                </div>
+                                <div id="investorQuote" style="display: none;">
+                                    <p class="register-quote-text">"Discover the next generation of transformative startups."</p>
+                                    <p class="register-quote-author">- For Investors</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const founderBtn = document.getElementById('founderBtn');
+        const investorBtn = document.getElementById('investorBtn');
+        const userTypeInput = document.getElementById('id_user_type');
+        const founderQuote = document.getElementById('founderQuote');
+        const investorQuote = document.getElementById('investorQuote');
+        
+        founderBtn.addEventListener('click', function() {
+            founderBtn.classList.add('active');
+            investorBtn.classList.remove('active');
+            userTypeInput.value = 'founder';
+            founderQuote.style.display = 'block';
+            investorQuote.style.display = 'none';
+        });
+        
+        investorBtn.addEventListener('click', function() {
+            investorBtn.classList.add('active');
+            founderBtn.classList.remove('active');
+            userTypeInput.value = 'investor';
+            investorQuote.style.display = 'block';
+            founderQuote.style.display = 'none';
+        });
+    });
+</script>
+{% endblock %}

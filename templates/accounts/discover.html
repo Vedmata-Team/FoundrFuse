@@ -1,0 +1,866 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Discover | FoundrFuse{% endblock %}
+
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/animations.css' %}">
+<link rel="stylesheet" href="{% static 'css/graphics.css' %}">
+<style>
+    .discover-container {
+        min-height: calc(100vh - 76px - 300px);
+        padding: 30px 0;
+        position: relative;
+        overflow-x: hidden;
+    }
+    
+    .discover-header {
+        margin-bottom: 30px;
+    }
+    
+    .swipe-container {
+        max-width: 500px;
+        margin: 0 auto;
+        position: relative;
+        perspective: 1000px;
+        height: 500px;
+    }
+    
+    .swipe-card {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        border-radius: 16px;
+        overflow: hidden;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        background: white;
+        transition: transform 0.3s ease;
+        backface-visibility: hidden;
+        transform-style: preserve-3d;
+    }
+    
+    .swipe-card.d-none {
+        display: none !important;
+    }
+    
+    .swipe-card-header {
+        height: 200px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        position: relative;
+        overflow: hidden;
+    }
+    
+    .founder-card .swipe-card-header {
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+    }
+    
+    .investor-card .swipe-card-header {
+        background: linear-gradient(135deg, var(--secondary-dark), var(--primary));
+    }
+    
+    .swipe-card-header:before {
+        content: '';
+        position: absolute;
+        width: 300px;
+        height: 300px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        top: -150px;
+        right: -150px;
+    }
+    
+    .swipe-card-header:after {
+        content: '';
+        position: absolute;
+        width: 200px;
+        height: 200px;
+        background: rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        bottom: -100px;
+        left: -100px;
+    }
+    
+    .profile-avatar {
+        width: 100px;
+        height: 100px;
+        border-radius: 20px;
+        background: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--primary);
+        font-size: 3rem;
+        font-weight: 700;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        z-index: 1;
+    }
+    
+    .investor-card .profile-avatar {
+        color: var(--secondary-dark);
+    }
+    
+    .swipe-card-content {
+        padding: 25px;
+    }
+    
+    .profile-name {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+    
+    .profile-headline {
+        color: var(--gray-600);
+        margin-bottom: 15px;
+    }
+    
+    .profile-info {
+        margin-bottom: 20px;
+    }
+    
+    .profile-info-item {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+    
+    .profile-info-icon {
+        width: 30px;
+        height: 30px;
+        border-radius: 8px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        font-size: 1rem;
+    }
+    
+    .founder-card .profile-info-icon {
+        background: rgba(59, 13, 139, 0.1);
+        color: var(--primary);
+    }
+    
+    .investor-card .profile-info-icon {
+        background: rgba(92, 0, 184, 0.1);
+        color: var(--secondary-dark);
+    }
+    
+    .profile-tags {
+        display: flex;
+        flex-wrap: wrap;
+        margin-bottom: 10px;
+    }
+    
+    .profile-tag {
+        padding: 5px 10px;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        margin-right: 5px;
+        margin-bottom: 5px;
+    }
+    
+    .founder-card .profile-tag {
+        background: rgba(59, 13, 139, 0.1);
+        color: var(--primary);
+    }
+    
+    .investor-card .profile-tag {
+        background: rgba(92, 0, 184, 0.1);
+        color: var(--secondary-dark);
+    }
+    
+    .swipe-actions {
+        display: flex;
+        justify-content: center;
+        margin-top: 30px;
+    }
+    
+    .swipe-btn {
+        width: 70px;
+        height: 70px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.8rem;
+        margin: 0 15px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .swipe-dislike {
+        background: white;
+        color: #F44336;
+        border: 2px solid #F44336;
+    }
+    
+    .swipe-dislike:hover {
+        background: #F44336;
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .swipe-like {
+        background: white;
+        color: #4CAF50;
+        border: 2px solid #4CAF50;
+    }
+    
+    .swipe-like:hover {
+        background: #4CAF50;
+        color: white;
+        transform: scale(1.1);
+    }
+    
+    .swipe-indicators {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 10;
+    }
+    
+    .swipe-like-indicator,
+    .swipe-dislike-indicator {
+        position: absolute;
+        top: 30px;
+        width: 100px;
+        height: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 700;
+        transform: rotate(-30deg);
+        border-radius: 10px;
+        border: 5px solid;
+        opacity: 0;
+        transition: opacity 0.3s ease;
+    }
+    
+    .swipe-like-indicator {
+        right: 30px;
+        border-color: #4CAF50;
+        color: #4CAF50;
+    }
+    
+    .swipe-dislike-indicator {
+        left: 30px;
+        border-color: #F44336;
+        color: #F44336;
+        transform: rotate(30deg);
+    }
+    
+    .swipe-left {
+        animation: swipeLeft 0.5s forwards;
+    }
+    
+    .swipe-right {
+        animation: swipeRight 0.5s forwards;
+    }
+    
+    @keyframes swipeLeft {
+        to {
+            transform: translateX(-1000px) rotate(-30deg);
+            opacity: 0;
+        }
+    }
+    
+    @keyframes swipeRight {
+        to {
+            transform: translateX(1000px) rotate(30deg);
+            opacity: 0;
+        }
+    }
+    
+    .swipe-empty-state {
+        text-align: center;
+        padding: 50px 0;
+    }
+    
+    .swipe-empty-icon {
+        font-size: 4rem;
+        margin-bottom: 20px;
+        color: var(--gray-400);
+    }
+    
+    .remaining-swipes {
+        text-align: center;
+        margin-top: 20px;
+        font-size: 0.9rem;
+        color: var(--gray-600);
+    }
+    
+    .remaining-swipes-count {
+        font-weight: 700;
+        color: var(--primary);
+    }
+    
+    .premium-promo {
+        text-align: center;
+        margin-top: 30px;
+        padding: 20px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary), var(--secondary));
+        color: white;
+    }
+    
+    .premium-promo h5 {
+        margin-bottom: 10px;
+    }
+    
+    .premium-promo-btn {
+        background: white;
+        color: var(--primary);
+        border: none;
+        padding: 8px 20px;
+        border-radius: 50px;
+        font-weight: 500;
+        margin-top: 15px;
+        transition: all 0.3s ease;
+    }
+    
+    .premium-promo-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+    }
+    
+    .decorative-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: -1;
+        overflow: hidden;
+    }
+    
+    /* Preference Filters */
+    .preference-filters {
+        max-width: 500px;
+        margin: 0 auto 30px;
+        padding: 20px;
+        border-radius: 16px;
+        background: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    }
+    
+    .preference-filters h5 {
+        margin-bottom: 15px;
+    }
+    
+    .filter-row {
+        margin-bottom: 15px;
+    }
+    
+    .filter-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .filter-tag {
+        padding: 8px 15px;
+        border-radius: 50px;
+        font-size: 0.9rem;
+        background: var(--gray-100);
+        color: var(--gray-700);
+        border: none;
+        transition: all 0.3s ease;
+    }
+    
+    .filter-tag.active {
+        background: var(--primary);
+        color: white;
+    }
+    
+    .filter-slider {
+        margin-top: 10px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<div class="discover-container">
+    <!-- Decorative elements container -->
+    <div class="decorative-container"></div>
+
+    <div class="container">
+        <!-- Header Section -->
+        <div class="discover-header text-center">
+            <h2 class="gradient-text mb-2 animate-on-scroll fade-in">Discover{% if user.profile.user_type == 'founder' %} Investors{% else %} Founders{% endif %}</h2>
+            <p class="text-muted mb-4 animate-on-scroll fade-in delay-100">Swipe right to connect, swipe left to pass</p>
+        </div>
+
+        <!-- Preference Filters (Premium Feature) -->
+        {% if user.profile.is_premium %}
+        <div class="preference-filters animate-on-scroll fade-in">
+            <h5>Filters <small class="text-muted">(Premium)</small></h5>
+            
+            <div class="filter-row">
+                <label class="form-label">Industry</label>
+                <div class="filter-tags">
+                    <button class="filter-tag active">All</button>
+                    <button class="filter-tag">Technology</button>
+                    <button class="filter-tag">Healthcare</button>
+                    <button class="filter-tag">Finance</button>
+                    <button class="filter-tag">Education</button>
+                    <button class="filter-tag">E-Commerce</button>
+                </div>
+            </div>
+            
+            {% if user.profile.user_type == 'founder' %}
+            <div class="filter-row">
+                <label class="form-label">Investment Range</label>
+                <div class="filter-slider">
+                    <input type="range" class="form-range" min="0" max="4" step="1" id="investmentRange">
+                    <div class="d-flex justify-content-between">
+                        <small>$10K</small>
+                        <small>$100K</small>
+                        <small>$500K</small>
+                        <small>$1M</small>
+                        <small>$5M+</small>
+                    </div>
+                </div>
+            </div>
+            {% else %}
+            <div class="filter-row">
+                <label class="form-label">Startup Stage</label>
+                <div class="filter-tags">
+                    <button class="filter-tag active">All</button>
+                    <button class="filter-tag">Idea</button>
+                    <button class="filter-tag">Pre-seed</button>
+                    <button class="filter-tag">Seed</button>
+                    <button class="filter-tag">Series A</button>
+                    <button class="filter-tag">Series B+</button>
+                </div>
+            </div>
+            {% endif %}
+            
+            <div class="filter-row">
+                <label class="form-label">Location</label>
+                <div class="filter-tags">
+                    <button class="filter-tag active">Anywhere</button>
+                    <button class="filter-tag">Remote-Friendly</button>
+                    <button class="filter-tag">US-Based</button>
+                    <button class="filter-tag">Europe</button>
+                    <button class="filter-tag">Asia</button>
+                </div>
+            </div>
+        </div>
+        {% endif %}
+
+        <!-- Swipe Cards Container -->
+        <div class="swipe-container" id="swipe-container">
+            <!-- Swipe indicators -->
+            <div class="swipe-indicators">
+                <div class="swipe-like-indicator">LIKE</div>
+                <div class="swipe-dislike-indicator">NOPE</div>
+            </div>
+
+            {% if profiles %}
+                {% for profile in profiles %}
+                <div class="swipe-card {% if profile.user.profile.user_type == 'founder' %}founder-card{% else %}investor-card{% endif %} {% if not forloop.first %}d-none{% endif %}" data-profile-id="{{ profile.id }}">
+                    <div class="swipe-card-header">
+                        <div class="profile-avatar">
+                            {{ profile.user.first_name|first }}{{ profile.user.last_name|first }}
+                        </div>
+                    </div>
+                    <div class="swipe-card-content">
+                        <h3 class="profile-name">{{ profile.user.get_full_name }}</h3>
+                        <p class="profile-headline">
+                            {% if profile.user.profile.user_type == 'founder' %}
+                                Founder at {{ profile.company_name }}
+                            {% else %}
+                                Investor at {{ profile.company_name }}
+                            {% endif %}
+                        </p>
+                        
+                        <div class="profile-info">
+                            {% if profile.industry %}
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-briefcase"></i>
+                                </div>
+                                <span>{{ profile.industry|title }}</span>
+                            </div>
+                            {% endif %}
+                            
+                            {% if profile.location %}
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-map-marker-alt"></i>
+                                </div>
+                                <span>{{ profile.location }}</span>
+                            </div>
+                            {% endif %}
+                            
+                            {% if profile.website %}
+                            <div class="profile-info-item">
+                                <div class="profile-info-icon">
+                                    <i class="fas fa-globe"></i>
+                                </div>
+                                <span>{{ profile.website }}</span>
+                            </div>
+                            {% endif %}
+                        </div>
+                        
+                        {% if profile.bio %}
+                        <p class="mb-3">{{ profile.bio|truncatewords:30 }}</p>
+                        {% endif %}
+                        
+                        <div class="profile-tags">
+                            {% if profile.user.profile.user_type == 'founder' %}
+                                <span class="profile-tag">SaaS</span>
+                                <span class="profile-tag">B2B</span>
+                                <span class="profile-tag">AI</span>
+                                <span class="profile-tag">Seed Stage</span>
+                            {% else %}
+                                <span class="profile-tag">Angel</span>
+                                <span class="profile-tag">Early Stage</span>
+                                <span class="profile-tag">Tech</span>
+                                <span class="profile-tag">$50K-$250K</span>
+                            {% endif %}
+                        </div>
+                        
+                        {% if profile.looking_for %}
+                        <div class="mt-3">
+                            <h6>Looking for:</h6>
+                            <p>{{ profile.looking_for|truncatewords:20 }}</p>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+                {% endfor %}
+            {% else %}
+                <div class="swipe-empty-state">
+                    <div class="swipe-empty-icon">
+                        <i class="fas fa-search"></i>
+                    </div>
+                    <h4>No profiles found</h4>
+                    <p class="text-muted">We're working on finding the perfect matches for you.</p>
+                    <a href="{% url 'core:home' %}" class="btn-graphic mt-3">
+                        <i class="fas fa-home me-2"></i> Back to Home
+                    </a>
+                </div>
+            {% endif %}
+
+            <!-- Empty state when all cards are swiped -->
+            <div class="swipe-empty-state d-none">
+                <div class="swipe-empty-icon">
+                    <i class="fas fa-check-circle"></i>
+                </div>
+                <h4>You're all caught up!</h4>
+                <p class="text-muted">Check back later for more potential matches.</p>
+                <a href="{% url 'accounts:matches' %}" class="btn-graphic mt-3">
+                    <i class="fas fa-handshake me-2"></i> View Your Matches
+                </a>
+            </div>
+        </div>
+
+        <!-- Swipe Actions -->
+        <div class="swipe-actions">
+            <div class="swipe-btn swipe-dislike" id="dislike-button">
+                <i class="fas fa-times"></i>
+            </div>
+            <div class="swipe-btn swipe-like" id="like-button">
+                <i class="fas fa-heart"></i>
+            </div>
+        </div>
+
+        <!-- Remaining Swipes Counter (For Free Users) -->
+        {% if not user.profile.is_premium %}
+        <div class="remaining-swipes">
+            <p>You have <span class="remaining-swipes-count">{{ user.profile.swipes_left }}</span> swipes left today</p>
+            
+            <!-- Premium Promo -->
+            <div class="premium-promo animate-on-scroll fade-in">
+                <h5><i class="fas fa-crown me-2"></i> Upgrade to Premium</h5>
+                <p class="mb-1">Get unlimited swipes and access to advanced filters</p>
+                <a href="{% url 'subscription:upgrade' %}" class="btn premium-promo-btn">
+                    Upgrade Now
+                </a>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/main.js' %}"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Create decorative elements
+        const decorContainer = document.querySelector('.decorative-container');
+        if (decorContainer) {
+            // Create random decorative circles
+            for (let i = 0; i < 5; i++) {
+                const circle = document.createElement('div');
+                circle.classList.add('decorative-circle');
+                
+                // Random position
+                circle.style.top = `${Math.random() * 100}%`;
+                circle.style.left = `${Math.random() * 100}%`;
+                
+                // Random size
+                const size = 50 + Math.random() * 150;
+                circle.style.width = `${size}px`;
+                circle.style.height = `${size}px`;
+                
+                // Random opacity
+                circle.style.opacity = 0.05 + Math.random() * 0.1;
+                
+                decorContainer.appendChild(circle);
+            }
+            
+            // Create random decorative dots
+            for (let i = 0; i < 15; i++) {
+                const dot = document.createElement('div');
+                dot.classList.add('decorative-dots');
+                
+                // Random position
+                dot.style.top = `${Math.random() * 100}%`;
+                dot.style.left = `${Math.random() * 100}%`;
+                
+                // Random size
+                const size = 2 + Math.random() * 8;
+                dot.style.width = `${size}px`;
+                dot.style.height = `${size}px`;
+                
+                // Random animation delay
+                dot.style.animationDelay = `${Math.random() * 5}s`;
+                
+                decorContainer.appendChild(dot);
+            }
+        }
+        
+        // Filter tag functionality
+        const filterTags = document.querySelectorAll('.filter-tag');
+        filterTags.forEach(tag => {
+            tag.addEventListener('click', function() {
+                // If same parent, make exclusive selection
+                const parentRow = this.closest('.filter-row');
+                if (this.classList.contains('active')) {
+                    // Don't allow deselecting if it's the only active tag in this row
+                    const activeTags = parentRow.querySelectorAll('.filter-tag.active');
+                    if (activeTags.length > 1) {
+                        this.classList.remove('active');
+                    }
+                } else {
+                    // If "All" is clicked, deactivate others
+                    if (this.textContent.trim() === 'All' || this.textContent.trim() === 'Anywhere') {
+                        parentRow.querySelectorAll('.filter-tag.active').forEach(activeTag => {
+                            activeTag.classList.remove('active');
+                        });
+                    } else {
+                        // If another tag is clicked, deactivate "All"
+                        const allTag = Array.from(parentRow.querySelectorAll('.filter-tag')).find(
+                            tag => tag.textContent.trim() === 'All' || tag.textContent.trim() === 'Anywhere'
+                        );
+                        if (allTag) {
+                            allTag.classList.remove('active');
+                        }
+                    }
+                    this.classList.add('active');
+                }
+            });
+        });
+        
+        // Swipe card functionality
+        const swipeContainer = document.getElementById('swipe-container');
+        const cards = document.querySelectorAll('.swipe-card');
+        const likeButton = document.getElementById('like-button');
+        const dislikeButton = document.getElementById('dislike-button');
+        
+        if (likeButton && dislikeButton && cards.length > 0) {
+            // Like button action
+            likeButton.addEventListener('click', function() {
+                const currentCard = document.querySelector('.swipe-card:not(.d-none)');
+                if (currentCard) {
+                    // Show like indicator
+                    document.querySelector('.swipe-like-indicator').style.opacity = 1;
+                    
+                    // Animate swipe right
+                    currentCard.classList.add('swipe-right');
+                    
+                    // After animation, remove card and show next
+                    setTimeout(() => {
+                        // Record the like action
+                        const profileId = currentCard.getAttribute('data-profile-id');
+                        // Here you would normally make an AJAX call to your backend
+                        console.log(`Liked profile ${profileId}`);
+                        
+                        // Hide current card
+                        currentCard.classList.add('d-none');
+                        document.querySelector('.swipe-like-indicator').style.opacity = 0;
+                        
+                        // Show next card or empty state
+                        const nextCard = document.querySelector('.swipe-card:not(.d-none)');
+                        if (!nextCard) {
+                            document.querySelector('.swipe-empty-state').classList.remove('d-none');
+                        }
+                        
+                        // Decrease remaining swipes for free users
+                        const remainingSwipesEl = document.querySelector('.remaining-swipes-count');
+                        if (remainingSwipesEl) {
+                            const swipesLeft = parseInt(remainingSwipesEl.textContent) - 1;
+                            remainingSwipesEl.textContent = swipesLeft;
+                            
+                            // Disable buttons if no swipes left
+                            if (swipesLeft <= 0) {
+                                likeButton.classList.add('disabled');
+                                dislikeButton.classList.add('disabled');
+                            }
+                        }
+                    }, 500);
+                }
+            });
+            
+            // Dislike button action
+            dislikeButton.addEventListener('click', function() {
+                const currentCard = document.querySelector('.swipe-card:not(.d-none)');
+                if (currentCard) {
+                    // Show dislike indicator
+                    document.querySelector('.swipe-dislike-indicator').style.opacity = 1;
+                    
+                    // Animate swipe left
+                    currentCard.classList.add('swipe-left');
+                    
+                    // After animation, remove card and show next
+                    setTimeout(() => {
+                        // Record the dislike action
+                        const profileId = currentCard.getAttribute('data-profile-id');
+                        // Here you would normally make an AJAX call to your backend
+                        console.log(`Disliked profile ${profileId}`);
+                        
+                        // Hide current card
+                        currentCard.classList.add('d-none');
+                        document.querySelector('.swipe-dislike-indicator').style.opacity = 0;
+                        
+                        // Show next card or empty state
+                        const nextCard = document.querySelector('.swipe-card:not(.d-none)');
+                        if (!nextCard) {
+                            document.querySelector('.swipe-empty-state').classList.remove('d-none');
+                        }
+                        
+                        // Decrease remaining swipes for free users
+                        const remainingSwipesEl = document.querySelector('.remaining-swipes-count');
+                        if (remainingSwipesEl) {
+                            const swipesLeft = parseInt(remainingSwipesEl.textContent) - 1;
+                            remainingSwipesEl.textContent = swipesLeft;
+                            
+                            // Disable buttons if no swipes left
+                            if (swipesLeft <= 0) {
+                                likeButton.classList.add('disabled');
+                                dislikeButton.classList.add('disabled');
+                            }
+                        }
+                    }, 500);
+                }
+            });
+            
+            // Touch swipe functionality
+            cards.forEach(card => {
+                let startX, startY, moveX, moveY;
+                let threshold = 100; // minimum distance to be considered a swipe
+                
+                card.addEventListener('touchstart', (e) => {
+                    startX = e.touches[0].clientX;
+                    startY = e.touches[0].clientY;
+                });
+                
+                card.addEventListener('touchmove', (e) => {
+                    if (card.classList.contains('d-none')) return;
+                    
+                    moveX = e.touches[0].clientX;
+                    moveY = e.touches[0].clientY;
+                    
+                    const diffX = moveX - startX;
+                    const diffY = moveY - startY;
+                    
+                    // Only apply transform if primarily horizontal movement
+                    if (Math.abs(diffX) > Math.abs(diffY)) {
+                        e.preventDefault();
+                        card.style.transform = `translateX(${diffX}px) rotate(${diffX * 0.05}deg)`;
+                        
+                        // Change opacity of like/dislike indicators
+                        if (diffX > 0) {
+                            document.querySelector('.swipe-like-indicator').style.opacity = Math.min(diffX / threshold, 1);
+                            document.querySelector('.swipe-dislike-indicator').style.opacity = 0;
+                        } else if (diffX < 0) {
+                            document.querySelector('.swipe-dislike-indicator').style.opacity = Math.min(Math.abs(diffX) / threshold, 1);
+                            document.querySelector('.swipe-like-indicator').style.opacity = 0;
+                        }
+                    }
+                });
+                
+                card.addEventListener('touchend', () => {
+                    if (card.classList.contains('d-none')) return;
+                    
+                    const diffX = moveX - startX;
+                    
+                    if (Math.abs(diffX) >= threshold) {
+                        // Complete the swipe animation
+                        const swipeDirection = diffX > 0 ? 'right' : 'left';
+                        card.classList.add(`swipe-${swipeDirection}`);
+                        
+                        // Record the swipe action
+                        const profileId = card.getAttribute('data-profile-id');
+                        const action = swipeDirection === 'right' ? 'like' : 'dislike';
+                        console.log(`Swiped ${action} on profile ${profileId}`);
+                        
+                        // After animation, remove card and show next
+                        setTimeout(() => {
+                            card.classList.add('d-none');
+                            document.querySelector('.swipe-like-indicator').style.opacity = 0;
+                            document.querySelector('.swipe-dislike-indicator').style.opacity = 0;
+                            
+                            // Show next card or empty state
+                            const nextCard = document.querySelector('.swipe-card:not(.d-none)');
+                            if (!nextCard) {
+                                document.querySelector('.swipe-empty-state').classList.remove('d-none');
+                            }
+                            
+                            // Decrease remaining swipes for free users
+                            const remainingSwipesEl = document.querySelector('.remaining-swipes-count');
+                            if (remainingSwipesEl) {
+                                const swipesLeft = parseInt(remainingSwipesEl.textContent) - 1;
+                                remainingSwipesEl.textContent = swipesLeft;
+                                
+                                // Disable buttons if no swipes left
+                                if (swipesLeft <= 0) {
+                                    likeButton.classList.add('disabled');
+                                    dislikeButton.classList.add('disabled');
+                                }
+                            }
+                        }, 500);
+                    } else {
+                        // Reset card position
+                        card.style.transform = '';
+                        document.querySelector('.swipe-like-indicator').style.opacity = 0;
+                        document.querySelector('.swipe-dislike-indicator').style.opacity = 0;
+                    }
+                });
+            });
+            
+            // Keyboard navigation
+            document.addEventListener('keydown', (e) => {
+                const currentCard = document.querySelector('.swipe-card:not(.d-none)');
+                if (!currentCard) return;
+                
+                if (e.key === 'ArrowRight') {
+                    likeButton.click();
+                } else if (e.key === 'ArrowLeft') {
+                    dislikeButton.click();
+                }
+            });
+        }
+    });
+</script>
+{% endblock %}

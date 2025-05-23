@@ -1,0 +1,96 @@
+{% load static %}
+
+<footer class="footer py-5 mt-auto">
+    <div class="container">
+        <div class="row gy-4">
+            <div class="col-lg-4 col-md-6">
+                <div class="mb-4">
+                    {% if site_settings.logo %}
+                        <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}" height="40" class="mb-3 invert">
+                    {% else %}
+                        <h4 class="text-white mb-3">FoundrFuse <i class="fas fa-fire"></i></h4>
+                    {% endif %}
+                    <p class="text-white-50">
+                        {{ site_settings.tagline|default:"Empowering Ideas, One Match at a Time" }}
+                    </p>
+                </div>
+                <div class="d-flex mb-4">
+                    {% if site_settings.twitter_url %}
+                        <a href="{{ site_settings.twitter_url }}" class="social-icon me-2" target="_blank" rel="noopener">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                    {% endif %}
+                    {% if site_settings.linkedin_url %}
+                        <a href="{{ site_settings.linkedin_url }}" class="social-icon me-2" target="_blank" rel="noopener">
+                            <i class="fab fa-linkedin-in"></i>
+                        </a>
+                    {% endif %}
+                    {% if site_settings.instagram_url %}
+                        <a href="{{ site_settings.instagram_url }}" class="social-icon me-2" target="_blank" rel="noopener">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                    {% endif %}
+                    {% if site_settings.facebook_url %}
+                        <a href="{{ site_settings.facebook_url }}" class="social-icon me-2" target="_blank" rel="noopener">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                    {% endif %}
+                </div>
+            </div>
+            
+            <div class="col-lg-2 col-md-6 col-6">
+                <h5 class="text-white mb-3">Company</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="{% url 'core:home' %}" class="footer-link">Home</a></li>
+                    <li class="mb-2"><a href="{% url 'core:about' %}" class="footer-link">About</a></li>
+                    <li class="mb-2"><a href="{% url 'core:features' %}" class="footer-link">Features</a></li>
+                    <li class="mb-2"><a href="{% url 'core:pricing' %}" class="footer-link">Pricing</a></li>
+                    <li class="mb-2"><a href="{% url 'core:blog_list' %}" class="footer-link">Blog</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-2 col-md-6 col-6">
+                <h5 class="text-white mb-3">Resources</h5>
+                <ul class="list-unstyled">
+                    <li class="mb-2"><a href="{% url 'core:founders' %}" class="footer-link">For Founders</a></li>
+                    <li class="mb-2"><a href="{% url 'core:investors' %}" class="footer-link">For Investors</a></li>
+                    <li class="mb-2"><a href="{% url 'accounts:waitlist' %}" class="footer-link">Join Beta</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Privacy Policy</a></li>
+                    <li class="mb-2"><a href="#" class="footer-link">Terms of Service</a></li>
+                </ul>
+            </div>
+            
+            <div class="col-lg-4 col-md-6">
+                <h5 class="text-white mb-3">Subscribe to Our Newsletter</h5>
+                <p class="text-white-50 mb-3">Get the latest updates, tips and news delivered to your inbox.</p>
+                <form action="{% url 'core:newsletter_signup' %}" method="post" class="newsletter-form">
+                    {% csrf_token %}
+                    <div class="input-group mb-3">
+                        <input type="email" name="email" class="form-control" placeholder="Your email address" required>
+                        <button class="btn btn-light" type="submit">Subscribe</button>
+                    </div>
+                </form>
+                {% if site_settings.contact_email %}
+                    <p class="text-white-50 mt-4">
+                        <i class="fas fa-envelope me-2"></i> {{ site_settings.contact_email }}
+                    </p>
+                {% endif %}
+            </div>
+        </div>
+        
+        <hr class="mt-4 mb-4 border-light opacity-10">
+        
+        <div class="row">
+            <div class="col-md-6 text-center text-md-start">
+                <p class="text-white-50 mb-0">
+                    {{ site_settings.footer_text|default:"© 2025 FoundrFuse. All rights reserved." }}
+                </p>
+            </div>
+            <div class="col-md-6 text-center text-md-end">
+                <p class="text-white-50 mb-0">
+                    Crafted with <i class="fas fa-heart text-accent"></i> by FoundrFuse Team
+                </p>
+            </div>
+        </div>
+    </div>
+</footer>

@@ -1,0 +1,105 @@
+{% load static %}
+
+<nav class="navbar navbar-expand-lg navbar-light bg-white py-3">
+    <div class="container">
+        <!-- Logo -->
+        <a class="navbar-brand fw-bold" href="{% url 'core:home' %}">
+            {% if site_settings.logo %}
+                <img src="{{ site_settings.logo.url }}" alt="{{ site_settings.site_name }}" height="40">
+            {% else %}
+                <span class="text-gradient">FoundrFuse</span> <i class="fas fa-fire text-accent"></i>
+            {% endif %}
+        </a>
+        
+        <!-- Mobile Toggle -->
+        <button class="navbar-toggler border-0 shadow-none" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        
+        <!-- Navigation Links -->
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav mx-auto">
+                <li class="nav-item">
+                    <a class="nav-link {% if request.path == '/' %}active{% endif %}" href="{% url 'core:home' %}">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/features/' in request.path %}active{% endif %}" href="{% url 'core:features' %}">Features</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/founders/' in request.path %}active{% endif %}" href="{% url 'core:founders' %}">Founders</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/investors/' in request.path %}active{% endif %}" href="{% url 'core:investors' %}">Investors</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/pricing/' in request.path %}active{% endif %}" href="{% url 'core:pricing' %}">Pricing</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {% if '/blog/' in request.path %}active{% endif %}" href="{% url 'core:blog_list' %}">Blog</a>
+                </li>
+            </ul>
+            
+            <!-- Authentication Links -->
+            <div class="d-flex">
+                {% if user.is_authenticated %}
+                    <div class="dropdown">
+                        <button class="btn btn-link nav-link dropdown-toggle" type="button" id="userDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                            {% if user.profile.profile_image %}
+                                <img src="{{ user.profile.profile_image.url }}" alt="{{ user.username }}" class="rounded-circle me-1" width="24" height="24">
+                            {% else %}
+                                <i class="fas fa-user-circle me-1"></i>
+                            {% endif %}
+                            {{ user.first_name|default:user.username }}
+                        </button>
+                        <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                            <li><a class="dropdown-item" href="{% url 'accounts:profile' %}">My Profile</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:matches' %}">My Matches</a></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:discover' %}">Discover</a></li>
+                            <li><hr class="dropdown-divider"></li>
+                            <li><a class="dropdown-item" href="{% url 'accounts:logout' %}">Logout</a></li>
+                        </ul>
+                    </div>
+                {% else %}
+                    <a href="{% url 'accounts:login' %}" class="btn btn-outline-primary me-2 rounded-pill">Login</a>
+                    <a href="{% url 'accounts:register' %}" class="btn btn-gradient rounded-pill pulsing">
+                        <i class="fas fa-user-plus me-1"></i> Register Now
+                    </a>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- Mobile Sticky Bottom Nav (only visible on small screens) -->
+<div class="d-block d-md-none fixed-bottom-cta">
+    <div class="container">
+        <div class="row g-2">
+            {% if user.is_authenticated %}
+                <div class="col-4">
+                    <a href="{% url 'accounts:profile' %}" class="btn btn-light btn-sm w-100">
+                        <i class="fas fa-user"></i>
+                        <span class="d-block small">Profile</span>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'accounts:discover' %}" class="btn btn-gradient btn-sm w-100">
+                        <i class="fas fa-search"></i>
+                        <span class="d-block small">Discover</span>
+                    </a>
+                </div>
+                <div class="col-4">
+                    <a href="{% url 'accounts:matches' %}" class="btn btn-light btn-sm w-100">
+                        <i class="fas fa-handshake"></i>
+                        <span class="d-block small">Matches</span>
+                    </a>
+                </div>
+            {% else %}
+                <div class="col-12">
+                    <a href="{% url 'accounts:register' %}" class="btn btn-gradient w-100">
+                        <i class="fas fa-user-plus me-2"></i> Register Now
+                    </a>
+                </div>
+            {% endif %}
+        </div>
+    </div>
+</div>

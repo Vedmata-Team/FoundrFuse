@@ -1,0 +1,331 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}{{ blog.title }} | FoundrFuse Blog{% endblock %}
+
+{% block extra_css %}
+<style>
+    .blog-hero {
+        position: relative;
+        height: 400px;
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ blog.featured_image.url }}');
+        background-size: cover;
+        background-position: center;
+        color: white;
+        display: flex;
+        align-items: center;
+    }
+    
+    .blog-hero-content {
+        position: relative;
+        z-index: 2;
+    }
+    
+    .blog-meta {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 1rem;
+        margin-bottom: 1rem;
+        color: #6c757d;
+    }
+    
+    .blog-content {
+        font-size: 1.1rem;
+        line-height: 1.8;
+    }
+    
+    .blog-content p {
+        margin-bottom: 1.5rem;
+    }
+    
+    .blog-content h2, .blog-content h3 {
+        margin-top: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .blog-content img {
+        max-width: 100%;
+        height: auto;
+        border-radius: 8px;
+        margin: 2rem 0;
+    }
+    
+    .blog-content blockquote {
+        background-color: #f8f9fa;
+        border-left: 4px solid var(--primary-color);
+        padding: 1.5rem;
+        margin: 2rem 0;
+        font-style: italic;
+    }
+    
+    .sidebar-card {
+        border-radius: 15px;
+        overflow: hidden;
+        margin-bottom: 30px;
+    }
+    
+    .sidebar-header {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 15px 20px;
+    }
+    
+    .sidebar-body {
+        padding: 20px;
+    }
+    
+    .author-card {
+        border-radius: 15px;
+        overflow: hidden;
+    }
+    
+    .author-header {
+        background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+        color: white;
+        padding: 20px;
+        text-align: center;
+    }
+    
+    .author-img {
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        border: 3px solid white;
+        object-fit: cover;
+    }
+    
+    .share-btn {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 10px;
+        color: white;
+        transition: all 0.3s ease;
+    }
+    
+    .facebook-btn {
+        background-color: #3b5998;
+    }
+    
+    .twitter-btn {
+        background-color: #1da1f2;
+    }
+    
+    .linkedin-btn {
+        background-color: #0077b5;
+    }
+    
+    .share-btn:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    @media (max-width: 767px) {
+        .blog-hero {
+            height: 300px;
+        }
+        
+        .author-img {
+            width: 80px;
+            height: 80px;
+        }
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+<!-- Blog Hero Section -->
+<section class="blog-hero">
+    <div class="container blog-hero-content">
+        <div class="row justify-content-center">
+            <div class="col-lg-10 text-center">
+                <div class="mb-3">
+                    {% if blog.industry %}
+                    <span class="badge bg-primary px-3 py-2 mb-2">{{ blog.industry.name }}</span>
+                    {% endif %}
+                    {% for category in blog.categories.all %}
+                    <span class="badge bg-secondary px-3 py-2 mb-2 ms-2">{{ category.name }}</span>
+                    {% endfor %}
+                </div>
+                <h1 class="display-4 fw-bold mb-3 animated-on-scroll fade-in-up">{{ blog.title }}</h1>
+                <p class="lead mb-3 animated-on-scroll fade-in-up delay-1">{{ blog.summary }}</p>
+                <div class="d-flex justify-content-center align-items-center animated-on-scroll fade-in-up delay-2">
+                    <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+                    <span class="me-3">{{ blog.author.get_full_name }}</span>
+                    <span><i class="far fa-calendar-alt me-1"></i> {{ blog.created_at|date:"F d, Y" }}</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Blog Content Section -->
+<section class="py-5">
+    <div class="container">
+        <div class="row">
+            <!-- Main Content -->
+            <div class="col-lg-8">
+                <article class="card border-0 shadow-sm p-4 mb-5 animated-on-scroll slide-in-left">
+                    <div class="blog-meta">
+                        <span><i class="far fa-calendar-alt me-1"></i> {{ blog.created_at|date:"F d, Y" }}</span>
+                        <span><i class="far fa-eye me-1"></i> {{ blog.views_count }} views</span>
+                        <span><i class="far fa-clock me-1"></i> {{ blog.content|wordcount|divisibleby:250 }} min read</span>
+                    </div>
+                    
+                    <div class="blog-content">
+                        {{ blog.content|safe }}
+                    </div>
+                    
+                    <hr class="my-4">
+                    
+                    <div class="d-flex justify-content-between align-items-center">
+                        <div>
+                            <h5 class="mb-2">Share this post</h5>
+                            <div class="d-flex">
+                                <a href="https://www.facebook.com/sharer/sharer.php?u={{ request.build_absolute_uri }}" target="_blank" class="share-btn facebook-btn" title="Share on Facebook">
+                                    <i class="fab fa-facebook-f"></i>
+                                </a>
+                                <a href="https://twitter.com/intent/tweet?url={{ request.build_absolute_uri }}&text={{ blog.title }}" target="_blank" class="share-btn twitter-btn" title="Share on Twitter">
+                                    <i class="fab fa-twitter"></i>
+                                </a>
+                                <a href="https://www.linkedin.com/shareArticle?mini=true&url={{ request.build_absolute_uri }}&title={{ blog.title }}" target="_blank" class="share-btn linkedin-btn" title="Share on LinkedIn">
+                                    <i class="fab fa-linkedin-in"></i>
+                                </a>
+                            </div>
+                        </div>
+                        
+                        <div>
+                            <a href="{% url 'core:blog_list' %}" class="btn btn-outline-primary">
+                                <i class="fas fa-arrow-left me-2"></i> Back to Blog
+                            </a>
+                        </div>
+                    </div>
+                </article>
+                
+                <!-- Related Posts -->
+                {% if related_posts %}
+                <div class="card border-0 shadow-sm p-4 mb-5 animated-on-scroll slide-in-left delay-1">
+                    <h4 class="mb-4">Related Posts</h4>
+                    <div class="row">
+                        {% for related in related_posts %}
+                        <div class="col-md-6 mb-4">
+                            <div class="card h-100 border-0">
+                                <div class="overflow-hidden" style="height: 150px;">
+                                    <img src="{{ related.featured_image.url }}" alt="{{ related.title }}" class="card-img-top h-100" style="object-fit: cover;">
+                                </div>
+                                <div class="card-body">
+                                    <h6 class="card-title"><a href="{% url 'core:blog_detail' related.slug %}" class="text-decoration-none text-dark">{{ related.title }}</a></h6>
+                                    <p class="card-text small mb-0">
+                                        <i class="far fa-calendar-alt me-1"></i> {{ related.created_at|date:"M d, Y" }}
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+            
+            <!-- Sidebar -->
+            <div class="col-lg-4">
+                <!-- Author Card -->
+                <div class="card author-card mb-4 animated-on-scroll slide-in-right">
+                    <div class="author-header">
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="author-img mb-3" onerror="this.src='https://via.placeholder.com/100'">
+                        <h5 class="mb-1">{{ blog.author.get_full_name }}</h5>
+                        <p class="mb-0 text-white-50">
+                            {% if blog.author.profile.user_type == 'founder' %}
+                                Founder
+                                {% if blog.author.profile.company_name %}
+                                at {{ blog.author.profile.company_name }}
+                                {% endif %}
+                            {% elif blog.author.profile.user_type == 'investor' %}
+                                Investor
+                                {% if blog.author.profile.company_name %}
+                                at {{ blog.author.profile.company_name }}
+                                {% endif %}
+                            {% else %}
+                                Author
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="card-body">
+                        <p>{{ blog.author.profile.bio|default:"" |truncatewords:25 }}</p>
+                        {% if blog.author.profile.linkedin_profile %}
+                        <a href="{{ blog.author.profile.linkedin_profile }}" target="_blank" class="btn btn-outline-primary btn-sm">
+                            <i class="fab fa-linkedin me-1"></i> Connect on LinkedIn
+                        </a>
+                        {% endif %}
+                    </div>
+                </div>
+                
+                <!-- Recent Posts -->
+                <div class="card sidebar-card animated-on-scroll slide-in-right delay-1">
+                    <div class="sidebar-header">
+                        <h5 class="mb-0">Recent Posts</h5>
+                    </div>
+                    <div class="sidebar-body">
+                        <ul class="list-group list-group-flush">
+                            {% if recent_posts %}
+                                {% for recent in recent_posts %}
+                                <li class="list-group-item border-0 py-3">
+                                    <div class="row g-0">
+                                        <div class="col-3">
+                                            <img src="{{ recent.featured_image.url }}" alt="{{ recent.title }}" class="img-fluid rounded" style="height: 60px; object-fit: cover;">
+                                        </div>
+                                        <div class="col-9 ps-3">
+                                            <h6 class="mb-1"><a href="{% url 'core:blog_detail' recent.slug %}" class="text-decoration-none text-dark">{{ recent.title|truncatechars:40 }}</a></h6>
+                                            <small class="text-muted">{{ recent.created_at|date:"M d, Y" }}</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item border-0">No recent posts available</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Categories -->
+                <div class="card sidebar-card animated-on-scroll slide-in-right delay-2">
+                    <div class="sidebar-header">
+                        <h5 class="mb-0">Categories</h5>
+                    </div>
+                    <div class="sidebar-body">
+                        <ul class="list-group list-group-flush">
+                            {% if categories %}
+                                {% for category in categories %}
+                                <li class="list-group-item border-0 d-flex justify-content-between align-items-center">
+                                    <a href="{% url 'core:blog_list' %}?category={{ category.slug }}" class="text-decoration-none text-dark">{{ category.name }}</a>
+                                    <span class="badge bg-light text-dark rounded-pill">{{ category.blogs.count }}</span>
+                                </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item border-0">No categories available</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
+                
+                <!-- Premium Promotion Card (for non-premium users) -->
+                {% if not user.is_authenticated or not user.profile.is_premium %}
+                <div class="card sidebar-card border-0 animated-on-scroll slide-in-right delay-3" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+                    <div class="card-body p-4 text-center">
+                        <h5 class="mb-3">Want to publish your own insights?</h5>
+                        <p>Upgrade to Premium to share your expertise by publishing blog posts and articles.</p>
+                        <a href="{% url 'subscription:upgrade' %}" class="btn btn-light">
+                            <i class="fas fa-crown me-2"></i> Upgrade to Premium
+                        </a>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</section>
+{% endblock %}

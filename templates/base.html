@@ -1,104 +1,409 @@
-{% load static %}
-{% load humanize %}
-{% load tz %}
-{% load l10n %}
 <!DOCTYPE html>
+{% load static %}
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>{% block title %}FoundrFuse{% endblock %}</title>
-  <meta name="description" content="{% block description %}Discover a smarter way to connect founders and investors via swipe matching.{% endblock %}" />
-  <meta name="keywords" content="startup, investors, founders, fundraising, networking, swipe matching, AI matching, FoundrFuse, connect, platform, business, funding, entrepreneurship" />
-  <meta name="author" content="Parth Pangtey - FoundrFuse" />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://foundrfuse.com{% block canonical_path %}{% endblock %}" />
-
-  <!-- Open Graph / Facebook -->
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="FoundrFuse - Empowering Ideas, One Match at a Time" />
-  <meta property="og:description" content="Discover a smarter way to connect founders and investors via swipe matching." />
-  <meta property="og:url" content="https://foundrfuse.com" />
-  <meta property="og:image" content="{% static 'images/og-image.png' %}" />
-
-  <!-- Twitter -->
-  <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FoundrFuse - Empowering Ideas, One Match at a Time" />
-  <meta name="twitter:description" content="Discover a smarter way to connect founders and investors via swipe matching." />
-  <meta name="twitter:image" content="{% static 'images/twitter-image.png' %}" />
-
-  <!-- Favicon -->
-  <link rel="icon" href="{% static 'images/favicon.ico' %}" type="image/x-icon" />
-
-  <!-- Schema.org Structured Data -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "FoundrFuse",
-    "url": "https://foundrfuse.com",
-    "description": "Discover a smarter way to connect founders and investors via swipe matching.",
-    "publisher": {
-      "@type": "Organization",
-      "name": "FoundrFuse"
-    }
-  }
-  </script>
-
-  <!-- Stylesheets -->
-  <link rel="stylesheet" href="{% static 'css/theme-base.css' %}" />
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}FoundrFuse - Connect Founders & Investors{% endblock %}</title>
+    
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <!-- Google Fonts: Poppins & Inter -->
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animations.css' %}">
+    <link rel="stylesheet" href="{% static 'css/graphics.css' %}">
+    
+    <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
-
-
-
-  <!-- Scripts -->
-  <script defer src="{% static 'js/scripts.js' %}"></script>
-    <!-- Scripts (head) -->
-  {% block head_scripts %}{% endblock %}
+    
+    <style>
+        /* Custom Variables */
+        :root {
+            --primary-color: #3B0D8B;
+            --secondary-color: #7F00FF;
+            --accent-color: #F72585;
+            --accent-secondary: #FF6B00;
+            --background-color: #FAFAFA;
+            --dark-gray: #343a40;
+            --light-gray: #f8f9fa;
+            --medium-gray: #6c757d;
+            --black: #212529;
+            --white: #FFFFFF;
+        }
+        
+        body {
+            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--background-color);
+            color: var(--black);
+            line-height: 1.6;
+        }
+        
+        /* Navigation */
+        .navbar-brand {
+            font-weight: 700;
+            font-size: 1.5rem;
+            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            background-clip: text;
+            color: transparent;
+        }
+        
+        .navbar {
+            background-color: white;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+            padding: 15px 0;
+        }
+        
+        .nav-link {
+            font-weight: 500;
+            color: var(--black);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .nav-link:hover {
+            color: var(--primary-color);
+        }
+        
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--primary-color);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        
+        .active .nav-link {
+            color: var(--primary-color);
+        }
+        
+        .active .nav-link::after {
+            width: 100%;
+        }
+        
+        /* Buttons */
+        .btn-primary {
+            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+        }
+        
+        .btn-accent {
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
+            border: none;
+            color: var(--white);
+            padding: 10px 20px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-accent:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
+        }
+        
+        /* Footer */
+        .footer {
+            background-color: var(--dark-gray);
+            color: var(--light-gray);
+            padding: 60px 0 30px;
+        }
+        
+        .footer h5 {
+            color: white;
+            margin-bottom: 20px;
+            font-weight: 600;
+        }
+        
+        .footer-links {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .footer-links li {
+            margin-bottom: 10px;
+        }
+        
+        .footer-links a {
+            color: var(--light-gray);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+        }
+        
+        .footer-links a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: -3px;
+            left: 0;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+        
+        .footer-links a:hover::after {
+            width: 100%;
+        }
+        
+        .social-icons {
+            display: flex;
+        }
+        
+        .social-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background-color: rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 10px;
+            color: white;
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            background-color: var(--primary-color);
+            transform: translateY(-3px);
+        }
+        
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 20px;
+            margin-top: 40px;
+        }
+        
+        /* Alerts */
+        .alert {
+            border-radius: 10px;
+            padding: 15px;
+            margin-bottom: 20px;
+            border: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .alert-success {
+            background-color: #d4edda;
+            color: #155724;
+        }
+        
+        .alert-warning {
+            background-color: #fff3cd;
+            color: #856404;
+        }
+        
+        .alert-danger {
+            background-color: #f8d7da;
+            color: #721c24;
+        }
+        
+        .alert-info {
+            background-color: #d1ecf1;
+            color: #0c5460;
+        }
+        
+        /* Premium badge */
+        .premium-badge {
+            display: inline-flex;
+            align-items: center;
+            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
+            color: white;
+            padding: 3px 8px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        
+        .premium-badge i {
+            margin-right: 3px;
+        }
+        
+        /* Responsive */
+        @media (max-width: 991.98px) {
+            .navbar-collapse {
+                margin-top: 10px;
+            }
+            
+            .navbar-nav .nav-link {
+                padding: 10px 0;
+            }
+        }
+    </style>
 </head>
 <body>
-
-  <!-- Navbar -->
-  <nav class="navbar">
-  <div class="container">
-    <a href="javascript:void(0)" class="logo">FoundrFuse</a>
-    <ul class="nav-links">
-      <li><a href="javascript:void(0)">Home</a></li>
-      <li><a href="javascript:void(0)">Features</a></li>
-      <li><a href="javascript:void(0)">Founders</a></li>
-      <li><a href="javascript:void(0)">Investors</a></li>
-      <li><a href="javascript:void(0)">Pricing</a></li>
-      <li><a href="javascript:void(0)" class="btn btn-primary">Login / Join Beta</a></li>
-    </ul>
-  </div>
-</nav>
-
-  <!-- Main Content -->
-  <main class="main-content container">
-    {% block content %}
-    <!-- Page-specific content goes here -->
-    {% endblock %}
-  </main>
-
-  <!-- Footer -->
-  <footer class="footer">
-  <div class="container footer-content">
-    <ul class="footer-links">
-      <li><a href="javascript:void(0)">About</a></li>
-      <li><a href="javascript:void(0)">Blog</a></li>
-      <li><a href="javascript:void(0)">Terms</a></li>
-      <li><a href="javascript:void(0)">Privacy</a></li>
-    </ul>
-    <div class="social-icons">
-      <a href="javascript:void(0)" aria-label="Twitter"><img src="{% static 'icons/twitter.svg' %}" alt="Twitter" /></a>
-      <a href="javascript:void(0)" aria-label="LinkedIn"><img src="{% static 'icons/linkedin.svg' %}" alt="LinkedIn" /></a>
-      <a href="javascript:void(0)" aria-label="Facebook"><img src="{% static 'icons/facebook.svg' %}" alt="Facebook" /></a>
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg navbar-light">
+        <div class="container">
+            <a class="navbar-brand" href="{% url 'core:home' %}">
+                FoundrFuse <i class="fas fa-fire-alt"></i>
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav me-auto">
+                    <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == 'features' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:features' %}">Features</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == 'founders' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:founders' %}">For Founders</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == 'investors' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:investors' %}">For Investors</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == 'pricing' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:pricing' %}">Pricing</a>
+                    </li>
+                    <li class="nav-item {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}">
+                        <a class="nav-link" href="{% url 'core:blog_list' %}">Blog</a>
+                    </li>
+                </ul>
+                <ul class="navbar-nav">
+                    {% if user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-1"></i> {{ user.get_full_name|default:user.username }}
+                                {% if user.profile.is_premium %}
+                                <span class="premium-badge"><i class="fas fa-crown"></i></span>
+                                {% endif %}
+                            </a>
+                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                <li><a class="dropdown-item" href="{% url 'accounts:profile' %}"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:edit_profile' %}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:discover' %}"><i class="fas fa-search me-2"></i> Discover</a></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i> Matches</a></li>
+                                {% if not user.profile.is_premium %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'subscription:upgrade' %}"><i class="fas fa-crown me-2"></i> Upgrade to Premium</a></li>
+                                {% endif %}
+                                <li><hr class="dropdown-divider"></li>
+                                <li><a class="dropdown-item" href="{% url 'accounts:logout' %}"><i class="fas fa-sign-out-alt me-2"></i> Logout</a></li>
+                            </ul>
+                        </li>
+                    {% else %}
+                        <li class="nav-item">
+                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="btn btn-primary" href="{% url 'accounts:register' %}">Register</a>
+                        </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+    
+    <!-- Flash Messages -->
+    {% if messages %}
+    <div class="container mt-3">
+        {% for message in messages %}
+        <div class="alert alert-{{ message.tags }} alert-dismissible fade show" role="alert">
+            {{ message }}
+            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        {% endfor %}
     </div>
-    <div class="contact-email">contact@foundrfuse.com</div>
-    <div class="credits">© 2025 P by Parth Pangtey</div>
-  </div>
-</footer>
-  {% block extra_js %}{% endblock %}
+    {% endif %}
+    
+    <!-- Main Content -->
+    {% block content %}{% endblock %}
+    
+    <!-- Footer -->
+    <footer class="footer mt-5">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-4 mb-4">
+                    <h5>FoundrFuse</h5>
+                    <p>Empowering Ideas, One Match at a Time. FoundrFuse connects visionary founders with future-ready investors through our smart, swipe-based platform.</p>
+                    <div class="social-icons">
+                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 mb-4">
+                    <h5>Platform</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'core:home' %}">Home</a></li>
+                        <li><a href="{% url 'core:features' %}">Features</a></li>
+                        <li><a href="{% url 'core:pricing' %}">Pricing</a></li>
+                        <li><a href="{% url 'core:blog_list' %}">Blog</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 mb-4">
+                    <h5>Company</h5>
+                    <ul class="footer-links">
+                        <li><a href="{% url 'core:about' %}">About Us</a></li>
+                        <li><a href="#">Careers</a></li>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Press</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 mb-4">
+                    <h5>Resources</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Help Center</a></li>
+                        <li><a href="#">Community</a></li>
+                        <li><a href="#">Webinars</a></li>
+                        <li><a href="#">Events</a></li>
+                    </ul>
+                </div>
+                <div class="col-lg-2 col-md-3 col-6 mb-4">
+                    <h5>Legal</h5>
+                    <ul class="footer-links">
+                        <li><a href="#">Privacy</a></li>
+                        <li><a href="#">Terms</a></li>
+                        <li><a href="#">Cookie Policy</a></li>
+                        <li><a href="#">GDPR</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; {% now "Y" %} FoundrFuse. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+    <!-- Bootstrap JS -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Custom JS -->
+    <script src="{% static 'js/main.js' %}"></script>
+    
+    <!-- Page-specific JS -->
+    {% block extra_js %}{% endblock %}
 </body>
 </html>
