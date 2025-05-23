@@ -1,0 +1,88 @@
+# Create a postgres_reference.txt file with the full list of PostgreSQL terminal commands
+postgres_reference_text = """
+======================================
+PostgreSQL Terminal Commands Reference
+======================================
+
+✅ Basic Commands (without login)
+
+🎯 1. Show All Databases
+psql -U postgres -c "\\l"
+
+🎯 2. Create a New Database
+createdb -U postgres dbname
+
+🎯 3. Drop a Database
+dropdb -U postgres dbname
+
+🎯 4. Connect to a Database
+psql -U postgres -d dbname
+
+🎯 5. List All Tables in Connected DB
+\\dt
+
+🎯 6. Describe a Table Structure
+\\d tablename
+
+🎯 7. Create a New User (Role)
+createuser -U postgres -P newusername
+# -P prompts for password
+
+🎯 8. Grant Privileges to a User
+GRANT ALL PRIVILEGES ON DATABASE dbname TO newusername;
+
+🎯 9. Alter User Role
+ALTER USER username WITH SUPERUSER;
+
+🎯 10. Change Password of a User
+ALTER USER username WITH PASSWORD 'newpassword';
+
+🎯 11. Drop a User
+dropuser -U postgres username
+
+======================
+✅ SQL Query Commands
+======================
+
+🔹 Create Table
+CREATE TABLE students (
+    id SERIAL PRIMARY KEY,
+    name VARCHAR(100),
+    age INT
+);
+
+🔹 Insert Data
+INSERT INTO students (name, age) VALUES ('Divy', 22);
+
+🔹 Select Data
+SELECT * FROM students;
+
+🔹 Update Data
+UPDATE students SET age = 23 WHERE name = 'Divy';
+
+🔹 Delete Data
+DELETE FROM students WHERE name = 'Divy';
+
+===========================
+✅ PostgreSQL CLI Utility
+===========================
+
+Exit from PostgreSQL CLI:
+\\q
+
+=============================
+✅ Backup and Restore
+=============================
+
+🔹 Backup a Database to File
+pg_dump -U postgres dbname > backup.sql
+
+🔹 Restore from a Backup File
+psql -U postgres -d dbname < backup.sql
+
+===========================
+End of PostgreSQL Reference
+===========================
+"""
+
+
