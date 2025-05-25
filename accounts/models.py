@@ -26,6 +26,11 @@ class Profile(models.Model):
     company_name = models.CharField(max_length=100, blank=True)
     industry = models.CharField(max_length=20, choices=INDUSTRY_CHOICES, blank=True)
     location = models.CharField(max_length=100, blank=True)
+    country_code = models.CharField(max_length=8, blank=True)
+    phone = models.CharField(max_length=20, blank=True)
+    startup_date = models.DateField(blank=True, null=True)
+    investment_focus = models.CharField(max_length=255, blank=True)
+    investment_range = models.CharField(max_length=255, blank=True)
     linkedin_profile = models.URLField(blank=True)
     website = models.URLField(blank=True)
     looking_for = models.TextField(blank=True)
@@ -85,3 +90,22 @@ class Waitlist(models.Model):
     
     def __str__(self):
         return f"{self.email} ({self.get_user_type_display()})"
+
+# Example for your registration view (simplified)
+def register(request):
+    if request.method == 'POST':
+        form = YourRegisterForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            profile = user.profile
+            profile.user_type = form.cleaned_data['user_type']
+            profile.location = form.cleaned_data['location']
+            profile.country_code = form.cleaned_data['country_code']
+            profile.phone = form.cleaned_data['phone']
+            if profile.user_type == 'founder':
+                profile.startup_date = form.cleaned_data['startup_date']
+            if profile.user_type == 'investor':
+                profile.investment_focus = form.cleaned_data['investment_focus']
+                profile.investment_range = form.cleaned_data['investment_range']
+            profile.save()
+            # ...login or redirect...

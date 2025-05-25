@@ -7,7 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 from import_export.formats import base_formats
 from xhtml2pdf import pisa
 from io import BytesIO
-from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings
+from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings, Testimonial
 
 # Base PDF export mixin
 class PDFExportMixin:
@@ -179,3 +179,33 @@ class SiteSettingsAdmin(ImportExportModelAdmin):
     def has_add_permission(self, request):
         # Only allow one site settings instance
         return not SiteSettings.objects.exists()
+
+@admin.register(Testimonial)
+class TestimonialAdmin(admin.ModelAdmin):
+    list_display = ('name', 'user_type', 'role', 'company', 'category', 'date')
+    list_filter = ('user_type', 'category', 'date')
+    search_fields = ('name', 'role', 'company', 'category', 'text')
+    fieldsets = (
+        (None, {
+            'fields': (
+                'name',
+                'role',
+                'company',
+                'user_type',
+                'category',
+                'date',
+                'avatar',
+                'text',
+            ),
+            'description': (
+                "<b>Tips:</b> <ul>"
+                "<li><b>Name</b>: Full name of the testimonial giver.</li>"
+                "<li><b>User Type</b>: Choose Founder or Investor. This controls which section the testimonial appears in.</li>"
+                "<li><b>Category</b>: Industry or area (e.g., Tech, Healthcare).</li>"
+                "<li><b>Date</b>: When the testimonial was given.</li>"
+                "<li><b>Avatar</b>: Optional profile image.</li>"
+                "<li><b>Text</b>: The testimonial itself.</li>"
+                "</ul>"
+            )
+        }),
+    )

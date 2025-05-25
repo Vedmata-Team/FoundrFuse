@@ -131,3 +131,53 @@ class SiteSettings(models.Model):
             # Update existing settings instead of creating a new one
             self.pk = SiteSettings.objects.first().pk
         return super().save(*args, **kwargs)
+
+class Testimonial(models.Model):
+    USER_TYPE_CHOICES = (
+        ('founder', 'Founder'),
+        ('investor', 'Investor'),
+    )
+    name = models.CharField(
+        max_length=100,
+        help_text="Full name of the person giving the testimonial."
+    )
+    role = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text="Their role or title (e.g., CEO, Angel Investor)."
+    )
+    company = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text="Their company or organization (optional)."
+    )
+    text = models.TextField(
+        help_text="The testimonial text (what the user says about FoundrFuse)."
+    )
+    user_type = models.CharField(
+        max_length=10,
+        choices=USER_TYPE_CHOICES,
+        help_text="Is this testimonial from a Founder or an Investor?"
+    )
+    category = models.CharField(
+        max_length=100,
+        blank=True,
+        help_text="Industry or category (e.g., Tech, Healthcare)."
+    )
+    date = models.DateField(
+        help_text="Date when the testimonial was given."
+    )
+    avatar = models.ImageField(
+        upload_to='testimonials/',
+        blank=True,
+        null=True,
+        help_text="Optional: Upload a profile photo for this testimonial."
+    )
+
+    class Meta:
+        ordering = ['-date']
+        verbose_name = "Testimonial"
+        verbose_name_plural = "Testimonials"
+
+    def __str__(self):
+        return f"{self.name} ({self.get_user_type_display()})"

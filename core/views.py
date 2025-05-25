@@ -2,13 +2,15 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Blog, Category, Industry, NewsletterSubscriber
+from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial
 
 def home(request):
+    testimonials = Testimonial.objects.all()
     featured_blogs = Blog.objects.filter(is_featured=True, is_published=True).order_by('-created_at')[:3]
     return render(request, 'core/home.html', {
         'title': 'Home',
         'featured_blogs': featured_blogs,
+        'testimonials': testimonials,
     })
 
 def about(request):
