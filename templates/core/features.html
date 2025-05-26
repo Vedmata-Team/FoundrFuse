@@ -4,66 +4,7 @@
 {% block title %}Features | FoundrFuse{% endblock %}
 
 {% block extra_css %}
-<style>
-    .features-hero {
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/g0299a66c6d60c4829c44f5ab5b44d01a812d95391e4fb4c977ab408f70955625db747b56ef8b91ff52385e628d12b42b5ff1cc0a835ac1f3ba619f56b537aa39_1280.jpg');
-        background-size: cover;
-        background-position: center;
-        padding: 120px 0;
-        color: white;
-    }
-    
-    .feature-card {
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        height: 100%;
-        border: none;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .feature-icon {
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        border-radius: 15px;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        font-size: 1.8rem;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-card:hover .feature-icon {
-        transform: scale(1.1);
-    }
-    
-    .feature-grid-item {
-        padding: 2rem;
-        border-radius: 10px;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-grid-item:hover {
-        background-color: rgba(0,0,0,0.03);
-        transform: translateY(-5px);
-    }
-    
-    .accordion-button:not(.collapsed) {
-        background-color: var(--primary-color);
-        color: white;
-    }
-    
-    .accordion-button:focus {
-        box-shadow: 0 0 0 0.25rem rgba(127, 0, 255, 0.25);
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/features.css' %}">
 {% endblock %}
 
 {% block content %}
@@ -174,7 +115,7 @@
 </section>
 
 <!-- Comparison Grid -->
-<section class="py-5 bg-light">
+<section class="py-5 comparison-section">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
@@ -182,12 +123,11 @@
                 <p class="lead text-muted">FoundrFuse vs. Traditional Networking Platforms</p>
             </div>
         </div>
-        
         <div class="row">
             <div class="col-12">
                 <div class="table-responsive">
-                    <table class="table table-bordered">
-                        <thead class="table-dark">
+                    <table class="table comparison-table">
+                        <thead>
                             <tr class="text-center">
                                 <th scope="col">Features</th>
                                 <th scope="col">FoundrFuse</th>
@@ -197,40 +137,40 @@
                         </thead>
                         <tbody>
                             <tr>
-                                <td>Swipe-Based Matching</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-danger"><i class="fas fa-times-circle fa-lg"></i></td>
-                                <td class="text-center text-danger"><i class="fas fa-times-circle fa-lg"></i></td>
+                                <td data-label="Features">Swipe-Based Matching</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-times-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-times-circle fa-lg"></i></td>
                             </tr>
                             <tr>
-                                <td>AI-Powered Recommendations</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Features">AI-Powered Recommendations</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
                             </tr>
                             <tr>
-                                <td>Mobile-First Experience</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
-                                <td class="text-center text-danger"><i class="fas fa-times-circle fa-lg"></i></td>
+                                <td data-label="Features">Mobile-First Experience</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-times-circle fa-lg"></i></td>
                             </tr>
                             <tr>
-                                <td>Gamified Engagement</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-danger"><i class="fas fa-times-circle fa-lg"></i></td>
-                                <td class="text-center text-danger"><i class="fas fa-times-circle fa-lg"></i></td>
+                                <td data-label="Features">Gamified Engagement</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-times-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-times-circle fa-lg"></i></td>
                             </tr>
                             <tr>
-                                <td>Founder/Investor Focused</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="Features">Founder/Investor Focused</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
                             </tr>
                             <tr>
-                                <td>Access to Emerging Startups</td>
-                                <td class="text-center text-success"><i class="fas fa-check-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
-                                <td class="text-center text-warning"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Features">Access to Emerging Startups</td>
+                                <td data-label="FoundrFuse" class="text-center"><i class="fas fa-check-circle fa-lg"></i></td>
+                                <td data-label="LinkedIn" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
+                                <td data-label="Traditional VC Platforms" class="text-center"><i class="fas fa-minus-circle fa-lg"></i></td>
                             </tr>
                         </tbody>
                     </table>
@@ -241,7 +181,7 @@
 </section>
 
 <!-- Premium Features -->
-<section class="py-5">
+<section class="py-5 premium-features-section">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
@@ -357,70 +297,24 @@
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="accordion" id="faqAccordion">
+                    {% for faq in faqs %}
                     <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                How does the matching system work?
+                        <h2 class="accordion-header" id="heading{{ forloop.counter }}">
+                            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="collapse{{ forloop.counter }}">
+                                {{ faq.question }}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#faqAccordion">
+                        <div id="collapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="heading{{ forloop.counter }}" data-bs-parent="#faqAccordion">
                             <div class="accordion-body">
-                                <p>Our matching system combines swipe-based preferences with AI algorithms. When you create your profile, our system analyzes your preferences, industry, funding stage, and other criteria. Then, we present you with potential matches one at a time. Swipe right if you're interested, left if you're not. When both parties swipe right, it's a match!</p>
+                                <p>{{ faq.answer|linebreaks }}</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                Is FoundrFuse secure for sharing sensitive business information?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>Absolutely. We take security and privacy seriously. All communications happen through our encrypted messaging system. Your sensitive business information is protected with industry-standard encryption, and you control what information you share with each match. We never share your data with third parties without your explicit consent.</p>
-                            </div>
-                        </div>
+                    {% empty %}
+                    <div class="text-center text-muted py-5">
+                        <em>No FAQs available at the moment.</em>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                How many swipes do I get with the free plan?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>Free users get 5 swipes per day. This limit resets every 24 hours. Premium users enjoy unlimited swipes, advanced filters, and many more features that enhance your matching experience. You can upgrade to Premium at any time from your profile settings.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                How does FoundrFuse verify investors and founders?
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>We employ a rigorous verification process. For investors, we verify accreditation status, LinkedIn profiles, and professional references. For founders, we verify company information, LinkedIn profiles, and optional pitch deck reviews. This ensures that all users on our platform are legitimate and helps create a trusted network of connections.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
-                                Can I use FoundrFuse internationally?
-                            </button>
-                        </h2>
-                        <div id="collapseFive" class="accordion-collapse collapse" aria-labelledby="headingFive" data-bs-parent="#faqAccordion">
-                            <div class="accordion-body">
-                                <p>Yes! FoundrFuse is a global platform with users from around the world. Our location filters (available to Premium users) allow you to narrow your search to specific regions or expand it globally. Whether you're looking for local connections or international opportunities, our platform accommodates both approaches.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>

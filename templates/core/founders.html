@@ -4,174 +4,42 @@
 {% block title %}For Founders | FoundrFuse{% endblock %}
 
 {% block extra_css %}
-<style>
-    .founders-hero {
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/gb22d9442f3dc9f8599eca5ebb5f06b188e05ada37a7f39a479033146b7f12a36a009ebdcbba8e28d38f899559fdf2efdfd50ccfbd6d19d4b0993d7ca6ad7bd5f_1280.jpg');
-        background-size: cover;
-        background-position: center;
-        padding: 120px 0;
-        color: white;
-    }
-    
-    .feature-card {
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        height: 100%;
-        border: none;
-    }
-    
-    .feature-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .feature-icon {
-        width: 70px;
-        height: 70px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        margin-bottom: 1.5rem;
-        border-radius: 50%;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        font-size: 1.8rem;
-        transition: all 0.3s ease;
-    }
-    
-    .feature-card:hover .feature-icon {
-        transform: rotate(10deg);
-    }
-    
-    .step-card {
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        height: 100%;
-    }
-    
-    .step-card:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .step-number {
-        width: 50px;
-        height: 50px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 1.5rem;
-        font-weight: bold;
-        color: white;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        border-radius: 50%;
-        margin-bottom: 1rem;
-    }
-    
-    .testimonial-card {
-        border-radius: 15px;
-        overflow: hidden;
-        position: relative;
-        border: none;
-    }
-    
-    .testimonial-content {
-        position: relative;
-        z-index: 1;
-    }
-    
-    .testimonial-card::before {
-        content: '\201C';
-        position: absolute;
-        top: 20px;
-        left: 20px;
-        font-size: 5rem;
-        font-family: serif;
-        color: rgba(0, 0, 0, 0.1);
-        line-height: 1;
-    }
-    
-    .testimonial-img {
-        width: 80px;
-        height: 80px;
-        border-radius: 50%;
-        object-fit: cover;
-        border: 3px solid white;
-        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
-    }
-    
-    .plan-card {
-        border-radius: 15px;
-        overflow: hidden;
-        transition: all 0.3s ease;
-        height: 100%;
-    }
-    
-    .plan-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-    }
-    
-    .premium-card {
-        border: 2px solid var(--accent-color);
-        transform: scale(1.05);
-    }
-    
-    .premium-header {
-        background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary));
-        color: white;
-        padding: 20px;
-    }
-    
-    .free-header {
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 20px;
-    }
-    
-    .stats-card {
-        border-radius: 15px;
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-        color: white;
-        padding: 30px;
-        text-align: center;
-    }
-    
-    .stat-number {
-        font-size: 3rem;
-        font-weight: bold;
-        margin-bottom: 0.5rem;
-    }
-</style>
+<link rel="stylesheet" href="{% static 'css/founders.css' %}">
 {% endblock %}
 
 {% block content %}
 <!-- Hero Section -->
-<section class="founders-hero">
-    <div class="container">
-        <div class="row align-items-center">
-            <div class="col-lg-7 mb-5 mb-lg-0">
-                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Connecting Founders to Capital</h1>
-                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">FoundrFuse helps startup founders connect with investors who believe in their vision and can provide the resources they need to grow.</p>
-                <div class="d-flex flex-wrap gap-3 animated-on-scroll fade-in-up delay-2">
-                    <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-4 py-3 rounded-pill">
-                        <i class="fas fa-user-plus me-2"></i> Create Founder Profile
-                    </a>
-                    <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
-                        <i class="fas fa-info-circle me-2"></i> Learn How It Works
-                    </a>
-                </div>
-            </div>
-            <div class="col-lg-5 d-flex justify-content-center">
-                <div class="animated-on-scroll slide-in-right">
-                    <img src="https://pixabay.com/get/g495084d27439eeafa06b0ea88a98b91e054f6b9ade118b2297d22f493b8d675483df79ca66aad8d7f4423df7fbec8f1110e81b136efbf048ab16d9d219d14480_1280.jpg" alt="Founder Meeting" class="img-fluid rounded-3 shadow" style="max-height: 400px;">
-                </div>
-            </div>
+<section class="founders-hero py-5 bg-light">
+  <div class="container">
+    <div class="row align-items-center justify-content-between">
+      <div class="col-lg-6 text-center text-lg-start">
+        <h1 class="display-5 fw-bold mb-3 text-dark">
+          Fueling Visionaries with Smart Capital
+        </h1>
+        <p class="lead text-secondary mb-4">
+          At FoundrFuse, we bridge the gap between bold founders and visionary investors. Your next breakthrough starts here.
+        </p>
+        <div class="d-flex flex-column flex-sm-row gap-3">
+          <a href="{% url 'accounts:register' %}" class="btn btn-primary btn-lg px-4 py-2 rounded-pill">
+            <i class="fas fa-user-plus me-2"></i> Get Started as a Founder
+          </a>
+          <a href="#how-it-works" class="btn btn-outline-secondary btn-lg px-4 py-2 rounded-pill">
+            <i class="fas fa-info-circle me-2"></i> How It Works
+          </a>
         </div>
+      </div>
+      <div class="col-lg-5 mt-5 mt-lg-0 text-center">
+        <div class="position-relative">
+          <img src="https://pixabay.com/get/g495084d27439eeafa06b0ea88a98b91e054f6b9ade118b2297d22f493b8d675483df79ca66aad8d7f4423df7fbec8f1110e81b136efbf048ab16d9d219d14480_1280.jpg" alt="Founder Pitching" class="img-fluid rounded-4 shadow-lg" style="max-height: 400px;">
+          <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+            Trusted by 1,000+ Founders
+          </span>
+        </div>
+      </div>
     </div>
+  </div>
 </section>
+
 
 <!-- Stats Section -->
 <section class="py-5">
@@ -338,167 +206,90 @@
         </div>
         
         <div class="text-center mt-5">
-            <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-5 py-3 rounded-pill animated-on-scroll zoom-in">
-                <i class="fas fa-rocket me-2"></i> Start Your Journey
+            <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-5 py-3 rounded-pill fw-semibold shadow-lg animated-on-scroll zoom-in cta-gradient-btn">
+                <span class="cta-icon-wrapper me-2">
+                    <i class="fas fa-rocket"></i>
+                </span>
+                Start Your Journey
             </a>
+            <div class="mt-3 text-muted small">
+                Join 1,000+ founders already building their future on FoundrFuse.
+            </div>
         </div>
     </div>
 </section>
 
 <!-- Testimonials Section -->
+<!-- Success Stories Section -->
 <section class="py-5 bg-light">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Success Stories</h2>
-                <p class="lead text-muted">Hear from founders who found their perfect investor match</p>
+                <h2 class="fw-bold mb-4">Founder Success Stories</h2>
             </div>
         </div>
-        
-        <div class="row g-4">
-            <div class="col-lg-6">
-                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-left">
-                    <div class="card-body p-4">
-                        <div class="testimonial-content">
-                            <p class="lead mb-4">"FoundrFuse helped us connect with three investors in our first week, one of which led our pre-seed round. The platform saved us months of networking and cold outreach."</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Sarah Chen" class="testimonial-img me-3">
-                                <div>
-                                    <h5 class="mb-1">Sarah Chen</h5>
-                                    <p class="text-muted mb-0">Founder & CEO, TechEase</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="col-lg-6">
-                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-right">
-                    <div class="card-body p-4">
-                        <div class="testimonial-content">
-                            <p class="lead mb-4">"As a first-time founder from outside the traditional tech hubs, I struggled to get investor attention. FoundrFuse leveled the playing field and connected me with investors who saw our potential."</p>
-                            <div class="d-flex align-items-center">
-                                <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Raj Patel" class="testimonial-img me-3">
-                                <div>
-                                    <h5 class="mb-1">Raj Patel</h5>
-                                    <p class="text-muted mb-0">Co-founder, AgriTech Solutions</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- Premium vs Free Section -->
-<section class="py-5">
-    <div class="container py-5">
-        <div class="row mb-5 text-center">
-            <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Choose Your Plan</h2>
-                <p class="lead text-muted">Get started for free or upgrade for premium features</p>
-            </div>
-        </div>
-        
         <div class="row g-4 justify-content-center">
-            <div class="col-md-5">
-                <div class="card plan-card border-0 shadow-sm animated-on-scroll slide-in-left">
-                    <div class="free-header text-center">
-                        <h3 class="mb-0">Free Plan</h3>
-                    </div>
-                    <div class="card-body p-4">
-                        <div class="text-center mb-4">
-                            <h4 class="mb-0">$0</h4>
-                            <p class="text-muted">Forever free</p>
-                        </div>
-                        <ul class="list-unstyled">
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Basic founder profile</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>5 swipes per day</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>View investor profiles</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Basic matching algorithm</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-times-circle text-danger me-2"></i>
-                                <span class="text-muted">No advanced filters</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-times-circle text-danger me-2"></i>
-                                <span class="text-muted">No analytics dashboard</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-times-circle text-danger me-2"></i>
-                                <span class="text-muted">No content publishing</span>
-                            </li>
-                        </ul>
-                        <div class="text-center mt-4">
-                            <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg w-100 py-3">
-                                Sign Up Free
-                            </a>
-                        </div>
+            {% for story in success_stories %}
+            <div class="col-md-6 col-lg-4">
+                <div class="card testimonial-card h-100 shadow-sm">
+                    <div class="card-body text-center">
+                        {% if story.avatar %}
+                        <img src="{{ story.avatar.url }}" alt="{{ story.name }}" class="testimonial-img rounded-circle mb-3" width="80" height="80">
+                        {% endif %}
+                        <blockquote class="testimonial-content mb-3">“{{ story.quote }}”</blockquote>
+                        <h5 class="mb-1">{{ story.name }}</h5>
+                        <div class="text-muted small">{{ story.role }}{% if story.company %}, {{ story.company }}{% endif %}</div>
                     </div>
                 </div>
             </div>
-            
-            <div class="col-md-5">
-                <div class="card plan-card border-0 shadow-sm premium-card animated-on-scroll slide-in-right">
-                    <div class="premium-header text-center">
-                        <span class="badge bg-white text-primary mb-2">RECOMMENDED</span>
-                        <h3 class="mb-0">Premium Plan</h3>
+            {% empty %}
+            <div class="text-center text-muted py-5">
+                <em>No success stories available at the moment.</em>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+<hr>
+<!-- Premium vs Free Section -->
+<section class="py-5 bg-light">
+    <div class="container">
+        <div class="row justify-content-center align-items-stretch g-4">
+            <div class="col-md-6 col-lg-5">
+                <div class="plan-card free-plan text-center shadow-sm">
+                    <div class="plan-header free-header py-4">
+                        <h3 class="mb-2">Free Plan</h3>
+                        <div class="plan-price mb-2"><span class="display-5 fw-bold">$0</span><span class="fs-5">/mo</span></div>
+                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2">Get Started</span>
                     </div>
-                    <div class="card-body p-4">
-                        <div class="text-center mb-4">
-                            <h4 class="mb-0">$29.99</h4>
-                            <p class="text-muted">per month</p>
-                        </div>
-                        <ul class="list-unstyled">
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Enhanced founder profile</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span><strong>Unlimited</strong> swipes</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Advanced investor filters</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>AI-powered matching</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Detailed analytics dashboard</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Profile boost (2x visibility)</span>
-                            </li>
-                            <li class="d-flex align-items-center mb-3">
-                                <i class="fas fa-check-circle text-success me-2"></i>
-                                <span>Post blogs & founder stories</span>
-                            </li>
+                    <div class="plan-body px-4 py-4">
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Basic Profile</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Limited Swipes</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Access to Public Content</li>
+                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i>Premium Filters</li>
+                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i>Priority Support</li>
                         </ul>
-                        <div class="text-center mt-4">
-                            <a href="{% url 'subscription:upgrade' %}" class="btn btn-gradient btn-lg w-100 py-3">
-                                <i class="fas fa-crown me-2"></i> Upgrade to Premium
-                            </a>
-                        </div>
+                        <a href="#" class="btn btn-outline-warning rounded-pill px-4">Sign Up Free</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-6 col-lg-5">
+                <div class="plan-card premium-plan text-center shadow-lg">
+                    <div class="plan-header premium-header py-4">
+                        <h3 class="mb-2">Premium Plan</h3>
+                        <div class="plan-price mb-2"><span class="display-5 fw-bold">$29</span><span class="fs-5">/mo</span></div>
+                        <span class="badge bg-orange-gradient text-white rounded-pill px-3 py-2">Most Popular</span>
+                    </div>
+                    <div class="plan-body px-4 py-4">
+                        <ul class="list-unstyled mb-4">
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Unlimited Swipes</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Advanced Filters</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Profile Boosts</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Priority Support</li>
+                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Exclusive Content</li>
+                        </ul>
+                        <a href="{% url 'subscription:upgrade' %}" class="btn btn-warning rounded-pill px-4 text-white fw-bold">Go Premium</a>
                     </div>
                 </div>
             </div>
@@ -506,70 +297,38 @@
     </div>
 </section>
 
+<hr>
+<!-- FAQ Section -->
 <!-- FAQ Section -->
 <section class="py-5 bg-light">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
-                <p class="lead text-muted">Answers to common questions from founders</p>
+                <h2 class="fw-bold mb-4">Frequently Asked Questions</h2>
+                <p class="lead text-muted">Everything founders need to know about FoundrFuse</p>
             </div>
         </div>
-        
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="accordion" id="founderFaqAccordion">
+                    {% for faq in faqs %}
                     <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                                What types of founders can use FoundrFuse?
+                        <h2 class="accordion-header" id="founderHeading{{ forloop.counter }}">
+                            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#founderCollapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="founderCollapse{{ forloop.counter }}">
+                                {{ faq.question }}
                             </button>
                         </h2>
-                        <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#founderFaqAccordion">
+                        <div id="founderCollapse{{ forloop.counter }}" class="accordion-collapse collapse {% if forloop.first %}show{% endif %}" aria-labelledby="founderHeading{{ forloop.counter }}" data-bs-parent="#founderFaqAccordion">
                             <div class="accordion-body">
-                                <p>FoundrFuse welcomes founders from all industries and at all stages - from pre-seed to Series B. Whether you're a tech startup, a D2C brand, or a social enterprise, our platform helps connect you with investors interested in your specific sector and stage.</p>
+                                <p>{{ faq.answer|linebreaks }}</p>
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
-                                How do I improve my chances of matching with investors?
-                            </button>
-                        </h2>
-                        <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#founderFaqAccordion">
-                            <div class="accordion-body">
-                                <p>Complete your profile thoroughly with clear information about your business, traction metrics, team background, and funding needs. Upload a concise pitch deck highlighting your unique value proposition. Our AI system will provide feedback to help optimize your profile. Premium users also benefit from profile boosts and advanced matching algorithms.</p>
-                            </div>
-                        </div>
+                    {% empty %}
+                    <div class="text-center text-muted py-5">
+                        <em>No FAQs available at the moment.</em>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
-                                What information should I include in my profile?
-                            </button>
-                        </h2>
-                        <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#founderFaqAccordion">
-                            <div class="accordion-body">
-                                <p>Your profile should include: business overview, traction metrics (users, revenue, growth), team background and expertise, funding history (if any), amount you're raising, intended use of funds, market size and opportunity, and competitive advantage. Premium users can also showcase customer testimonials and media mentions.</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="accordion-item border rounded-3 shadow-sm">
-                        <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
-                                How long does it typically take to find an investor match?
-                            </button>
-                        </h2>
-                        <div id="collapseFour" class="accordion-collapse collapse" aria-labelledby="headingFour" data-bs-parent="#founderFaqAccordion">
-                            <div class="accordion-body">
-                                <p>Timing varies based on your industry, stage, and funding needs. Many founders receive their first matches within 1-2 weeks of creating their profile. Premium users typically see faster results due to increased visibility and unlimited swipes. Remember that quality matches matter more than quantity - our system prioritizes relevant connections over random introductions.</p>
-                            </div>
-                        </div>
-                    </div>
+                    {% endfor %}
                 </div>
             </div>
         </div>
@@ -577,19 +336,24 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5" style="background: linear-gradient(45deg, var(--accent-color), var(--accent-color-secondary)); color: white;">
-    <div class="container py-5 text-center">
-        <div class="row justify-content-center">
-            <div class="col-lg-8">
-                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up">Ready to Fund Your Vision?</h2>
-                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Create your founder profile today and start connecting with investors who can help bring your ideas to life.</p>
-                <div class="animated-on-scroll fade-in-up delay-2">
-                    <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill">
-                        <i class="fas fa-rocket me-2"></i> Create Founder Profile
-                    </a>
-                </div>
-            </div>
+<section class="py-5" style="background: linear-gradient(60deg,rgb(255, 81, 0),rgb(3, 4, 53)); color: white;">
+  <div class="container py-5 text-center">
+    <div class="row justify-content-center">
+      <div class="col-lg-8">
+        <h2 class="display-5 fw-bold mb-3 animated-on-scroll fade-in-up">
+          🚀 Ready to Fund Your Vision?
+        </h2>
+        <p class="lead mb-4 animated-on-scroll fade-in-up delay-1">
+          Create your founder profile and connect with investors who believe in your dream.
+        </p>
+        <div class="animated-on-scroll fade-in-up delay-2">
+          <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold shadow-sm">
+            <i class="fas fa-rocket me-2 text-warning"></i> Get Started Now
+          </a>
         </div>
+      </div>
     </div>
+  </div>
 </section>
+
 {% endblock %}

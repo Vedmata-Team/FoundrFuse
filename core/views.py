@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial
+from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ, FounderSuccessStory, FounderFAQ
 
 def home(request):
     testimonials = Testimonial.objects.all()
@@ -16,11 +16,24 @@ def home(request):
 def about(request):
     return render(request, 'core/about.html', {'title': 'About Us'})
 
+
 def features(request):
-    return render(request, 'core/features.html', {'title': 'Features'})
+    faqs = FeatureFAQ.objects.all()
+    context = {
+        'title': 'Features',
+        'faqs': faqs,
+    }
+    return render(request, 'core/features.html', context)
+
 
 def founders(request):
-    return render(request, 'core/founders.html', {'title': 'For Founders'})
+    success_stories = FounderSuccessStory.objects.all()
+    faqs = FounderFAQ.objects.all()
+    return render(request, 'core/founders.html', {
+        'title': 'For Founders',
+        'success_stories': success_stories,
+        'faqs': faqs,
+    })
 
 def investors(request):
     return render(request, 'core/investors.html', {'title': 'For Investors'})

@@ -181,3 +181,49 @@ class Testimonial(models.Model):
 
     def __str__(self):
         return f"{self.name} ({self.get_user_type_display()})"
+
+class FeatureFAQ(models.Model):
+    question = models.CharField(max_length=255, help_text="FAQ question for the Feature page.")
+    answer = models.TextField(help_text="Answer to the FAQ question.")
+    order = models.PositiveIntegerField(default=0, help_text="Order of appearance on the Feature page.")
+
+    class Meta:
+        verbose_name = "Feature Page FAQ"
+        verbose_name_plural = "Feature Page FAQs"
+        ordering = ['order']
+
+    def __str__(self):
+        return self.question
+
+
+
+
+class FounderSuccessStory(models.Model):
+    name = models.CharField(max_length=100, help_text="Name of the founder.")
+    role = models.CharField(max_length=100, blank=True, help_text="Role or title (e.g., Founder & CEO).")
+    company = models.CharField(max_length=100, blank=True, help_text="Company or startup name.")
+    quote = models.TextField(help_text="Success story or testimonial quote.")
+    avatar = models.ImageField(upload_to='success_stories/', blank=True, null=True, help_text="Photo of the founder.")
+    order = models.PositiveIntegerField(default=0, help_text="Display order.")
+
+    class Meta:
+        verbose_name = "Founder Success Story"
+        verbose_name_plural = "Founder Success Stories"
+        ordering = ['order']
+
+    def __str__(self):
+        return f"{self.name} ({self.company})"
+
+
+class FounderFAQ(models.Model):
+    question = models.CharField(max_length=255, help_text="FAQ question for the Founders page.")
+    answer = models.TextField(help_text="Answer to the FAQ question.")
+    order = models.PositiveIntegerField(default=0, help_text="Order of appearance on the Founders page.")
+
+    class Meta:
+        verbose_name = "Founder Page FAQ"
+        verbose_name_plural = "Founder Page FAQs"
+        ordering = ['order']
+
+    def __str__(self):
+        return self.question

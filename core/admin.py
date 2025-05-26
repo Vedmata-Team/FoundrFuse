@@ -7,7 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 from import_export.formats import base_formats
 from xhtml2pdf import pisa
 from io import BytesIO
-from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings, Testimonial
+from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ
 
 # Base PDF export mixin
 class PDFExportMixin:
@@ -206,6 +206,51 @@ class TestimonialAdmin(admin.ModelAdmin):
                 "<li><b>Avatar</b>: Optional profile image.</li>"
                 "<li><b>Text</b>: The testimonial itself.</li>"
                 "</ul>"
+            )
+        }),
+    )
+
+@admin.register(FeatureFAQ)
+class FeatureFAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'order')
+    search_fields = ('question', 'answer')
+    ordering = ('order',)
+    fieldsets = (
+        (None, {
+            'fields': ('question', 'answer', 'order'),
+            'description': (
+                "<b>Note:</b> These FAQs will appear on the <b>Feature Page</b> under the FAQ section."
+            )
+        }),
+    )
+    
+    
+from .models import FounderSuccessStory, FounderFAQ
+
+@admin.register(FounderSuccessStory)
+class FounderSuccessStoryAdmin(admin.ModelAdmin):
+    list_display = ('name', 'company', 'role', 'order')
+    search_fields = ('name', 'company', 'role', 'quote')
+    ordering = ('order',)
+    fieldsets = (
+        (None, {
+            'fields': ('name', 'role', 'company', 'quote', 'avatar', 'order'),
+            'description': (
+                "<b>Note:</b> These success stories will appear on the <b>Founders Page</b> in the Success Stories section."
+            )
+        }),
+    )
+
+@admin.register(FounderFAQ)
+class FounderFAQAdmin(admin.ModelAdmin):
+    list_display = ('question', 'order')
+    search_fields = ('question', 'answer')
+    ordering = ('order',)
+    fieldsets = (
+        (None, {
+            'fields': ('question', 'answer', 'order'),
+            'description': (
+                "<b>Note:</b> These FAQs will appear on the <b>Founders Page</b> under the FAQ section."
             )
         }),
     )
