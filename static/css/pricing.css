@@ -1,0 +1,167 @@
+.pricing-hero {
+        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/gff7a8a17644d042489aede50dd473c2c1d0ed990e5ddbe271672c0ae9275db36285da24f804ba1da90b38bc86474a125868cdd859d935a94c3741e04923fe6db_1280.jpg');
+        background-size: cover;
+        background-position: center;
+        padding: 120px 0;
+        color: white;
+    }
+    
+    .pricing-toggle {
+        display: inline-flex;
+        background-color: #f0f0f0;
+        border-radius: 30px;
+        padding: 5px;
+        margin-bottom: 40px;
+    }
+    
+    .pricing-toggle-btn {
+        padding: 10px 25px;
+        border-radius: 30px;
+        border: none;
+        background: none;
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+    
+    .pricing-toggle-btn.active {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        color: white;
+        box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+    }
+    
+    .pricing-card {
+        border-radius: 22px;
+        overflow: hidden;
+        transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+        height: 100%;
+        border: none;
+        background: #fff;
+        box-shadow: 0 8px 32px rgba(127,0,255,0.08);
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-12px) scale(1.03);
+        box-shadow: 0 24px 64px rgba(127,0,255,0.18);
+    }
+    
+    .premium-glow {
+        box-shadow: 0 0 0 4px #e100ff33, 0 8px 32px rgba(127,0,255,0.12);
+        animation: premiumGlow 2.5s infinite alternate;
+    }
+    
+    @keyframes premiumGlow {
+        0% { box-shadow: 0 0 0 4px #e100ff33, 0 8px 32px rgba(127,0,255,0.12);}
+        100% { box-shadow: 0 0 0 12px #e100ff22, 0 16px 48px rgba(127,0,255,0.18);}
+    }
+    
+    .pricing-header {
+        padding: 36px 24px 24px 24px;
+        text-align: center;
+        color: white;
+    }
+    
+    .free-header {
+        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    }
+    
+    .premium-header {
+        background: linear-gradient(45deg, var(--accent-color, #e100ff), var(--accent-color-secondary, #7f00ff));
+    }
+    
+    .pricing-price {
+        font-size: 3.2rem;
+        font-weight: bold;
+        margin-bottom: 0;
+        letter-spacing: 1px;
+        animation: popIn 1s cubic-bezier(.4,2,.6,1);
+    }
+    
+    @keyframes popIn {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .price-period {
+        font-size: 1.1rem;
+        opacity: 0.8;
+    }
+    
+    .popular-badge {
+        position: absolute;
+        top: 0;
+        right: 30px;
+        background: linear-gradient(90deg, #ff6b00, #ffb347);
+        color: white;
+        padding: 8px 18px;
+        font-weight: 600;
+        border-radius: 0 0 14px 14px;
+        box-shadow: 0 5px 10px rgba(255,107,0,0.10);
+        letter-spacing: 1px;
+        z-index: 2;
+        font-size: 1rem;
+        animation: badgePop 1.2s cubic-bezier(.4,2,.6,1);
+    }
+    
+    @keyframes badgePop {
+        0% { transform: scale(0.7); opacity: 0; }
+        100% { transform: scale(1); opacity: 1; }
+    }
+    
+    .feature-check {
+        color: var(--primary-color, #7f00ff);
+        margin-right: 10px;
+        font-size: 1.2rem;
+        transition: color 0.2s;
+    }
+    
+    .feature-times {
+        color: #ccc;
+        margin-right: 10px;
+        font-size: 1.2rem;
+    }
+    
+    .pricing-card ul {
+        padding-left: 0;
+        margin-bottom: 0;
+    }
+    
+    .pricing-card li {
+        font-size: 1.08rem;
+        font-weight: 500;
+        color: #333;
+        transition: color 0.2s;
+    }
+    
+    .pricing-card li .text-muted {
+        color: #bbb !important;
+    }
+    
+    .premium-btn {
+        background: linear-gradient(45deg, var(--accent-color, #e100ff), var(--accent-color-secondary, #7f00ff));
+        border: none;
+        color: white;
+        font-weight: 600;
+        transition: all 0.3s;
+    }
+    
+    .premium-btn:hover {
+        transform: translateY(-3px) scale(1.03);
+        box-shadow: 0 10px 24px rgba(225,0,255,0.18);
+        color: white;
+    }
+    
+    .btn-outline-primary {
+        border-width: 2px;
+        font-weight: 600;
+    }
+    
+    @media (max-width: 991px) {
+        .pricing-card {
+            margin-bottom: 32px;
+        }
+    }
