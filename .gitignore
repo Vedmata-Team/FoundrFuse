@@ -73,3 +73,5 @@ dmypy.json
 *.egg-info/
 dist/
 build/
+*.pyc
+*.pyc
