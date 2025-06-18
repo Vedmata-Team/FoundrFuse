@@ -12,7 +12,10 @@
 <section class="founders-hero py-5 bg-light">
   <div class="container">
     <div class="row align-items-center justify-content-between">
+        <div class="hero">
+        <div class="content">
       <div class="col-lg-6 text-center text-lg-start">
+        
         <h1 class="display-5 fw-bold mb-3 text-dark">
           Fueling Visionaries with Smart Capital
         </h1>
@@ -28,12 +31,21 @@
           </a>
         </div>
       </div>
+    </div>
+    <div class="img">
       <div class="col-lg-5 mt-5 mt-lg-0 text-center">
         <div class="position-relative">
+<<<<<<< HEAD
           <img src="{% static ''%}" alt="Founder Pitching" class="img-fluid rounded-4 shadow-lg" style="max-height: 400px;">
           <span class="badge bg-success position-absolute top-0 start-0 m-3 px-3 py-2 rounded-pill">
+=======
+          <img src="{% static 'img/pitching.jpg'%}" alt="Founder Pitching" class="img-fluid rounded-4 shadow-lg" style="max-height: 700px;">
+          <span class="badge bg-success position-absolute top-0 start-0  rounded-pill">
+>>>>>>> 346bf7db738b8a85d9aa460e977a8fadaff2ac99
             Trusted by 1,000+ Founders
           </span>
+        </div>
+    </div>
         </div>
       </div>
     </div>
@@ -337,7 +349,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5" style="background: linear-gradient(60deg,rgb(255, 81, 0),rgb(3, 4, 53)); color: white;">
+<section class="py-5" style="background: linear-gradient(60deg,rgb(184, 149, 221),rgb(3, 4, 53)); color: white;">
   <div class="container py-5 text-center">
     <div class="row justify-content-center">
       <div class="col-lg-8">
@@ -348,7 +360,7 @@
           Create your founder profile and connect with investors who believe in your dream.
         </p>
         <div class="animated-on-scroll fade-in-up delay-2">
-          <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold shadow-sm">
+          <a href="{% url 'accounts:register' %}" class="btn btn-light btn-lg px-5 py-3 rounded-pill fw-semibold shadow-sm ">
             <i class="fas fa-rocket me-2 text-warning"></i> Get Started Now
           </a>
         </div>

@@ -6,6 +6,7 @@
 {% block extra_css %}
 <style>
     .investors-hero {
+<<<<<<< HEAD
 
         /*  */
 
@@ -20,12 +21,16 @@
     .investors-hero {
         position: relative;
         background: url("{% static 'img/foundr_img.jpg' %}") no-repeat center center;
+=======
+        background: linear-gradient(rgba(56, 58, 226, 0.7), rgba(117, 57, 140, 0.7)), url('https://pixabay.com/get/gc63138f6b553e278df70f57514f2bebdd3c285f0f023b2b5b6fb080f492ea423cc83d04384608571a58cd59c8d6ad19c78ea75d061ec24c25adc6be2a5b961c2_1280.jpg');
+>>>>>>> 346bf7db738b8a85d9aa460e977a8fadaff2ac99
         background-size: cover;
         background-position: center;
         padding: 120px 0;
         color: white;
         overflow: hidden;
     }
+<<<<<<< HEAD
 
     .investors-hero::before {
         content: "";
@@ -175,6 +180,99 @@
         color: #ffffff;
     }
 
+=======
+        .investors-hero .d-flex.flex-wrap.gap-3 {
+        justify-content: center !important;
+        align-items: center;
+        display: flex;
+        gap: 1rem;
+    }
+
+  
+    
+   
+     .btn-gradient, .btn.btn-gradient {
+        background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+        color: #fff !important;
+        border: none;
+        box-shadow: 0 4px 18px 0 rgba(127,0,255,0.10);
+        transition: background 0.2s, box-shadow 0.2s, transform 0.15s;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 50px;
+        position: relative;
+        overflow: hidden;
+        text-decoration: none;
+    }
+    .btn-gradient:hover, .btn-gradient:focus {
+        background: linear-gradient(90deg, var(--secondary-color), var(--primary-color));
+        color: #fff !important;
+        box-shadow: 0 8px 32px 0 rgba(127,0,255,0.18);
+        transform: translateY(-2px) scale(1.04);
+    }
+
+    .btn-outline-light, .btn.btn-outline-light {
+        border: 2px solid #fff;
+        background: transparent;
+        color: #fff !important;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 50px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+        text-decoration:none;
+    }
+    .btn-outline-light:hover, .btn-outline-light:focus {
+        background: #fff;
+        color: var(--primary-color) !important;
+        box-shadow: 0 4px 18px 0 rgba(127,0,255,0.10);
+    }
+
+    .btn-outline-primary, .btn.btn-outline-primary {
+        border: 2px solid var(--primary-color);
+        background: transparent;
+        color: var(--primary-color) !important;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 50px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .btn-outline-primary:hover, .btn-outline-primary:focus {
+        background: var(--primary-color);
+        color: #fff !important;
+        box-shadow: 0 4px 18px 0 rgba(127,0,255,0.10);
+    }
+
+    .btn-light, .btn.btn-light {
+        background: #fff;
+        color: var(--primary-color) !important;
+        border: 2px solid #fff;
+        font-weight: 700;
+        letter-spacing: 0.5px;
+        border-radius: 50px;
+        transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+    }
+    .btn-light:hover, .btn-light:focus {
+        background: var(--primary-color);
+        color: #fff !important;
+        box-shadow: 0 4px 18px 0 rgba(127,0,255,0.10);
+    }
+
+    /* Make all large buttons a bit bolder and more modern */
+    .btn-lg, .btn.btn-lg {
+        font-size: 1.15rem;
+        padding: 0.9rem 2.2rem;
+        font-weight: 700;
+        border-radius: 50px;
+    }
+
+    /* Add a little bounce on click */
+    .btn:active {
+        transform: scale(0.97);
+        box-shadow: 0 2px 8px rgba(127,0,255,0.08);
+    }
+    
+    
+>>>>>>> 346bf7db738b8a85d9aa460e977a8fadaff2ac99
     .feature-card {
         border-radius: 15px;
         overflow: hidden;
@@ -736,6 +834,7 @@
 {% block content %}
 <!-- Hero Section -->
 <section class="investors-hero">
+<<<<<<< HEAD
     <div class="container   ">
         <div class="container_col">
 
@@ -753,6 +852,25 @@
                             <i class="fas fa-info-circle me-2 "></i> Learn How It Works
                         </a>
                     </div>
+=======
+    <div class="container">
+        <div class="row align-items-center">
+            <div class="col-lg-7 mb-5 mb-lg-0">
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Discover Your Next Investment</h1>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">FoundrFuse helps investors efficiently find promising startups aligned with their investment thesis and portfolio strategy.</p>
+                <div class="d-flex flex-wrap gap-3 animated-on-scroll fade-in-up delay-2">
+                    <a href="{% url 'accounts:register' %}" class="btn btn-gradient btn-lg px-4 py-3 rounded-pill">
+                        <i class="fas fa-user-plus me-2"></i> Create Investor Profile
+                    </a>
+                    <a href="#how-it-works" class="btn btn-outline-light btn-lg px-4 py-3 rounded-pill">
+                        <i class="fas fa-info-circle me-2"></i> Learn How It Works
+                    </a>
+                </div>
+            </div>
+            <div class="col-lg-5 d-flex justify-content-center">
+                <div class="animated-on-scroll slide-in-right">
+                    <img src="{% static 'img/invest-meet.jpg'%}" alt="Investment Meeting" class="img-fluid rounded-3 shadow" style="max-height: 400px;">
+>>>>>>> 346bf7db738b8a85d9aa460e977a8fadaff2ac99
                 </div>
 
 

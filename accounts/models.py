@@ -1,6 +1,8 @@
 from django.db import models
 from django.contrib.auth.models import User
 from django.utils.text import slugify
+from django.db.models.signals import post_save
+from django.dispatch import receiver
 
 class Profile(models.Model):
     USER_TYPES = (
@@ -109,3 +111,8 @@ def register(request):
                 profile.investment_range = form.cleaned_data['investment_range']
             profile.save()
             # ...login or redirect...
+
+@receiver(post_save, sender=User)
+def create_user_profile(sender, instance, created, **kwargs):
+    if created:
+        Profile.objects.get_or_create(user=instance)

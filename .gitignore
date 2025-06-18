@@ -1,4 +1,84 @@
-.gitignore
-pip-build-tracker-1kwlx_s_
-pip-ephem-wheel-cache-qpaxp98h
-pip-install-vikmga9k
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Django stuff:
+*.log
+*.pot
+*.pyc
+*.pyo
+*.db
+*.sqlite3
+db.sqlite3
+media/
+staticfiles/
+static_root/
+local_settings.py
+
+# Cache
+.cache/
+*.cache
+
+# VS Code settings
+.vscode/
+
+# Virtual environments
+env/
+venv/
+ENV/
+.venv/
+env.bak/
+venv.bak/
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Pip
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Test and coverage reports
+htmlcov/
+.tox/
+.nox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*.cover
+*.py,cover
+
+# MyPy
+.mypy_cache/
+.dmypy.json
+dmypy.json
+
+# Pytest
+.pytest_cache/
+
+# Jupyter Notebook
+.ipynb_checkpoints
+
+# dotenv
+.env
+.env.*
+
+# Sentry
+.sentryclirc
+
+# Local apps
+*.egg-info/
+dist/
+build/
+*.pyc
+*.pyc
+/accounts/__pycache__
+
+/core/__pycache__
+*.pyc
+__pycache__
+/core/migrations/__pycache__
+core/migrations/__pycache__/0002_sitesettings_about_description_sitesettings_address_and_more.cpython-312.pyc
