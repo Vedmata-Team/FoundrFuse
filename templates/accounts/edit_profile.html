@@ -1,8 +1,16 @@
 {% extends 'base.html' %}
+{% load static %}
+{% load i18n %}
+
+
 {% block title %}Edit Profile | FoundrFuse{% endblock %}
 
+{% block extra_css %}
+<link rel="stylesheet" href="{% static 'css/edit_profile.css' %}">
+{% endblock %}
+
 {% block content %}
-<div class="container mt-5">
+<div class="edit-profile-container">
     <h2>Edit Profile</h2>
     <form method="post" enctype="multipart/form-data">
         {% csrf_token %}

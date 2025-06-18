@@ -1,0 +1,110 @@
+:root {
+  --profile-bg: linear-gradient(135deg, #f8fafc 60%, #e0c3fc 100%);
+  --glass-bg: rgba(255,255,255,0.85);
+  --glass-blur: blur(10px);
+  --card-radius: 18px;
+  --card-shadow: 0 8px 32px rgba(127,0,255,0.10), 0 2px 8px rgba(0,0,0,0.03);
+  --primary: #7F00FF;
+  --primary-dark: #2d1e6b;
+  --gray-border: #ece9f7;
+  --gray-text: #6c6f7a;
+}
+
+body {
+  background: var(--profile-bg);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--primary-dark);
+}
+
+.edit-profile-container {
+  max-width: 520px;
+  margin: 48px auto;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 40px 32px 32px 32px;
+  position: relative;
+}
+
+.edit-profile-container h2 {
+  font-weight: 800;
+  color: var(--primary-dark);
+  margin-bottom: 28px;
+  text-align: center;
+  letter-spacing: -1px;
+}
+
+.edit-profile-container form {
+  margin-top: 12px;
+}
+
+.edit-profile-container label {
+  font-weight: 600;
+  color: var(--primary);
+  margin-bottom: 6px;
+}
+
+.edit-profile-container input,
+.edit-profile-container select,
+.edit-profile-container textarea {
+  border-radius: 10px;
+  border: 1px solid var(--gray-border);
+  padding: 12px 14px;
+  margin-bottom: 18px;
+  width: 100%;
+  font-size: 1rem;
+  background: #f8fafc;
+  transition: border-color 0.2s;
+}
+
+.edit-profile-container input:focus,
+.edit-profile-container select:focus,
+.edit-profile-container textarea:focus {
+  border-color: var(--primary);
+  outline: none;
+  background: #fff;
+}
+
+.edit-profile-container .btn-primary {
+  background: linear-gradient(90deg, #7F00FF, #E100FF);
+  border: none;
+  color: #fff;
+  font-weight: 700;
+  border-radius: 10px;
+  padding: 12px 28px;
+  box-shadow: 0 2px 8px rgba(127,0,255,0.08);
+  transition: background 0.2s, transform 0.2s;
+}
+
+.edit-profile-container .btn-primary:hover {
+  background: linear-gradient(90deg, #E100FF, #7F00FF);
+  transform: translateY(-2px) scale(1.03);
+}
+
+.edit-profile-container .btn-secondary {
+  background: #fff;
+  color: var(--primary-dark);
+  border: 1px solid var(--gray-border);
+  font-weight: 600;
+  border-radius: 10px;
+  padding: 12px 28px;
+  margin-left: 10px;
+  transition: background 0.2s, color 0.2s;
+}
+
+.edit-profile-container .btn-secondary:hover {
+  background: #f3eaff;
+  color: var(--primary);
+}
+
+@media (max-width: 767.98px) {
+  .edit-profile-container {
+    padding: 24px 8px 18px 8px;
+    margin: 24px 8px;
+  }
+  .edit-profile-container h2 {
+    font-size: 1.5rem;
+    margin-bottom: 18px;
+  }
+}

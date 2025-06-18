@@ -6,6 +6,7 @@
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/animations.css' %}">
 <link rel="stylesheet" href="{% static 'css/graphics.css' %}">
+<link rel="stylesheet" href="{% static 'css/discover.css' %}">
 <style>
     .discover-container {
         min-height: calc(100vh - 76px - 300px);
@@ -465,7 +466,7 @@
 
             {% if profiles %}
                 {% for profile in profiles %}
-                <div class="swipe-card {% if profile.user.profile.user_type == 'founder' %}founder-card{% else %}investor-card{% endif %} {% if not forloop.first %}d-none{% endif %}" data-profile-id="{{ profile.id }}">
+                <div class="swipe-card animate-on-scroll fade-in {% if profile.user.profile.user_type == 'founder' %}founder-card{% else %}investor-card{% endif %} {% if not forloop.first %}d-none{% endif %}" data-profile-id="{{ profile.id }}">
                     <div class="swipe-card-header">
                         <div class="profile-avatar">
                             {{ profile.user.first_name|first }}{{ profile.user.last_name|first }}

@@ -2,7 +2,7 @@
     .hero-section {
         padding: 120px 0;
         position: relative;
-        overflow: hidden;
+        /* overflow: hidden; */
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     }
     
@@ -543,27 +543,7 @@
     }
     
 
-     .nav-pills .nav-link {
-        font-weight: 600;
-        font-size: 1rem;
-        padding: 10px 25px;
-        border-radius: 50px;
-        color: #333;
-        background-color: #f2f2f2;
-        transition: all 0.3s ease;
-        box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-    }
 
-    .nav-pills .nav-link.active {
-        color: #fff;
-        background-color: #007bff;
-        box-shadow: 0 4px 12px rgba(0, 123, 255, 0.3);
-    }
-
-    .nav-pills .nav-link:hover {
-        background-color: #e0e0e0;
-        color: #000;
-    }
 
     /* CTA Section */
     .cta-section {

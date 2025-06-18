@@ -22,249 +22,14 @@
     
     <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
-    
-    <style>
-        /* Custom Variables */
-        :root {
-            --primary-color: #3B0D8B;
-            --secondary-color: #7F00FF;
-            --accent-color: #F72585;
-            --accent-secondary: #FF6B00;
-            --background-color: #FAFAFA;
-            --dark-gray: #343a40;
-            --light-gray: #f8f9fa;
-            --medium-gray: #6c757d;
-            --black: #212529;
-            --white: #FFFFFF;
-        }
-        
-        body {
-            font-family: 'Poppins', 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
-            background-color: var(--background-color);
-            color: var(--black);
-            line-height: 1.6;
-        }
-        
-        /* Navigation */
-        .navbar-brand {
-            font-weight: 700;
-            font-size: 1.5rem;
-            background: linear-gradient(to right, var(--primary-color), var(--secondary-color));
-            -webkit-background-clip: text;
-            background-clip: text;
-            color: transparent;
-        }
-        
-        .navbar {
-            background-color: white;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
-            padding: 15px 0;
-        }
-        
-        .nav-link {
-            font-weight: 500;
-            color: var(--black);
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .nav-link:hover {
-            color: var(--primary-color);
-        }
-        
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: 0;
-            left: 0;
-            background-color: var(--primary-color);
-            transition: width 0.3s ease;
-        }
-        
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        .active .nav-link {
-            color: var(--primary-color);
-        }
-        
-        .active .nav-link::after {
-            width: 100%;
-        }
-        
-        /* Buttons */
-        .btn-primary {
-            background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
-            border: none;
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-primary:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
-        }
-        
-        .btn-accent {
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
-            border: none;
-            color: var(--white);
-            padding: 10px 20px;
-            border-radius: 8px;
-            transition: all 0.3s ease;
-        }
-        
-        .btn-accent:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-            background: linear-gradient(45deg, var(--accent-secondary), var(--accent-color));
-        }
-        
-        /* Footer */
-        .footer {
-            background-color: var(--dark-gray);
-            color: var(--light-gray);
-            padding: 60px 0 30px;
-        }
-        
-        .footer h5 {
-            color: white;
-            margin-bottom: 20px;
-            font-weight: 600;
-        }
-        
-        .footer-links {
-            list-style: none;
-            padding: 0;
-        }
-        
-        .footer-links li {
-            margin-bottom: 10px;
-        }
-        
-        .footer-links a {
-            color: var(--light-gray);
-            text-decoration: none;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .footer-links a:hover {
-            color: white;
-        }
-        
-        .footer-links a::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -3px;
-            left: 0;
-            background-color: white;
-            transition: width 0.3s ease;
-        }
-        
-        .footer-links a:hover::after {
-            width: 100%;
-        }
-        
-        .social-icons {
-            display: flex;
-        }
-        
-        .social-icon {
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background-color: rgba(255, 255, 255, 0.1);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            margin-right: 10px;
-            color: white;
-            transition: all 0.3s ease;
-        }
-        
-        .social-icon:hover {
-            background-color: var(--primary-color);
-            transform: translateY(-3px);
-        }
-        
-        .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.1);
-            padding-top: 20px;
-            margin-top: 40px;
-        }
-        
-        /* Alerts */
-        .alert {
-            border-radius: 10px;
-            padding: 15px;
-            margin-bottom: 20px;
-            border: none;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
-        }
-        
-        .alert-success {
-            background-color: #d4edda;
-            color: #155724;
-        }
-        
-        .alert-warning {
-            background-color: #fff3cd;
-            color: #856404;
-        }
-        
-        .alert-danger {
-            background-color: #f8d7da;
-            color: #721c24;
-        }
-        
-        .alert-info {
-            background-color: #d1ecf1;
-            color: #0c5460;
-        }
-        
-        /* Premium badge */
-        .premium-badge {
-            display: inline-flex;
-            align-items: center;
-            background: linear-gradient(45deg, var(--accent-color), var(--accent-secondary));
-            color: white;
-            padding: 3px 8px;
-            border-radius: 20px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-        }
-        
-        .premium-badge i {
-            margin-right: 3px;
-        }
-        
-        /* Responsive */
-        @media (max-width: 991.98px) {
-            .navbar-collapse {
-                margin-top: 10px;
-            }
-            
-            .navbar-nav .nav-link {
-                padding: 10px 0;
-            }
-        }
-    </style>
 </head>
 <body>
     <!-- Navigation -->
-    <nav class="navbar navbar-expand-lg navbar-light">
+    <nav class="navbar navbar-expand-lg ">
         <div class="container">
-            <a class="navbar-brand" href="{% url 'core:home' %}">
-                FoundrFuse <i class="fas fa-fire-alt"></i>
+            <a class="navbar-brand d-flex align-items-center" href="{% url 'core:home' %}">
+                <i class="fas fa-fire-alt me-2"></i>
+                <span>FoundrFuse</span>
             </a>
             <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
@@ -272,64 +37,80 @@
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav me-auto">
                     <li class="nav-item {% if request.resolver_match.url_name == 'home' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:home' %}">Home</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:home' %}">
+                            <i class="fas fa-home me-2"></i> Home
+                        </a>
                     </li>
                     <li class="nav-item {% if request.resolver_match.url_name == 'features' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:features' %}">Features</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:features' %}">
+                            <i class="fas fa-bolt me-2"></i> Features
+                        </a>
                     </li>
                     <li class="nav-item {% if request.resolver_match.url_name == 'founders' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:founders' %}">For Founders</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:founders' %}">
+                            <i class="fas fa-lightbulb me-2"></i>Founders
+                        </a>
                     </li>
                     <li class="nav-item {% if request.resolver_match.url_name == 'investors' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:investors' %}">For Investors</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:investors' %}">
+                            <i class="fas fa-coins me-2"></i>Investors
+                        </a>
                     </li>
                     <li class="nav-item {% if request.resolver_match.url_name == 'pricing' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:pricing' %}">Pricing</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:pricing' %}">
+                            <i class="fas fa-tags me-2"></i> Pricing
+                        </a>
                     </li>
                     <li class="nav-item {% if request.resolver_match.url_name == 'blog_list' %}active{% endif %}">
-                        <a class="nav-link" href="{% url 'core:blog_list' %}">Blog</a>
+                        <a class="nav-link d-flex align-items-center" href="{% url 'core:blog_list' %}">
+                            <i class="fas fa-blog me-2"></i> Blog
+                        </a>
                     </li>
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
                         <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-circle me-1"></i> {{ user.get_full_name|default:user.username }}
+                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                <i class="fas fa-user-circle me-2"></i> {{ user.get_full_name|default:user.username }}
                                 {% if user.profile.is_premium %}
-                                <span class="premium-badge"><i class="fas fa-crown"></i></span>
+                                <span class="premium-badge ms-2"><i class="fas fa-crown"></i></span>
                                 {% endif %}
                             </a>
                             <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="{% url 'accounts:profile' %}"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:edit_profile' %}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:discover' %}"><i class="fas fa-search me-2"></i> Discover</a></li>
-                                <li><a class="dropdown-item" href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i> Matches</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:profile' %}"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:edit_profile' %}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:discover' %}"><i class="fas fa-search me-2"></i> Discover</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i> Matches</a></li>
                                 {% if not user.profile.is_premium %}
                                 <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item" href="{% url 'subscription:upgrade' %}"><i class="fas fa-crown me-2"></i> Upgrade to Premium</a></li>
+                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'subscription:upgrade' %}"><i class="fas fa-crown me-2"></i> Upgrade to Premium</a></li>
                                 {% endif %}
                                 <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form method="post" action="{% url 'accounts:logout' %}">
                                         {% csrf_token %}
-                                        <button type="submit" class="btn btn-link"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
+                                        <button type="submit" class="btn btn-link d-flex align-items-center"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
                                     </form>
                                 </li>
                             </ul>
                         </li>
                     {% else %}
                         <li class="nav-item">
-                            <a class="nav-link" href="{% url 'accounts:login' %}">Login</a>
+                            <a class="nav-link d-flex align-items-center" href="{% url 'accounts:login' %}">
+                                <i class="fas fa-sign-in-alt me-2"></i> Login
+                            </a>
                         </li>
                         <li class="nav-item">
-                            <a class="btn btn-primary" href="{% url 'accounts:register' %}">Register</a>
+                            <a class="btn btn-primary d-flex align-items-center" href="{% url 'accounts:register' %}">
+                                <i class="fas fa-user-plus me-2"></i> Register
+                            </a>
                         </li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-    
+        
     <!-- Flash Messages -->
     {% if messages %}
     <div class="container mt-3">
