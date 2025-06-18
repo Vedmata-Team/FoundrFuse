@@ -9,7 +9,9 @@
         border-radius: 15px;
         overflow: hidden;
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        border: none;
+         background: rgba(255, 255, 255, 0.8);
+         backdrop-filter: blur(12px);
+         border: 1px solid rgba(255, 255, 255, 0.3);
     }
     
     .register-header {
@@ -49,7 +51,11 @@
     .btn-register:hover {
         transform: translateY(-3px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+        background: linear-gradient(45deg, var(--secondary-color), var(--primary-color));
+
     }
+   
+
     
     .social-divider {
         text-align: center;

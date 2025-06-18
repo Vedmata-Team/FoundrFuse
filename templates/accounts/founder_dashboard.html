@@ -9,23 +9,122 @@
 <style>
     .dashboard-container {
         min-height: calc(100vh - 76px - 300px);
-        padding: 30px 0;
         position: relative;
         overflow-x: hidden;
     }
-    
+
+    .dashboard-container .container {
+        margin: 0 !important;
+        padding: 0 !important;
+        max-width: 100% !important;
+        width: 100% !important;
+    }
+
+
+
     .dashboard-welcome {
+        height: 300px;
         margin-bottom: 30px;
+        background: linear-gradient(135deg, #8936f7 0%, #f545f5 150%);
+        padding: 40px 40px 20px 80px;
+
+        color: white;
+
     }
-    
-    .stats-card {
-        padding: 20px;
-        height: 100%;
+
+
+    .welcome-btn {
         position: relative;
-        overflow: hidden;
-        z-index: 1;
+        padding: 15px;
+        margin: 10 0 10 0;
+        width: 11rem;
+        height: 3.5rem;
+        border: 1px white;
+        border-radius: 3rem;
+        cursor: pointer;
+        background: linear-gradient(to top, #f8f9fa 0%, #f2f4f5 100%);
+        font-size: 1.2rem;
+        font-weight: 550;
+        font-family: sans-serif;
+        letter-spacing: 1px;
+        transition: all 0.3s;
+        color: #7c29c0
     }
-    
+
+    .welcome-btn:before {
+        content: "";
+        position: absolute;
+        top: -2px;
+        left: -2px;
+        border-radius: 3rem;
+        width: 100%;
+        height: 100%;
+        padding: 2px;
+        background: linear-gradient(135deg, #f861ec 0%, #caa7f0 100%);
+        z-index: -1;
+    }
+
+    .welcome-btn:hover {
+        background: #315cfd;
+        background: linear-gradient(135deg, #f861ec 0%, #d3affa 100%);
+        color: white;
+        font-size: 1.3rem;
+        text-decoration: none;
+    }
+
+    /*recent-activity */
+
+    .recent-contianer {
+
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        margin: 40px 80px 40px 80px;
+
+
+    }
+
+    .recent-text {
+
+        font-size: 40px;
+    }
+
+    .activity-item {
+
+        background: #f8f9fa;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+        margin: 10px;
+        padding: 10px;
+    }
+
+    .stats-container {
+        margin: 80px 80px 40px 80px;
+
+    }
+
+    .stats-card {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        width: 190px;
+        height: 254px;
+        border-radius: 30px;
+        background: #e0e0e0;
+        box-shadow: 15px 15px 30px #bebebe,
+            -15px -15px 30px #ffffff;
+    }
+
+    .stats-card :hover {
+
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+    }
+
+
     .stats-icon {
         font-size: 30px;
         margin-bottom: 15px;
@@ -38,22 +137,23 @@
         background: rgba(59, 13, 139, 0.1);
         color: var(--primary);
     }
-    
+
     .stats-value {
         font-size: 2rem;
         font-weight: 700;
         margin-bottom: 5px;
     }
-    
+
     .stats-label {
         color: var(--gray-600);
         font-size: 0.9rem;
     }
-    
+
     .premium-feature {
+
         position: relative;
     }
-    
+
     .premium-overlay {
         position: absolute;
         top: 0;
@@ -71,13 +171,44 @@
         text-align: center;
         padding: 20px;
     }
-    
+
     .premium-lock-icon {
-        font-size: 40px;
+        font-size: 60px;
         margin-bottom: 15px;
-        color: var(--accent);
+        color: #770281;
     }
-    
+
+    .premium-btn {
+
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 15px 30px;
+        border: 0;
+        width: 270px;
+        height: 50px;
+        position: relative;
+        overflow: hidden;
+        border-radius: 10rem;
+        transition: all 0.04s;
+        cursor: pointer;
+        color: white;
+        z-index: 0;
+        box-shadow: 0 0px 7px -5px rgba(0, 0, 0, 0.5);
+        text-decoration: none;
+        background: linear-gradient(to right, #76038d, #5f216b);
+        font-size: 22px;
+    }
+
+    .premium-btn:hover {
+
+        transform: translateY(-10px);
+        box-shadow: 0 15px 30px rgba(128, 7, 133, 0.1);
+        text-decoration: none;
+        color: yellowgreen;
+    }
+
+
     .activity-item {
         padding: 15px;
         border-radius: 8px;
@@ -86,11 +217,11 @@
         align-items: center;
         transition: all 0.3s ease;
     }
-    
+
     .activity-item:hover {
         background-color: var(--gray-100);
     }
-    
+
     .activity-icon {
         width: 40px;
         height: 40px;
@@ -101,7 +232,7 @@
         margin-right: 15px;
         font-size: 1.2rem;
     }
-    
+
     .quick-action-btn {
         display: block;
         padding: 12px;
@@ -113,19 +244,19 @@
         border: 1px solid var(--gray-200);
         background-color: white;
     }
-    
+
     .quick-action-btn:hover {
         transform: translateY(-3px);
         box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
         color: var(--primary);
         border-color: var(--primary);
     }
-    
+
     .quick-action-icon {
         margin-right: 10px;
         color: var(--primary);
     }
-    
+
     .investor-card {
         position: relative;
         overflow: hidden;
@@ -134,16 +265,16 @@
         transition: all 0.3s ease;
         margin-bottom: 20px;
     }
-    
+
     .investor-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
     }
-    
+
     .investor-info {
         padding: 20px;
     }
-    
+
     .investor-header {
         padding: 20px;
         background: linear-gradient(135deg, var(--primary), var(--secondary));
@@ -151,7 +282,7 @@
         position: relative;
         overflow: hidden;
     }
-    
+
     .investor-header:before {
         content: '';
         position: absolute;
@@ -162,7 +293,7 @@
         background: rgba(255, 255, 255, 0.1);
         border-radius: 50%;
     }
-    
+
     .investor-avatar {
         width: 50px;
         height: 50px;
@@ -176,21 +307,21 @@
         font-size: 1.5rem;
         margin-bottom: 10px;
     }
-    
+
     .investor-action {
         padding: 10px 20px;
         border-top: 1px solid var(--gray-200);
         display: flex;
         justify-content: space-between;
     }
-    
+
     .chart-container {
         position: relative;
         margin-top: 20px;
         margin-bottom: 20px;
         height: 300px;
     }
-    
+
     .decorative-container {
         position: absolute;
         top: 0;
@@ -199,6 +330,270 @@
         height: 100%;
         z-index: -1;
         overflow: hidden;
+    }
+
+
+    .pending-container {
+
+        margin: 40px 120px 40px 120px;
+        padding: 20px;
+        background: #f8f9fa;
+        border-radius: 12px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        min-height: 300px;
+
+
+    }
+
+    .pending-btn {
+        display: inline-block;
+        padding: 12px 24px;
+        border: 1px solid #138a37;
+        border-radius: 5px;
+        transition: all 0.2s ease-in;
+        position: relative;
+        overflow: hidden;
+        font-size: 19px;
+        cursor: pointer;
+        color: rgb(27, 184, 97);
+        z-index: 1;
+    }
+
+    .pending-btn:before {
+        content: "";
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.25);
+        top: 100%;
+        width: 140%;
+        height: 180%;
+        background-color: rgba(0, 0, 0, 0.05);
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+    }
+
+    .pending-btn:after {
+        content: "";
+        position: absolute;
+        left: 55%;
+        transform: translateX(-50%) scaleY(1) scaleX(1.45);
+        top: 180%;
+        width: 160%;
+        height: 190%;
+        background-color: #39bda7;
+        border-radius: 50%;
+        display: block;
+        transition: all 0.5s 0.1s cubic-bezier(0.55, 0, 0.1, 1);
+        z-index: -1;
+    }
+
+    .pending-btn:hover {
+        color: #ffffff;
+        border: 1px solid #318f63ad;
+        text-decoration: none;
+    }
+
+    .pending-btn:hover:before {
+        top: -35%;
+        background-color: #318f63ad;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+        text-decoration: none;
+    }
+
+    .pending-btn:hover:after {
+        top: -45%;
+        background-color: #318f63ad;
+        transform: translateX(-50%) scaleY(1.3) scaleX(0.8);
+        text-decoration: none;
+    }
+
+
+    .profile-completeness-container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        /* Agar vertical center bhi chahiye */
+       
+        min-height: 100vh;
+         width: 100vw;
+        /* Pure page ke center ke liye */
+    }
+
+    .profile-completeness-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+        max-width: 400px;
+        text-align: center;
+    }
+
+    .profile-completeness-card h4 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+    }
+
+    .profile-completeness-progress {
+        margin-bottom: 20px;
+    }
+
+    .profile-completeness-bar {
+        background: #e0e0e0;
+        border-radius: 10px;
+        overflow: hidden;
+        height: 10px;
+        width: 100%;
+    }
+
+    .profile-completeness-bar-inner {
+        background: linear-gradient(to right, #76038d, #5f216b);
+        height: 100%;
+        transition: width 0.4s ease;
+    }
+
+    .profile-completeness-tasks {
+        text-align: left;
+        margin-bottom: 20px;
+    }
+
+    .profile-completeness-btn {
+        background: linear-gradient(to right, #76038d, #5f216b);
+        color: white;
+        padding: 12px 24px;
+        border: none;
+        border-radius: 10rem;
+        cursor: pointer;
+        transition: all 0.3s;
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+    }
+
+    .profile-completeness-btn:hover {
+        background: #5f216b;
+        transform: translateY(-3px);
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    }
+
+    .bg-success-gradient {
+        background: linear-gradient(90deg, #43e97b 0%, #38f9d7 100%) !important;
+        color: #fff !important;
+    }
+
+    .bg-danger-gradient {
+        background: linear-gradient(90deg, #ff5858 0%, #f09819 100%) !important;
+        color: #fff !important;
+    }
+
+    .quick-actions-outer {
+        display: flex;
+        justify-content: center;
+        margin-bottom: 40px;
+    }
+
+    .quick-actions-card {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+        width: 100%;
+
+    }
+
+    .quick-actions-header {
+        width: 600px;
+        margin: auto;
+    }
+
+    .quick-actions-card h4 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin-bottom: 20px;
+        text-align: center;
+    }
+
+    .quick-actions-list {
+        margin: 0;
+        padding: 0;
+        list-style: none;
+    }
+
+    .quick-action-step {
+        display: flex;
+        align-items: center;
+        padding: 10px 0;
+        border-bottom: 1px solid #e0e0e0;
+    }
+
+    .quick-action-step:last-child {
+        border-bottom: none;
+    }
+
+    .quick-action-icon {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin-right: 15px;
+        font-size: 1.2rem;
+    }
+
+    .quick-action-content {
+        flex: 1;
+    }
+
+    .quick-action-link {
+        display: inline-block;
+        margin-top: 5px;
+        font-size: 0.9rem;
+        color: var(--primary);
+        text-decoration: none;
+        transition: color 0.3s;
+    }
+
+    .quick-action-link:hover {
+        color: #76038d;
+    }
+
+    .engagement-center-wrapper {
+        margin-bottom: 40px;
+    }
+
+    .engagement-analytics-section {
+        background: #fff;
+        border-radius: 12px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 30px;
+    }
+
+    .engagement-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 20px;
+    }
+
+    .engagement-content h4 {
+        font-size: 1.5rem;
+        font-weight: 700;
+        margin: 0;
+    }
+
+    .engagement-img {
+        max-width: 85%;
+        height: auto;
+        border-radius: 10px;
     }
 </style>
 {% endblock %}
@@ -209,17 +604,22 @@
     <div class="decorative-container"></div>
 
     <div class="container">
+
         <!-- Welcome Section -->
         <div class="dashboard-welcome">
-            <div class="row">
-                <div class="col-lg-8">
-                    <h1 class="display-5 mb-1 gradient-text animate-on-scroll fade-in">Welcome, {{ user.first_name }}!</h1>
-                    <p class="text-muted mb-4 animate-on-scroll fade-in delay-100">Your founder journey continues. Here's what's happening today.</p>
+            <div class="row ml-20">
+                <div class="col-lg-8 ">
+                    <h1 class="display-5 mb-1 gradient-text animate-on-scroll fade-in">Welcome, {{ user.first_name}}!
+                    </h1>
+                    <p class=" mb-4 animate-on-scroll fade-in delay-100 text-white text-2xl">Your founder journey
+                        continues.
+                        Here's what's happening today.</p>
                 </div>
-                <div class="col-lg-4 text-lg-end">
+                <div class="col-lg-4 text-lg-start  ">
                     {% if not user.profile.is_premium %}
-                    <a href="{% url 'subscription:upgrade' %}" class="btn-graphic accent animate-on-scroll fade-in delay-200">
-                        <i class="fas fa-crown me-2"></i> Upgrade to Premium
+                    <a href="{% url 'subscription:upgrade' %}"
+                        class="btn-graphic accent animate-on-scroll fade-in delay-200  welcome-btn">
+                        <i class="fas fa-crown me-2 "></i> Upgrade to Premium
                     </a>
                     {% else %}
                     <span class="badge bg-primary p-2 animate-on-scroll fade-in delay-200">
@@ -230,182 +630,15 @@
             </div>
         </div>
 
-        <!-- Stats Overview -->
-        <div class="row mb-4">
-            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                <div class="graphic-card stats-card animate-on-scroll fade-in">
-                    <div class="stats-icon">
-                        <i class="fas fa-eye"></i>
-                    </div>
-                    <div class="stats-value counter-value" data-target="{% if user.profile.is_premium %}152{% else %}43{% endif %}">0</div>
-                    <div class="stats-label">Profile Views</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                <div class="graphic-card stats-card animate-on-scroll fade-in delay-100">
-                    <div class="stats-icon">
-                        <i class="fas fa-handshake"></i>
-                    </div>
-                    <div class="stats-value counter-value" data-target="{% if user.profile.is_premium %}27{% else %}8{% endif %}">0</div>
-                    <div class="stats-label">Matches</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6 mb-4 mb-md-0">
-                <div class="graphic-card stats-card animate-on-scroll fade-in delay-200">
-                    <div class="stats-icon">
-                        <i class="fas fa-comments"></i>
-                    </div>
-                    <div class="stats-value counter-value" data-target="{% if user.profile.is_premium %}14{% else %}3{% endif %}">0</div>
-                    <div class="stats-label">Active Conversations</div>
-                </div>
-            </div>
-            <div class="col-md-3 col-sm-6">
-                <div class="graphic-card stats-card animate-on-scroll fade-in delay-300">
-                    <div class="stats-icon">
-                        <i class="fas fa-chart-line"></i>
-                    </div>
-                    <div class="stats-value counter-value" data-target="{% if user.profile.is_premium %}86{% else %}32{% endif %}">0</div>
-                    <div class="stats-label">Engagement Score</div>
-                </div>
-            </div>
-        </div>
+        <div class="sub-container">
 
-        <!-- Main Dashboard Content -->
-        <div class="row">
-            <!-- Left Column -->
-            <div class="col-lg-8">
-                <!-- Engagement Analytics -->
-                <div class="dashboard-section animate-on-scroll fade-in">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4 class="mb-0">Engagement Analytics</h4>
-                        {% if not user.profile.is_premium %}
-                        <span class="badge bg-secondary">Limited View</span>
-                        {% endif %}
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="founderEngagementChart"></canvas>
-                    </div>
-                </div>
 
-                <!-- Investor Interest by Industry -->
-                <div class="dashboard-section premium-feature animate-on-scroll fade-in">
-                    <div class="d-flex justify-content-between align-items-center mb-4">
-                        <h4 class="mb-0">Investor Interest by Industry</h4>
-                    </div>
-                    <div class="chart-container">
-                        <canvas id="founderInterestChart"></canvas>
-                    </div>
-                    
-                    {% if not user.profile.is_premium %}
-                    <div class="premium-overlay animate-on-scroll fade-in">
-                        <div class="premium-lock-icon">
-                            <i class="fas fa-lock"></i>
-                        </div>
-                        <h5>Premium Feature</h5>
-                        <p class="text-muted mb-3">Unlock detailed analytics about investor interest in your industry.</p>
-                        <a href="{% url 'subscription:upgrade' %}" class="btn-graphic accent">
-                            <i class="fas fa-crown me-2"></i> Upgrade Now
-                        </a>
-                    </div>
-                    {% endif %}
-                </div>
+            <!-- Recent Activity -->
+            <div class="dashboard-section recent-contianer animate-on-scroll fade-in ">
+                <h4 class="mb-4  text-center recent-text">Recent Activity</h4>
 
-                <!-- Pending Matches -->
-                <div class="dashboard-section animate-on-scroll fade-in">
-                    <h4 class="mb-4">Pending Matches</h4>
-                    {% if pending_matches %}
-                        {% for match in pending_matches %}
-                        <div class="investor-card animate-on-scroll fade-in">
-                            <div class="investor-header">
-                                <div class="investor-avatar">
-                                    {{ match.user2.first_name|first }}{{ match.user2.last_name|first }}
-                                </div>
-                                <h5>{{ match.user2.get_full_name }}</h5>
-                                <p class="mb-0">{{ match.user2.profile.company_name }}</p>
-                            </div>
-                            <div class="investor-info">
-                                <p class="mb-2"><i class="fas fa-building me-2"></i> {{ match.user2.profile.industry|title }}</p>
-                                <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {{ match.user2.profile.location|default:"Location not specified" }}</p>
-                                <p class="mb-0"><i class="fas fa-calendar-alt me-2"></i> Matched {{ match.created_at|date:"F d, Y" }}</p>
-                            </div>
-                            <div class="investor-action">
-                                <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
-                                <a href="#" class="btn btn-sm btn-primary">Message</a>
-                            </div>
-                        </div>
-                        {% endfor %}
-                    {% else %}
-                        <div class="text-center p-4 bg-light rounded animate-on-scroll fade-in">
-                            <i class="fas fa-handshake fa-3x mb-3 text-muted"></i>
-                            <p>No pending matches yet. Keep swiping to connect with investors!</p>
-                            <a href="{% url 'accounts:discover' %}" class="btn-graphic mt-2">
-                                <i class="fas fa-search me-2"></i> Discover Investors
-                            </a>
-                        </div>
-                    {% endif %}
-                </div>
-            </div>
+                <div class="activity-container d-flex  flex-wrap">
 
-            <!-- Right Column -->
-            <div class="col-lg-4">
-                <!-- Profile Completeness -->
-                <div class="dashboard-section animate-on-scroll fade-in">
-                    <h4 class="mb-4">Profile Completeness</h4>
-                    <div class="mb-3">
-                        <div class="d-flex justify-content-between mb-1">
-                            <span>Overall Progress</span>
-                            <span>75%</span>
-                        </div>
-                        <div class="progress">
-                            <div class="progress-bar bg-primary" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0" aria-valuemax="100"></div>
-                        </div>
-                    </div>
-                    <div class="mb-4">
-                        <p class="text-muted mb-2">Complete these items to improve your profile:</p>
-                        <ul class="list-group">
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-check-circle text-success me-2"></i> Basic Information</span>
-                                <span class="badge bg-success rounded-pill">Complete</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-check-circle text-success me-2"></i> Company Details</span>
-                                <span class="badge bg-success rounded-pill">Complete</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-times-circle text-danger me-2"></i> Pitch Deck</span>
-                                <span class="badge bg-danger rounded-pill">Missing</span>
-                            </li>
-                            <li class="list-group-item d-flex justify-content-between align-items-center">
-                                <span><i class="fas fa-times-circle text-danger me-2"></i> Funding Goals</span>
-                                <span class="badge bg-danger rounded-pill">Missing</span>
-                            </li>
-                        </ul>
-                    </div>
-                    <a href="{% url 'accounts:edit_profile' %}" class="btn-graphic w-100">
-                        <i class="fas fa-user-edit me-2"></i> Complete Your Profile
-                    </a>
-                </div>
-
-                <!-- Quick Actions -->
-                <div class="dashboard-section animate-on-scroll fade-in">
-                    <h4 class="mb-4">Quick Actions</h4>
-                    <a href="{% url 'accounts:discover' %}" class="quick-action-btn">
-                        <i class="fas fa-search quick-action-icon"></i> Discover Investors
-                    </a>
-                    <a href="{% url 'accounts:matches' %}" class="quick-action-btn">
-                        <i class="fas fa-handshake quick-action-icon"></i> View All Matches
-                    </a>
-                    <a href="#" class="quick-action-btn">
-                        <i class="fas fa-upload quick-action-icon"></i> Upload Pitch Deck
-                    </a>
-                    <a href="#" class="quick-action-btn">
-                        <i class="fas fa-chart-pie quick-action-icon"></i> Update Metrics
-                    </a>
-                </div>
-
-                <!-- Recent Activity -->
-                <div class="dashboard-section animate-on-scroll fade-in">
-                    <h4 class="mb-4">Recent Activity</h4>
                     <div class="activity-item">
                         <div class="activity-icon bg-primary-light text-primary">
                             <i class="fas fa-eye"></i>
@@ -415,6 +648,8 @@
                             <p class="text-muted mb-0 small">2 hours ago</p>
                         </div>
                     </div>
+
+
                     <div class="activity-item">
                         <div class="activity-icon bg-success-light text-success">
                             <i class="fas fa-handshake"></i>
@@ -446,12 +681,272 @@
                     {% endif %}
                 </div>
             </div>
-        </div>
-    </div>
-</div>
-{% endblock %}
 
-{% block extra_js %}
-<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
-<script src="{% static 'js/dashboard.js' %}"></script>
-{% endblock %}
+            <!-- Stats Overview -->
+            <div class="row mb-4 d-flex stats-container justify-content-center">
+
+                <div class="col-md-3 col-sm-6 mb-4 mb-md-0 d-flex justify-content-center ">
+                    <div class="graphic-card stats-card  animate-on-scroll fade-in">
+                        <div class="stats-icon">
+                            <i class="fas fa-eye text-danger"></i>
+                        </div>
+                        <div class="stats-value counter-value"
+                            data-target="{% if user.profile.is_premium %}152{% else %}43{% endif %}">0</div>
+                        <div class="stats-label">Profile Views</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-4 mb-md-0 d-flex justify-content-center ">
+                    <div class="graphic-card stats-card animate-on-scroll fade-in delay-100">
+                        <div class="stats-icon">
+                            <i class="fas fa-handshake text-success"></i>
+                        </div>
+                        <div class="stats-value counter-value"
+                            data-target="{% if user.profile.is_premium %}27{% else %}8{% endif %}">0</div>
+                        <div class="stats-label">Matches</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6 mb-4 mb-md-0  d-flex justify-content-center ">
+                    <div class="graphic-card stats-card animate-on-scroll fade-in delay-200">
+                        <div class="stats-icon">
+                            <i class="fas fa-comments text-warning"></i>
+                        </div>
+                        <div class="stats-value counter-value"
+                            data-target="{% if user.profile.is_premium %}14{% else %}3{% endif %}">0</div>
+                        <div class="stats-label">Active Conversations</div>
+                    </div>
+                </div>
+
+                <div class="col-md-3 col-sm-6  d-flex justify-content-center ">
+                    <div class="graphic-card stats-card animate-on-scroll fade-in delay-300">
+                        <div class="stats-icon text-primary">
+                            <i class="fas fa-chart-line"></i>
+                        </div>
+                        <div class="stats-value counter-value"
+                            data-target="{% if user.profile.is_premium %}86{% else %}32{% endif %}">0</div>
+                        <div class="stats-label">Engagement Score</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Main Dashboard Content -->
+            <div class="row  ">
+                <!-- Left Column -->
+
+                
+                <div class="col-lg-8">
+                    <!-- Engagement Analytics -->
+                    
+                    <!-- <div class="dashboard-section animate-on-scroll fade-in ">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="mb-0">Engagement Analytics</h4>
+                            {% if not user.profile.is_premium %}
+                            <span class="badge bg-secondary">Limited View</span>
+                            {% endif %}
+                        </div>
+                        <div class="chart-container">
+                            <canvas id="founderEngagementChart"></canvas>
+                        </div>
+                    </div> -->
+
+
+                     <div class="engagement-center-wrapper">
+                      <div class="engagement-analytics-section">
+                        <!-- Engagement Analytics ka pura content yahan -->
+                        <div class="engagement-content d-flex justify-content-between align-items-center mb-1">
+                          <h4 class="mb-0 ml-10 mr-5 text-center" style="font-size: 39px;">Engagement Analytics</h4>
+                          {% if not user.profile.is_premium %}
+                          <span class="badge bg-secondary">Limited View</span>
+                          {% endif %}
+                        </div>
+                        <div class="chart-img-wrapper d-flex justify-content-center align-items-center">
+                          <img src="{% static 'img/image.png' %}" alt="Engagement Chart" class="engagement-img">
+                        </div>
+                      </div>
+                    </div>
+                    
+
+                    <!-- Investor Interest by Industry -->
+                    <div class="dashboard-section premium-feature animate-on-scroll fade-in">
+                        <div class="d-flex justify-content-between align-items-center mb-4">
+                            <h4 class="mb-0">Investor Interest by Industry</h4>
+                        </div>
+                        <div class="chart-container">
+                            <!-- <canvas id="founderInterestChart"></canvas> -->
+                        </div>
+
+                        {% if not user.profile.is_premium %}
+                        <div class="premium-overlay animate-on-scroll fade-in">
+                            <div class="premium-lock-icon">
+                                <i class="fas fa-lock "></i>
+                            </div>
+                            <h5>Premium Feature</h5>
+                            <p class=" mb-3">Unlock detailed analytics about investor interest in your
+                                industry.</p>
+                            <a href="{% url 'subscription:upgrade' %}" class="btn-graphic premium-btn accent">
+                                <i class="fas fa-crown me-2"></i> Upgrade Now
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Pending Matches -->
+                    <div class="dashboard-section pending-container animate-on-scroll fade-in">
+                        <h4 class="mb-4 text-center text-8xl">Pending Matches</h4>
+                        {% if pending_matches %}
+                        {% for match in pending_matches %}
+                        <div class="investor-card animate-on-scroll fade-in">
+                            <div class="investor-header">
+                                <div class="investor-avatar">
+                                    {{ match.user2.first_name|first }}{{ match.user2.last_name|first }}
+                                </div>
+                                <h5>{{ match.user2.get_full_name }}</h5>
+                                <p class="mb-0">{{ match.user2.profile.company_name }}</p>
+                            </div>
+                            <div class="investor-info">
+                                <p class="mb-2"><i class="fas fa-building me-2"></i> {{
+                                    match.user2.profile.industry|title }}</p>
+                                <p class="mb-2"><i class="fas fa-map-marker-alt me-2"></i> {{
+                                    match.user2.profile.location|default:"Location not specified" }}</p>
+                                <p class="mb-0"><i class="fas fa-calendar-alt me-2"></i> Matched {{
+                                    match.created_at|date:"F d, Y" }}</p>
+                            </div>
+                            <div class="investor-action">
+                                <a href="#" class="btn btn-sm btn-outline-primary">View Profile</a>
+                                <a href="#" class="btn btn-sm btn-primary">Message</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                        {% else %}
+                        <div class="text-center p-4 bg-light rounded animate-on-scroll fade-in">
+                            <i class="fas fa-handshake fa-3x mb-3 text-success"></i>
+                            <p>No pending matches yet. Keep swiping to connect with investors!</p>
+                            <a href="{% url 'accounts:discover' %}" class="btn-graphic pending-btn mt-2">
+                                <i class="fas fa-search me-2"></i> Discover Investors
+                            </a>
+                        </div>
+                        {% endif %}
+                    </div>
+                </div>
+
+                <div class="profile-row d-flex justisfy-content-center align-items-center m-0 p-0">
+                    
+
+                    <!-- Right Column -->
+                    <div class="col-lg-4 ">
+                        <!-- Profile Completeness -->
+                        <div class="dashboard-section  animate-on-scroll fade-in  ">
+                            <div class="profile-completeness-container">
+                                <div class="profile-completeness-card">
+                                    <h4 class="mb-4 text-center" style="font-size: 2rem; font-weight: 700;">
+                                        <i class="fas fa-user-check text-primary me-2"></i>Profile Completeness
+                                    </h4>
+                                    <div class="profile-completeness-progress mb-4">
+                                        <div class="d-flex justify-content-between mb-1">
+                                            <span class="fw-bold">Overall Progress</span>
+                                            <span class="fw-bold">75%</span>
+                                        </div>
+                                        <div class="profile-completeness-bar">
+                                            <div class="profile-completeness-bar-inner" style="width: 75%;">75%</div>
+                                        </div>
+                                    </div>
+                                    <div class="mb-4 profile-completeness-tasks">
+                                        <p class="text-muted mb-2">Complete these items to improve your profile:</p>
+                                        <ul class="list-group">
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-check-circle text-success me-2"></i> Basic
+                                                    Information</span>
+                                                <span class="badge bg-success-gradient rounded-pill">Complete</span>
+                                            </li>
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-check-circle text-success me-2"></i> Company
+                                                    Details</span>
+                                                <span class="badge bg-success-gradient rounded-pill">Complete</span>
+                                            </li>
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-times-circle text-danger me-2"></i> Pitch
+                                                    Deck</span>
+                                                <span class="badge bg-danger-gradient rounded-pill">Missing</span>
+                                            </li>
+                                            <li
+                                                class="list-group-item d-flex justify-content-between align-items-center">
+                                                <span><i class="fas fa-times-circle text-danger me-2"></i> Funding
+                                                    Goals</span>
+                                                <span class="badge bg-danger-gradient rounded-pill">Missing</span>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <a href="{% url 'accounts:edit_profile' %}"
+                                        class="btn profile-completeness-btn w-100 mt-2">
+                                        <i class="fas fa-user-edit me-2"></i> Complete Your Profile
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    </div>
+
+                </div>
+
+                <!-- Quick Actions -->
+                <div class="quick-actions-outer ">
+                    <div class="quick-actions-card  d-flex justify-content-center">
+                        <div class="quick-actions-header">
+                            <h4 class="mb-4 text-center" style="font-size: 2rem; font-weight: 700;">
+                                <i class="fas fa-bolt text-primary me-2"></i>Quick Actions
+                            </h4>
+                            <div class="quick-actions-list">
+                                <div class="quick-action-step">
+                                    <div class="quick-action-icon bg-gradient-primary">
+                                        <i class="fas fa-search"></i>
+                                    </div>
+                                    <div class="quick-action-content">
+                                        <div class="fw-bold mb-1">Discover Investors</div>
+                                        <a href="{% url 'accounts:discover' %}" class="quick-action-link">Start
+                                            Searching</a>
+                                    </div>
+                                </div>
+                                <div class="quick-action-step">
+                                    <div class="quick-action-icon bg-gradient-success">
+                                        <i class="fas fa-handshake"></i>
+                                    </div>
+                                    <div class="quick-action-content">
+                                        <div class="fw-bold mb-1">View All Matches</div>
+                                        <a href="{% url 'accounts:matches' %}" class="quick-action-link">See Matches</a>
+                                    </div>
+                                </div>
+                                <div class="quick-action-step">
+                                    <div class="quick-action-icon bg-gradient-info">
+                                        <i class="fas fa-upload"></i>
+                                    </div>
+                                    <div class="quick-action-content">
+                                        <div class="fw-bold mb-1">Upload Pitch Deck</div>
+                                        <a href="#" class="quick-action-link">Upload Now</a>
+                                    </div>
+                                </div>
+                                <div class="quick-action-step">
+                                    <div class="quick-action-icon bg-gradient-warning">
+                                        <i class="fas fa-chart-pie"></i>
+                                    </div>
+                                    <div class="quick-action-content">
+                                        <div class="fw-bold mb-1">Update Metrics</div>
+                                        <a href="#" class="quick-action-link">Update</a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endblock %}
+
+        {% block extra_js %}
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+        <script src="{% static 'js/dashboard.js' %}"></script>
+        {% endblock %}
