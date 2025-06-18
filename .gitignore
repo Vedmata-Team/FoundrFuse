@@ -75,3 +75,10 @@ dist/
 build/
 *.pyc
 *.pyc
+/accounts/__pycache__
+
+/core/__pycache__
+*.pyc
+__pycache__
+/core/migrations/__pycache__
+core/migrations/__pycache__/0002_sitesettings_about_description_sitesettings_address_and_more.cpython-312.pyc

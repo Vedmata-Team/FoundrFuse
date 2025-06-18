@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% block title %}Your Matches | FoundrFuse{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Your Matches</h2>
+    {% if matches %}
+        <ul>
+            {% for match in matches %}
+                <li>{{ match }}</li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No matches found.</p>
+    {% endif %}
+</div>
+{% endblock %}

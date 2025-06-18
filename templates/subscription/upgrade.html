@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% block title %}Upgrade Subscription | FoundrFuse{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <h2>Upgrade Your Subscription</h2>
+    {% if user_subscription %}
+        <p>Your current plan: <strong>{{ user_subscription.plan.name }}</strong> (expires {{ user_subscription.end_date|date:"Y-m-d" }})</p>
+    {% endif %}
+    <div class="row">
+        {% for plan in plans %}
+        <div class="col-md-4">
+            <div class="card mb-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{ plan.name }}</h5>
+                    <p class="card-text">{{ plan.description }}</p>
+                    <p class="card-text"><strong>${{ plan.price }}</strong> / {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</p>
+                    <a href="{% url 'subscription:checkout' plan.id %}" class="btn btn-primary">Choose</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

@@ -117,7 +117,11 @@ def edit_profile(request):
 @login_required
 def discover(request):
     user = request.user
-    profile = user.profile
+    try:
+        profile = user.profile
+    except Profile.DoesNotExist:
+        Profile.objects.create(user=user)
+        profile = user.profile
     
     # Check if the user has free swipes left (for non-premium users)
     if not profile.is_premium and profile.swipes_left <= 0:
