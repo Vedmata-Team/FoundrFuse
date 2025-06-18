@@ -92,3 +92,14 @@ build/
 
 **/migrations/__pycache__/**/migrations/*.pyc**/migrations/*.pyc
 **/migrations/__pycache__/
+# Ignore all __pycache__ directories everywhere
+**/__pycache__/
+
+# Ignore all .pyc files everywhere
+*.pyc
+
+# Ignore all migration files except __init__.py
+**/migrations/*.py
+!**/migrations/__init__.py
+**/migrations/*.pyc
+**/migrations/__pycache__/
