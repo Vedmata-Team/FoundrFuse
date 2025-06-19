@@ -3,6 +3,14 @@ from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
 from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ, FounderSuccessStory, FounderFAQ
+from openai import OpenAI
+from rest_framework.views import APIView
+from rest_framework.response import Response
+from rest_framework.permissions import AllowAny
+from django.conf import settings
+
+client = OpenAI(api_key=settings.OPENAI_API_KEY)
+
 
 def home(request):
     testimonials = Testimonial.objects.all()
@@ -150,3 +158,46 @@ def context_processors(request):
     return {
         'site_settings': site_settings
     }
+
+class ChatbotAPIView(APIView):
+    permission_classes = [AllowAny]
+
+    def post(self, request):
+        print("🔵 Step 1: Received POST request.")
+        user_message = request.data.get('message', '')
+        print("🟢 Step 2: User message received:", user_message)
+
+        if not user_message:
+            return Response({'error': 'No message provided.'}, status=400)
+
+        try:
+            # ✅ Create OpenAI client with OpenRouter settings
+            client = OpenAI(
+                base_url="https://openrouter.ai/api/v1",
+                api_key=settings.OPENROUTER_API_KEY,
+            )
+            print("🟡 Step 3: Sending request to OpenRouter (GPT-4o)...")
+
+            completion = client.chat.completions.create(
+                model="openai/gpt-4o",  # 🔁 You can also use: meta-llama/llama-3-8b-instruct
+                messages=[
+                    {"role": "system", "content": "You are FoundrFuse AI, a helpful assistant."},
+                    {"role": "user", "content": user_message}
+                ],
+                max_tokens=200,
+                temperature=0.7,
+                extra_headers={
+                    "HTTP-Referer": "https://foundrfuse.com",  # ✅ Optional, your site
+                    "X-Title": "FoundrFuse AI Chat",           # ✅ Optional, your tool name
+                }
+            )
+
+            bot_reply = completion.choices[0].message.content
+            print("🟢 Step 4: Bot reply:", bot_reply)
+            return Response({'reply': bot_reply})
+
+        except Exception as e:
+            print("🔴 Step 5: Error occurred:", str(e))
+            return Response({'error': str(e)}, status=500)
+
+# ये सिर्फ available quota नहीं दिखाता, लेकिन API key valid है या नहीं ये चेक कर सकते हो।

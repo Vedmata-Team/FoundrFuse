@@ -191,5 +191,62 @@
     
     <!-- Page-specific JS -->
     {% block extra_js %}{% endblock %}
+
+    <!-- Animated Chatbot Widget -->
+<div id="ff-chatbot-bubble" title="Chat with FoundrFuse AI">
+  <!-- Chat bubble SVG icon -->
+  <svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-3.806 10-8.5S17.523 5 12 5 2 8.806 2 13.5c0 1.61.634 3.12 1.75 4.37-.13.7-.51 2.13-.7 2.8-.09.3.21.57.5.47.66-.19 2.08-.57 2.78-.7C8.88 21.366 10.39 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="13.5" r="1.5" fill="currentColor"/><circle cx="12" cy="13.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="13.5" r="1.5" fill="currentColor"/></svg>
+</div>
+<div id="ff-chatbot-window">
+  <div id="ff-chatbot-header">
+    <span>🤖 FoundrFuse AI Assistant</span>
+    <button id="ff-chatbot-close" aria-label="Close">&times;</button>
+  </div>
+  <div id="ff-chatbot-body">
+    <div class="ff-chatbot-msg-bot"><span>Hello! 👋<br>How can I assist you today?</span></div>
+  </div>
+  <form id="ff-chatbot-form" autocomplete="off">
+    <input id="ff-chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" />
+    <button id="ff-chatbot-send" type="submit">Send</button>
+  </form>
+</div>
+<script>
+const bubble = document.getElementById('ff-chatbot-bubble');
+const windowEl = document.getElementById('ff-chatbot-window');
+const closeBtn = document.getElementById('ff-chatbot-close');
+const bodyEl = document.getElementById('ff-chatbot-body');
+const formEl = document.getElementById('ff-chatbot-form');
+const inputEl = document.getElementById('ff-chatbot-input');
+
+bubble.onclick = () => {
+  windowEl.style.display = 'flex';
+  setTimeout(() => inputEl.focus(), 200);
+};
+closeBtn.onclick = () => windowEl.style.display = 'none';
+
+formEl.onsubmit = async (e) => {
+  e.preventDefault();
+  const userMsg = inputEl.value.trim();
+  if (!userMsg) return;
+  bodyEl.innerHTML += `<div class="ff-chatbot-msg-user"><span>${userMsg}</span></div>`;
+  inputEl.value = '';
+  bodyEl.innerHTML += `<div id="ff-chatbot-typing" class="ff-chatbot-msg-bot"><span><i>AI is typing...</i></span></div>`;
+  bodyEl.scrollTop = bodyEl.scrollHeight;
+  try {
+    const res = await fetch('/api/chatbot/', {
+      method: 'POST',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify({message: userMsg})
+    });
+    const data = await res.json();
+    document.getElementById('ff-chatbot-typing').remove();
+    bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${data.reply}</span></div>`;
+    bodyEl.scrollTop = bodyEl.scrollHeight;
+  } catch {
+    document.getElementById('ff-chatbot-typing').remove();
+    bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span style="color:red;">Error contacting AI.</span></div>`;
+  }
+};
+</script>
 </body>
 </html>

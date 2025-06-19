@@ -13,7 +13,9 @@ DEBUG = True
 
 ALLOWED_HOSTS = ['0.0.0.0', 'localhost', '127.0.0.1', '*']
 
+OPENAI_API_KEY = os.environ.get('OPENAI_API_KEY')
 
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
 # Application definition
 
 INSTALLED_APPS = [
