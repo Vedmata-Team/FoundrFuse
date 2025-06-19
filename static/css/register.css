@@ -1,5 +1,5 @@
 body {
-    background: linear-gradient(120deg, #f8fafc 0%, #e9e9f3 100%);
+    background: linear-gradient(120deg, #ece6fa 0%, #f8fafc 100%);
     min-height: 100vh;
 }
 
@@ -8,7 +8,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 100%;
+    padding: 40px 0;
 }
 
 .register-content {
@@ -18,21 +18,42 @@ body {
     align-items: center;
     justify-content: center; /* Center horizontally */
 }
+.heading{
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
 
 .register-card {
     background: #fff;
-    border-radius: 0.75rem;
-    box-shadow: 0 10px 20px rgba(0,0,0,0.15), 0 2px 8px rgba(127,0,255,0.10);
-    color: #3B0D8B;
-    border: 2.5px solid #a78bfa;
-    max-width: 700px;
+    border-radius: 1.25rem;
+    box-shadow: 0 8px 32px 0 rgba(127,0,255,0.10), 0 2px 8px rgba(60,60,120,0.06);
+    color: #3d246c;
+    border: none;
+    max-width: 750px;
     width: 100%;
-    margin: auto;
-    padding: 2rem 2.2rem;
+    margin: 0 auto;
+    padding: 2.5rem 2.2rem 2.2rem 2.2rem;
+    position: relative;
+    overflow: hidden;
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: center; /* Center vertically */
+}
+
+.register-card::before {
+    position: absolute;
+    content: "";
+    width: 340px;
+    height: 340px;
+    background-color: #d1c1ff;
+    transform: rotate(45deg);
+    left: -180px;
+    bottom: 30px;
+    z-index: 1;
+    border-radius: 30px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.082);
 }
 
 .register-visual {
@@ -52,71 +73,31 @@ body {
 }
 
 .register-body {
-    flex: 2;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+    padding: 0;
+    z-index: 2;
+    position: relative;
     width: 100%;
 }
 
-.heading{
-    display: flex;
-    flex-direction: row;
-}
-.input-group{
-    display: flex;
-    flex-direction: row;
-    justify-items: baseline;
-    gap: 10px;
-
-}
-
-
-.moving-quote {
-    font-size: 1rem;
-    font-style: italic;
-    margin-top: 1.2rem;
-    color: #555;
-    animation: float 3s ease-in-out infinite;
-}
-@keyframes float {
-    0%, 100% { transform: translateY(0);}
-    50% { transform: translateY(-8px);}
-}
-
-@media (max-width: 991px) {
-    .register-card {
-        flex-direction: column;
-        min-height: unset;
-        max-width: 98vw;
-    }
-    .register-visual, .register-body {
-        border-radius: 0;
-        min-width: unset;
-        padding: 32px 12px;
-    }
-}
-
-@media (max-width: 600px) {
-    .register-body {
-        padding: 20px 4px;
-    }
-}
-@media (width>=320px) and (width<=480px){
-    .heading{
-        display: flex;
-        flex-direction: column;
-    }
-}
-
+.heading2 .mb-1,
+.register-header,
 .text-center.mb-4 h2 {
+    text-align: center;
+    font-size: 2em;
     font-weight: 700;
-    color: #3d246c;
-    letter-spacing: 1px;
+    color: #7f00ff;
+    background: none;
+    padding: 0;
+    margin-bottom: 0.5rem;
+    z-index: 2;
+    position: relative;
 }
 
 .text-muted {
-    color: #888 !important;
+    color: #6c4bb6 !important;
+    z-index: 2;
+    position: relative;
+    text-align: center;
 }
 
 .user-type-toggle {
@@ -126,6 +107,7 @@ body {
     overflow: hidden;
     box-shadow: 0 2px 8px rgba(127,0,255,0.03);
     background: #f4f4f8;
+    justify-content: center;
 }
 
 .user-type-btn {
@@ -144,6 +126,7 @@ body {
 .user-type-btn.active {
     background: #ece6fa;
     color: #7f00ff;
+    font-weight: 700;
 }
 
 .user-type-btn:first-child {
@@ -175,104 +158,113 @@ body {
 }
 
 .form-label {
-    font-weight: 500;
+    display: block;
     color: #3d246c;
+    margin-bottom: 4px;
+    font-size: 1rem;
+    font-weight: 600;
 }
 
 .form-control, .form-select {
-    border-radius: 7px;
-    padding: 11px 13px;
-    font-size: 1rem;
-    border: 1px solid #e0e0e0;
+    width: 100%;
+    border-radius: 8px;
+    border: none;
+    border-bottom: 2px solid #adadad;
+    outline: 0;
     background-color: #f8f9fa;
-    margin-bottom: 0.4rem;
+    padding: 0.75rem 1rem 0.75rem 2.2rem;
+    color: #3d246c;
+    font-size: 1.08rem;
+    margin-bottom: 1.1rem;
     transition: border-color 0.2s;
+    box-shadow: none;
+    position: relative;
 }
 
 .form-control:focus, .form-select:focus {
-    border-color: #7f00ff;
-    box-shadow: 0 0 0 0.10rem rgba(127, 0, 255, 0.10);
+    border-color: #a78bfa;
+    background: #f4f0ff;
+}
+
+.form-control::placeholder, .form-select::placeholder {
+    color: #888;
+    font-size: 1em;
+    font-weight: 500;
+}
+
+.input-group {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    align-items: center;
+}
+
+.input-group .form-select {
+    max-width: 80px;
+    padding-left: 0.5rem;
+    padding-right: 0.5rem;
+    height: 48px;
+    margin-bottom: 0;
+}
+
+.input-group .form-control {
+    padding-left: 1rem;
+    margin-bottom: 0;
 }
 
 .btn-register, form button, #button {
+    display: block;
     width: 100%;
-    height: 56px;
-    border-radius: 5px;
-    border: none;
-    outline: none;
-    background: #a78bfa;
+    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    padding: 0.75rem;
+    text-align: center;
     color: #fff;
-    font-size: 18px;
-    font-weight: 600;
-    text-transform: uppercase;
-    cursor: pointer;
-    margin-bottom: 18px;
-    transition: background 0.3s, color 0.2s;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    font-size: 1.08rem;
+    margin-bottom: 1.2rem;
+    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    letter-spacing: 1px;
     box-shadow: 0 2px 8px rgba(127,0,255,0.08);
+    text-transform: none;
 }
 
 .btn-register:hover, form button:hover, #button:hover {
-    background: #7f00ff;
+    background: linear-gradient(90deg, #e100ff, #7f00ff);
+    transform: translateY(-2px) scale(1.03);
+    box-shadow: 0 10px 20px rgba(127,0,255,0.10);
     color: #fff;
 }
 
-/* Input field styling to match login page */
-.inputField, .form-control, .input_box input, .input_box select {
-    width: 100%;
-    height: 38px;
-    background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #a7a7a7;
-    margin: 10px 0 18px 0;
-    color: #3d246c;
-    font-size: 1em;
-    font-weight: 500;
-    box-sizing: border-box;
-    padding-left: 30px;
-    transition: border-color 0.2s, background 0.2s;
+.account-links {
+    text-align: center;
+    font-size: 0.95rem;
+    color: #6c4bb6;
+    margin-top: 18px;
 }
 
-.inputField:focus, .form-control:focus, .input_box input:focus, .input_box select:focus {
-    outline: none;
-    border-bottom: 2px solid #a78bfa;
-    background: #ece6fa;
-}
-
-/* Label styling */
-.form-label, .input_box label {
-    display: block;
+.account-links a {
     color: #7f00ff;
-    margin-bottom: 8px;
-    font-size: 1.08rem;
+    text-decoration: none;
+    font-size: 14px;
     font-weight: 600;
-    letter-spacing: 0.2px;
-    text-align: left;
-}
-
-/* Text color for headings and links */
-.register-header, .heading, h2, .account-links a {
-    color: #7f00ff !important;
+    transition: color 0.2s;
 }
 
 .account-links a:hover {
-    color: #3d246c !important;
-    text-decoration: underline;
+    text-decoration: none;
+    color: #3d246c;
 }
 
-/* Placeholder color */
-.inputField::placeholder, .form-control::placeholder, .input_box input::placeholder {
-    color: #505050;
-    font-size: 1em;
-    font-weight: 500;
-}
-
-/* Error and help text styling */
-.text-danger, .errorlist {
-    color: #d32f2f;
+.errorlist {
+    color: #d72660;
     font-size: 0.98em;
     margin-bottom: 10px;
+    padding-left: 1.2rem;
 }
-.form-text, .helptext, .text-muted {
+
+.helptext, .form-text, .text-muted {
     color: #888 !important;
     font-size: 0.95em;
     margin-bottom: 10px;
@@ -281,4 +273,51 @@ body {
 .cont{
     display: flex;
     flex-direction: row;
+}
+
+@media (max-width: 600px) {
+    .register-card {
+        padding: 1.2rem 0.5rem;
+        border-radius: 0.5rem;
+        max-width: 98vw;
+    }
+    .register-card::before {
+        width: 180px;
+        height: 180px;
+        left: -80px;
+        bottom: 10px;
+    }
+    .input-group {
+        flex-direction: column;
+        gap: 0;
+    }
+}
+@keyframes float {
+    0%, 100% { transform: translateY(0);}
+    50% { transform: translateY(-8px);}
+}
+
+@media (max-width: 991px) {
+    .register-card {
+        flex-direction: column;
+        min-height: unset;
+        max-width: 98vw;
+    }
+    .register-visual, .register-body {
+        border-radius: 0;
+        min-width: unset;
+        padding: 32px 12px;
+    }
+}
+
+@media (max-width: 600px) {
+    .register-body {
+        padding: 20px 4px;
+    }
+}
+@media (width>=320px) and (width<=480px){
+    .heading{
+        display: flex;
+        flex-direction: column;
+    }
 }
