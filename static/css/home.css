@@ -570,7 +570,6 @@
 }
 
 .testimonial-pro-text::before {
-    content: "“";
     font-size: 40px;
     position: absolute;
     left: -25px;
