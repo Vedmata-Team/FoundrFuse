@@ -63,6 +63,14 @@ body {
     display: flex;
     flex-direction: row;
 }
+.input-group{
+    display: flex;
+    flex-direction: row;
+    justify-items: baseline;
+    gap: 10px;
+
+}
+
 
 .moving-quote {
     font-size: 1rem;
