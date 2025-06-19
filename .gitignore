@@ -103,3 +103,4 @@ build/
 !**/migrations/__init__.py
 **/migrations/*.pyc
 **/migrations/__pycache__/
+*.sqlite3

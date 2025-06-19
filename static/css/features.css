@@ -1,10 +1,25 @@
 .features-hero {
-    background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('https://pixabay.com/get/g0299a66c6d60c4829c44f5ab5b44d01a812d95391e4fb4c977ab408f70955625db747b56ef8b91ff52385e628d12b42b5ff1cc0a835ac1f3ba619f56b537aa39_1280.jpg');
+     background:linear-gradient(rgba(138, 33, 187, 0.5), rgba(0, 0, 0, 0.5));
     background-size: cover;
-    background-position: center;
     padding: 120px 0;
     color: white;
+
 }
+
+.d-flex::before {
+    background-color: #d3a079;
+    color: #fff;
+}
+
+.d-flex .btn.active{
+    color: #21011f !important;
+    text-decoration: none;
+}
+.d-flex .btn:hover{
+    color:  #0d0014!important;
+    text-decoration: none;
+}
+
 
 /* --- Premium Features Section --- */
 .premium-features-section {
