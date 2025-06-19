@@ -1,0 +1,520 @@
+/* Premium Investor Dashboard CSS - Responsive & Modern */
+
+:root {
+  --dashboard-bg: linear-gradient(135deg, #f8fafc 60%, #e0c3fc 100%);
+  --glass-bg: rgba(255,255,255,0.7);
+  --glass-blur: blur(12px);
+  --card-radius: 20px;
+  --card-shadow: 0 10px 32px rgba(123,0,255,0.10), 0 2px 8px rgba(0,0,0,0.03);
+  --accent-gradient: linear-gradient(90deg, #7F00FF, #E100FF);
+  --premium-gold: linear-gradient(135deg, #ffd700, #ffb300);
+  --premium-glow: 0 2px 16px rgba(255,215,0,0.18);
+  --gray-bg: #f5f6fa;
+  --gray-border: #ece9f7;
+  --gray-text: #6c6f7a;
+  --primary-text: #2d1e6b;
+  --secondary-text: #7F00FF;
+  --success: #20b27a;
+  --danger: #ff4a4a;
+}
+
+body {
+  background: var(--dashboard-bg);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--primary-text);
+}
+
+.dashboard-container {
+  min-height: calc(100vh - 76px - 300px);
+  padding: 32px 0;
+  background: var(--dashboard-bg);
+  position: relative;
+  overflow-x: hidden;
+  z-index: 1;
+}
+
+.gamify-bar, .leaderboard-section {
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  padding: 24px 36px;
+  margin-bottom: 32px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 24px;
+}
+
+.xp-progress {
+  flex: 1 1 220px;
+  margin-right: 24px;
+}
+
+.xp-label {
+  font-weight: 700;
+  font-size: 1.1rem;
+  margin-bottom: 6px;
+  color: var(--secondary-text);
+}
+
+.progress {
+  height: 18px;
+  background: var(--gray-border);
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  background: var(--accent-gradient);
+  font-weight: 600;
+  font-size: 1rem;
+  transition: width 0.5s;
+}
+
+.badge-list {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.badge-gamify {
+  background: var(--premium-gold);
+  color: #fff;
+  border-radius: 50%;
+  width: 48px;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.7rem;
+  box-shadow: var(--premium-glow);
+  border: 2px solid #fff;
+}
+
+.streak-box {
+  background: linear-gradient(135deg, #fffbe6, #ffe0b2);
+  border-radius: 14px;
+  padding: 14px 22px;
+  font-weight: 700;
+  color: #ff9800;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1.1rem;
+  box-shadow: 0 2px 8px rgba(255,215,0,0.08);
+}
+
+.leaderboard-title {
+  font-weight: 800;
+  font-size: 1.2rem;
+  margin-bottom: 14px;
+  color: var(--primary-text);
+}
+
+.leaderboard-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.leaderboard-list li {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 0;
+  font-size: 1rem;
+  border-bottom: 1px solid var(--gray-border);
+}
+
+.leaderboard-list li:last-child {
+  border-bottom: none;
+}
+
+.leaderboard-rank {
+  font-weight: 800;
+  color: var(--secondary-text);
+  width: 28px;
+  text-align: center;
+}
+
+.leaderboard-name {
+  flex: 1;
+  font-weight: 600;
+}
+
+.leaderboard-xp {
+  font-weight: 700;
+  color: #ff9800;
+}
+
+.stats-card {
+  padding: 24px;
+  height: 100%;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
+  transition: box-shadow 0.3s;
+}
+
+.stats-card:hover {
+  box-shadow: 0 16px 40px rgba(123,0,255,0.14), 0 2px 8px rgba(0,0,0,0.05);
+}
+
+.stats-icon {
+  font-size: 34px;
+  margin-bottom: 18px;
+  width: 64px;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 14px;
+  background: rgba(92, 0, 184, 0.13);
+  color: var(--secondary-text);
+  box-shadow: 0 2px 8px rgba(123,0,255,0.06);
+}
+
+.stats-value {
+  font-size: 2.2rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--primary-text);
+}
+
+.stats-label {
+  color: var(--gray-text);
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.premium-feature {
+  position: relative;
+}
+
+.premium-overlay {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background: rgba(255,255,255,0.93);
+  backdrop-filter: blur(7px);
+  border-radius: 14px;
+  z-index: 2;
+  text-align: center;
+  padding: 24px;
+  box-shadow: 0 2px 12px rgba(255,215,0,0.08);
+}
+
+.premium-lock-icon {
+  font-size: 44px;
+  margin-bottom: 18px;
+  color: #ffd700;
+}
+
+.activity-item {
+  padding: 18px;
+  border-radius: 10px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  transition: background 0.3s, box-shadow 0.3s;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: 0 2px 8px rgba(123,0,255,0.04);
+}
+
+.activity-item:hover {
+  background: #f3eaff;
+  box-shadow: 0 4px 16px rgba(123,0,255,0.08);
+}
+
+.activity-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 16px;
+  font-size: 1.3rem;
+  background: var(--gray-bg);
+  color: var(--secondary-text);
+}
+
+.quick-action-btn {
+  display: block;
+  padding: 14px;
+  border-radius: 14px;
+  margin-bottom: 16px;
+  transition: all 0.3s;
+  text-decoration: none;
+  color: var(--primary-text);
+  border: 1px solid var(--gray-border);
+  background-color: var(--glass-bg);
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(123,0,255,0.03);
+}
+
+.quick-action-btn:hover {
+  transform: translateY(-3px) scale(1.03);
+  box-shadow: 0 6px 18px rgba(123,0,255,0.10);
+  color: var(--secondary-text);
+  border-color: var(--secondary-text);
+}
+
+.quick-action-icon {
+  margin-right: 12px;
+  color: var(--secondary-text);
+}
+
+.startup-card, .portfolio-card {
+  position: relative;
+  overflow: hidden;
+  padding: 0;
+  border-radius: var(--card-radius);
+  transition: box-shadow 0.3s, transform 0.3s;
+  margin-bottom: 24px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--card-shadow);
+}
+
+.startup-card:hover, .portfolio-card:hover {
+  transform: translateY(-6px) scale(1.01);
+  box-shadow: 0 18px 40px rgba(123,0,255,0.13), 0 2px 8px rgba(0,0,0,0.06);
+}
+
+.startup-info, .portfolio-body {
+  padding: 24px;
+}
+
+.startup-header {
+  padding: 24px;
+  background: linear-gradient(135deg, var(--secondary-text), #7F00FF 80%);
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.startup-header:before {
+  content: '';
+  position: absolute;
+  top: -24px;
+  right: -24px;
+  width: 110px;
+  height: 110px;
+  background: rgba(255,255,255,0.13);
+  border-radius: 50%;
+}
+
+.startup-logo {
+  width: 54px;
+  height: 54px;
+  border-radius: 14px;
+  background: linear-gradient(45deg, #ffb300, #7F00FF);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-weight: 800;
+  font-size: 1.7rem;
+  margin-bottom: 12px;
+  box-shadow: 0 2px 8px rgba(123,0,255,0.08);
+}
+
+.startup-action {
+  padding: 12px 24px;
+  border-top: 1px solid var(--gray-border);
+  display: flex;
+  justify-content: space-between;
+  background: var(--gray-bg);
+}
+
+.chart-container {
+  position: relative;
+  margin-top: 24px;
+  margin-bottom: 24px;
+  height: 300px;
+}
+
+.decorative-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.industry-tag {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(92,0,184,0.13);
+  color: var(--secondary-text);
+  border-radius: 22px;
+  font-size: 0.92rem;
+  margin-right: 6px;
+  margin-bottom: 6px;
+  font-weight: 600;
+}
+
+.funding-stage {
+  display: inline-block;
+  padding: 6px 12px;
+  background: rgba(255,107,0,0.13);
+  color: #ff9800;
+  border-radius: 22px;
+  font-size: 0.92rem;
+  margin-bottom: 12px;
+  font-weight: 600;
+}
+
+.filter-container {
+  display: flex;
+  overflow-x: auto;
+  padding-bottom: 12px;
+  margin-bottom: 24px;
+  scrollbar-width: thin;
+  gap: 8px;
+}
+
+.filter-container::-webkit-scrollbar {
+  height: 6px;
+}
+
+.filter-container::-webkit-scrollbar-thumb {
+  background-color: #e0c3fc;
+  border-radius: 3px;
+}
+
+.filter-btn {
+  padding: 10px 18px;
+  background: var(--gray-bg);
+  border: none;
+  border-radius: 22px;
+  margin-right: 0;
+  white-space: nowrap;
+  transition: all 0.3s;
+  color: var(--primary-text);
+  font-weight: 600;
+  box-shadow: 0 1px 4px rgba(123,0,255,0.03);
+}
+
+.filter-btn:hover, .filter-btn.active {
+  background: var(--secondary-text);
+  color: white;
+}
+
+.portfolio-header {
+  background: #2d1e6b;
+  color: white;
+  padding: 18px 24px;
+  position: relative;
+}
+
+.portfolio-progress {
+  height: 7px;
+  margin-top: 12px;
+  background-color: rgba(255,255,255,0.22);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.portfolio-progress-bar {
+  height: 100%;
+  background: var(--accent-gradient);
+  transition: width 0.5s;
+}
+
+.opportunity-tag {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  background: var(--accent-gradient);
+  color: white;
+  padding: 4px 14px;
+  border-radius: 22px;
+  font-size: 0.8rem;
+  font-weight: 700;
+  box-shadow: 0 2px 8px rgba(127,0,255,0.10);
+}
+
+/* Responsive Design */
+@media (max-width: 1199.98px) {
+  .dashboard-container {
+    padding: 18px 0;
+  }
+  .gamify-bar, .leaderboard-section {
+    padding: 18px 12px;
+  }
+  .startup-info, .portfolio-body {
+    padding: 16px;
+  }
+  .startup-header, .portfolio-header {
+    padding: 16px;
+  }
+}
+
+@media (max-width: 767.98px) {
+  .dashboard-container {
+    padding: 8px 0;
+  }
+  .gamify-bar, .leaderboard-section {
+    flex-direction: column;
+    gap: 14px;
+    padding: 12px 6px;
+  }
+  .xp-progress {
+    margin-right: 0;
+    width: 100%;
+  }
+  .badge-list {
+    gap: 8px;
+  }
+  .stats-card, .startup-card, .portfolio-card {
+    padding: 0;
+    border-radius: 14px;
+  }
+  .startup-info, .portfolio-body {
+    padding: 12px;
+  }
+  .startup-header, .portfolio-header {
+    padding: 12px;
+  }
+  .activity-item {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+  .quick-action-btn {
+    padding: 10px;
+    margin-bottom: 10px;
+  }
+}
+
+@media (max-width: 575.98px) {
+  .dashboard-container {
+    padding: 4px 0;
+  }
+  .gamify-bar, .leaderboard-section {
+    padding: 8px 2px;
+    border-radius: 10px;
+  }
+  .stats-card, .startup-card, .portfolio-card {
+    border-radius: 10px;
+  }
+  .startup-info, .portfolio-body {
+    padding: 8px;
+  }
+  .startup-header, .portfolio-header {
+    padding: 8px;
+  }
+}
+
+/* End of Premium Investor Dashboard CSS */

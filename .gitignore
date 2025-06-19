@@ -16,6 +16,10 @@ staticfiles/
 static_root/
 local_settings.py
 
+# Django migrations (ignore all except __init__.py)
+**/migrations/
+!**/migrations/__init__.py
+
 # Cache
 .cache/
 *.cache
@@ -73,12 +77,29 @@ dmypy.json
 *.egg-info/
 dist/
 build/
-*.pyc
-*.pyc
-/accounts/__pycache__
 
-/core/__pycache__
+# Ignore all __pycache__ directories everywhere
+**/__pycache__/
+
+# Ignore all .pyc files everywhereiles everywhere
+*.pyc*.pyc
+
+# Ignore all migration files except __init__.pyore all migration files except __init__.py
+**/migrations/*.pys/*.py
+!**/migrations/__init__.py!**/migrations/__init__.py
+
+
+
+**/migrations/__pycache__/**/migrations/*.pyc**/migrations/*.pyc
+**/migrations/__pycache__/
+# Ignore all __pycache__ directories everywhere
+**/__pycache__/
+
+# Ignore all .pyc files everywhere
 *.pyc
-__pycache__
-/core/migrations/__pycache__
-core/migrations/__pycache__/0002_sitesettings_about_description_sitesettings_address_and_more.cpython-312.pyc
+
+# Ignore all migration files except __init__.py
+**/migrations/*.py
+!**/migrations/__init__.py
+**/migrations/*.pyc
+**/migrations/__pycache__/

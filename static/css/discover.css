@@ -1,0 +1,476 @@
+:root {
+  --discover-bg: linear-gradient(135deg, #f8fafc 60%, #e0c3fc 100%);
+  --glass-bg: rgba(255,255,255,0.85);
+  --glass-blur: blur(14px);
+  --card-radius: 22px;
+  --card-shadow: 0 12px 40px rgba(127,0,255,0.13), 0 2px 8px rgba(0,0,0,0.04);
+  --primary: #7F00FF;
+  --primary-dark: #2d1e6b;
+  --secondary: #E100FF;
+  --secondary-dark: #8a2be2;
+  --success: #20b27a;
+  --danger: #ff4a4a;
+  --gray-border: #ece9f7;
+  --gray-bg: #f5f6fa;
+  --gray-text: #6c6f7a;
+}
+
+body {
+  background: var(--discover-bg);
+  font-family: 'Inter', 'Segoe UI', Arial, sans-serif;
+  color: var(--primary-dark);
+}
+
+.discover-container {
+  min-height: calc(100vh - 76px - 300px);
+  padding: 32px 0;
+  position: relative;
+  overflow-x: hidden;
+  background: var(--discover-bg);
+}
+
+.decorative-container {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+}
+.decorative-circle {
+  position: absolute;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #7F00FF33, #E100FF22);
+  filter: blur(2px);
+  animation: float 8s ease-in-out infinite alternate;
+}
+@keyframes float {
+  0% { transform: translateY(0) scale(1);}
+  100% { transform: translateY(-30px) scale(1.08);}
+}
+.decorative-dots {
+  position: absolute;
+  border-radius: 50%;
+  background: #7F00FF22;
+  animation: twinkle 3s infinite alternate;
+}
+@keyframes twinkle {
+  0% { opacity: 0.2;}
+  100% { opacity: 0.5;}
+}
+
+.discover-header h2.gradient-text {
+  background: linear-gradient(90deg, #7F00FF, #E100FF, #20b27a 90%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  font-weight: 900;
+  letter-spacing: -1px;
+  font-size: 2.4rem;
+  animation: gradient-move 3s linear infinite;
+}
+@keyframes gradient-move {
+  0% {background-position: 0%;}
+  100% {background-position: 100%;}
+}
+
+.preference-filters {
+  max-width: 520px;
+  margin: 0 auto 32px;
+  padding: 24px 20px;
+  border-radius: 20px;
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  box-shadow: var(--card-shadow);
+  border: 1px solid var(--gray-border);
+  animation: fadeIn 0.7s;
+}
+.preference-filters h5 {
+  font-weight: 700;
+  color: var(--primary-dark);
+}
+.filter-tag {
+  padding: 8px 18px;
+  border-radius: 50px;
+  font-size: 1rem;
+  background: var(--gray-bg);
+  color: var(--primary-dark);
+  border: none;
+  font-weight: 600;
+  box-shadow: 0 1px 4px #7F00FF11;
+  transition: all 0.2s;
+}
+.filter-tag.active, .filter-tag:hover {
+  background: linear-gradient(90deg, #7F00FF, #E100FF);
+  color: #fff;
+  transform: scale(1.08);
+  box-shadow: 0 2px 12px #7F00FF22;
+}
+
+.swipe-container {
+  max-width: 520px;
+  margin: 0 auto;
+  position: relative;
+  perspective: 1200px;
+  height: 520px;
+}
+
+.swipe-card {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  border-radius: var(--card-radius);
+  overflow: hidden;
+  box-shadow: var(--card-shadow);
+  background: var(--glass-bg);
+  backdrop-filter: var(--glass-blur);
+  border: 1.5px solid var(--gray-border);
+  transition: transform 0.4s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+  will-change: transform;
+  z-index: 2;
+  animation: fadeIn 0.7s;
+}
+.swipe-card:not(.d-none):hover {
+  box-shadow: 0 18px 48px #7F00FF33, 0 2px 8px #0002;
+  transform: scale(1.02) rotate(-1deg);
+}
+
+.swipe-card-header {
+  height: 210px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+  background: linear-gradient(135deg, #7F00FF 60%, #E100FF 100%);
+  animation: gradient-move 5s linear infinite alternate;
+}
+.founder-card .swipe-card-header {
+  background: linear-gradient(135deg, #4a6bff 60%, #c04aff 100%);
+}
+.investor-card .swipe-card-header {
+  background: linear-gradient(135deg, #20b27a 60%, #7F00FF 100%);
+}
+.swipe-card-header:before,
+.swipe-card-header:after {
+  content: '';
+  position: absolute;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.13);
+  z-index: 0;
+}
+.swipe-card-header:before {
+  width: 320px; height: 320px; top: -160px; right: -160px;
+}
+.swipe-card-header:after {
+  width: 180px; height: 180px; bottom: -90px; left: -90px;
+}
+
+.profile-avatar {
+  width: 110px;
+  height: 110px;
+  border-radius: 24px;
+  background: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--primary);
+  font-size: 3.2rem;
+  font-weight: 800;
+  box-shadow: 0 6px 18px #7F00FF22;
+  z-index: 1;
+  border: 3px solid #fff;
+  transition: box-shadow 0.3s;
+}
+.investor-card .profile-avatar {
+  color: var(--secondary-dark);
+}
+.founder-card .profile-avatar {
+  color: #4a6bff;
+}
+
+.swipe-card-content {
+  padding: 28px 26px 18px 26px;
+  background: transparent;
+}
+
+.profile-name {
+  font-size: 1.6rem;
+  font-weight: 800;
+  margin-bottom: 6px;
+  color: var(--primary-dark);
+  letter-spacing: -0.5px;
+}
+.profile-headline {
+  color: var(--gray-text);
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+.profile-info {
+  margin-bottom: 18px;
+}
+.profile-info-item {
+  display: flex;
+  align-items: center;
+  margin-bottom: 8px;
+}
+.profile-info-icon {
+  width: 32px;
+  height: 32px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-right: 10px;
+  font-size: 1.1rem;
+  background: #f3eaff;
+  color: var(--primary);
+}
+.founder-card .profile-info-icon {
+  background: #e0e7ff;
+  color: #4a6bff;
+}
+.investor-card .profile-info-icon {
+  background: #e0c3fc;
+  color: var(--secondary-dark);
+}
+
+.profile-tags {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 10px;
+  gap: 6px;
+}
+.profile-tag {
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  background: #f3eaff;
+  color: var(--primary-dark);
+  box-shadow: 0 1px 4px #7F00FF11;
+  transition: background 0.2s, color 0.2s;
+}
+.founder-card .profile-tag {
+  background: #e0e7ff;
+  color: #4a6bff;
+}
+.investor-card .profile-tag {
+  background: #e0c3fc;
+  color: var(--secondary-dark);
+}
+
+.swipe-actions {
+  display: flex;
+  justify-content: center;
+  margin-top: 38px;
+  gap: 40px;
+}
+.swipe-btn {
+  width: 76px;
+  height: 76px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.1rem;
+  cursor: pointer;
+  transition: all 0.25s cubic-bezier(.4,2,.6,1);
+  box-shadow: 0 6px 18px #7F00FF22;
+  background: #fff;
+  border: 3px solid #ece9f7;
+  position: relative;
+  z-index: 3;
+}
+.swipe-btn:active {
+  transform: scale(0.97);
+}
+.swipe-dislike {
+  color: var(--danger);
+  border-color: var(--danger);
+  background: #fff;
+  box-shadow: 0 0 0 0 #ff4a4a44;
+}
+.swipe-dislike:hover, .swipe-dislike:focus {
+  background: var(--danger);
+  color: #fff;
+  box-shadow: 0 0 0 8px #ff4a4a22;
+  transform: scale(1.08) rotate(-8deg);
+}
+.swipe-like {
+  color: var(--success);
+  border-color: var(--success);
+  background: #fff;
+  box-shadow: 0 0 0 0 #20b27a44;
+}
+.swipe-like:hover, .swipe-like:focus {
+  background: var(--success);
+  color: #fff;
+  box-shadow: 0 0 0 8px #20b27a22;
+  transform: scale(1.08) rotate(8deg);
+}
+.swipe-btn.disabled {
+  opacity: 0.5;
+  pointer-events: none;
+}
+
+.swipe-indicators {
+  position: absolute;
+  top: 0; left: 0;
+  width: 100%; height: 100%;
+  pointer-events: none;
+  z-index: 10;
+}
+.swipe-like-indicator,
+.swipe-dislike-indicator {
+  position: absolute;
+  top: 36px;
+  width: 110px;
+  height: 110px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2.2rem;
+  font-weight: 900;
+  border-radius: 16px;
+  border: 5px solid;
+  opacity: 0;
+  transition: opacity 0.3s;
+  background: #fff;
+  box-shadow: 0 2px 12px #7F00FF22;
+  letter-spacing: 2px;
+}
+.swipe-like-indicator {
+  right: 36px;
+  border-color: var(--success);
+  color: var(--success);
+  transform: rotate(-18deg);
+}
+.swipe-dislike-indicator {
+  left: 36px;
+  border-color: var(--danger);
+  color: var(--danger);
+  transform: rotate(18deg);
+}
+
+.swipe-left {
+  animation: swipeLeft 0.5s forwards;
+}
+.swipe-right {
+  animation: swipeRight 0.5s forwards;
+}
+@keyframes swipeLeft {
+  to {
+    transform: translateX(-1000px) rotate(-30deg);
+    opacity: 0;
+  }
+}
+@keyframes swipeRight {
+  to {
+    transform: translateX(1000px) rotate(30deg);
+    opacity: 0;
+  }
+}
+
+.swipe-empty-state {
+  text-align: center;
+  padding: 60px 0;
+  animation: fadeIn 0.7s;
+}
+.swipe-empty-icon {
+  font-size: 4.2rem;
+  margin-bottom: 22px;
+  color: #c3b6e6;
+}
+
+.remaining-swipes {
+  text-align: center;
+  margin-top: 24px;
+  font-size: 1rem;
+  color: var(--gray-text);
+}
+.remaining-swipes-count {
+  font-weight: 800;
+  color: var(--primary);
+  font-size: 1.2em;
+}
+
+.premium-promo {
+  text-align: center;
+  margin-top: 32px;
+  padding: 24px 18px;
+  border-radius: 16px;
+  background: linear-gradient(135deg, #7F00FF, #E100FF 80%);
+  color: white;
+  box-shadow: 0 2px 12px #7F00FF22;
+  animation: fadeIn 0.7s;
+}
+.premium-promo h5 {
+  margin-bottom: 10px;
+  font-weight: 800;
+  font-size: 1.2rem;
+}
+.premium-promo-btn {
+  background: #fff;
+  color: var(--primary);
+  border: none;
+  padding: 10px 28px;
+  border-radius: 50px;
+  font-weight: 700;
+  margin-top: 15px;
+  transition: all 0.3s;
+  box-shadow: 0 2px 8px #fff2;
+}
+.premium-promo-btn:hover {
+  transform: translateY(-3px) scale(1.04);
+  box-shadow: 0 5px 18px #fff4;
+  color: var(--secondary);
+}
+
+@media (max-width: 767.98px) {
+  .discover-container {
+    padding: 12px 0;
+  }
+  .swipe-container {
+    max-width: 98vw;
+    height: 78vw;
+    min-height: 340px;
+    max-height: 420px;
+  }
+  .preference-filters {
+    padding: 16px 6px;
+    border-radius: 14px;
+  }
+  .swipe-card {
+    border-radius: 14px;
+  }
+  .swipe-btn {
+    width: 60px;
+    height: 60px;
+    font-size: 1.5rem;
+  }
+  .swipe-like-indicator, .swipe-dislike-indicator {
+    width: 80px;
+    height: 80px;
+    font-size: 1.3rem;
+    border-radius: 10px;
+    top: 18px;
+    right: 18px;
+    left: 18px;
+  }
+}
+
+@media (max-width: 480px) {
+  .swipe-container {
+    height: 68vw;
+    min-height: 220px;
+    max-height: 320px;
+  }
+  .swipe-card-content {
+    padding: 14px 6px 10px 6px;
+  }
+}
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(30px);}
+  to { opacity: 1; transform: translateY(0);}
+}
