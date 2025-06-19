@@ -13,35 +13,37 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="card register-card animated-on-scroll fade-in-up">
-                    <div class="row g-0">
-                        <div class="c1">
-                        <!-- Visual & Quote Section -->
-                        <div class="col-lg-5 d-flex align-items-center justify-content-center">
-                            <div class="register-visual w-100 text-center py-4">
-                                <div id="founderVisual" class="register-visual-content">
-                                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width: 260px; height: 260px;" loop autoplay></lottie-player>
-                                    <div class="register-quote moving-quote mt-3">
-                                        <span>🚀 "Pitch decks: Because who needs sleep anyway?"</span>
+                    <!-- Registration Form Section -->
+                    <div class="register-body">
+                        <div class="heading">
+                            <div class="heading1">
+                                <div class="row g-0">
+                                    <div class="c1">
+                                        <!-- Visual & Quote Section -->
+                                        <div class="col-lg-5 d-flex justify-content-center">
+                                            <div class="register-visual w-100 text-center py-4">
+                                                <div id="founderVisual" class="register-visual-content">
+                                                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_jcikwtux.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
+                                                    <div class="register-quote moving-quote mt-3">
+                                        {% comment %} <span>🚀 "Pitch decks: Because who needs sleep anyway?"</span> {% endcomment %}
                                     </div>
                                 </div>
                                 <div id="investorVisual" class="register-visual-content" style="display: none;">
-                                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_1pxqjqps.json" background="transparent" speed="1" style="width: 260px; height: 260px;" loop autoplay></lottie-player>
+                                    <lottie-player src="https://assets2.lottiefiles.com/packages/lf20_1pxqjqps.json" background="transparent" speed="1" style="width: 150px; height: 150px;" loop autoplay></lottie-player>
                                     <div class="register-quote moving-quote mt-3">
-                                        <span>💸 "I invest in coffee... and sometimes startups!"</span>
+                                        {% comment %} <span>💸 "I invest in coffee... and sometimes startups!"</span> {% endcomment %}
                                     </div>
                                 </div>
                             </div>
                         </div>
                     </div>
-                        <!-- Registration Form Section -->
-                         <div class="c2">
-                        <div class="col-lg-7">
-                            <div class="register-body">
+                    </div></div>
+                    <div class="heading2">
                                 <div class="text-center mb-4">
                                     <h2 class="mb-1">Create Your Account</h2>
                                     <p class="text-muted">Join FoundrFuse today and start connecting</p>
                                 </div>
-                                
+                                <div class="usertype">
                                 <div class="user-type-toggle mb-4">
                                     <div class="user-type-btn active" id="founderBtn">
                                         <i class="fas fa-rocket me-2"></i> I'm a Founder
@@ -50,7 +52,9 @@
                                         <i class="fas fa-chart-line me-2"></i> I'm an Investor
                                     </div>
                                 </div>
-                                
+                            </div>
+                            </div>
+                        </div>
                                 <form method="post" action="{% url 'accounts:register' %}" id="registerForm">
                                     {% csrf_token %}
                                     
@@ -98,7 +102,7 @@
                                                 {% endfor %}
                                             </ul>
                                         {% endif %}
-                                        <div class="helptext">We'll never share your email with anyone else.</div>
+                                        {% comment %} <div class="helptext">We'll never share your email with anyone else.</div> {% endcomment %}
                                     </div>
                                     
                                     <div class="mb-3">
@@ -125,10 +129,8 @@
                                         {% endif %}
                                         <div class="helptext">
                                             <ul>
-                                                <li>Your password can't be too similar to your personal information.</li>
-                                                <li>Your password must contain at least 8 characters.</li>
-                                                <li>Your password can't be a commonly used password.</li>
-                                                <li>Your password can't be entirely numeric.</li>
+                                                <li>Your password must be at least 8 characters long, not entirely numeric, not commonly used, and not too similar to your personal information.
+                                                </li>
                                             </ul>
                                         </div>
                                     </div>
@@ -215,8 +217,7 @@
             </div>
         </div>
     </div>
-</div>
-</div>
+    
 {% endblock %}
 
 {% block extra_js %}
