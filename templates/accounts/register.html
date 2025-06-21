@@ -5,6 +5,7 @@
 
 {% block extra_css %}
 <link rel="stylesheet" href="{% static 'css/register.css' %}">
+<link  href="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.css" rel="stylesheet"/>
 {% endblock %}
 
 {% block content %}
@@ -204,6 +205,19 @@
                                         </div>
                                     </div>
                                     
+                                    <!-- Profile Image Upload & Crop -->
+                                    <div class="mb-3">
+                                        <label for="id_profile_image" class="form-label">Profile Image</label>
+                                        <input type="file" name="profile_image" class="form-control" id="id_profile_image" accept="image/*">
+                                    </div>
+                                    <div id="profile-crop-container" class="mb-3" style="display: none;">
+                                        <img id="profile-crop-preview" style="max-width: 100%; height: auto;">
+                                        <div class="d-flex justify-content-end">
+                                            <button type="button" class="btn btn-primary" id="crop-btn">Crop Image</button>
+                                        </div>
+                                    </div>
+                                    <input type="hidden" name="cropped_image_data" id="cropped_image_data">
+                                    
                                     <button type="submit" class="btn btn-register w-100">Create Account</button>
                                 </form>
                                 
@@ -223,7 +237,58 @@
 
 {% block extra_js %}
 <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/cropperjs/1.5.13/cropper.min.js"></script>
 <script src="{% static 'js/register.js' %}"></script>
+
+<script>
+let cropper;
+const input = document.getElementById('id_profile_image');
+const preview = document.getElementById('profile-crop-preview');
+const container = document.getElementById('profile-crop-container');
+const cropBtn = document.getElementById('crop-btn');
+const hiddenInput = document.getElementById('cropped_image_data');
+
+input.addEventListener('change', function(e) {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = function(event) {
+        preview.src = event.target.result;
+        container.style.display = 'block';
+        if (cropper) cropper.destroy();
+        cropper = new Cropper(preview, {
+            aspectRatio: 1,
+            viewMode: 1,
+        });
+    };
+    reader.readAsDataURL(file);
+});
+
+cropBtn.addEventListener('click', function() {
+    if (!cropper) return;
+    cropper.getCroppedCanvas({
+        width: 400,
+        height: 400,
+        imageSmoothingQuality: 'high'
+    }).toBlob(async function(blob) {
+        // Compress to ~200KB
+        let quality = 0.9;
+        let compressedBlob = blob;
+        while (compressedBlob.size > 200 * 1024 && quality > 0.1) {
+            compressedBlob = await new Promise(res =>
+                cropper.getCroppedCanvas({width:400,height:400}).toBlob(res, 'image/jpeg', quality)
+            );
+            quality -= 0.1;
+        }
+        const reader = new FileReader();
+        reader.onloadend = function() {
+            hiddenInput.value = reader.result;
+            alert('Image cropped and compressed!');
+        };
+        reader.readAsDataURL(compressedBlob);
+    }, 'image/jpeg', 0.9);
+});
+</script>
 {% endblock %}
 
 

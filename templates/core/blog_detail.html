@@ -153,7 +153,11 @@
                 <h1 class="display-4 fw-bold mb-3 animated-on-scroll fade-in-up">{{ blog.title }}</h1>
                 <p class="lead mb-3 animated-on-scroll fade-in-up delay-1">{{ blog.summary }}</p>
                 <div class="d-flex justify-content-center align-items-center animated-on-scroll fade-in-up delay-2">
-                    <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+                    {% if blog.author.profile.profile_image %}
+                        <img src="{{ blog.author.profile.profile_image.url }}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+                    {% else %}
+                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+                    {% endif %}
                     <span class="me-3">{{ blog.author.get_full_name }}</span>
                     <span><i class="far fa-calendar-alt me-1"></i> {{ blog.created_at|date:"F d, Y" }}</span>
                 </div>
@@ -235,7 +239,11 @@
                 <!-- Author Card -->
                 <div class="card author-card mb-4 animated-on-scroll slide-in-right">
                     <div class="author-header">
-                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="author-img mb-3" onerror="this.src='https://via.placeholder.com/100'">
+                        {% if blog.author.profile.profile_image %}
+                            <img src="{{ blog.author.profile.profile_image.url }}" alt="{{ blog.author.get_full_name }}" class="author-img mb-3" onerror="this.src='https://via.placeholder.com/100'">
+                        {% else %}
+                            <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="author-img mb-3" onerror="this.src='https://via.placeholder.com/100'">
+                        {% endif %}
                         <h5 class="mb-1">{{ blog.author.get_full_name }}</h5>
                         <p class="mb-0 text-white-50">
                             {% if blog.author.profile.user_type == 'founder' %}
