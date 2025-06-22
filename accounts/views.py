@@ -10,6 +10,8 @@ from django.contrib.auth.models import User
 from django.utils import timezone
 from datetime import timedelta
 import random
+import base64
+from django.core.files.base import ContentFile
 
 class CustomLoginView(LoginView):
     template_name = 'accounts/login.html'
@@ -21,9 +23,20 @@ class CustomLoginView(LoginView):
 
 def register(request):
     if request.method == 'POST':
-        form = UserRegistrationForm(request.POST)
+        form = UserRegistrationForm(request.POST, request.FILES)
         if form.is_valid():
-            form.save()
+            user = form.save()
+            profile = user.profile
+            profile.user_type = form.cleaned_data['user_type']
+            # ...other fields...
+            cropped_data = request.POST.get('cropped_image_data')
+            if cropped_data:
+                format, imgstr = cropped_data.split(';base64,')
+                ext = format.split('/')[-1]
+                profile.profile_image = ContentFile(base64.b64decode(imgstr), f"profile_{user.id}.{ext}")
+            elif form.cleaned_data.get('profile_image'):
+                profile.profile_image = form.cleaned_data['profile_image']
+            profile.save()
             messages.success(request, 'Your account has been created successfully! You can now log in.')
             return redirect('accounts:login')
     else:
@@ -103,7 +116,15 @@ def edit_profile(request):
     if request.method == 'POST':
         form = ProfileForm(request.POST, request.FILES, instance=request.user.profile)
         if form.is_valid():
-            form.save()
+            profile = form.save(commit=False)
+            cropped_data = request.POST.get('cropped_image_data')
+            if cropped_data:
+                format, imgstr = cropped_data.split(';base64,')
+                ext = format.split('/')[-1]
+                profile.profile_image = ContentFile(base64.b64decode(imgstr), f"profile_{request.user.id}.{ext}")
+            elif form.cleaned_data.get('profile_image'):
+                profile.profile_image = form.cleaned_data['profile_image']
+            profile.save()
             messages.success(request, 'Your profile has been updated successfully!')
             return redirect('accounts:profile')
     else:

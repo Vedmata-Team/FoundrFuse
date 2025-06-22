@@ -8,10 +8,11 @@ class UserRegistrationForm(UserCreationForm):
     first_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     user_type = forms.ChoiceField(choices=Profile.USER_TYPES, required=True, help_text='Are you a founder or an investor?')
-    
+    profile_image = forms.ImageField(required=True, help_text='Upload Logo or Image.')
+
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'user_type')
+        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'user_type', 'profile_image')
     
     def save(self, commit=True):
         user = super().save(commit=False)
@@ -29,9 +30,13 @@ class UserRegistrationForm(UserCreationForm):
         return user
 
 class ProfileForm(forms.ModelForm):
+    profile_image = forms.ImageField(required=False, help_text='Upload Logo or Image.')
+
     class Meta:
         model = Profile
-        fields = ('bio', 'company_name', 'industry', 'location', 'linkedin_profile', 'website', 'looking_for')
+        fields = (
+            'bio', 'company_name', 'industry', 'location', 'linkedin_profile', 'website', 'looking_for', 'profile_image'
+        )
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Tell us about yourself or your company'}),
             'looking_for': forms.Textarea(attrs={'rows': 3, 'placeholder': 'What kind of connections are you looking for?'}),
