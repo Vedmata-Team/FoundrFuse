@@ -13,7 +13,7 @@
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Simple, Transparent Pricing</h1>
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Simple, <span style="color: rgb(12, 12, 138);">Transparent Pricing </span></h1>
                 <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Choose the plan that's right for your journey, whether you're a founder or investor</p>
             </div>
         </div>
@@ -31,9 +31,9 @@
         
         <!-- Founder Pricing -->
         <div id="founderPricing">
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4  d-flex justify-content-center">
                 <!-- Free Plan -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="card pricing-card shadow-sm animated-on-scroll slide-in-left">
                         <div class="pricing-header free-header">
                             <h3 class="mb-4">Free Plan</h3>
@@ -41,47 +41,48 @@
                             <span class="price-period">Forever Free</span>
                         </div>
                         <div class="card-body p-4">
-                            <div class="py-3">
+                            <div class="py-2">
                                 <ul class="list-unstyled">
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Basic founder profile</span>
+                                        <span class="item-list-2">Basic founder profile</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>5 swipes per day</span>
+                                        <span class="item-list-2">5 swipes per day</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>View investor profiles (limited info)</span>
+                                        <span class="item-list-2">View investor profiles (limited info) </span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Basic matching</span>
+                                        <span class="item-list-2">Basic matching</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Read blog content</span>
+                                        <span class="item-list-2">Read blog content</span>
+                                    </li>
+                                    <li class="d-flex align-items-center mb-2">
+                                        <i class="fas fa-times feature-times"></i>
+                                        <span class="item-list-2 ">No advanced filters</span>
                                     </li>
                                     <li class="d-flex align-items-center mb-3">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No advanced filters</span>
+                                        <span class="item-list-2">No analytics dashboard</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No analytics dashboard</span>
+                                        <span class="item-list-2">No profile boosts</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No profile boosts</span>
-                                    </li>
-                                    <li class="d-flex align-items-center mb-3">
-                                        <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No blog publishing</span>
+                                        <span class="item-list-2">No blog publishing</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-3">
                                 <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill w-100">
                                     Sign Up Free
                                 </a>
@@ -91,56 +92,57 @@
                 </div>
                 
                 <!-- Premium Plan -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="card pricing-card shadow-sm position-relative animated-on-scroll slide-in-right">
-                        <div class="popular-badge">Most Popular</div>
+                        <div class="popular-badge mb-2">Most Popular</div>
                         <div class="pricing-header premium-header">
-                            <h3 class="mb-4">Premium Plan</h3>
+                            <h3 class="mb-2 mt-2">Premium Plan</h3>
                             <h2 class="pricing-price mb-0">$29.99</h2>
                             <span class="price-period">per month</span>
                         </div>
                         <div class="card-body p-4">
-                            <div class="py-3">
+                            <div class="py-2">
                                 <ul class="list-unstyled">
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2  ">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span><strong>Enhanced</strong> founder profile</span>
+                                        <span class="item-list-2" ><strong>Enhanced</strong> founder profile</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span><strong>Unlimited</strong> swipes</span>
+                                        <span  class="item-list-2"><strong>Unlimited</strong> swipes</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Full investor profile access</span>
+                                        <span class="item-list-2">Full investor profile access</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Advanced filters (industry, location, stage)</span>
+                                        <span  class="item-list-2">Advanced filters (industry, location, stage)</span>
+                                     
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Analytics dashboard</span>
+                                        <span class="item-list-2">Analytics dashboard</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Profile boost (2x visibility)</span>
+                                        <span class="item-list-2">Profile boost (2x visibility)</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>AI-powered matching</span>
+                                        <span class="item-list-2">AI-powered matching</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Publish blog posts & founder stories</span>
+                                        <span class="item-list-2">Publish blog posts & founder stories</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Priority support</span>
+                                        <span class="item-list-2">Priority support</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-3">
                                 <a href="{% url 'subscription:upgrade' %}" class="btn premium-btn btn-lg px-5 py-3 rounded-pill w-100">
                                     <i class="fas fa-crown me-2"></i> Upgrade to Premium
                                 </a>
@@ -153,9 +155,9 @@
         
         <!-- Investor Pricing -->
         <div id="investorPricing" style="display: none;">
-            <div class="row g-4 justify-content-center">
+            <div class="row g-4  d-flex justify-content-center">
                 <!-- Free Plan -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="card pricing-card shadow-sm animated-on-scroll slide-in-left">
                         <div class="pricing-header free-header">
                             <h3 class="mb-4">Free Plan</h3>
@@ -163,47 +165,47 @@
                             <span class="price-period">Forever Free</span>
                         </div>
                         <div class="card-body p-4">
-                            <div class="py-3">
+                            <div class="py-2">
                                 <ul class="list-unstyled">
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Basic investor profile</span>
+                                        <span class="item-list-2 ">Basic investor profile</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>5 swipes per day</span>
+                                        <span class="item-list-2 ">5 swipes per day</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>View startup profiles (limited info)</span>
+                                        <span class="item-list-2 ">View startup profiles (limited info)</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Basic matching</span>
+                                        <span class="item-list-2 ">Basic matching</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Read blog content</span>
+                                        <span class="item-list-2 ">Read blog content</span>
                                     </li>
                                     <li class="d-flex align-items-center mb-3">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No advanced filters</span>
+                                        <span class="item-list-2 ">No advanced filters</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No deal flow analytics</span>
+                                        <span class="item-list-2 ">No deal flow analytics</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No team collaboration</span>
+                                        <span class="item-list-2 ">No team collaboration</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-times feature-times"></i>
-                                        <span class="text-muted">No blog publishing</span>
+                                        <span class="item-list-2 ">No blog publishing</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-3">
                                 <a href="{% url 'accounts:register' %}" class="btn btn-outline-primary btn-lg px-5 py-3 rounded-pill w-100">
                                     Sign Up Free
                                 </a>
@@ -213,56 +215,56 @@
                 </div>
                 
                 <!-- Premium Plan -->
-                <div class="col-lg-5">
+                <div class="col-lg-4">
                     <div class="card pricing-card shadow-sm position-relative animated-on-scroll slide-in-right">
-                        <div class="popular-badge">Most Popular</div>
+                        <div class="popular-badge mb-2">Most Popular</div>
                         <div class="pricing-header premium-header">
-                            <h3 class="mb-4">Premium Plan</h3>
+                            <h3 class="mb-2 mt-2">Premium Plan</h3>
                             <h2 class="pricing-price mb-0">$49.99</h2>
                             <span class="price-period">per month</span>
                         </div>
                         <div class="card-body p-4">
-                            <div class="py-3">
+                            <div class="py-2">
                                 <ul class="list-unstyled">
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span><strong>Enhanced</strong> investor profile</span>
+                                        <span class="item-list-2 "><strong>Enhanced</strong> investor profile</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span><strong>Unlimited</strong> swipes</span>
+                                        <span class="item-list-2 "><strong>Unlimited</strong> swipes</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Full startup profile access</span>
+                                        <span class="item-list-2 ">Full startup profile access</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Advanced filters (industry, traction, team)</span>
+                                        <span class="item-list-2 ">Advanced filters (industry, traction, team)</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Deal flow analytics</span>
+                                        <span class="item-list-2 ">Deal flow analytics</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Team collaboration tools</span>
+                                        <span class="item-list-2 ">Team collaboration tools</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>AI-powered matching</span>
+                                        <span class="item-list-2 ">AI-powered matching</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Publish blog posts & investment insights</span>
+                                        <span class="item-list-2 ">Publish blog posts & investment insights</span>
                                     </li>
-                                    <li class="d-flex align-items-center mb-3">
+                                    <li class="d-flex align-items-center mb-2">
                                         <i class="fas fa-check feature-check"></i>
-                                        <span>Priority support</span>
+                                        <span class="item-list-2 ">Priority support</span>
                                     </li>
                                 </ul>
                             </div>
-                            <div class="text-center mt-4">
+                            <div class="text-center mt-3">
                                 <a href="{% url 'subscription:upgrade' %}" class="btn premium-btn btn-lg px-5 py-3 rounded-pill w-100">
                                     <i class="fas fa-crown me-2"></i> Upgrade to Premium
                                 </a>
@@ -276,7 +278,7 @@
 </section>
 
 <!-- Feature Comparison Section -->
-<section class="py-5 bg-light">
+<section class="py-1 bg-light">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
@@ -288,10 +290,10 @@
         <div class="row justify-content-center">
             <div class="col-lg-10">
                 <div class="table-responsive animated-on-scroll fade-in-up">
-                    <table class="table comparison-table">
+                    <table class="table comparison-table feature-comparison-table">
                         <thead>
                             <tr>
-                                <th scope="col">Features</th>
+                                <th scope="col" class="px-3">Features</th>
                                 <th scope="col" class="text-center">Free</th>
                                 <th scope="col" class="text-center">Premium</th>
                             </tr>
@@ -478,21 +480,21 @@
 </section>
 
 <!-- FAQ Section -->
-<section class="py-5">
+<section class="py-5 faq-section-custom">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-4">Frequently Asked Questions</h2>
+                <h2 class="fw-bold mb-4 faq-title-gradient">Frequently Asked Questions</h2>
                 <p class="lead text-muted">Answers to common questions about our plans</p>
             </div>
         </div>
-        
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="accordion" id="pricingFaq">
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up">
+                <div class="accordion faq-accordion" id="pricingFaq">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 How does the free plan work?
                             </button>
                         </h2>
@@ -502,10 +504,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-1">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-1">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Can I cancel my premium subscription anytime?
                             </button>
                         </h2>
@@ -515,10 +517,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-2">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-2">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Are there any hidden fees?
                             </button>
                         </h2>
@@ -528,10 +530,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-3">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-3">
                         <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Do you offer annual billing?
                             </button>
                         </h2>
@@ -541,10 +543,10 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="accordion-item border rounded-3 shadow-sm animated-on-scroll fade-in-up delay-4">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-4">
                         <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Do you offer discounts for startups?
                             </button>
                         </h2>

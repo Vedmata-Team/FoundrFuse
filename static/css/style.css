@@ -926,3 +926,52 @@ p {
     height: 24px;
   }
 }
+
+/* Responsive Design for Chatbot */
+
+
+        #ff-chatbot-recommended {
+            background: #f8faff;
+            border-radius: 10px;
+            margin: 10px 10px 10px 10px;
+            padding: 10px 10px 5px 10px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+            position: relative;
+            z-index: 2;
+        }
+        .ff-chatbot-recommended-title {
+            font-weight: 600;
+            color: #007bff;
+            margin-bottom: 8px;
+            font-size: 1rem;
+            letter-spacing: 0.5px;
+        }
+        #ff-chatbot-recommended-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        #ff-chatbot-recommended-list li {
+            background: #fff;
+            border: 1px solid #e3e6f0;
+            border-radius: 7px;
+            margin-bottom: 7px;
+            padding: 8px 12px;
+            cursor: pointer;
+            transition: background 0.2s, box-shadow 0.2s;
+            font-size: 0.98rem;
+            color: #333;
+            box-shadow: 0 1px 4px rgba(0,123,255,0.04);
+        }
+        #ff-chatbot-recommended-list li:hover {
+            background: #e7f1ff;
+            color: #0056b3;
+            box-shadow: 0 2px 8px rgba(0,123,255,0.10);
+        }
+        @media (max-width: 600px) {
+            #ff-chatbot-recommended {
+                margin: 8px 4px 8px 4px;
+                padding: 8px 6px 4px 6px;
+            }
+        }
+ 

@@ -1,28 +1,32 @@
 <!DOCTYPE html>
 {% load static %}
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}FoundrFuse - Connect Founders & Investors{% endblock %}</title>
-    
+
     <!-- Bootstrap CSS -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
-    
+
     <!-- Font Awesome Icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    
+
     <!-- Google Fonts: Poppins & Inter -->
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-    
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@300;400;500;600;700&display=swap"
+        rel="stylesheet">
+
     <!-- Custom CSS -->
     <link rel="stylesheet" href="{% static 'css/style.css' %}">
     <link rel="stylesheet" href="{% static 'css/animations.css' %}">
     <link rel="stylesheet" href="{% static 'css/graphics.css' %}">
-    
+
     <!-- Page-specific CSS -->
     {% block extra_css %}{% endblock %}
 </head>
+
 <body>
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg ">
@@ -31,7 +35,8 @@
                 <i class="fas fa-fire-alt me-2"></i>
                 <span>FoundrFuse</span>
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+                aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
@@ -69,48 +74,64 @@
                 </ul>
                 <ul class="navbar-nav">
                     {% if user.is_authenticated %}
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                <i class="fas fa-user-circle me-2"></i> {{ user.get_full_name|default:user.username }}
-                                {% if user.profile.is_premium %}
-                                <span class="premium-badge ms-2"><i class="fas fa-crown"></i></span>
-                                {% endif %}
-                            </a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:profile' %}"><i class="fas fa-tachometer-alt me-2"></i> Dashboard</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:edit_profile' %}"><i class="fas fa-user-edit me-2"></i> Edit Profile</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:discover' %}"><i class="fas fa-search me-2"></i> Discover</a></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i> Matches</a></li>
-                                {% if not user.profile.is_premium %}
-                                <li><hr class="dropdown-divider"></li>
-                                <li><a class="dropdown-item d-flex align-items-center" href="{% url 'subscription:upgrade' %}"><i class="fas fa-crown me-2"></i> Upgrade to Premium</a></li>
-                                {% endif %}
-                                <li><hr class="dropdown-divider"></li>
-                                <li>
-                                    <form method="post" action="{% url 'accounts:logout' %}">
-                                        {% csrf_token %}
-                                        <button type="submit" class="btn btn-link d-flex align-items-center"><i class="fas fa-sign-out-alt me-2"></i> Logout</button>
-                                    </form>
-                                </li>
-                            </ul>
-                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
+                            role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                            <i class="fas fa-user-circle me-2"></i> {{ user.get_full_name|default:user.username }}
+                            {% if user.profile.is_premium %}
+                            <span class="premium-badge ms-2"><i class="fas fa-crown"></i></span>
+                            {% endif %}
+                        </a>
+                        <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <li><a class="dropdown-item d-flex align-items-center"
+                                    href="{% url 'accounts:profile' %}"><i class="fas fa-tachometer-alt me-2"></i>
+                                    Dashboard</a></li>
+                            <li><a class="dropdown-item d-flex align-items-center"
+                                    href="{% url 'accounts:edit_profile' %}"><i class="fas fa-user-edit me-2"></i> Edit
+                                    Profile</a></li>
+                            <li><a class="dropdown-item d-flex align-items-center"
+                                    href="{% url 'accounts:discover' %}"><i class="fas fa-search me-2"></i> Discover</a>
+                            </li>
+                            <li><a class="dropdown-item d-flex align-items-center"
+                                    href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i>
+                                    Matches</a></li>
+                            {% if not user.profile.is_premium %}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li><a class="dropdown-item d-flex align-items-center"
+                                    href="{% url 'subscription:upgrade' %}"><i class="fas fa-crown me-2"></i> Upgrade to
+                                    Premium</a></li>
+                            {% endif %}
+                            <li>
+                                <hr class="dropdown-divider">
+                            </li>
+                            <li>
+                                <form method="post" action="{% url 'accounts:logout' %}">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-link d-flex align-items-center"><i
+                                            class="fas fa-sign-out-alt me-2"></i> Logout</button>
+                                </form>
+                            </li>
+                        </ul>
+                    </li>
                     {% else %}
-                        <li class="nav-item">
-                            <a class="nav-link d-flex align-items-center" href="{% url 'accounts:login' %}">
-                                <i class="fas fa-sign-in-alt me-2"></i> Login
-                            </a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="btn btn-primary d-flex align-items-center" href="{% url 'accounts:register' %}">
-                                <i class="fas fa-user-plus me-2"></i> Register
-                            </a>
-                        </li>
+                    <li class="nav-item">
+                        <a class="nav-link d-flex align-items-center" href="{% url 'accounts:login' %}">
+                            <i class="fas fa-sign-in-alt me-2"></i> Login
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="btn btn-primary d-flex align-items-center" href="{% url 'accounts:register' %}">
+                            <i class="fas fa-user-plus me-2"></i> Register
+                        </a>
+                    </li>
                     {% endif %}
                 </ul>
             </div>
         </div>
     </nav>
-        
+
     <!-- Flash Messages -->
     {% if messages %}
     <div class="container mt-3">
@@ -122,17 +143,18 @@
         {% endfor %}
     </div>
     {% endif %}
-    
+
     <!-- Main Content -->
     {% block content %}{% endblock %}
-    
+
     <!-- Footer -->
     <footer class="footer mt-5">
         <div class="container">
             <div class="row">
                 <div class="col-lg-4 mb-4">
                     <h5>FoundrFuse</h5>
-                    <p>Empowering Ideas, One Match at a Time. FoundrFuse connects visionary founders with future-ready investors through our smart, swipe-based platform.</p>
+                    <p>Empowering Ideas, One Match at a Time. FoundrFuse connects visionary founders with future-ready
+                        investors through our smart, swipe-based platform.</p>
                     <div class="social-icons">
                         <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
                         <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
@@ -182,71 +204,173 @@
             </div>
         </div>
     </footer>
-    
+
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"></script>
-    
+
     <!-- Custom JS -->
     <script src="{% static 'js/main.js' %}"></script>
-    
+
     <!-- Page-specific JS -->
     {% block extra_js %}{% endblock %}
 
     <!-- Animated Chatbot Widget -->
-<div id="ff-chatbot-bubble" title="Chat with FoundrFuse AI">
-  <!-- Chat bubble SVG icon -->
-  <svg viewBox="0 0 24 24" fill="none"><path d="M12 22c5.523 0 10-3.806 10-8.5S17.523 5 12 5 2 8.806 2 13.5c0 1.61.634 3.12 1.75 4.37-.13.7-.51 2.13-.7 2.8-.09.3.21.57.5.47.66-.19 2.08-.57 2.78-.7C8.88 21.366 10.39 22 12 22Z" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><circle cx="8.5" cy="13.5" r="1.5" fill="currentColor"/><circle cx="12" cy="13.5" r="1.5" fill="currentColor"/><circle cx="15.5" cy="13.5" r="1.5" fill="currentColor"/></svg>
-</div>
-<div id="ff-chatbot-window">
-  <div id="ff-chatbot-header">
-    <span>🤖 FoundrFuse AI Assistant</span>
-    <button id="ff-chatbot-close" aria-label="Close">&times;</button>
-  </div>
-  <div id="ff-chatbot-body">
-    <div class="ff-chatbot-msg-bot"><span>Hello! 👋<br>How can I assist you today?</span></div>
-  </div>
-  <form id="ff-chatbot-form" autocomplete="off">
-    <input id="ff-chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" />
-    <button id="ff-chatbot-send" type="submit">Send</button>
-  </form>
-</div>
-<script>
-const bubble = document.getElementById('ff-chatbot-bubble');
-const windowEl = document.getElementById('ff-chatbot-window');
-const closeBtn = document.getElementById('ff-chatbot-close');
-const bodyEl = document.getElementById('ff-chatbot-body');
-const formEl = document.getElementById('ff-chatbot-form');
-const inputEl = document.getElementById('ff-chatbot-input');
+    <div id="ff-chatbot-bubble" title="Chat with FoundrFuse AI">
+        <!-- Chat bubble SVG icon -->
+        <svg viewBox="0 0 24 24" fill="none">
+            <path
+                d="M12 22c5.523 0 10-3.806 10-8.5S17.523 5 12 5 2 8.806 2 13.5c0 1.61.634 3.12 1.75 4.37-.13.7-.51 2.13-.7 2.8-.09.3.21.57.5.47.66-.19 2.08-.57 2.78-.7C8.88 21.366 10.39 22 12 22Z"
+                stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round" />
+            <circle cx="8.5" cy="13.5" r="1.5" fill="currentColor" />
+            <circle cx="12" cy="13.5" r="1.5" fill="currentColor" />
+            <circle cx="15.5" cy="13.5" r="1.5" fill="currentColor" />
+        </svg>
+    </div>
+    <div id="ff-chatbot-window">
+        <div id="ff-chatbot-header">
+            <span>🤖 FoundrFuse AI Assistant</span>
+            <button id="ff-chatbot-close" aria-label="Close">&times;</button>
+        </div>
+        <div id="ff-chatbot-body">
+            <div class="ff-chatbot-msg-bot"><span>Hello! 👋<br>How can I assist you today?</span></div>
+        </div>
+        <form id="ff-chatbot-form" autocomplete="off">
+            <input id="ff-chatbot-input" type="text" placeholder="Type your message..." autocomplete="off" />
+            <button id="ff-chatbot-send" type="submit">Send</button>
+        </form>
+        <!-- Recommended Questions: ab form ke niche -->
+        <div id="ff-chatbot-recommended">
+            <div class="ff-chatbot-recommended-title">Recommended Questions</div>
+            <ul id="ff-chatbot-recommended-list"></ul>
+        </div>
+    </div>
+    
+    <script>
+        const ffFaqs = [
+            { q: "What is FoundrFuse?", a: "FoundrFuse is a curated digital platform designed to connect verified startup founders with credible investors. It streamlines the process of networking and discovery for fundraising, mentorship, and business collaboration." },
+            { q: "Is FoundrFuse a funding platform or a broker?", a: "No, FoundrFuse is not a funding provider or broker. It only facilitates introductions between founders and investors. All funding discussions and transactions happen independently, outside the platform." },
+            { q: "Is FoundrFuse available internationally?", a: "Yes, FoundrFuse serves users globally. However, users must comply with local legal and financial regulations regarding investments, business registration, and data sharing." },
+            { q: "Is there a cost to use FoundrFuse?", a: "The platform may offer both free and paid features. While basic matchmaking might be free, access to advanced tools or premium listings may require a subscription or fee. For updated pricing, contact support." },
+            { q: "Does FoundrFuse guarantee funding?", a: "No. FoundrFuse does not promise or guarantee funding. It simply helps founders and investors connect. The success of any funding depends on the interaction, pitch quality, and mutual interest between users." },
+            { q: "Who is eligible to register as a founder?", a: "Any individual 18 years or older who has a valid business concept, MVP (Minimum Viable Product), or operational startup model is eligible. Students aged 13–17 can also join with parental consent." },
+            { q: "Can students join as founders on the platform?", a: "Yes. Students aged 13–17 may join as 'Student Founders' after submitting a signed parental consent form and usage agreement. Their platform access is limited and requires guardian supervision." },
+            { q: "What documents are needed to register as a founder?", a: "Founders must submit a government-issued ID and documentation supporting their startup (pitch deck, business plan, MVP screenshots, etc.) as part of KYC verification." },
+            { q: "What is the ‘Student Founder’ tag?", a: "This tag identifies underage founders (ages 13–17) on the platform. These users have limited functionality and can only fundraise with guardian involvement. It ensures safety and transparency." },
+            { q: "Can Student Founders raise funds independently?", a: "No. Fundraising by Student Founders must involve a guardian or legal representative. Independent funding is not allowed for underage users." },
+            { q: "What is required from investors to join FoundrFuse?", a: "Institutional or accredited investors need to provide proof of their investment entity or portfolio. First-time investors must submit a self-declaration of interest and complete KYC." },
+            { q: "What is a 'New Angel' badge?", a: "This badge is assigned to first-time angel investors who are new to startup investing. It helps set expectations for both founders and experienced investors during engagement." },
+            { q: "Can I join as an investor without prior experience?", a: "Yes. First-time investors can join after submitting a self-declaration form outlining interest areas and understanding the risk involved in startup investments." },
+            { q: "c", a: "Yes. All investors must undergo KYC, including government-issued ID, residency proof, and optional references or LinkedIn profiles for verification." },
+            { q: "Can investors directly contact any founder?", a: "No. Communication is allowed only after both parties express interest (double opt-in). This maintains privacy and prevents spam." },
+            { q: "What happens after a match is made?", a: "Once a match is made, users can start in-app messaging to explore potential collaborations, ask questions, or schedule follow-up meetings outside the platform." },
+            { q: "Are in-app communications monitored?", a: "Messages must adhere to community and platform guidelines. While FoundrFuse respects privacy, reports of abuse or violations may result in review." },
+            { q: "Can I upload pitch decks or documents in chat?", a: "Yes, you can share documents such as pitch decks or executive summaries within the platform, but you must respect confidentiality rules." },
+            { q: "Can I share or download investor details externally?", a: "No. It is against policy to download, screenshot, or share any user’s information or pitch materials without consent." },
+            { q: "Can I send bulk messages to multiple investors?", a: "No. Mass messaging is not allowed. Founders must tailor communication only to matched investors. Spamming leads to account suspension." },
+            { q: "Is my personal and business data safe on FoundrFuse?", a: "Yes. All user data is encrypted and securely stored. FoundrFuse adheres to strict confidentiality and privacy policies." },
+            { q: "Does FoundrFuse sell user data?", a: "No. Your information is never sold or shared with third parties without your explicit consent." },
+            { q: "Can I delete my account?", a: "Yes. Users can request account deletion through support. All data will be removed in accordance with platform policies and applicable laws." },
+            { q: "What happens if I violate platform rules?", a: "Violations such as identity fraud, harassment, or confidentiality breaches can lead to temporary suspension, permanent bans, or legal action." },
+            { q: "What qualifies as a violation?", a: "Examples include falsifying information, harassment, unauthorized data sharing, spamming, or trying to bypass platform systems." },
+            { q: "How does FoundrFuse protect minors?", a: "Student Founders must provide signed parental consent. Their usage is monitored, and all fundraising activities must include a guardian." },
+            { q: "Can a parent monitor a Student Founder’s profile?", a: "Yes. Guardians are expected to co-manage and oversee all platform interactions of underage users." },
+            { q: "Are deals signed on FoundrFuse?", a: "No. FoundrFuse facilitates connections only. Investment negotiations, documentation, and legal contracts are handled independently by users." },
+            { q: "Does FoundrFuse offer legal advice?", a: "No. While the platform recommends users seek legal counsel for investments, it does not offer legal services." },
+            { q: "Can I reapply after being suspended?", a: "Depending on the violation, users may appeal suspensions or bans through support. Reinstatement is not guaranteed." },
+            { q: "Is there a community code of conduct?", a: "Yes. All users must abide by FoundrFuse’s Code of Conduct, which outlines respectful behavior, privacy standards, and ethical engagement." },
+            { q: "How long does verification take?", a: "Typically, verification is completed within 1–3 business days, depending on document clarity and completeness." },
+            { q: "What if someone misrepresents themselves?", a: "You should immediately report any user misrepresenting themselves to the support team. Action will be taken as per enforcement policies." },
+            { q: "Can I change my investor profile after approval?", a: "Yes. Investors can update their interest areas, ticket size, and bio through their account settings or by contacting support." },
+            { q: "What sectors are supported on FoundrFuse?", a: "FoundrFuse supports a wide range of sectors including tech, fintech, health, education, sustainability, and more. Sector selection helps improve matchmaking." },
+            { q: "Can investors provide mentorship too?", a: "Yes, many investors also offer mentorship, but this is entirely optional and based on mutual agreement." },
+            { q: "Can I link my LinkedIn profile?", a: "Yes. Linking your LinkedIn profile helps build trust and can speed up verification, especially for new angel investors." },
+            { q: "How can I get better visibility as a founder?", a: "Ensure your profile is complete, pitch deck is strong, and your startup data is truthful and up to date. Engaging with the community also helps." },
+            { q: "Can I use the platform for hiring or selling services?", a: "No. FoundrFuse is not intended for recruitment or service promotion. Doing so violates platform terms and can result in removal." },
+            { q: "What should I do if someone breaches confidentiality?", a: "Report the issue immediately via support. FoundrFuse may suspend or permanently ban violators and take legal steps if needed." },
+            { q: "Are there live events or demo days?", a: "While not mentioned in the policy, some curated programs or events may be hosted. Check with support or announcements." },
+            { q: "How does matching work?", a: "Both parties must express interest in each other. Once matched, messaging is enabled. No communication is possible without mutual opt-in." },
+            { q: "Can I pause my account temporarily?", a: "Yes. You may request to pause or deactivate your account temporarily by contacting the support team." },
+            { q: "How do I contact support?", a: "You can contact FoundrFuse Support via email at support@foundrfuse.com. Typical response time is 2–3 business days." },
+            { q: "Can I report bugs or suggest improvements?", a: "Yes. You are encouraged to send feature suggestions or report issues to the support team." },
+            { q: "What forms are required for Student Founders?", a: "A Parental/Guardian Consent Form and a co-signed usage agreement are required before registration." },
+            { q: "Is there an acknowledgment form for investors?", a: "Yes. First-time investors may be required to complete a Startup Risk Acknowledgement Form as part of onboarding." },
+            { q: "Is there any certification after using the platform?", a: "Not officially. However, participation in curated programs may include acknowledgment or invitation-based opportunities." },
+            { q: "Where can I find the platform policies?", a: "All policy documents, including terms of use, privacy policy, and code of conduct, are provided during onboarding and can be requested from support." }
+        ];
 
-bubble.onclick = () => {
-  windowEl.style.display = 'flex';
-  setTimeout(() => inputEl.focus(), 200);
-};
-closeBtn.onclick = () => windowEl.style.display = 'none';
+        const bubble = document.getElementById('ff-chatbot-bubble');
+        const windowEl = document.getElementById('ff-chatbot-window');
+        const closeBtn = document.getElementById('ff-chatbot-close');
+        const bodyEl = document.getElementById('ff-chatbot-body');
+        const formEl = document.getElementById('ff-chatbot-form');
+        const inputEl = document.getElementById('ff-chatbot-input');
+        const recommendedEl = document.getElementById('ff-chatbot-recommended');
+        const recommendedListEl = document.getElementById('ff-chatbot-recommended-list');
 
-formEl.onsubmit = async (e) => {
-  e.preventDefault();
-  const userMsg = inputEl.value.trim();
-  if (!userMsg) return;
-  bodyEl.innerHTML += `<div class="ff-chatbot-msg-user"><span>${userMsg}</span></div>`;
-  inputEl.value = '';
-  bodyEl.innerHTML += `<div id="ff-chatbot-typing" class="ff-chatbot-msg-bot"><span><i>AI is typing...</i></span></div>`;
-  bodyEl.scrollTop = bodyEl.scrollHeight;
-  try {
-    const res = await fetch('/api/chatbot/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/json'},
-      body: JSON.stringify({message: userMsg})
-    });
-    const data = await res.json();
-    document.getElementById('ff-chatbot-typing').remove();
-    bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${data.reply}</span></div>`;
-    bodyEl.scrollTop = bodyEl.scrollHeight;
-  } catch {
-    document.getElementById('ff-chatbot-typing').remove();
-    bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span style="color:red;">Error contacting AI.</span></div>`;
-  }
-};
-</script>
+        // Render recommended questions
+        function renderRecommended() {
+            recommendedListEl.innerHTML = '';
+            ffFaqs.forEach(faq => {
+                const li = document.createElement('li');
+                li.textContent = faq.q;
+                li.onclick = () => {
+                    inputEl.value = faq.q;
+                    recommendedEl.style.display = 'none';
+                    inputEl.focus();
+                };
+                recommendedListEl.appendChild(li);
+            });
+            recommendedEl.style.display = 'block';
+        }
+        renderRecommended();
+
+        bubble.onclick = () => {
+            windowEl.style.display = 'flex';
+            setTimeout(() => inputEl.focus(), 200);
+            renderRecommended();
+        };
+        closeBtn.onclick = () => windowEl.style.display = 'none';
+
+        formEl.onsubmit = async (e) => {
+            e.preventDefault();
+            const userMsg = inputEl.value.trim();
+            if (!userMsg) return;
+            bodyEl.innerHTML += `<div class="ff-chatbot-msg-user"><span>${userMsg}</span></div>`;
+            inputEl.value = '';
+            document.getElementById('ff-chatbot-recommended').style.display = 'none';
+            bodyEl.innerHTML += `<div id="ff-chatbot-typing" class="ff-chatbot-msg-bot"><span><i>AI is typing...</i></span></div>`;
+            bodyEl.scrollTop = bodyEl.scrollHeight;
+
+            // FAQ match logic
+            const normalizedMsg = userMsg.toLowerCase();
+            const faq = ffFaqs.find(f =>
+                normalizedMsg === f.q.toLowerCase() ||
+                normalizedMsg.includes(f.q.toLowerCase())
+            );
+            if (faq) {
+                document.getElementById('ff-chatbot-typing').remove();
+                bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${faq.a}</span></div>`;
+                bodyEl.scrollTop = bodyEl.scrollHeight;
+                return;
+            }
+
+            // Fallback to backend AI
+            try {
+                const res = await fetch('/api/chatbot/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ message: userMsg })
+                });
+                const data = await res.json();
+                document.getElementById('ff-chatbot-typing').remove();
+                bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${data.reply}</span></div>`;
+                bodyEl.scrollTop = bodyEl.scrollHeight;
+            } catch {
+                document.getElementById('ff-chatbot-typing').remove();
+                bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span style="color:red;">Error contacting AI.</span></div>`;
+            }
+        };
+    </script>
 </body>
+
 </html>
