@@ -337,7 +337,6 @@
             if (!userMsg) return;
             bodyEl.innerHTML += `<div class="ff-chatbot-msg-user"><span>${userMsg}</span></div>`;
             inputEl.value = '';
-            document.getElementById('ff-chatbot-recommended').style.display = 'none';
             bodyEl.innerHTML += `<div id="ff-chatbot-typing" class="ff-chatbot-msg-bot"><span><i>AI is typing...</i></span></div>`;
             bodyEl.scrollTop = bodyEl.scrollHeight;
 
@@ -351,6 +350,7 @@
                 document.getElementById('ff-chatbot-typing').remove();
                 bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${faq.a}</span></div>`;
                 bodyEl.scrollTop = bodyEl.scrollHeight;
+                renderRecommended(); // <-- Always show recommendations again
                 return;
             }
 
@@ -365,9 +365,11 @@
                 document.getElementById('ff-chatbot-typing').remove();
                 bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span>${data.reply}</span></div>`;
                 bodyEl.scrollTop = bodyEl.scrollHeight;
+                renderRecommended(); // <-- Always show recommendations again
             } catch {
                 document.getElementById('ff-chatbot-typing').remove();
                 bodyEl.innerHTML += `<div class="ff-chatbot-msg-bot"><span style="color:red;">Error contacting AI.</span></div>`;
+                renderRecommended(); // <-- Always show recommendations again
             }
         };
     </script>
