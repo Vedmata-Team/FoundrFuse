@@ -9,24 +9,34 @@ class UserRegistrationForm(UserCreationForm):
     last_name = forms.CharField(max_length=30, required=True, help_text='Required.')
     user_type = forms.ChoiceField(choices=Profile.USER_TYPES, required=True, help_text='Are you a founder or an investor?')
     profile_image = forms.ImageField(required=True, help_text='Upload Logo or Image.')
+    country = forms.CharField(max_length=64, required=True)
+    state = forms.CharField(max_length=64, required=True)
+    city = forms.CharField(max_length=64, required=True)
+    pincode = forms.CharField(max_length=16, required=True)
 
     class Meta:
         model = User
-        fields = ('username', 'first_name', 'last_name', 'email', 'password1', 'password2', 'user_type', 'profile_image')
+        fields = (
+            'username', 'first_name', 'last_name', 'email', 'password1', 'password2',
+            'user_type', 'profile_image', 'country', 'state', 'city', 'pincode'
+        )
     
     def save(self, commit=True):
         user = super().save(commit=False)
         user.email = self.cleaned_data['email']
         user.first_name = self.cleaned_data['first_name']
         user.last_name = self.cleaned_data['last_name']
-        
+
         if commit:
             user.save()
-            Profile.objects.create(
-                user=user,
-                user_type=self.cleaned_data['user_type']
-            )
-        
+            # Get the profile that was created by signal
+            profile = user.profile
+            profile.user_type = self.cleaned_data['user_type']
+            profile.country = self.cleaned_data['country']
+            profile.state = self.cleaned_data['state']
+            profile.city = self.cleaned_data['city']
+            profile.pincode = self.cleaned_data['pincode']
+            profile.save()
         return user
 
 class ProfileForm(forms.ModelForm):
@@ -35,7 +45,8 @@ class ProfileForm(forms.ModelForm):
     class Meta:
         model = Profile
         fields = (
-            'bio', 'company_name', 'industry', 'location', 'linkedin_profile', 'website', 'looking_for', 'profile_image'
+            'bio', 'company_name', 'industry', 'country', 'state', 'city', 'pincode',
+            'linkedin_profile', 'website', 'looking_for', 'profile_image'
         )
         widgets = {
             'bio': forms.Textarea(attrs={'rows': 3, 'placeholder': 'Tell us about yourself or your company'}),

@@ -548,6 +548,16 @@ p {
   z-index: -1;
 }
 
+/* Add to your static/css/style.css or in <style> in base.html */
+.navbar-profile-img {
+    width: 32px;
+    height: 32px;
+    object-fit: cover;
+    border-radius: 50%;
+    border: 2px solid #eee;
+    background: #fff;
+}
+
 /* Hover & Active Effects */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-item.active .nav-link {

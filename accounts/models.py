@@ -11,23 +11,22 @@ class Profile(models.Model):
     )
 
     INDUSTRY_CHOICES = (
-        ('tech', 'Technology'),
-        ('health', 'Healthcare'),
-        ('finance', 'Finance'),
-        ('education', 'Education'),
         ('ecommerce', 'E-Commerce'),
         ('real_estate', 'Real Estate'),
         ('food', 'Food & Beverage'),
         ('travel', 'Travel'),
         ('other', 'Other'),
     )
-
+    
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     user_type = models.CharField(max_length=10, choices=USER_TYPES)
     bio = models.TextField(blank=True)
     company_name = models.CharField(max_length=100, blank=True)
     industry = models.CharField(max_length=20, choices=INDUSTRY_CHOICES, blank=True)
-    location = models.CharField(max_length=100, blank=True)
+    country = models.CharField(max_length=64, blank=True)
+    state = models.CharField(max_length=64, blank=True)
+    city = models.CharField(max_length=64, blank=True)
+    pincode = models.CharField(max_length=16, blank=True)
     country_code = models.CharField(max_length=8, blank=True)
     phone = models.CharField(max_length=20, blank=True)
     startup_date = models.DateField(blank=True, null=True)
@@ -115,4 +114,4 @@ def register(request):
 @receiver(post_save, sender=User)
 def create_user_profile(sender, instance, created, **kwargs):
     if created:
-        Profile.objects.get_or_create(user=instance)
+        Profile.objects.create(user=instance)

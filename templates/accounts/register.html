@@ -56,7 +56,7 @@
                             </div>
                             </div>
                         </div>
-                                <form method="post" action="{% url 'accounts:register' %}" id="registerForm">
+                                <form method="post" action="{% url 'accounts:register' %}" id="registerForm" enctype="multipart/form-data">
                                     {% csrf_token %}
                                     
                                     <!-- Hidden User Type Field -->
@@ -149,10 +149,10 @@
                                     </div>
                                     
                                     <!-- Location Field -->
-                                    <div class="mb-3">
+                                    {% comment %} <div class="mb-3">
                                         <label for="id_location" class="form-label">Location</label>
                                         <input type="text" name="location" class="form-control" id="id_location" required>
-                                    </div>
+                                    </div> {% endcomment %}
                                     
                                     <!-- Phone Number with Country Code -->
                                     <div class="mb-3">
@@ -217,6 +217,68 @@
                                         </div>
                                     </div>
                                     <input type="hidden" name="cropped_image_data" id="cropped_image_data">
+                                    
+                                    <!-- Country Dropdown -->
+                                    <div class="mb-3">
+                                        <label for="id_country" class="form-label">Country</label>
+                                        <select name="country" id="id_country" class="form-select" required>
+                                            <option value="">Select Country</option>
+                                            <!-- Populate with countries from your countries.csv -->
+                                            <option value="IN">India</option>
+                                            <option value="US">United States</option>
+                                            <!-- ... -->
+                                        </select>
+                                        {% if form.country.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.country.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+            
+                                    <!-- State Dropdown -->
+                                    <div class="mb-3">
+                                        <label for="id_state" class="form-label">State</label>
+                                        <select name="state" id="id_state" class="form-select" required>
+                                            <option value="">Select State</option>
+                                        </select>
+                                        {% if form.state.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.state.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+            
+                                    <!-- City Dropdown -->
+                                    <div class="mb-3">
+                                        <label for="id_city" class="form-label">City</label>
+                                        <select name="city" id="id_city" class="form-select" required>
+                                            <option value="">Select City</option>
+                                        </select>
+                                        {% if form.city.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.city.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
+            
+                                    <!-- Pin Code -->
+                                    <div class="mb-3">
+                                        <label for="id_pincode" class="form-label">Pin Code</label>
+                                        <input type="text" name="pincode" class="form-control" id="id_pincode" required>
+                                        {% if form.pincode.errors %}
+                                            <ul class="errorlist">
+                                                {% for error in form.pincode.errors %}
+                                                    <li>{{ error }}</li>
+                                                {% endfor %}
+                                            </ul>
+                                        {% endif %}
+                                    </div>
                                     
                                     <button type="submit" class="btn btn-register w-100">Create Account</button>
                                 </form>
@@ -287,6 +349,117 @@ cropBtn.addEventListener('click', function() {
         };
         reader.readAsDataURL(compressedBlob);
     }, 'image/jpeg', 0.9);
+});
+</script>
+
+<script>
+document.getElementById('id_country').addEventListener('change', function() {
+    let country_code = this.value;
+    fetch(`/accounts/ajax/get-states/?country_code=${country_code}`)
+        .then(response => response.json())
+        .then(data => {
+            let stateSelect = document.getElementById('id_state');
+            stateSelect.innerHTML = '<option value="">Select State</option>';
+            data.states.forEach(state => {
+                stateSelect.innerHTML += `<option value="${state.state_code}">${state.name}</option>`;
+            });
+            document.getElementById('id_city').innerHTML = '<option value="">Select City</option>';
+        });
+});
+
+document.getElementById('id_state').addEventListener('change', function() {
+    let state_code = this.value;
+    fetch(`/accounts/ajax/get-cities/?state_code=${state_code}`)
+        .then(response => response.json())
+        .then(data => {
+            let citySelect = document.getElementById('id_city');
+            citySelect.innerHTML = '<option value="">Select City</option>';
+            data.cities.forEach(city => {
+                citySelect.innerHTML += `<option value="${city.name}">${city.name}</option>`;
+            });
+        });
+});
+</script>
+
+<script>
+function getPasswordErrors(password, firstName, lastName, username, email) {
+    let errors = [];
+    if (password.length < 8) {
+        errors.push("Password must be at least 8 characters.");
+    }
+    if (/^\d+$/.test(password)) {
+        errors.push("Password cannot be entirely numeric.");
+    }
+    if (password && (firstName && password.toLowerCase().includes(firstName.toLowerCase()) ||
+        lastName && password.toLowerCase().includes(lastName.toLowerCase()) ||
+        username && password.toLowerCase().includes(username.toLowerCase()) ||
+        email && password.toLowerCase().includes(email.toLowerCase()))) {
+        errors.push("Password is too similar to your personal information.");
+    }
+    // Add more rules as needed
+    return errors;
+}
+
+const passwordInput = document.getElementById('id_password1');
+const password2Input = document.getElementById('id_password2');
+const firstNameInput = document.getElementById('id_first_name');
+const lastNameInput = document.getElementById('id_last_name');
+const usernameInput = document.getElementById('id_username');
+const emailInput = document.getElementById('id_email');
+
+function showPasswordErrors() {
+    const password = passwordInput.value;
+    const firstName = firstNameInput.value;
+    const lastName = lastNameInput.value;
+    const username = usernameInput.value;
+    const email = emailInput.value;
+    const errors = getPasswordErrors(password, firstName, lastName, username, email);
+
+    let errorList = document.getElementById('password-errors');
+    if (!errorList) {
+        errorList = document.createElement('ul');
+        errorList.id = 'password-errors';
+        errorList.className = 'errorlist';
+        passwordInput.parentNode.appendChild(errorList);
+    }
+    errorList.innerHTML = '';
+    errors.forEach(err => {
+        const li = document.createElement('li');
+        li.textContent = err;
+        errorList.appendChild(li);
+    });
+    return errors.length === 0;
+}
+
+passwordInput.addEventListener('input', showPasswordErrors);
+firstNameInput.addEventListener('input', showPasswordErrors);
+lastNameInput.addEventListener('input', showPasswordErrors);
+usernameInput.addEventListener('input', showPasswordErrors);
+emailInput.addEventListener('input', showPasswordErrors);
+
+password2Input.addEventListener('input', function() {
+    let errorList = document.getElementById('password2-errors');
+    if (!errorList) {
+        errorList = document.createElement('ul');
+        errorList.id = 'password2-errors';
+        errorList.className = 'errorlist';
+        password2Input.parentNode.appendChild(errorList);
+    }
+    errorList.innerHTML = '';
+    if (password2Input.value !== passwordInput.value) {
+        const li = document.createElement('li');
+        li.textContent = "Passwords do not match.";
+        errorList.appendChild(li);
+    }
+});
+</script>
+
+<script>
+document.getElementById('registerForm').addEventListener('submit', function(e) {
+    if (!showPasswordErrors() || password2Input.value !== passwordInput.value) {
+        e.preventDefault();
+        alert("Please fix password errors before submitting.");
+    }
 });
 </script>
 {% endblock %}

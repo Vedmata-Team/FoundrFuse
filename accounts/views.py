@@ -4,6 +4,9 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth.views import LoginView
 from django.db.models import Q, F
 from django.http import JsonResponse
+import csv
+import os
+from django.conf import settings
 from .forms import UserRegistrationForm, ProfileForm, WaitlistForm
 from .models import Profile, Match, SwipeAction, Waitlist
 from django.contrib.auth.models import User
@@ -22,26 +25,52 @@ class CustomLoginView(LoginView):
         return context
 
 def register(request):
+    print("DEBUG: Entered register view. Method:", request.method)
     if request.method == 'POST':
+        print("DEBUG: POST data received:", request.POST)
+        print("DEBUG: FILES data received:", request.FILES)
         form = UserRegistrationForm(request.POST, request.FILES)
+        print("DEBUG: Form created. Is valid?", form.is_valid())
         if form.is_valid():
             user = form.save()
+            print("DEBUG: User created:", user)
             profile = user.profile
+            print("DEBUG: Profile accessed:", profile)
             profile.user_type = form.cleaned_data['user_type']
-            # ...other fields...
+            profile.country = form.cleaned_data['country']
+            profile.state = form.cleaned_data['state']
+            profile.city = form.cleaned_data['city']
+            profile.pincode = form.cleaned_data['pincode']
+            profile.phone = request.POST.get('phone', '')
+            profile.country_code = request.POST.get('country_code', '')
+
             cropped_data = request.POST.get('cropped_image_data')
+            print("DEBUG: Cropped image data present?", bool(cropped_data))
             if cropped_data:
-                format, imgstr = cropped_data.split(';base64,')
-                ext = format.split('/')[-1]
-                profile.profile_image = ContentFile(base64.b64decode(imgstr), f"profile_{user.id}.{ext}")
+                try:
+                    format, imgstr = cropped_data.split(';base64,')
+                    ext = format.split('/')[-1]
+                    profile.profile_image = ContentFile(base64.b64decode(imgstr), f"profile_{user.id}.{ext}")
+                    print("DEBUG: Cropped image saved to profile.")
+                except Exception as e:
+                    print("DEBUG: Error processing cropped image:", e)
             elif form.cleaned_data.get('profile_image'):
                 profile.profile_image = form.cleaned_data['profile_image']
+                print("DEBUG: Uploaded image saved to profile.")
+            else:
+                print("DEBUG: No image provided.")
+
             profile.save()
+            print("DEBUG: Profile saved.")
             messages.success(request, 'Your account has been created successfully! You can now log in.')
-            return redirect('accounts:login')
+            print("DEBUG: Success message added. Redirecting to home.")
+            return redirect('core:home')
+        else:
+            print("DEBUG: Form errors:", form.errors)
     else:
+        print("DEBUG: GET request, rendering empty form.")
         form = UserRegistrationForm()
-    
+
     return render(request, 'accounts/register.html', {'form': form, 'title': 'Register'})
 
 @login_required
@@ -311,3 +340,23 @@ def waitlist(request):
         'title': 'Join Waitlist',
         'form': form,
     })
+
+def get_states(request):
+    country_code = request.GET.get('country_code')
+    states = []
+    with open(os.path.join(settings.BASE_DIR, 'accounts', 'states.csv'), encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['country_code'] == country_code:
+                states.append({'id': row['id'], 'name': row['name'], 'state_code': row['state_code']})
+    return JsonResponse({'states': states})
+
+def get_cities(request):
+    state_code = request.GET.get('state_code')
+    cities = []
+    with open(os.path.join(settings.BASE_DIR, 'accounts', 'cities.csv'), encoding='utf-8') as f:
+        reader = csv.DictReader(f)
+        for row in reader:
+            if row['state_code'] == state_code:
+                cities.append({'id': row['id'], 'name': row['name']})
+    return JsonResponse({'cities': cities})

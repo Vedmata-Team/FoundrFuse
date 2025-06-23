@@ -9,16 +9,25 @@ from core.admin import PDFExportMixin
 class ProfileResource(resources.ModelResource):
     class Meta:
         model = Profile
-        fields = ('id', 'user__username', 'user__email', 'user_type', 'company_name', 
-                 'industry', 'location', 'is_premium', 'swipes_left', 'created_at')
+        fields = (
+            'id', 'user__username', 'user__email', 'user_type', 'company_name',
+            'industry', 'country', 'state', 'city', 'pincode', 'location',
+            'is_premium', 'swipes_left', 'created_at'
+        )
         export_order = fields
 
 @admin.register(Profile)
 class ProfileAdmin(ImportExportModelAdmin, PDFExportMixin):
     resource_class = ProfileResource
-    list_display = ('user', 'user_type', 'company_name', 'industry', 'is_premium', 'swipes_left', 'created_at')
-    list_filter = ('user_type', 'is_premium', 'industry')
-    search_fields = ('user__username', 'user__email', 'company_name', 'location')
+    list_display = (
+        'user', 'user_type', 'company_name', 'industry',
+        'country', 'state', 'city', 'pincode',
+        'is_premium', 'swipes_left', 'created_at'
+    )
+    list_filter = ('user_type', 'is_premium', 'industry', 'country', 'state', 'city')
+    search_fields = (
+        'user__username', 'user__email', 'company_name', 'country', 'state', 'city', 'pincode'
+    )
     date_hierarchy = 'created_at'
     list_per_page = 25
     actions = ['export_as_pdf']
@@ -30,6 +39,9 @@ class ProfileAdmin(ImportExportModelAdmin, PDFExportMixin):
         }),
         ('Company Details', {
             'fields': ('company_name', 'industry', 'location', 'linkedin_profile', 'website')
+        }),
+        ('Location', {
+            'fields': ('country', 'state', 'city', 'pincode')
         }),
         ('Matching Preferences', {
             'fields': ('looking_for',)
