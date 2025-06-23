@@ -2,12 +2,13 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib import messages
 from django.db.models import Q
 from django.core.paginator import Paginator
-from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ, FounderSuccessStory, FounderFAQ
+from .models import Blog, Category, Industry, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ, FounderSuccessStory, FounderFAQ, ChatbotFAQ
 from openai import OpenAI
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from django.conf import settings
+from django.http import JsonResponse
 
 client = OpenAI(api_key=settings.OPENAI_API_KEY)
 
@@ -199,5 +200,9 @@ class ChatbotAPIView(APIView):
         except Exception as e:
             print("🔴 Step 5: Error occurred:", str(e))
             return Response({'error': str(e)}, status=500)
+
+def chatbot_faqs(request):
+    faqs = list(ChatbotFAQ.objects.values('question', 'answer'))
+    return JsonResponse({'faqs': faqs})
 
 # ये सिर्फ available quota नहीं दिखाता, लेकिन API key valid है या नहीं ये चेक कर सकते हो।

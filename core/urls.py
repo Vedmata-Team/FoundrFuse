@@ -13,4 +13,5 @@ urlpatterns = [
     path('blog/<slug:slug>/', views.blog_detail, name='blog_detail'),
     path('newsletter-signup/', views.newsletter_signup, name='newsletter_signup'),
     path('api/chatbot/', ChatbotAPIView.as_view(), name='chatbot_api'),
+    path('api/chatbot-faqs/', views.chatbot_faqs, name='chatbot_faqs'),
 ]

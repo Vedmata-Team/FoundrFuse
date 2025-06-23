@@ -7,7 +7,7 @@ from import_export.admin import ImportExportModelAdmin
 from import_export.formats import base_formats
 from xhtml2pdf import pisa
 from io import BytesIO
-from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ
+from .models import Industry, Category, Blog, NewsletterSubscriber, SiteSettings, Testimonial, FeatureFAQ, ChatbotFAQ
 
 # Base PDF export mixin
 class PDFExportMixin:
@@ -254,3 +254,8 @@ class FounderFAQAdmin(admin.ModelAdmin):
             )
         }),
     )
+
+@admin.register(ChatbotFAQ)
+class ChatbotFAQAdmin(admin.ModelAdmin):
+    list_display = ('question',)
+    search_fields = ('question', 'answer')

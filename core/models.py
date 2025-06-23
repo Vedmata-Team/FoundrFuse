@@ -227,3 +227,10 @@ class FounderFAQ(models.Model):
 
     def __str__(self):
         return self.question
+
+class ChatbotFAQ(models.Model):
+    question = models.CharField(max_length=300)
+    answer = models.TextField()
+
+    def __str__(self):
+        return self.question
