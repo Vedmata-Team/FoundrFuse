@@ -1,0 +1,279 @@
+[
+
+
+{
+  "model": "auth.user",
+  "pk": 1,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$GvTuID0TAvaMw8j6qBATI8$uRzUvsu2ZkEa6C/K0SejNFrRJQkUGcbw+MvuvxJteDM=",
+    "last_login": "2025-06-23T12:00:21.742Z",
+    "is_superuser": true,
+    "username": "FoundrFuse",
+    "first_name": "",
+    "last_name": "",
+    "email": "",
+    "is_staff": true,
+    "is_active": true,
+    "date_joined": "2025-05-25T18:48:37.792Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "auth.user",
+  "pk": 2,
+  "fields": {
+    "password": "pbkdf2_sha256$1000000$4ViMBdgpRmcZYPm7IwKjNL$0PTmqbBy6mSOlOuGpOG49Oo5bri3ny+5yAKqb5feKeM=",
+    "last_login": "2025-06-06T16:17:24.102Z",
+    "is_superuser": false,
+    "username": "aditi",
+    "first_name": "aditi",
+    "last_name": "kushwah",
+    "email": "aaditikkushwah12530@gmail.com",
+    "is_staff": false,
+    "is_active": true,
+    "date_joined": "2025-06-06T16:16:29.277Z",
+    "groups": [],
+    "user_permissions": []
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "jz5ked1ox7yftva8uhufam84f27noe02",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWmYwnSoS_eegQydqaCmTSisjHdXEha6_e-9_zIDb-s0bFWXYRZzNmBOv9vI8aF5B3LnfCs2lrwu82h3xR602msRfV4O9-9g4jp9a-cSAEoEUt-LRAzkRRA8topjl1xDQTpOrZdGQ1Ry2EObgAIycejN-wPcQTeM:1uTfqX:0cn2qolhHchVw9GTeLYC4t_drXcZaC6qtgLSX2FvXl0",
+    "expire_date": "2025-07-07T12:00:21.773Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "prxgdsriq0od31w0angwnt5mzwp1ycka",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWmYwnSoS_eegQydqaCmTSisjHdXEha6_e-9_zIDb-s0bFWXYRZzNmBOv9vI8aF5B3LnfCs2lrwu82h3xR602msRfV4O9-9g4jp9a-cSAEoEUt-LRAzkRRA8topjl1xDQTpOrZdGQ1Ry2EObgAIycejN-wPcQTeM:1uJGOm:f2ONZU09wgw4nu3CEaXjUi5HMoIqZP9KEvknoFxBzvU",
+    "expire_date": "2025-06-08T18:48:40.427Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "qv8qsizdfs44q5z5i9z5u0wlrac54zpg",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWmYwnSoS_eegQydqaCmTSisjHdXEha6_e-9_zIDb-s0bFWXYRZzNmBOv9vI8aF5B3LnfCs2lrwu82h3xR602msRfV4O9-9g4jp9a-cSAEoEUt-LRAzkRRA8topjl1xDQTpOrZdGQ1Ry2EObgAIycejN-wPcQTeM:1uRwYW:f1Fbj-PzOMuVsS90cl6bzCiH555Kd9Bn7fbrVGoH2zI",
+    "expire_date": "2025-07-02T17:26:36.576Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "x3cixqpo30n0uk639hyknip0ztati7m7",
+  "fields": {
+    "session_data": ".eJxVjEEOwiAQRe_C2hAoLQMu3XsGMsOAVA0kpV0Z765NutDtf-_9lwi4rSVsPS1hZnEWgzj9boTxkeoO-I711mRsdV1mkrsiD9rltXF6Xg7376BgL99awUioII6cs3HawUSgvNYmuew1Zh2dsZ79AAlYGW2jyYoiTczOWkfi_QHTxTex:1uNZky:98OVF-UZJBUjhqgYAADarHX_EXbS44u_NBm0hGMZ9As",
+    "expire_date": "2025-06-20T16:17:24.113Z"
+  }
+},
+{
+  "model": "sessions.session",
+  "pk": "yqc2qqts3c1fxhvgbi3q5me8wajv8yb0",
+  "fields": {
+    "session_data": ".eJxVjEEOgjAQRe_StWmYwnSoS_eegQydqaCmTSisjHdXEha6_e-9_zIDb-s0bFWXYRZzNmBOv9vI8aF5B3LnfCs2lrwu82h3xR602msRfV4O9-9g4jp9a-cSAEoEUt-LRAzkRRA8topjl1xDQTpOrZdGQ1Ry2EObgAIycejN-wPcQTeM:1uJc6X:vlNk1DX2w6JZePK51SaP3GHtt1FrVSRJ5sqG0AMC324",
+    "expire_date": "2025-06-09T17:59:17.993Z"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 1,
+  "fields": {
+    "user": 2,
+    "user_type": "founder",
+    "bio": "",
+    "company_name": "",
+    "industry": "",
+    "location": "",
+    "country_code": "",
+    "phone": "",
+    "startup_date": null,
+    "investment_focus": "",
+    "investment_range": "",
+    "linkedin_profile": "",
+    "website": "",
+    "looking_for": "",
+    "profile_image": "",
+    "is_premium": false,
+    "swipes_left": 5,
+    "created_at": "2025-06-06T16:16:31.116Z",
+    "updated_at": "2025-06-06T16:16:31.116Z"
+  }
+},
+{
+  "model": "accounts.profile",
+  "pk": 2,
+  "fields": {
+    "user": 1,
+    "user_type": "",
+    "bio": "",
+    "company_name": "",
+    "industry": "",
+    "location": "",
+    "country_code": "",
+    "phone": "",
+    "startup_date": null,
+    "investment_focus": "",
+    "investment_range": "",
+    "linkedin_profile": "",
+    "website": "",
+    "looking_for": "",
+    "profile_image": "",
+    "is_premium": false,
+    "swipes_left": 5,
+    "created_at": "2025-06-18T16:29:44.877Z",
+    "updated_at": "2025-06-18T16:29:44.877Z"
+  }
+},
+{
+  "model": "core.sitesettings",
+  "pk": 1,
+  "fields": {
+    "site_name": "FoundrFuse",
+    "tagline": "Empowering Ideas, One Match at a Time",
+    "about_description": "",
+    "logo": "",
+    "favicon": "",
+    "contact_email": "",
+    "support_email": "",
+    "phone_number": "",
+    "address": "",
+    "twitter_url": "",
+    "facebook_url": "",
+    "linkedin_url": "",
+    "instagram_url": "",
+    "youtube_url": "",
+    "footer_text": "",
+    "copyright_text": "� 2025 FoundrFuse. All rights reserved.",
+    "max_free_swipes": 5,
+    "maintenance_mode": false,
+    "maintenance_message": "We're improving FoundrFuse! We'll be back shortly.",
+    "meta_description": "",
+    "meta_keywords": "",
+    "google_analytics_id": "",
+    "privacy_policy": "",
+    "terms_of_service": "",
+    "cookie_policy": "",
+    "registration_enabled": true,
+    "created_at": "2025-05-25T05:10:47.142Z",
+    "updated_at": "2025-05-25T05:10:47.143Z"
+  }
+},
+{
+  "model": "core.testimonial",
+  "pk": 1,
+  "fields": {
+    "name": "Riya Mehta",
+    "role": "Co-Founder",
+    "company": "EduVerse",
+    "text": "Joining this platform was the turning point of our journey! The mentorship, the ecosystem, and the energy � all felt like rocket fuel for our startup. We went from idea to impact faster than we imagined!�",
+    "user_type": "founder",
+    "category": "Education",
+    "date": "2025-04-08",
+    "avatar": "testimonials/35.jpg"
+  }
+},
+{
+  "model": "core.featurefaq",
+  "pk": 1,
+  "fields": {
+    "question": "How does the matching system work?",
+    "answer": "Our matching system combines swipe-based preferences with AI algorithms. When you create your profile, our system analyzes your preferences, industry, funding stage, and other criteria. Then, we present you with potential matches one at a time. Swipe right if you're interested, left if you're not. When both parties swipe right, it's a match!",
+    "order": 1
+  }
+},
+{
+  "model": "core.featurefaq",
+  "pk": 2,
+  "fields": {
+    "question": "Is FoundrFuse secure for sharing sensitive business information?",
+    "answer": "Absolutely. We take security and privacy seriously. All communications happen through our encrypted messaging system. Your sensitive business information is protected with industry-standard encryption, and you control what information you share with each match. We never share your data with third parties without your explicit consent.",
+    "order": 0
+  }
+},
+{
+  "model": "core.featurefaq",
+  "pk": 3,
+  "fields": {
+    "question": "How many swipes do I get with the free plan?",
+    "answer": "Free users get 5 swipes per day. This limit resets every 24 hours. Premium users enjoy unlimited swipes, advanced filters, and many more features that enhance your matching experience. You can upgrade to Premium at any time from your profile settings.",
+    "order": 0
+  }
+},
+{
+  "model": "core.featurefaq",
+  "pk": 4,
+  "fields": {
+    "question": "How does FoundrFuse verify investors and founders?",
+    "answer": "We employ a rigorous verification process. For investors, we verify accreditation status, LinkedIn profiles, and professional references. For founders, we verify company information, LinkedIn profiles, and optional pitch deck reviews. This ensures that all users on our platform are legitimate and helps create a trusted network of connections.",
+    "order": 0
+  }
+},
+{
+  "model": "core.featurefaq",
+  "pk": 5,
+  "fields": {
+    "question": "Can I use FoundrFuse internationally?",
+    "answer": "Yes! FoundrFuse is a global platform with users from around the world. Our location filters (available to Premium users) allow you to narrow your search to specific regions or expand it globally. Whether you're looking for local connections or international opportunities, our platform accommodates both approaches.",
+    "order": 0
+  }
+},
+{
+  "model": "core.foundersuccessstory",
+  "pk": 1,
+  "fields": {
+    "name": "Aryan Sharma",
+    "role": "Founder",
+    "company": "ClarityTech",
+    "quote": "We started with just an idea and a laptop. Today, we're serving thousands of happy users worldwide. The journey wasn�t easy, but every challenge made us stronger.",
+    "avatar": "success_stories/31.jpg",
+    "order": 0
+  }
+},
+{
+  "model": "core.founderfaq",
+  "pk": 1,
+  "fields": {
+    "question": "What types of founders can use FoundrFuse?",
+    "answer": "FoundrFuse welcomes founders from all industries and at all stages - from pre-seed to Series B. Whether you're a tech startup, a D2C brand, or a social enterprise, our platform helps connect you with investors interested in your specific sector and stage.",
+    "order": 1
+  }
+},
+{
+  "model": "core.founderfaq",
+  "pk": 2,
+  "fields": {
+    "question": "How do I improve my chances of matching with investors?",
+    "answer": "Complete your profile thoroughly with clear information about your business, traction metrics, team background, and funding needs. Upload a concise pitch deck highlighting your unique value proposition. Our AI system will provide feedback to help optimize your profile. Premium users also benefit from profile boosts and advanced matching algorithms.",
+    "order": 3
+  }
+},
+{
+  "model": "core.founderfaq",
+  "pk": 3,
+  "fields": {
+    "question": "What information should I include in my profile?",
+    "answer": "Your profile should include: business overview, traction metrics (users, revenue, growth), team background and expertise, funding history (if any), amount you're raising, intended use of funds, market size and opportunity, and competitive advantage. Premium users can also showcase customer testimonials and media mentions.",
+    "order": 2
+  }
+},
+{
+  "model": "core.founderfaq",
+  "pk": 4,
+  "fields": {
+    "question": "How long does it typically take to find an investor match?",
+    "answer": "Timing varies based on your industry, stage, and funding needs. Many founders receive their first matches within 1-2 weeks of creating their profile. Premium users typically see faster results due to increased visibility and unlimited swipes. Remember that quality matches matter more than quantity - our system prioritizes relevant connections over random introductions.",
+    "order": 4
+  }
+},
+{
+  "model": "core.chatbotfaq",
+  "pk": 1,
+  "fields": {
+    "question": "What is FoundrFuse?",
+    "answer": "FoundrFuse is a curated digital platform designed to connect verified startup founders with credible investors. It streamlines the process of networking and discovery for fundraising, mentorship, and business collaboration."
+  }
+}
+]
