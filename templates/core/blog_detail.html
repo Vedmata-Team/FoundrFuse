@@ -164,6 +164,7 @@
         }
     }
     
+    /* Responsive grid for slider cards */
     .slider.sidebar-grid {
         display: grid;
         grid-template-columns: repeat(3, 1fr);
@@ -174,16 +175,33 @@
     .sidebar-recent-posts {
         grid-column: 1 / span 3;
     }
-    @media (max-width: 991px) {
+
+    /* Tablet: 2 columns */
+    @media (max-width: 1199px) {
+        .slider.sidebar-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .sidebar-recent-posts {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 767px) {
         .slider.sidebar-grid {
             grid-template-columns: 1fr;
         }
         .sidebar-recent-posts {
             grid-column: auto;
         }
+        .sidebar-card,
+        .author-card {
+            min-width: 0;
+            max-width: 100%;
+        }
     }
 
-    /* Recent posts list items in a row */
+    /* Recent posts list items responsive */
     .sidebar-recent-posts .list-group {
         display: flex;
         flex-direction: row;
@@ -194,12 +212,30 @@
     }
     .sidebar-recent-posts .list-group-item {
         flex: 0 0 auto;
-        min-width: 220px;
-        max-width: 260px;
+        min-width: 180px;
+        max-width: 48vw;
         border: none;
         background: none;
         padding: 0;
     }
+    @media (max-width: 767px) {
+        .sidebar-recent-posts .list-group {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar-recent-posts .list-group-item {
+            max-width: 100%;
+            min-width: 0;
+        }
+    }
+  @media (max-width: 767px) {
+    .slider.sidebar-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .sidebar-recent-posts {
+        grid-column: auto !important;
+    }
+}
 </style>
 {% endblock %}
 
