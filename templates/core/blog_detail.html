@@ -6,19 +6,53 @@
 {% block extra_css %}
 <style>
     .blog-hero {
-        position: relative;
-        height: 400px;
-        background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('{{ blog.featured_image.url }}');
+        display: flex;
+        align-items: stretch;
+        min-height: 500px;
+        background: linear-gradient(rgba(0, 0, 0, 0), rgba(0,0,0,0)), url('{{ blog.featured_image.url }}');
         background-size: cover;
         background-position: center;
-        color: white;
-        display: flex;
-        align-items: center;
+        padding: 0;
     }
     
-    .blog-hero-content {
-        position: relative;
-        z-index: 2;
+    .blog-hero-image {
+        flex: 1 1 70%;
+        background: url('{{ blog.featured_image.url }}') center center/cover no-repeat;
+        min-height: 400px;
+    }
+    
+    .blog-hero-content-box {
+        flex: 1 1 50%;
+        background:linear-gradient(rgba(12, 0, 0, 0.9), rgba(0,0,0,0.9));
+        color: #22223b;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        padding: 48px 32px;
+        min-height: 400px;
+        box-shadow: 0 8px 32px rgba(60,60,120,0.08);
+        border-radius: 0 24px 24px 0;
+          text-align:center;
+        color:#fff;
+    }
+    
+    
+    @media (max-width: 991px) {
+        .blog-hero {
+            flex-direction: column;
+            min-height: 0;
+        }
+        .blog-hero-image,
+        .blog-hero-content-box {
+            min-height: 220px;
+            border-radius: 0;
+        }
+        .blog-hero-content-box {
+            padding: 32px 12px;
+        }
+    }
+    .badge{
+        background:linear-gradient(135deg, var(--primary-color), var(--secondary-color));
     }
     
     .blog-meta {
@@ -124,44 +158,111 @@
     }
     
     @media (max-width: 767px) {
-        .blog-hero {
-            height: 300px;
-        }
-        
         .author-img {
             width: 80px;
             height: 80px;
         }
     }
+    
+    /* Responsive grid for slider cards */
+    .slider.sidebar-grid {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        gap: 24px;
+        width: 100%;
+        margin-bottom: 32px;
+    }
+    .sidebar-recent-posts {
+        grid-column: 1 / span 3;
+    }
+
+    /* Tablet: 2 columns */
+    @media (max-width: 1199px) {
+        .slider.sidebar-grid {
+            grid-template-columns: repeat(2, 1fr);
+        }
+        .sidebar-recent-posts {
+            grid-column: 1 / span 2;
+        }
+    }
+
+    /* Mobile: 1 column */
+    @media (max-width: 767px) {
+        .slider.sidebar-grid {
+            grid-template-columns: 1fr;
+        }
+        .sidebar-recent-posts {
+            grid-column: auto;
+        }
+        .sidebar-card,
+        .author-card {
+            min-width: 0;
+            max-width: 100%;
+        }
+    }
+
+    /* Recent posts list items responsive */
+    .sidebar-recent-posts .list-group {
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 16px;
+        padding: 0;
+        justify-content: space-between;
+    }
+    .sidebar-recent-posts .list-group-item {
+        flex: 0 0 auto;
+        min-width: 180px;
+        max-width: 48vw;
+        border: none;
+        background: none;
+        padding: 0;
+    }
+    @media (max-width: 767px) {
+        .sidebar-recent-posts .list-group {
+            flex-direction: column;
+            gap: 8px;
+        }
+        .sidebar-recent-posts .list-group-item {
+            max-width: 100%;
+            min-width: 0;
+        }
+    }
+  @media (max-width: 767px) {
+    
+    .slider.sidebar-grid {
+        grid-template-columns: 1fr !important;
+    }
+    .sidebar-recent-posts {
+        grid-column: auto !important;
+    }
+}
 </style>
 {% endblock %}
 
 {% block content %}
 <!-- Blog Hero Section -->
 <section class="blog-hero">
-    <div class="container blog-hero-content">
-        <div class="row justify-content-center">
-            <div class="col-lg-10 text-center">
-                <div class="mb-3">
-                    {% if blog.industry %}
-                    <span class="badge bg-primary px-3 py-2 mb-2">{{ blog.industry.name }}</span>
-                    {% endif %}
-                    {% for category in blog.categories.all %}
-                    <span class="badge bg-secondary px-3 py-2 mb-2 ms-2">{{ category.name }}</span>
-                    {% endfor %}
-                </div>
-                <h1 class="display-4 fw-bold mb-3 animated-on-scroll fade-in-up">{{ blog.title }}</h1>
-                <p class="lead mb-3 animated-on-scroll fade-in-up delay-1">{{ blog.summary }}</p>
-                <div class="d-flex justify-content-center align-items-center animated-on-scroll fade-in-up delay-2">
-                    {% if blog.author.profile.profile_image %}
-                        <img src="{{ blog.author.profile.profile_image.url }}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
-                    {% else %}
-                        <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
-                    {% endif %}
-                    <span class="me-3">{{ blog.author.get_full_name }}</span>
-                    <span><i class="far fa-calendar-alt me-1"></i> {{ blog.created_at|date:"F d, Y" }}</span>
-                </div>
-            </div>
+    <div class="blog-hero-image"></div>
+    <div class="blog-hero-content-box">
+        <div class="mb-3">
+            {% if blog.industry %}
+            <span class="badge bg-primary px-3 py-2 mb-2">{{ blog.industry.name }}</span>
+            {% endif %}
+            {% for category in blog.categories.all %}
+            <span class="badge rounded-pill ">{{ category.name }}</span>
+            {% endfor %}
+        </div>
+        <h1 class="display-4 fw-bold mb-3">{{ blog.title }}</h1>
+        <p class="lead mb-3">{{ blog.summary }}</p>
+        <div class="d-flex justify-content-center align-items-center">
+            {% if blog.author.profile.profile_image %}
+                <img src="{{ blog.author.profile.profile_image.url }}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+            {% else %}
+                <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="{{ blog.author.get_full_name }}" class="rounded-circle me-2" style="width: 40px; height: 40px;" onerror="this.src='https://via.placeholder.com/40'">
+            {% endif %}
+            <span class="me-3">{{ blog.author.get_full_name }}</span>
+            <span><i class="far fa-calendar-alt me-1"></i> {{ blog.created_at|date:"F d, Y" }}</span>
         </div>
     </div>
 </section>
@@ -235,7 +336,8 @@
             </div>
             
             <!-- Sidebar -->
-            <div class="col-lg-4">
+            <div class="slider sidebar-grid">
+                <!-- Row 1: Author, Categories, Premium -->
                 <!-- Author Card -->
                 <div class="card author-card mb-4 animated-on-scroll slide-in-right">
                     <div class="author-header">
@@ -271,34 +373,6 @@
                     </div>
                 </div>
                 
-                <!-- Recent Posts -->
-                <div class="card sidebar-card animated-on-scroll slide-in-right delay-1">
-                    <div class="sidebar-header">
-                        <h5 class="mb-0">Recent Posts</h5>
-                    </div>
-                    <div class="sidebar-body">
-                        <ul class="list-group list-group-flush">
-                            {% if recent_posts %}
-                                {% for recent in recent_posts %}
-                                <li class="list-group-item border-0 py-3">
-                                    <div class="row g-0">
-                                        <div class="col-3">
-                                            <img src="{{ recent.featured_image.url }}" alt="{{ recent.title }}" class="img-fluid rounded" style="height: 60px; object-fit: cover;">
-                                        </div>
-                                        <div class="col-9 ps-3">
-                                            <h6 class="mb-1"><a href="{% url 'core:blog_detail' recent.slug %}" class="text-decoration-none text-dark">{{ recent.title|truncatechars:40 }}</a></h6>
-                                            <small class="text-muted">{{ recent.created_at|date:"M d, Y" }}</small>
-                                        </div>
-                                    </div>
-                                </li>
-                                {% endfor %}
-                            {% else %}
-                                <li class="list-group-item border-0">No recent posts available</li>
-                            {% endif %}
-                        </ul>
-                    </div>
-                </div>
-                
                 <!-- Categories -->
                 <div class="card sidebar-card animated-on-scroll slide-in-right delay-2">
                     <div class="sidebar-header">
@@ -322,7 +396,8 @@
                 
                 <!-- Premium Promotion Card (for non-premium users) -->
                 {% if not user.is_authenticated or not user.profile.is_premium %}
-                <div class="card sidebar-card border-0 animated-on-scroll slide-in-right delay-3" style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
+                <div class="card sidebar-card border-0 animated-on-scroll slide-in-right delay-3"
+                     style="background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); color: white;">
                     <div class="card-body p-4 text-center">
                         <h5 class="mb-3">Want to publish your own insights?</h5>
                         <p>Upgrade to Premium to share your expertise by publishing blog posts and articles.</p>
@@ -332,6 +407,32 @@
                     </div>
                 </div>
                 {% endif %}
+                
+                <!-- Row 2: Recent Posts (spans all columns) -->
+                <div class="card sidebar-card animated-on-scroll slide-in-right delay-1 sidebar-recent-posts" style="grid-column: 1 / span 3;">
+                    <div class="sidebar-header">
+                        <h5 class="mb-0">Recent Posts</h5>
+                    </div>
+                    <div class="sidebar-body">
+                        <ul class="list-group list-group-horizontal flex-wrap">
+                            {% if recent_posts %}
+                                {% for recent in recent_posts %}
+                                <li class="list-group-item border-0 py-3" style="min-width:220px; max-width:260px;">
+                                    <div class="d-flex align-items-center">
+                                        <img src="{{ recent.featured_image.url }}" alt="{{ recent.title }}" class="img-fluid rounded me-2" style="height: 60px; width: 60px; object-fit: cover;">
+                                        <div>
+                                            <h6 class="mb-1"><a href="{% url 'core:blog_detail' recent.slug %}" class="text-decoration-none text-dark">{{ recent.title|truncatechars:40 }}</a></h6>
+                                            <small class="text-muted">{{ recent.created_at|date:"M d, Y" }}</small>
+                                        </div>
+                                    </div>
+                                </li>
+                                {% endfor %}
+                            {% else %}
+                                <li class="list-group-item border-0">No recent posts available</li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
