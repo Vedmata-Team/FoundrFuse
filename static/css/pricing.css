@@ -31,22 +31,26 @@
     }
     
     .pricing-card {
-        border-radius: 22px;
+        border-radius: 18px;
         overflow: hidden;
-        transition: transform 0.3s cubic-bezier(.4,2,.6,1), box-shadow 0.3s;
+        transition: all 0.3s cubic-bezier(.4,2,.6,1);
         height: 100%;
         border: none;
         background: #fff;
-        box-shadow: 0 8px 32px rgba(127,0,255,0.08);
-        position: relative;
+        min-width: 250px;
+        max-width: 380px;
+        margin: 0 auto;
+        width: 100%;
+        flex: 1 1 0;
         display: flex;
         flex-direction: column;
-        justify-content: space-between;
+        box-shadow: 0 4px 24px rgba(127,0,255,0.13);
     }
     
     .pricing-card:hover {
-        transform: translateY(-12px) scale(1.03);
-        box-shadow: 0 24px 64px rgba(127,0,255,0.18);
+        transform: translateY(-6px) scale(1.03);
+        transition: box-shadow 0.3s, transform 0.3s;
+        z-index: 2;
     }
     
     .item-list-2{
@@ -70,11 +74,20 @@
     }
     
     .free-header {
-        background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+        background: linear-gradient(90deg, #f8fafc 0%, #ece6fa 60%, #e9e9f3 100%);
+        color: #7f00ff;
+        font-weight: 700;
+        letter-spacing: 1px;
+        padding: 1.5rem 1rem 1rem 1rem;
     }
     
     .premium-header {
-        background: linear-gradient(45deg, var(--accent-color, #e100ff), var(--accent-color-secondary, #7f00ff));
+        background: linear-gradient(90deg, #936ea4 0%, #9654a9 60%, #8a4bb2 100%);
+        color: #fff;
+        font-weight: 700;
+        letter-spacing: 1px;
+        box-shadow: 0 4px 24px rgba(127,0,255,0.18);
+        padding: 1.5rem 1rem 1rem 1rem;
     }
     
     .pricing-price {
@@ -139,6 +152,7 @@
         font-weight: 500;
         color: #333;
         transition: color 0.2s;
+        
     }
     
     .pricing-card li .text-muted {
@@ -146,24 +160,66 @@
     }
     
     .premium-btn {
-        background: linear-gradient(45deg, var(--accent-color, #e100ff), var(--accent-color-secondary, #7f00ff));
-        border: none;
+        background: linear-gradient(90deg, #7f00ff 0%, #501b60 100%);
+        width: 80%;
         color: white;
-        font-weight: 600;
-        transition: all 0.3s;
+        min-width: 160px;
+        max-width: 220px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        border-radius: 50px !important;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: medium;
+        text-align: center;
+        line-height: normal;
+        font-weight: 700;
+        box-shadow: 0 2px 8px rgba(127,0,255,0.18);
     }
     
-    .premium-btn:hover {
-        transform: translateY(-3px) scale(1.03);
-        box-shadow: 0 10px 24px rgba(225,0,255,0.18);
-        color: white;
+    .premium-btn:hover,
+    .btn-outline-primary:hover {
+        background: linear-gradient(90deg, #e100ff 0%, #7f00ff 100%);
+        color: #fff !important;
+        text-decoration: none;
     }
     
     .btn-outline-primary {
-        border-width: 2px;
-        font-weight: 600;
+        border: 1px solid #782dce;
+        width: 80%;
+        min-width: 160px;
+        max-width: 220px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        height: 48px;
+        border-radius: 50px !important;
+        padding-left: 1.5rem;
+        padding-right: 1.5rem;
+        font-size: medium;
+        text-align: center;
+        line-height: normal;
+        font-weight: 700;
+        background: #fff;
+        color: #782dce;
+        box-shadow: 0 2px 8px rgba(127,0,255,0.08);
     }
     
+    .btn-outline-primary:hover {
+        background: #7f00ff;
+        color: #fff !important;
+    }
+    
+    .pricing-card:hover {
+        transform: translateY(-6px) scale(1.03);
+        transition: box-shadow 0.3s, transform 0.3s;
+        z-index: 2;
+    }
+           
     @media (max-width: 991px) {
         .pricing-card {
             margin-bottom: 32px;

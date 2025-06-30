@@ -232,30 +232,42 @@
 <section class="py-5 bg-light">
     <div class="container py-5">
         <div class="row mb-5 text-center">
-            <div class="col-lg-8 mx-auto">
+            <div class="col-lg-10 mx-auto">
                 <h2 class="fw-bold mb-4">Founder Success Stories</h2>
             </div>
         </div>
-        <div class="row g-4 justify-content-center">
-            {% for story in success_stories %}
-            <div class="col-md-6 col-lg-4">
-                <div class="card testimonial-card h-100 shadow-sm">
-                    <div class="card-body text-center">
-                        {% if story.avatar %}
-                        <img src="{{ story.avatar.url }}" alt="{{ story.name }}" class="testimonial-img rounded-circle mb-3" width="80" height="80">
-                        {% endif %}
-                        <blockquote class="testimonial-content mb-3">“{{ story.quote }}”</blockquote>
-                        <h5 class="mb-1">{{ story.name }}</h5>
-                        <div class="text-muted small">{{ story.role }}{% if story.company %}, {{ story.company }}{% endif %}</div>
+        {% for story in success_stories %}
+            {% if forloop.counter0|divisibleby:2 %}
+            <div class="row g-4"><!-- removed justify-content-center -->
+            {% endif %}
+                <div class="col-md-6 d-flex justify-content-center">
+                    <div class="card testimonial-card h-100 shadow-sm" style="width: 750px; max-width: 100%;">
+                        <div class="card-body text-center">
+                            {% if story.avatar %}
+                            <img src="{{ story.avatar.url }}" alt="{{ story.name }}" class="testimonial-img rounded-circle mb-3" width="80" height="80">
+                            {% endif %}
+                            <blockquote class="testimonial-content mb-3">“{{ story.quote }}”</blockquote>
+                            <h5 class="mb-1">{{ story.name }}</h5>
+                            <div class="text-muted small">{{ story.role }}{% if story.company %}, {{ story.company }}{% endif %}</div>
+                        </div>
                     </div>
                 </div>
-            </div>
-            {% empty %}
-            <div class="text-center text-muted py-5">
-                <em>No success stories available at the moment.</em>
-            </div>
-            {% endfor %}
+            {% if forloop.counter0|divisibleby:2 and not forloop.last %}
+            {% elif forloop.counter0|add:1 == success_stories|length %}
+                {% if not forloop.counter0|divisibleby:2 %}
+                    </div>
+                {% endif %}
+            {% elif forloop.counter0|divisibleby:2 and not forloop.last %}
+                </div>
+            {% endif %}
+        {% empty %}
+        <div class="text-center text-muted py-5">
+            <em>No success stories available at the moment.</em>
         </div>
+        {% endfor %}
+        {% if success_stories|length|divisibleby:2 == False and success_stories|length > 0 %}
+            </div>
+        {% endif %}
     </div>
 </section>
 <hr>
@@ -271,12 +283,12 @@
                         <span class="badge bg-warning text-dark rounded-pill px-3 py-2">Get Started</span>
                     </div>
                     <div class="plan-body px-4 py-4">
-                        <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Basic Profile</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Limited Swipes</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Access to Public Content</li>
-                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i>Premium Filters</li>
-                            <li class="mb-3"><i class="fas fa-times text-danger me-2"></i>Priority Support</li>
+                        <ul class="list-unstyled justify-centre mb-4">
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Basic Profile</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Limited Swipes</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Access to Public Content</li>
+                            <li class="mb-3"><i class="fas fa-times-circle text-danger me-2"></i>Premium Filters</li>
+                            <li class="mb-3"><i class="fas fa-times-circle text-danger me-2"></i>Priority Support</li>
                         </ul>
                         <a href="#" class="btn btn-outline-warning rounded-pill px-4">Sign Up Free</a>
                     </div>
@@ -291,11 +303,11 @@
                     </div>
                     <div class="plan-body px-4 py-4">
                         <ul class="list-unstyled mb-4">
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Unlimited Swipes</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Advanced Filters</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Profile Boosts</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Priority Support</li>
-                            <li class="mb-3"><i class="fas fa-check text-success me-2"></i>Exclusive Content</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Unlimited Swipes</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Advanced Filters</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Profile Boosts</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Priority Support</li>
+                            <li class="mb-3"><i class="fas fa-check-circle text-success me-2"></i>Exclusive Content</li>
                         </ul>
                         <a href="{% url 'subscription:upgrade' %}" class="btn btn-warning rounded-pill px-4 text-white fw-bold">Go Premium</a>
                     </div>
