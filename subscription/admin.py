@@ -65,6 +65,9 @@ class UserSubscriptionAdmin(ImportExportModelAdmin, PDFExportMixin):
             'classes': ('collapse',)
         }),
     )
+    # Add to SubscriptionPlan model
+    def features_list(self):
+        return self.features.splitlines()
 
 # PaymentHistory Resource for Import/Export
 class PaymentHistoryResource(resources.ModelResource):
