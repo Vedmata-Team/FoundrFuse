@@ -1,5 +1,5 @@
 .features-hero {
-     background:url('/static/img/features.jpg') no-repeat center center;
+    background: linear-gradient(135deg,  #0b3e68, #b2f7d6,#43e6e1) !important;
     background-size: cover;
     padding: 120px 0;
     color: white;
@@ -405,7 +405,7 @@
 
 .features-hero-bg-animated .shape {
     position: absolute;
-    border-radius: 1rem;
+    border-radius: 20px;
     opacity: 0.5;
     transition: all 1s cubic-bezier(.4,2,.6,1);
     filter: blur(0.5px);
@@ -461,38 +461,96 @@
     animation: float7 3s ease-in-out infinite alternate;
 }
 
-/* Make sure hero content is above the background */
-.features-hero > .container {
-    position: relative;
-    z-index: 1;
+/* New shapes added */
+.features-hero-bg-animated .shape8 {
+    width: 64px; height: 64px;
+    background: transparent;
+    box-shadow: 0 0 40px 10px #fde047;
+    bottom: 40px; right: 60px;
+    animation: float8 5.5s ease-in-out infinite alternate;
 }
 
-@keyframes float1 {
-    from { transform: translateY(0) scale(1);}
-    to   { transform: translateY(30px) scale(1.08);}
+/* Pink circle, mid right */
+.features-hero-bg-animated .shape9 {
+    width: 80px; height: 80px;
+    background: transparent;
+    box-shadow: 0 0 50px 12px #f472b6;
+    top: 70%; right: 20%;
+    animation: float9 6.5s ease-in-out infinite alternate;
 }
-@keyframes float2 {
+
+/* Blue circle, bottom left */
+.features-hero-bg-animated .shape10 {
+    width: 48px; height: 48px;
+    background: transparent;
+    box-shadow: 0 0 30px 8px #38bdf8;
+    bottom: 60px; left: 80px;
+    animation: float10 4.5s ease-in-out infinite alternate;
+}
+
+/* Green circle, top right */
+.features-hero-bg-animated .shape11 {
+    width: 96px; height: 96px;
+    background: transparent;
+    box-shadow: 0 0 60px 16px #22c55e;
+    top: 30px; right: 120px;
+    animation: float11 7s ease-in-out infinite alternate;
+}
+
+/* Purple circle, mid left */
+.features-hero-bg-animated .shape12 {
+    width: 56px; height: 56px;
+    background: transparent;
+    box-shadow: 0 0 36px 10px #a78bfa;
+    top: 65%; left: 12%;
+    animation: float12 6.2s ease-in-out infinite alternate;
+}
+
+/* Orange circle, bottom center */
+.features-hero-bg-animated .shape13 {
+    width: 72px; height: 72px;
+    background: transparent;
+    box-shadow: 0 0 44px 12px #fb923c;
+    bottom: 30px; left: 48%;
+    animation: float13 5.8s ease-in-out infinite alternate;
+}
+
+/* Cyan circle, top center */
+.features-hero-bg-animated .shape14 {
+    width: 40px; height: 40px;
+    background: transparent;
+    box-shadow: 0 0 24px 7px #22d3ee;
+    top: 10px; left: 48%;
+    animation: float14 4.8s ease-in-out infinite alternate;
+}
+
+/* Animations for new shapes */
+@keyframes float8 {
+    from { transform: translateY(0) scale(1);}
+    to   { transform: translateY(-22px) scale(1.08);}
+}
+@keyframes float9 {
     from { transform: translate(0,0) scale(1);}
-    to   { transform: translate(20px, -20px) scale(1.12);}
+    to   { transform: translate(-18px, 18px) scale(1.1);}
 }
-@keyframes float3 {
+@keyframes float10 {
     from { transform: translateY(0) scale(1);}
-    to   { transform: translateY(-25px) scale(0.95);}
+    to   { transform: translateY(18px) scale(1.13);}
 }
-@keyframes float4 {
+@keyframes float11 {
+    from { transform: translate(0,0) scale(1);}
+    to   { transform: translate(24px, 18px) scale(1.07);}
+}
+@keyframes float12 {
+    from { transform: translateY(0) scale(1);}
+    to   { transform: translateY(-16px) scale(1.12);}
+}
+@keyframes float13 {
     from { transform: translateX(0) scale(1);}
-    to   { transform: translateX(-18px) scale(1.1);}
+    to   { transform: translateX(-20px) scale(1.09);}
 }
-@keyframes float5 {
-    from { transform: translate(0,0) scale(1);}
-    to   { transform: translate(-30px, 20px) scale(1.05);}
-}
-@keyframes float6 {
+@keyframes float14 {
     from { transform: translateY(0) scale(1);}
-    to   { transform: translateY(40px) scale(1.09);}
-}
-@keyframes float7 {
-    from { transform: translate(0,0) scale(1);}
-    to   { transform: translate(12px, -12px) scale(1.2);}
+    to   { transform: translateY(16px) scale(1.15);}
 }
 

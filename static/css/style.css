@@ -1,34 +1,34 @@
 /* FoundrFuse Main Stylesheet */
 
 :root {
-  --primary-color: #4a6bff;
-  --primary-dark: #3a53c5;
-  --primary-light: #829fff;
-  --secondary-color: #ff6b4a;
-  --secondary-dark: #d24e30;
-  --secondary-light: #ff8d73;
-  --investor-color: #4aeaff;
-  --founder-color: #c04aff;
-  --success-color: #32d296;
-  --warning-color: #faa05a;
-  --danger-color: #f0506e;
-  --neutral-100: #f8f9fa;
-  --neutral-200: #e9ecef;
-  --neutral-300: #dee2e6;
-  --neutral-400: #ced4da;
-  --neutral-500: #adb5bd;
-  --neutral-600: #6c757d;
-  --neutral-700: #495057;
-  --neutral-800: #343a40;
-  --neutral-900: #212529;
+--primary-color: #105690;         /* Blue */
+  --primary-dark: #0b3e68;          /* Darker Blue */
+  --primary-light: #bbdefb;         /* Lighter Blue */
+  --secondary-color: #3ad286;       /* Green */
+  --secondary-dark: #1caa63;        /* Darker Green */
+  --secondary-light: #b2f7d6;       /* Lighter Green */
+  --investor-color: #43e6e1;        /* Aqua/Greenish Blue */
+  --founder-color: #2196f3;         /* Blue (same as primary) */
+  --success-color: #084b2a;         /* Green */
+  --warning-color: #b2f7d6;         /* Light Green */
+  --danger-color: #1769aa;          /* Use dark blue as "danger" for theme consistency */
+  --neutral-100: #ffffff;           /* White */
+  --neutral-200: #f0f8ff;           /* Very light blue */
+  --neutral-300: #e3f2fd;           /* Light blue */
+  --neutral-400: #b2f7d6;           /* Light green */
+  --neutral-500: #bbdefb;           /* Lighter blue */
+  --neutral-600: #43e695;           /* Green */
+  --neutral-700: #1c496d;           /* Dark blue */
+  --neutral-800:  #30474b;                      /* Blue */
+  --neutral-900:#6ec3f4;/* Dark blue */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --font-heading: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
   --border-radius: 0.5rem;
-  --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  --box-shadow: 0 4px 6px rgba(33, 150, 243, 0.08);
   --transition-quick: all 0.2s ease;
   --transition-normal: all 0.3s ease;
-}
 
+  }
 html, body {
   font-family: var(--font-primary);
   font-size: 16px;
@@ -1097,3 +1097,16 @@ p {
                 padding: 8px 6px 4px 6px;
             }
         }
+
+/* Animated scroll-up effect */
+.animated-scroll-up {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: opacity 0.7s cubic-bezier(.4,0,.2,1), transform 0.7s cubic-bezier(.4,0,.2,1);
+  will-change: opacity, transform;
+}
+
+.animated-scroll-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}

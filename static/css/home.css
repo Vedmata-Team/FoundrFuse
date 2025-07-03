@@ -11,6 +11,9 @@
         color: white;
         position: relative;
         z-index: 1;
+        text-align: center;
+        align-content: center;
+        cursor:default;
     }
     
     .hero-title {
@@ -18,13 +21,18 @@
         font-weight: 700;
         margin-bottom: 20px;
         line-height: 1.2;
+        text-align: center;
     }
     
     .hero-text {
         font-size: 1.2rem;
         opacity: 0.9;
         margin-bottom: 30px;
+        text-align: center;
     }
+     .hero-buttons{
+justify-self: center;
+     }
     
     .hero-buttons .btn {
         margin-right: 15px;
@@ -32,13 +40,19 @@
         padding: 12px 30px;
         border-radius: 50px;
         font-weight: 500;
+        text-decoration: none;
     }
     
     .hero-buttons .btn-light {
         color: var(--primary-color);
         font-weight: 600;
+     
     }
-    
+    .hero-container{
+        display: flex;
+        flex-direction: row;
+        gap: 100px;
+    }
     .hero-image {
         position: relative;
         z-index: 1;
@@ -288,7 +302,51 @@
         position: relative;
         overflow: hidden;
         z-index: 1;
+        text-align: center;
+    align-items: center;
     }
+     
+.feature-card::before,
+.feature-card::after {
+ position: absolute;
+  content: "";
+  width: 22%;
+  height: 22%;
+  background-color: #ece6fa;
+  transition: all 0.5s;
+  z-index: 1;
+}
+
+.feature-card::before {
+  top: 0;
+  right: 0;
+  border-radius: 0 15px 0 100%;
+}
+
+.feature-card::after {
+  bottom: 0;
+  left: 0;
+  border-radius: 0 100% 0 15px;
+}
+
+.feature-card:hover {
+  box-shadow: 0 8px 32px 0 rgba(127,0,255,0.16);
+}
+
+.feature-card:hover::before,
+.feature-card:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 15px;
+  background-color: #ece6fa; /* Or use a theme color like var(--secondary-light) */
+  opacity: 1;
+  transition: all 0.5s;
+}
+
+.feature-card > * {
+  position: relative;
+  z-index: 2;
+}
     
     .feature-card:hover {
         transform: translateY(-10px);
@@ -306,33 +364,11 @@
         background: rgba(59, 13, 139, 0.05);
         z-index: -1;
     }
-    
-    .feature-card:after {
-        content: '';
-        position: absolute;
-        bottom: -20px;
-        left: -20px;
-        width: 70px;
-        height: 70px;
-        border-radius: 50%;
-        background: rgba(59, 13, 139, 0.05);
-        z-index: -1;
+    .feature-icon{
+        justify-self: center;
+        align-self: center;
     }
-    
-    .feature-icon {
-        width: 80px;
-        height: 80px;
-        border-radius: 20px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        font-size: 32px;
-        margin-bottom: 25px;
-        position: relative;
-        z-index: 1;
-        color: white;
-    }
-    
+       
     .feature-icon:before {
         content: '';
         position: absolute;
@@ -342,7 +378,11 @@
         background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
         z-index: -1;
     }
-    
+     .feature-icon:hover{
+       transform: scale(1.1);
+       transition: 0.5s;
+
+     }
     .feature-title {
         font-weight: 700;
         margin-bottom: 15px;
@@ -350,9 +390,10 @@
     }
     
     .feature-text {
-        color: var(--gray-600);
+        color: #353333;
         margin-bottom: 0;
     }
+    
     
     /* How It Works Section */
     .how-it-works {
@@ -360,8 +401,10 @@
         background-color: var(--light-gray);
         position: relative;
         overflow: hidden;
-    }
-    
+            }
+        .how-it-works
+ 
+
     .how-it-works-shapes {
         position: absolute;
         top: 0;
@@ -394,7 +437,51 @@
         background: linear-gradient(135deg, var(--accent-color), var(--accent-secondary));
         border-radius: 50%;
     }
-    
+    .step-card-container{
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        gap: 250px; /* 300px gap between card and image */
+        margin-bottom: 200px;
+        height: 300px; /* Set container height */
+    }
+      .step-card-container-2{
+        display: flex;
+        flex-direction: row-reverse;
+        align-items: center;
+        gap: 250px; /* 300px gap between card and image */
+        margin-bottom: 200px;
+        height: 300px; /* Set container height */
+    }
+    .step-card {
+        padding: 30px;
+        border-radius: 20px;
+        background: white;
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+        position: relative;
+        z-index: 1;
+        height: 300px;   
+        width: 500px;   /* Set card height */
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .steps{
+        margin-top: 200px;
+    }
+    .step-card-img {
+        height: 500px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+    .step-card-img img {
+  border-radius: 20px;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
     .step-card {
         padding: 30px;
         border-radius: 20px;
@@ -431,15 +518,25 @@
     }
     
     .step-text {
-        color: var(--gray-600);
+        color: #353333;
     }
     
     /* Testimonials Section */
     .testimonials {
-        padding: 100px 0;
+       padding-bottom: 200px ; 
         background: white;
         position: relative;
+       justify-items: center;
     }
+    .testimonial-row{
+ display: flex;
+        flex-direction: row;
+        overflow-x: auto;
+        gap: 70px;
+    }
+   .testimonial-row::-webkit-scrollbar{
+    width: 0;
+   } 
     
     .testimonial-card {
         padding: 40px;
@@ -508,15 +605,16 @@
     flex-direction: column;
     height: 100%;
     font-family: 'Segoe UI', sans-serif;
-    width: 300px;
+    width: 400px;
 }
 
 /* Header with image and info */
 .testimonial-pro-header {
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: center;
     margin-bottom: 15px;
+    text-align: center;
 }
 
 .testimonial-pro-avatar {
@@ -726,3 +824,5 @@
             margin-bottom: 30px;
         }
     }
+
+

@@ -87,7 +87,7 @@
         
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-bullseye"></i>
@@ -99,7 +99,7 @@
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-1">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up delay-1">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-clock"></i>
@@ -111,7 +111,7 @@
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-2">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up delay-2">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-chart-pie"></i>
@@ -123,7 +123,7 @@
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-1">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up delay-1">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-brain"></i>
@@ -135,7 +135,7 @@
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-2">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up delay-2">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-lock"></i>
@@ -147,7 +147,7 @@
             </div>
             
             <div class="col-md-6 col-lg-4">
-                <div class="card feature-card h-100 shadow-sm animated-on-scroll zoom-in delay-3">
+                <div class="card feature-card h-100 shadow-sm animated-scroll-up delay-3">
                     <div class="card-body p-4 text-center">
                         <div class="feature-icon mx-auto">
                             <i class="fas fa-users"></i>
@@ -173,7 +173,7 @@
         
         <div class="row g-4">
             <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up">
+                <div class="card step-card border-0 shadow-sm text-center animated-scroll-up">
                     <div class="card-body p-4">
                         <div class="step-number mx-auto">1</div>
                         <h4 class="mb-3">Create Your Profile</h4>
@@ -183,7 +183,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-1">
+                <div class="card step-card border-0 shadow-sm text-center animated-scroll-up delay-1">
                     <div class="card-body p-4">
                         <div class="step-number mx-auto">2</div>
                         <h4 class="mb-3">Discover Investors</h4>
@@ -193,7 +193,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-2">
+                <div class="card step-card border-0 shadow-sm text-center animated-scroll-up delay-2">
                     <div class="card-body p-4">
                         <div class="step-number mx-auto">3</div>
                         <h4 class="mb-3">Match & Connect</h4>
@@ -203,7 +203,7 @@
             </div>
             
             <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-3">
+                <div class="card step-card border-0 shadow-sm text-center animated-scroll-up delay-3">
                     <div class="card-body p-4">
                         <div class="step-number mx-auto">4</div>
                         <h4 class="mb-3">Pitch & Close</h4>
@@ -375,5 +375,20 @@
     </div>
   </div>
 </section>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function animateOnScroll() {
+    document.querySelectorAll('.animated-scroll-up').forEach(function(el) {
+      const rect = el.getBoundingClientRect();
+      if (rect.top < window.innerHeight - 60) {
+        el.classList.add('visible');
+      }
+    });
+  }
+  animateOnScroll();
+  window.addEventListener('scroll', animateOnScroll);
+});
+</script>
 
 {% endblock %}
