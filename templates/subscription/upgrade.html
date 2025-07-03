@@ -2,24 +2,50 @@
 {% block title %}Upgrade Subscription | FoundrFuse{% endblock %}
 
 {% block content %}
-<div class="container mt-5">
-    <h2>Upgrade Your Subscription</h2>
+<div class="container py-5">
+    <h2 class="fw-bold mb-4 text-center">Upgrade Your Subscription</h2>
     {% if user_subscription %}
-        <p>Your current plan: <strong>{{ user_subscription.plan.name }}</strong> (expires {{ user_subscription.end_date|date:"Y-m-d" }})</p>
+        <div class="alert alert-info text-center mb-4">
+            Your current plan: <strong>{{ user_subscription.plan.name }}</strong>
+            (expires {{ user_subscription.end_date|date:"Y-m-d" }})
+        </div>
     {% endif %}
-    <div class="row">
+    <div class="row justify-content-center">
         {% for plan in plans %}
         <div class="col-md-4">
-            <div class="card mb-4">
-                <div class="card-body">
-                    <h5 class="card-title">{{ plan.name }}</h5>
-                    <p class="card-text">{{ plan.description }}</p>
-                    <p class="card-text"><strong>${{ plan.price }}</strong> / {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</p>
-                    <a href="{% url 'subscription:checkout' plan.id %}" class="btn btn-primary">Choose</a>
+            <div class="card shadow-lg mb-4 animated-on-scroll fade-in-up">
+                <div class="card-body text-center">
+                    <h5 class="card-title fw-bold mb-2">{{ plan.name }}</h5>
+                    <p class="card-text text-muted mb-3">{{ plan.description }}</p>
+                    {% if plan.features %}
+                        <ul class="list-group list-group-flush mb-3">
+                            {% for feature in plan.features.splitlines %}
+                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>{{ feature }}</li>
+                            {% endfor %}
+                        </ul>
+                    {% endif %}
+                    <p class="card-text fs-4 mb-3">
+                        <strong>₹{{ plan.price }}</strong>
+                        <span class="fs-6 text-secondary">/ {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</span>
+                    </p>
+                    <a href="{% url 'subscription:checkout' plan.id %}" class="btn btn-primary btn-lg w-100">
+                        Upgrade to {{ plan.name }}
+                    </a>
                 </div>
             </div>
         </div>
+        {% empty %}
+        <div class="col-12">
+            <div class="alert alert-warning text-center">
+                No subscription plans available at the moment. Please check back later.
+            </div>
+        </div>
         {% endfor %}
+    </div>
+    <div class="text-center mt-4">
+        <a href="{% url 'core:pricing' %}" class="btn btn-outline-secondary">
+            <i class="fas fa-arrow-left me-2"></i>Back to Pricing
+        </a>
     </div>
 </div>
 {% endblock %}

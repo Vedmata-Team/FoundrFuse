@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Subscription | FoundrFuse{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="text-center mb-5">
+        <h1 class="fw-bold gradient-text">Your Subscription</h1>
+        <p class="lead text-muted">Manage your plan and explore premium features.</p>
+    </div>
+    {% if user_subscription %}
+        <div class="card shadow-lg mb-4">
+            <div class="card-body text-center">
+                <h4 class="mb-2">Current Plan: <span class="badge bg-primary">{{ user_subscription.plan.name }}</span></h4>
+                <p class="mb-1"><strong>Start Date:</strong> {{ user_subscription.start_date|date:"M d, Y" }}</p>
+                <p class="mb-1"><strong>End Date:</strong> {{ user_subscription.end_date|date:"M d, Y" }}</p>
+                <p class="mb-1"><strong>Status:</strong> 
+                    {% if user_subscription.is_active %}
+                        <span class="badge bg-success">Active</span>
+                    {% else %}
+                        <span class="badge bg-danger">Inactive</span>
+                    {% endif %}
+                </p>
+                <a href="{% url 'subscription:upgrade' %}" class="btn btn-outline-primary mt-3">Upgrade / Change Plan</a>
+            </div>
+        </div>
+    {% else %}
+        <div class="alert alert-warning text-center mb-4">
+            You do not have an active subscription. <a href="{% url 'subscription:upgrade' %}">Upgrade now</a> to unlock premium features!
+        </div>
+    {% endif %}
+    <div class="text-center mt-4">
+        <a href="{% url 'subscription:payment_history' %}" class="btn btn-secondary">
+            <i class="fas fa-receipt me-2"></i>View Payment History
+        </a>
+    </div>
+</div>
+{% endblock %}

@@ -1,0 +1,72 @@
+{% extends 'base.html' %}
+{% block title %}Checkout | FoundrFuse{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-lg">
+                <div class="card-body">
+                    <h2 class="fw-bold mb-3 text-center">Checkout</h2>
+                    <div class="mb-4 text-center">
+                        <h4 class="mb-1">{{ plan.name }}</h4>
+                        <p class="text-muted mb-2">{{ plan.description }}</p>
+                        {% if plan.features %}
+                            <ul class="list-group list-group-flush mb-3">
+                                {% for feature in plan.features.splitlines %}
+                                    <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>{{ feature }}</li>
+                                {% endfor %}
+                            </ul>
+                        {% endif %}
+                        <div class="fs-3 mb-2"><strong>₹{{ plan.price }}</strong> <span class="fs-6 text-secondary">/ {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</span></div>
+                    </div>
+                    <form id="razorpay-form" method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
+                        <input type="hidden" name="plan_id" value="{{ plan.id }}">
+                        <div class="mb-3">
+                            <label class="form-label">Name</label>
+                            <input type="text" class="form-control" value="{{ user_name }}" readonly>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label">Email</label>
+                            <input type="email" class="form-control" value="{{ user_email }}" readonly>
+                        </div>
+                        <button type="button" id="pay-btn" class="btn btn-success btn-lg w-100">Pay ₹{{ plan.price }}</button>
+                    </form>
+                    <div class="text-center mt-3">
+                        <a href="{% url 'subscription:upgrade' %}" class="btn btn-link">Back to Plans</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- Razorpay JS -->
+<script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+<script>
+document.getElementById('pay-btn').onclick = function(e){
+    var options = {
+        "key": "{{ razorpay_key_id }}",
+        "amount": "{{ amount }}",
+        "currency": "INR",
+        "name": "{{ plan.name }}",
+        "description": "{{ plan.description }}",
+        "order_id": "{{ razorpay_order_id }}",
+        "handler": function (response){
+            window.location.href = "{% url 'subscription:payment_verify' %}?payment_id=" + response.razorpay_payment_id + "&order_id=" + response.razorpay_order_id + "&signature=" + response.razorpay_signature;
+        },
+        "prefill": {
+            "name": "{{ user_name }}",
+            "email": "{{ user_email }}"
+        },
+        "theme": {
+            "color": "#7F00FF"
+        }
+    };
+    var rzp = new Razorpay(options);
+    rzp.open();
+    e.preventDefault();
+}
+</script>
+{% endblock %}

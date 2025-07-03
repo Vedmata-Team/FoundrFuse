@@ -100,6 +100,11 @@
                             <li><a class="dropdown-item d-flex align-items-center"
                                     href="{% url 'accounts:matches' %}"><i class="fas fa-handshake me-2"></i>
                                     Matches</a></li>
+                            <li>
+                                <a class="dropdown-item d-flex align-items-center" href="{% url 'subscription:home' %}">
+                                    <i class="fas fa-crown me-2"></i> My Subscription
+                                </a>
+                            </li>
                             {% if not user.profile.is_premium %}
                             <li>
                                 <hr class="dropdown-divider">
