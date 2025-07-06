@@ -9,14 +9,18 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="pricing-hero">
+<section class="pricing-hero d-flex align-items-center justify-content-center p-5" >
     <div class="container text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Simple, <span style="color: rgb(12, 12, 138);">Transparent Pricing </span></h1>
-                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">Choose the plan that's right for your journey, whether you're a founder or investor</p>
+                <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up text-black"> <span style="color: rgb(10, 10, 241);"> Simple, </span>Transparent Pricing</h1>
+                <p class="lead mb-5 animated-on-scroll fade-in-up delay-1 text-black " style="font-size: 30px;">Choose the plan that's right for your journey, whether you're a founder or investor</p>
             </div>
         </div>
+    </div>
+    <div class="pricing-hero-image animated-on-scroll fade-in-up">
+        <img src="{% static 'img/pricing-hero.jpg' %}" alt="Pricing Hero Image" class="img-fluid hero-pricing-image">
+
     </div>
 </section>
 
@@ -271,12 +275,12 @@
 </section>
 
 <!-- Feature Comparison Section -->
-<section class="py-1 bg-light">
+<section class="py-1 bg-light ">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-4">Feature Comparison</h2>
-                <p class="lead text-muted">A detailed look at what's included in each plan</p>
+                <h2 class="fw-bold mb-4"><span class="text-primary"> Feature </span>Comparison</h2>
+                <p class="lead text-black">A detailed look at what's included in each plan</p>
             </div>
         </div>
         
@@ -477,19 +481,19 @@
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-4 faq-title-gradient">Frequently Asked Questions</h2>
-                <p class="lead text-muted">Answers to common questions about our plans</p>
+                <h2 class="fw-bold mb-4 faq-title-gradient">Frequently Asked <span class="text-primary"> Questions ?</span></h2>
+                <p class="lead text-black">Answers to common questions about our plans</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 <div class="accordion faq-accordion" id="pricingFaq">
-                    <div class="accordion-item faq-card animated-on-scroll fade-in-up">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                            <button class="accordion-button faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
                                 <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 How does the free plan work?
-                            </button>
+                            </button> 
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#pricingFaq">
                             <div class="accordion-body">
@@ -497,9 +501,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-1">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-1   mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                            <button class="accordion-button collapsed faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                                 <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Can I cancel my premium subscription anytime?
                             </button>
@@ -510,9 +514,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-2">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-2  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingThree">
-                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+                            <button class="accordion-button collapsed faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
                                 <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Are there any hidden fees?
                             </button>
@@ -523,9 +527,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-3">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-3  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                            <button class="accordion-button collapsed faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
                                 <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Do you offer annual billing?
                             </button>
@@ -536,9 +540,9 @@
                             </div>
                         </div>
                     </div>
-                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-4">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up delay-4  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingFive">
-                            <button class="accordion-button collapsed faq-accordion-btn" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
+                            <button class="accordion-button collapsed faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#collapseFive" aria-expanded="false" aria-controls="collapseFive">
                                 <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 Do you offer discounts for startups?
                             </button>

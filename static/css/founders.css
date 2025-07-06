@@ -354,7 +354,7 @@ li{
     border: none;
     color: #fff;
     font-weight: 700;
-    transition: background 0.2s;
+    transition:  0.2s;
     box-shadow: 0 2px 8px rgba(127,0,255,0.18);
 }
 
@@ -391,7 +391,7 @@ li{
     color: #fff !important;
     border: none;
     box-shadow: 0 6px 32px rgba(127,0,255,0.18), 0 1.5px 6px rgba(0,0,0,0.07);
-    transition: background 0.2s, transform 0.2s, box-shadow 0.2s;
+    transition:  0.2s, transform 0.2s, box-shadow 0.2s;
     font-weight: 700;
     letter-spacing: 0.5px;
     border-radius: 50px;

@@ -9,14 +9,25 @@
 
 {% block content %}
 <!-- Hero Section -->
-<section class="investors-hero">
+<section class="investors-hero ">
+
+    <!-- Animated floating circles for hero section -->
+    <div class="investor-hero-circle circle1"></div>
+    <div class="investor-hero-circle circle2"></div>
+    <div class="investor-hero-circle circle3"></div>
+    <div class="investor-hero-circle circle4"></div>
+    <div class="investor-hero-circle circle5"></div>
+    <div class="investor-hero-circle circle6"></div>
+    <div class="investor-hero-circle circle7"></div>
+    <div class="investor-hero-circle circle8"></div>
     <div class="container   ">
+
         <div class="container_col">
 
             <div class="row align-items-center d-flex ">
                 <div class="col-lg-7 mb-5 mb-lg-0">
-                    <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up">Discover Your Next Investment</h1>
-                    <p class="lead mb-5 animated-on-scroll fade-in-up delay-1">FoundrFuse helps investors efficiently
+                    <h1 class="display-4 fw-bold mb-4 animated-on-scroll fade-in-up ">Discover <span class="text-primary">Your Next</span>  Investment</h1>
+                    <p class="lead mb-5 animated-on-scroll fade-in-up delay-1 text-black">FoundrFuse helps investors efficiently
                         find promising startups aligned with their investment thesis and portfolio strategy.</p>
                     <div class="d-flex flex-wrap gap-3 animated-on-scroll fade-in-up delay-2">
                         <a href="{% url 'accounts:register' %}"
@@ -36,9 +47,9 @@
 </section>
 
 <!-- Stats Section -->
-<section class="py-5 ">
+<section class="py-5  ">
     <div class="container py-5">
-        <h3 class="stats-heading text-center">Platform Performance at a Glance</h3>
+        <h3 class="stats-heading text-center text-black">Platform <span class="text-primary"> Performance </span> at a Glance</h3>
         <div class=" sub-container row g-4">
 
             <div class=" outer-start  ">
@@ -89,17 +100,17 @@
 </section>
 
 <!-- Benefits Section -->
-<section class="py-5 bg-light ">
-    <div class="container container-benefits py-5">
+<section class="py-5 bg-light  container-benefits">
+    <div class="container  py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Why Investors Choose FoundrFuse</h2>
-                <p class="lead text-muted">Streamline your deal flow and discover hidden gems</p>
+                <h2 class="fw-bold mb-3"><span class="text-primary"> Why</span>  Investors Choose FoundrFuse ?</h2>
+                <p class="lead text-black-400">Streamline your deal flow and discover hidden gems</p>
             </div>
         </div>
 
         <div class=" card-benefits-section row g-4">
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class="  h-100 shadow-sm animated-on-scroll zoom-in ">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -115,7 +126,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class=" h-100 shadow-sm animated-on-scroll zoom-in delay-1">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -132,7 +143,7 @@
 
             </div>
 
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class=" h-100 shadow-sm animated-on-scroll zoom-in delay-2">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -148,7 +159,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class="h-100 shadow-sm animated-on-scroll zoom-in delay-1">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -164,7 +175,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class=" h-100 shadow-sm animated-on-scroll zoom-in delay-2">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -180,7 +191,7 @@
                 </div>
             </div>
 
-            <div class="col-md-6 col-lg-4 benefit-card">
+            <div class="col-md-4 col-lg-3 benefit-card">
                 <div class=" h-100 shadow-sm animated-on-scroll zoom-in delay-3">
                     <div class=" p-4 text-center">
                         <div class="feature-icon mx-auto text-benefit">
@@ -200,65 +211,68 @@
 </section>
 
 <!-- How It Works Section -->
-<section class="py-5  justify-content-center align-items-center" id="how-it-works">
-    <div class="container py-5  ">
+<section class="py-5  justify-content-center align-items-center " id="how-it-works">
+    <div class="container py-5  justify-content-center align-items-center ">
         <div class="row mb-5 text-center">
             <div class="col-lg-10 mx-auto">
-                <h2 class="fw-bold mb-3">How It Works for Investors</h2>
-                <p class="lead text-muted">Four simple steps to optimize your deal flow</p>
+                <h2 class="fw-bold mb-3"><span class="text-primary"> How </span>It Works for Investors?</h2>
+                <p class="lead text-black">Four simple steps to optimize your deal flow</p>
             </div>
         </div>
-
-        <div class="row g-4">
-            <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up">
-                    <div class="card-body p-4">
-                        <div class="step-number mx-auto">1</div>
-                        <h4 class="mb-3">Create Your Profile</h4>
-                        <p class="text-muted"> up your investor profile with investment focus, check size, portfolio
+        <div class="row justify-content-center mb-5">
+            <div class="  timeline    ">
+            
+                
+                <div class=" step active ">
+                    <div class="step-number">1</div>
+                    <div class="step-label  ">
+                        <h4 class="mb-3 px-3">Create Your Profile</h4>
+                        <p class="  text-muted"> up your investor profile with investment focus, check size, portfolio
                             strategy, and value-add.</p>
                     </div>
                 </div>
 
-            </div>
-
-            <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-1">
-                    <div class="card-body p-4">
-                        <div class="step-number mx-auto">2</div>
-                        <h4 class="mb-3">Discover Startups</h4>
+                 <div class=" step active ">
+                    <div class="step-number">2</div>
+                    <div class="step-label  ">
+                        
+                        <h4 class="mb-3 px-3">Discover Startups</h4>
                         <p class="text-muted">Browse through curated startup matches and swipe right on those that
-                            interest you.</p>
+                            interest you. </p>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-2">
-                    <div class="card-body p-4">
-                        <div class="step-number mx-auto">3</div>
-                        <h4 class="mb-3">Match & Connect</h4>
+
+                 <div class=" step active ">
+                    <div class="step-number">3</div>
+                    <div class="step-label  ">
+                        
+                        <h4 class="mb-3 px-3">Match & Connect</h4>
                         <p class="text-muted">When a founder also swipes right, it's a match! Start a conversation
                             through our secure messaging system.</p>
                     </div>
                 </div>
-            </div>
 
-            <div class="col-md-6 col-lg-3">
-                <div class="card step-card border-0 shadow-sm text-center animated-on-scroll fade-in-up delay-3">
-                    <div class="card-body p-4">
-                        <div class="step-number mx-auto">4</div>
-                        <h4 class="mb-3">Evaluate & Invest</h4>
+
+
+
+                 <div class=" step active ">
+                    <div class="step-number">4</div>
+                    <div class="step-label  ">
+                        
+                        <h4 class="mb-3 px-3">Evaluate & Invest</h4>
                         <p class="text-muted">Access detailed startup information, schedule meetings, and pursue
                             investments.</p>
                     </div>
                 </div>
+
             </div>
+
         </div>
 
         <div class="text-center mt-5 ">
             <a href="{% url 'accounts:register' %}"
-                class="btn btn-work-section btn-gradient btn-lg px-5 py-3 rounded-pill animated-on-scroll zoom-in text-center">
+                class="btn btn-work-section btn-gradient btn-lg px-5 py-3 rounded-pill animated-on-scroll zoom-in text-center text-white ">
                 <i class="fas fa-briefcase me-2"></i> Build Your Portfolio
             </a>
         </div>
@@ -270,14 +284,14 @@
     <div class="container  start-up-container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3  " style="color: #8969ff;">Startups You Could Discover</h2>
-                <p class="lead text-muted">Examples of innovative companies on our platform</p>
+                <h2 class="fw-bold mb-3  " > <span class="text-primary">Startups</span> You Could Discover</h2>
+                <p class="lead text-black">Examples of innovative companies on our platform</p>
             </div>
         </div>
 
         <div class="row g-4">
             <div class="col-md-6 col-lg-4">
-                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll slide-in-left">
+                <div class=" startup-card-container  shadow-sm h-100 animated-on-scroll slide-in-left">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-4">
                             <div class="startup-logo me-3 border shadow-sm">
@@ -300,7 +314,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll fade-in-up">
+                <div class=" startup-card-container shadow-sm h-100 animated-on-scroll fade-in-up">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-4">
                             <div class="startup-logo me-3 border shadow-sm">
@@ -323,7 +337,7 @@
             </div>
 
             <div class="col-md-6 col-lg-4">
-                <div class="card startup-card border-0 shadow-sm h-100 animated-on-scroll slide-in-right">
+                <div class=" startup-card-container shadow-sm h-100 animated-on-scroll slide-in-right">
                     <div class="card-body p-4">
                         <div class="d-flex align-items-center mb-4">
                             <div class="startup-logo me-3 border shadow-sm">
@@ -349,56 +363,57 @@
 </section>
 
 <!-- Testimonials Section -->
-<section class="py-5  investor-success-container">
-    <div class=" success-container">
-        <div class=" how-shape shape-1"></div>
-        <div class="how-shape shape-2"></div>
-    </div>
 
+<section class="py-5  investor-success-container ">
+    
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3 " style="color: #44475B; ">Investor Success Stories</h2>
-                <p class="lead text-muted">Hear from investors who found great opportunities</p>
+                <h2 class="fw-bold mb-3 "  >Investor <span class="text-primary">Success </span> Stories</h2>
+                <p class="lead text-black">Hear from investors who found great opportunities</p>
             </div>
         </div>
 
         <div class="row g-4">
             <div class="col-lg-6">
-                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-left">
-                    <div class="card-body p-4">
+                <div class=" testimonial-card shadow-sm h-100 animated-on-scroll slide-in-left">
+                    <div class="card-body  p-4">
                         <div class="testimonial-content">
-                            <p class="lead mb-4">"FoundrFuse has completely transformed our early-stage sourcing
-                                strategy. We've invested in three startups we found through the platform, two of which
-                                were outside our typical network."</p>
-                            <div class="d-flex align-items-center">
+                            
+                            <div class="d-flex align-items-center mb-4">
                                 <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Michael Wong"
                                     class="testimonial-img me-3">
                                 <div>
-                                    <h5 class="mb-1">Michael Wong</h5>
-                                    <p class="text-muted mb-0">Partner, Horizon Ventures</p>
+                                    <h5 class="mb-1 text-primary">Michael Wong</h5>
+                                    <p class="text-primary mb-0">Partner, Horizon Ventures</p>
                                 </div>
                             </div>
+
+                            <p class="lead ">"FoundrFuse has completely transformed our early-stage sourcing
+                                strategy. We've invested in three startups we found through the platform, two of which
+                                were outside our typical network."
+                            </p>
                         </div>
                     </div>
                 </div>
             </div>
 
             <div class="col-lg-6">
-                <div class="card testimonial-card shadow-sm h-100 animated-on-scroll slide-in-right">
+                <div class=" testimonial-card shadow-sm h-100 animated-on-scroll slide-in-right">
                     <div class="card-body p-4">
                         <div class="testimonial-content">
-                            <p class="lead mb-4">"As an angel investor with limited time, the swipe-based interface
-                                helps me efficiently review potential investments on the go. I've found quality deals
-                                that I wouldn't have seen otherwise."</p>
-                            <div class="d-flex align-items-center">
+                            
+                            <div class="d-flex align-items-center mb-4">
                                 <img src="{% static 'img/avatar-placeholder.jpg' %}" alt="Priya Sharma"
                                     class="testimonial-img me-3">
                                 <div>
-                                    <h5 class="mb-1">Priya Sharma</h5>
-                                    <p class="text-muted mb-0">Angel Investor, Former CTO</p>
+                                    <h5 class="mb-1 text-primary">Priya Sharma</h5>
+                                    <p class="text-primary mb-0">Angel Investor, Former CTO</p>
                                 </div>
                             </div>
+                            <p class="lead ">"As an angel investor with limited time, the swipe-based interface
+                                helps me efficiently review potential investments on the go. I've found quality deals
+                                that I wouldn't have seen otherwise."</p>
                         </div>
                     </div>
                 </div>
@@ -412,8 +427,8 @@
     <div class="container py-5  ">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Choose Your Plan</h2>
-                <p class="lead text-muted">Get started for free or upgrade for premium features</p>
+                <h2 class="fw-bold mb-3">Choose <span class="text-primary"> Your Plan</span></h2>
+                <p class="lead text-black">Get started for free or upgrade for premium features</p>
             </div>
         </div>
 
@@ -528,29 +543,30 @@
             </div>
 
         </div>
-    </div><hr>
+    </div>
 </section>
 
 <!-- FAQ Section -->
-<section class="py-5" >
+<section class="py-5 faq-section-custom" >
 
     <div class="container py-5 ">
 
-        <div class="row mb-0 text-center   ">
+        <div class="row mb-4 text-center   ">
             <div class="col-lg-6 mt-7 ml-9">
-                <h2 class="fw-bold mb-3">Frequently Asked Questions</h2>
-                <p class="lead text-muted">Answers to common questions from investors</p>
+                <h2 class="fw-bold mb-3 ">Frequently Asked <span class="text-primary"> Questions ?</span></h2>
+                <p class="lead text-black">Answers to common questions from investors</p>
             </div>
         </div>
 
         <div class="row ">
 
-            <div class="col-lg-5">
-                <div class="accordion" id="investorFaqAccordion">
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+            <div class="col-lg-8">
+                <div  class="accordion faq-accordion" id="pricingFaq">
+                    <div   class="accordion-item faq-card animated-on-scroll fade-in-up  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingOne">
-                            <button class="accordion-button rounded-3" type="button" data-bs-toggle="collapse"
+                            <button class="accordion-button faq-accordion-btn rounded-3" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 What types of startups will I see on FoundrFuse?
                             </button>
                         </h2>
@@ -565,10 +581,13 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+
+
+                    <div  class="accordion-item faq-card animated-on-scroll fade-in-up  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingTwo">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+                            <button class="accordion-button faq-accordion-btn  collapsed rounded-3" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 How does FoundrFuse verify startup information?
                             </button>
                         </h2>
@@ -583,10 +602,11 @@
                         </div>
                     </div>
 
-                    <div class="accordion-item border rounded-3 shadow-sm">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up  mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="headingFour">
-                            <button class="accordion-button collapsed rounded-3" type="button" data-bs-toggle="collapse"
+                            <button class="accordion-button faq-accordion-btn collapsed rounded-3" type="button" data-bs-toggle="collapse"
                                 data-bs-target="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+                                <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 How does FoundrFuse compare to traditional sourcing methods?
                             </button>
                         </h2>
@@ -609,11 +629,11 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5 " style=" background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));">
+<section class="py-5 " style="  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));;">
     <div class="container cta-container py-5 text-center">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up text-light">Ready to Optimize Your Deal
+                <h2 class="display-5 fw-bold mb-4 animated-on-scroll fade-in-up text-light"> Ready to Optimize Your Deal
                     Flow?</h2>
                 <p class="lead mb-5 animated-on-scroll fade-in-up delay-1 text-light">Create your investor profile today
                     and start discovering promising startups that match your investment thesis.</p>
@@ -629,3 +649,6 @@
     </div>
 </section>
 {% endblock %}
+
+
+
