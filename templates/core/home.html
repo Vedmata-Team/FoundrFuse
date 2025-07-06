@@ -19,7 +19,6 @@
     </div>
    <div class="container">
         <div class="hero-container">
-            {% comment %} <div class="col-lg-6"> {% endcomment %}
                 <div class="hero-content">
                     <h1 class="hero-title animated-on-scroll fade-in">Empowering<span> Ideas</span>, One <span>Match</span> at a Time</h1>
                     <p class="hero-text animated-on-scroll fade-in delay-100">Discover a smarter, swipe-driven way to connect visionary founders with future-ready investors.</p>
@@ -28,9 +27,7 @@
                         <a href="{% url 'core:features' %}" class="btn btn-outline-light">Learn More</a>
                     </div>
                 </div>
-            {% comment %} </div> {% endcomment %}
-            {% comment %} <div class="col-lg-6"> {% endcomment %}
-                {% comment %} <div class="hero-image animated-on-scroll slide-in-right"> {% endcomment %}
+            
                     <div class="hero-mockup">
                         <div class="phone-outline">
                             <div class="phone-screen">
@@ -74,7 +71,7 @@
 <!-- Features Section -->
 <section class="features-section">
     <div class="container">
-        <div class="section-title">
+        <div class="section-title animated-scroll-up delay-100">
             <h2 class="animated-on-scroll fade-in">What Makes FoundrFuse Different?</h2>
             <p class="animated-on-scroll fade-in delay-100">Our platform is designed to create meaningful connections that lead to successful partnerships.</p>
         </div>
@@ -110,8 +107,8 @@
                 </div>
             </div>
             
-            <div class="col-lg-3 col-md-6">
-                <div class="feature-card animated-scroll-up delay-300">
+            <div class="col-lg-3 col-md-6 mb-4 mb-md-0">
+                <div class="feature-card animated-scroll-up delay-200">
                     <div class="feature-icon">
                         <i class="fas fa-crown"></i>
                     </div>
@@ -125,24 +122,21 @@
 
 <!-- How It Works -->
 <section class="how-it-works">
-    <div class="how-it-works-shapes">
-        {% comment %} <div class="how-shape how-shape-1"></div> {% endcomment %}
-        {% comment %} <div class="how-shape how-shape-2"></div> {% endcomment %}
-    </div>
+ 
     <div class="container">
-        <div class="section-title">
+        <div class="section-title animated-scroll-up delay-100">
             <h2 class="animated-on-scroll fade-in">How FoundrFuse Works</h2>
             <p class="animated-on-scroll fade-in delay-100">Our simple process helps founders and investors find their perfect match.</p>
         </div>
         
         <div class="steps">
             <div class="step-card-container">
-                <div class="step-card animated-scroll-up">
+                <div class="step-card animated-scroll-up ">
                     <div class="step-number">1</div>
                     <h3 class="step-title">Create Your Profile</h3>
                     <p class="step-text">Sign up as a founder or investor and create your detailed profile. Add your experience, goals, and what you're looking for in a match.</p>
                 </div>
-                <div class="step-card-img">
+                <div class="step-card-img animated-scroll-up delay-100">
                     <img src="{% static 'img/create-profile.jpg'%}" style="border-radius: 20px;">
                 </div>
             </div>
@@ -153,29 +147,29 @@
                     <h3 class="step-title">Discover Potential Matches</h3>
                     <p class="step-text">Browse through curated profiles tailored to your preferences. Our AI-powered algorithm suggests the most relevant matches.</p>
                 </div>
-                 <div class="step-card-img">
+                 <div class="step-card-img animated-scroll-up delay-100">
                     <img src="{% static 'img/swipe.jpg'%}" style="border-radius: 20px;">
                 </div>
             </div>
             
             <div class="step-card-container">
-                <div class="step-card animated-scroll-up delay-200">
+                <div class="step-card animated-scroll-up delay-100">
                     <div class="step-number">3</div>
                     <h3 class="step-title">Swipe and Match</h3>
                     <p class="step-text">Swipe right on profiles you're interested in. When both parties swipe right, it's a match! Free users get limited swipes, Premium users get unlimited.</p>
                 </div>
-                 <div class="step-card-img">
+                 <div class="step-card-img animated-scroll-up delay-100">
                     <img src="{% static 'img/discover-pfp.jpg'%}" style="border-radius: 20px;">
                 </div>
             </div>
             
             <div class="step-card-container-2">
-                <div class="step-card animated-scroll-up delay-300">
+                <div class="step-card animated-scroll-up delay-100">
                     <div class="step-number">4</div>
                     <h3 class="step-title">Connect and Collaborate</h3>
                     <p class="step-text">Start a conversation with your matches and explore potential partnerships. Share information, schedule meetings, and build relationships.</p>
                 </div>
-                 <div class="step-card-img">
+                 <div class="step-card-img animated-scroll-up delay-100">
                     <img src="{% static 'img/connect.jpg'%}" style="border-radius: 20px;">
                 </div>
             </div>
@@ -186,7 +180,7 @@
 <!-- Testimonials Section -->
 <section class="testimonials">
    
-        <div class="section-title">
+        <div class="section-title animated-scroll-up delay-100">
             <h2 class="animated-on-scroll fade-in">What Our Users Say</h2>
             <p class="animated-on-scroll fade-in delay-100">Real stories from our community of founders and investors.</p>
         </div>
@@ -204,7 +198,7 @@
         </ul>
         <div class="tab-content" id="testimonialTabsContent">
             <div class="tab-pane fade show active" id="founder-testimonials" role="tabpanel">
-                <div class="testimonial-row">
+                <div class="testimonial-row animated-scroll-up delay-100">
                     {% for t in testimonials %}
                         {% if t.user_type == 'founder' %}
                         <div class="testimonial-element">
@@ -274,7 +268,7 @@
         <div class="cta-shape cta-shape-2"></div>
     </div>
     <div class="container">
-        <div class="cta-content">
+        <div class="cta-content animated-scroll-up delay-100">
             <h2 class="cta-title animated-on-scroll fade-in">Ready to Connect?</h2>
             <p class="cta-text animated-on-scroll fade-in delay-100">Join FoundrFuse today and start matching with the right partners for your entrepreneurial journey.</p>
             <div class="cta-buttons animated-on-scroll fade-in delay-200">
@@ -289,7 +283,7 @@
 {% if featured_blogs %}
 <section class="featured-blogs py-5">
     <div class="container">
-        <div class="section-title">
+        <div class="section-title animated-scroll-up delay-100">
             <h2 class="animated-on-scroll fade-in">Latest Insights</h2>
             <p class="animated-on-scroll fade-in delay-100">Explore the latest trends, tips, and success stories from our community.</p>
         </div>
@@ -297,7 +291,7 @@
         <div class="row">
             {% for blog in featured_blogs %}
             <div class="col-lg-4 col-md-6 mb-4">
-                <div class="card h-100 border-0 shadow-sm animated-on-scroll fade-in delay-{{ forloop.counter|add:"1" }}00">
+                <div class="card h-100 border-0  shadow-sm animated-on-scroll fade-in delay-{{ forloop.counter|add:"1" }}00">
                     <div class="card-header p-0">
                         <div style="height: 200px; background: linear-gradient(135deg, var(--primary-color), var(--secondary-color)); display: flex; align-items: center; justify-content: center; color: white; font-size: 48px; border-radius :5px;">
                             <i class="{% if forloop.counter == 1 %}fas fa-lightbulb{% elif forloop.counter == 2 %}fas fa-chart-line{% else %}fas fa-handshake{% endif %}"></i>
@@ -332,7 +326,7 @@
 <!-- Newsletter Signup -->
 <section class="newsletter py-5 bg-light">
     <div class="container">
-        <div class="row justify-content-center">
+        <div class="row justify-content-center animated-scroll-up delay-100">
             <div class="col-lg-6 text-center">
                 <h3 class="mb-3 animated-on-scroll fade-in">Stay Connected</h3>
                 <p class="mb-4 animated-on-scroll fade-in delay-100">Subscribe to our newsletter for the latest updates, insights, and success stories.</p>
