@@ -17,7 +17,7 @@
       <div class="col-lg-6 text-center text-lg-start">
         
         <h1 class="display-5 fw-bold mb-3 text-dark">
-          Fueling Visionaries with Smart Capital
+          <span class="text-primary"> Fueling Visionaries</span> with Smart Capital
         </h1>
         <p class="lead text-secondary mb-4">
           At FoundrFuse, we bridge the gap between bold founders and visionary investors. Your next breakthrough starts here.
@@ -51,6 +51,7 @@
 <!-- Stats Section -->
 <section class="py-5">
     <div class="container py-5">
+         <h3 class="stats-heading text-center text-black">Platform <span class="text-primary"> Performance </span> at a Glance</h3>
         <div class="row g-4">
             <div class="col-md-4">
                 <div class="stats-card animated-on-scroll fade-in-up">
@@ -80,8 +81,8 @@
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">Why Founders Love FoundrFuse</h2>
-                <p class="lead text-muted">Our platform is designed to help you find the right investor match</p>
+                <h2 class="fw-bold mb-3"> <span class="text-primary"> Why </span>Founders Love FoundrFuse ?</h2>
+                <p class="lead text-black">Our platform is designed to help you find the right investor match</p>
             </div>
         </div>
         
@@ -166,7 +167,7 @@
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-3">How It Works for Founders</h2>
+                <h2 class="fw-bold mb-3"> <span class="text-primary" >How </span> It Works for Founders ?</h2>
                 <p class="lead text-muted">Four simple steps to connect with your ideal investors</p>
             </div>
         </div>
@@ -233,7 +234,7 @@
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-10 mx-auto">
-                <h2 class="fw-bold mb-4">Founder Success Stories</h2>
+                <h2 class="fw-bold mb-4" style="font-size: 45px;">Founder <span class="text-primary">Success </span> Stories</h2>
             </div>
         </div>
         {% for story in success_stories %}
@@ -270,7 +271,7 @@
         {% endif %}
     </div>
 </section>
-<hr>
+
 <!-- Premium vs Free Section -->
 <section class="py-5 bg-light">
     <div class="container">
@@ -280,7 +281,7 @@
                     <div class="plan-header free-header py-4">
                         <h3 class="mb-2">Free Plan</h3>
                         <div class="plan-price mb-2"><span class="display-5 fw-bold">$0</span><span class="fs-5">/mo</span></div>
-                        <span class="badge bg-warning text-dark rounded-pill px-3 py-2">Get Started</span>
+                        <span class="badge bg-warning text-white rounded-pill px-3 py-2">Get Started</span>
                     </div>
                     <div class="plan-body px-4 py-4">
                         <ul class="list-unstyled justify-centre mb-4">
@@ -297,9 +298,9 @@
             <div class="col-md-6 col-lg-5">
                 <div class="plan-card premium-plan text-center shadow-lg">
                     <div class="plan-header premium-header py-4">
-                        <h3 class="mb-2">Premium Plan</h3>
+                        <h3 class="mb-2 mt-4">Premium Plan</h3>
                         <div class="plan-price mb-2"><span class="display-5 fw-bold">$29</span><span class="fs-5">/mo</span></div>
-                        <span class="badge bg-orange-gradient text-white rounded-pill px-3 py-2">Most Popular</span>
+                        <span class="badge bg-orange-gradient text-white  px-3 py-2 mb-3">Most Popular</span>
                     </div>
                     <div class="plan-body px-4 py-4">
                         <ul class="list-unstyled mb-4">
@@ -317,24 +318,23 @@
     </div>
 </section>
 
-<hr>
 <!-- FAQ Section -->
 <!-- FAQ Section -->
 <section class="py-5 bg-light">
     <div class="container py-5">
         <div class="row mb-5 text-center">
             <div class="col-lg-8 mx-auto">
-                <h2 class="fw-bold mb-4">Frequently Asked Questions</h2>
+                <h2 class="fw-bold mb-4">Frequently Asked <span class="text-primary"> Questions ?</span></h2>
                 <p class="lead text-muted">Everything founders need to know about FoundrFuse</p>
             </div>
         </div>
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                <div class="accordion" id="founderFaqAccordion">
+                <div class="accordion faq-accordion" id="founderFaqAccordion "  id="pricingFaq">
                     {% for faq in faqs %}
-                    <div class="accordion-item mb-3 border rounded-3 shadow-sm">
+                    <div class="accordion-item faq-card animated-on-scroll fade-in-up mb-3 border rounded-3 shadow-sm">
                         <h2 class="accordion-header" id="founderHeading{{ forloop.counter }}">
-                            <button class="accordion-button {% if not forloop.first %}collapsed{% endif %} rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#founderCollapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="founderCollapse{{ forloop.counter }}">
+                            <button class="accordion-button faq-accordion-btn  {% if not forloop.first %}collapsed{% endif %} rounded-3" type="button" data-bs-toggle="collapse" data-bs-target="#founderCollapse{{ forloop.counter }}" aria-expanded="{% if forloop.first %}true{% else %}false{% endif %}" aria-controls="founderCollapse{{ forloop.counter }}">
                                  <i class="fas fa-question-circle me-2 text-gradient-primary"></i>
                                 {{ faq.question }}
                             </button>
@@ -357,7 +357,7 @@
 </section>
 
 <!-- CTA Section -->
-<section class="py-5" style="background: linear-gradient(60deg,rgb(184, 149, 221),rgb(3, 4, 53)); color: white;">
+<section class="py-5" style="background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163)); color: white;">
   <div class="container py-5 text-center">
     <div class="row justify-content-center">
       <div class="col-lg-8">
