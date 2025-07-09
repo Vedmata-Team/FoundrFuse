@@ -29,7 +29,7 @@ body {
     background: #fff;
     border-radius: 1.25rem;
     box-shadow: 0 8px 32px 0 rgba(127,0,255,0.10), 0 2px 8px rgba(60,60,120,0.06);
-    color: #3d246c;
+    color: rgb(18, 71, 66);
     border: none;
     max-width: 750px;
     width: 100%;
@@ -47,7 +47,7 @@ body {
     content: "";
     width: 340px;
     height: 340px;
-    background-color: #d1c1ff;
+    background-color: rgb(193, 249, 255);
     transform: rotate(45deg);
     left: -180px;
     bottom: 30px;
@@ -85,7 +85,7 @@ body {
     text-align: center;
     font-size: 2em;
     font-weight: 700;
-    color: #7f00ff;
+    color: rgb(0, 174, 255);
     background: none;
     padding: 0;
     margin-bottom: 0.5rem;
@@ -94,7 +94,7 @@ body {
 }
 
 .text-muted {
-    color: #6c4bb6 !important;
+    color: rgb(75, 141, 182) !important;
     z-index: 2;
     position: relative;
     text-align: center;
@@ -117,7 +117,7 @@ body {
     cursor: pointer;
     transition: all 0.2s;
     font-weight: 500;
-    color: #3d246c;
+    color: rgb(18, 71, 66);
     background: transparent;
     border: none;
     font-size: 1rem;
@@ -125,7 +125,7 @@ body {
 
 .user-type-btn.active {
     background: #ece6fa;
-    color: #7f00ff;
+    color: rgb(0, 174, 255);
     font-weight: 700;
 }
 
@@ -145,7 +145,7 @@ body {
 .progress-bar {
     height: 100%;
     border-radius: 8px;
-    background: linear-gradient(90deg, #7f00ff 0%, #e100ff 100%);
+    background: linear-gradient(90deg, rgb(0, 174, 255) 0%, rgb(0, 255, 187) 100%);
     color: #fff;
     font-weight: 600;
     font-size: 0.95rem;
@@ -159,7 +159,7 @@ body {
 
 .form-label {
     display: block;
-    color: #3d246c;
+    color:rgb(18, 71, 66);
     margin-bottom: 4px;
     font-size: 1rem;
     font-weight: 600;
@@ -173,7 +173,7 @@ body {
     outline: 0;
     background-color: #f8f9fa;
     padding: 0.75rem 1rem 0.75rem 2.2rem;
-    color: #3d246c;
+    color: rgb(18, 71, 66);
     font-size: 1.08rem;
     margin-bottom: 1.1rem;
     transition: border-color 0.2s;
@@ -182,7 +182,7 @@ body {
 }
 
 .form-control:focus, .form-select:focus {
-    border-color: #a78bfa;
+    border-color:gb(139, 222, 250);
     background: #f4f0ff;
 }
 
@@ -215,7 +215,7 @@ body {
 .btn-register, form button, #button {
     display: block;
     width: 100%;
-    background: linear-gradient(90deg, #7f00ff, #e100ff);
+    background: linear-gradient(90deg, rgb(0, 174, 255), rgb(0, 255, 187));
     padding: 0.75rem;
     text-align: center;
     color: #fff;
@@ -231,7 +231,7 @@ body {
 }
 
 .btn-register:hover, form button:hover, #button:hover {
-    background: linear-gradient(90deg, #e100ff, #7f00ff);
+    background: linear-gradient(90deg, rgb(0, 255, 187), rgb(0, 174, 255));
     transform: translateY(-2px) scale(1.03);
     box-shadow: 0 10px 20px rgba(127,0,255,0.10);
     color: #fff;
@@ -240,12 +240,12 @@ body {
 .account-links {
     text-align: center;
     font-size: 0.95rem;
-    color: #6c4bb6;
+    color: rgb(75, 141, 182);
     margin-top: 18px;
 }
 
 .account-links a {
-    color: #7f00ff;
+    color: rgb(0, 174, 255);
     text-decoration: none;
     font-size: 14px;
     font-weight: 600;
@@ -254,7 +254,7 @@ body {
 
 .account-links a:hover {
     text-decoration: none;
-    color: #3d246c;
+    color:rgb(18, 71, 66);
 }
 
 .errorlist {
