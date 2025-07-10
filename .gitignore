@@ -59,7 +59,7 @@ coverage.xml
 .mypy_cache/
 .dmypy.json
 dmypy.json
-
+.vscode/
 # Pytest
 .pytest_cache/
 
