@@ -5,8 +5,10 @@ load_dotenv()  # Add this near the top of the file
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(dotenv_path=BASE_DIR / '.env')
+
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -92,17 +94,30 @@ WSGI_APPLICATION = 'FoundrFuse.wsgi.application'
 #     }
 # }
 
+# DATABASES = {
+#     'default': {
+#         'ENGINE': 'django.db.backends.postgresql',
+#         'NAME': 'neondb',
+#         'USER': 'neondb_owner',
+#         'PASSWORD': 'npg_BDRik5Zs1KWH',
+#         'HOST': 'ep-flat-thunder-a1m2xoif-pooler.ap-southeast-1.aws.neon.tech',
+#         'PORT': '5432',
+#         'OPTIONS': {
+#             'sslmode': 'require',
+#         }
+#     }
+# }
+
+import os
+
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'neondb',
-        'USER': 'neondb_owner',
-        'PASSWORD': 'npg_BDRik5Zs1KWH',
-        'HOST': 'ep-flat-thunder-a1m2xoif-pooler.ap-southeast-1.aws.neon.tech',
-        'PORT': '5432',
-        'OPTIONS': {
-            'sslmode': 'require',
-        }
+        'NAME': os.environ.get("DB_NAME"),
+        'USER': os.environ.get("DB_USER"),
+        'PASSWORD': os.environ.get("DB_PASSWORD"),
+        'HOST': os.environ.get("DB_HOST"),
+        'PORT': os.environ.get("DB_PORT"),
     }
 }
 
