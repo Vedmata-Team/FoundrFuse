@@ -176,21 +176,22 @@ class ChatbotAPIView(APIView):
             client = OpenAI(
                 base_url="https://openrouter.ai/api/v1",
                 api_key=settings.OPENROUTER_API_KEY,
+                default_headers={
+                    "HTTP-Referer": "https://foundrfuse.com",
+                    "X-Title": "FoundrFuse AI Chat",
+                }
             )
+
             print("🟡 Step 3: Sending request to OpenRouter (GPT-4o)...")
 
             completion = client.chat.completions.create(
-                model="openai/gpt-4o",  # 🔁 You can also use: meta-llama/llama-3-8b-instruct
+                model="openai/gpt-4o",
                 messages=[
                     {"role": "system", "content": "You are FoundrFuse AI, a helpful assistant."},
                     {"role": "user", "content": user_message}
                 ],
                 max_tokens=200,
-                temperature=0.7,
-                extra_headers={
-                    "HTTP-Referer": "https://foundrfuse.com",  # ✅ Optional, your site
-                    "X-Title": "FoundrFuse AI Chat",           # ✅ Optional, your tool name
-                }
+                temperature=0.7
             )
 
             bot_reply = completion.choices[0].message.content
