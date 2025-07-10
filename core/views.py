@@ -10,7 +10,10 @@ from rest_framework.permissions import AllowAny
 from django.conf import settings
 from django.http import JsonResponse
 
-client = OpenAI(api_key=settings.OPENAI_API_KEY)
+client = OpenAI(
+    base_url="https://openrouter.ai/api/v1",
+    api_key=settings.OPENROUTER_API_KEY,
+)
 
 
 def home(request):
@@ -172,16 +175,6 @@ class ChatbotAPIView(APIView):
             return Response({'error': 'No message provided.'}, status=400)
 
         try:
-            # ✅ Create OpenAI client with OpenRouter settings
-            client = OpenAI(
-                base_url="https://openrouter.ai/api/v1",
-                api_key=settings.OPENROUTER_API_KEY,
-                default_headers={
-                    "HTTP-Referer": "https://foundrfuse.com",
-                    "X-Title": "FoundrFuse AI Chat",
-                }
-            )
-
             print("🟡 Step 3: Sending request to OpenRouter (GPT-4o)...")
 
             completion = client.chat.completions.create(
