@@ -5,14 +5,14 @@
 <div class="container py-5">
     <div class="row justify-content-center">
         <div class="col-md-6">
-            <div class="card shadow-lg">
+            <div class="card card-checkout shadow-lg">
                 <div class="card-body">
-                    <h2 class="fw-bold mb-3 text-center">Checkout</h2>
+                    <h2 class="fw-bold mb-3 text-center text-success">Checkout</h2>
                     <div class="mb-4 text-center">
-                        <h4 class="mb-1">{{ plan.name }}</h4>
+                        <h4 class="mb-1 text-primary">{{ plan.name }}</h4>
                         <p class="text-muted mb-2">{{ plan.description }}</p>
                         {% if plan.features %}
-                            <ul class="list-group list-group-flush mb-3">
+                            <ul class="list-group list-group-flush mb-2 align-items-start px-2" >
                                 {% for feature in plan.features.splitlines %}
                                     <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>{{ feature }}</li>
                                 {% endfor %}
@@ -20,7 +20,7 @@
                         {% endif %}
                         <div class="fs-3 mb-2"><strong>₹{{ plan.price }}</strong> <span class="fs-6 text-secondary">/ {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</span></div>
                     </div>
-                    <form id="razorpay-form" method="POST">
+                    <form id="razorpay-form " method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="razorpay_order_id" value="{{ razorpay_order_id }}">
                         <input type="hidden" name="plan_id" value="{{ plan.id }}">
@@ -34,8 +34,8 @@
                         </div>
                         <button type="button" id="pay-btn" class="btn btn-success btn-lg w-100">Pay ₹{{ plan.price }}</button>
                     </form>
-                    <div class="text-center mt-3">
-                        <a href="{% url 'subscription:upgrade' %}" class="btn btn-link">Back to Plans</a>
+                    <div class="text-center mt-3 border-primary ">
+                        <a href="{% url 'subscription:upgrade' %}" class="btn btn-link   border-primary " style="text-decoration: none;">Back to Plans</a>
                     </div>
                 </div>
             </div>

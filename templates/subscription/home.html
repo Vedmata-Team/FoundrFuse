@@ -3,30 +3,34 @@
 
 {% block content %}
 <div class="container py-5">
-    <div class="text-center mb-5">
-        <h1 class="fw-bold gradient-text">Your Subscription</h1>
+    <div class="text-center my-5">
+        <h1 class="fw-bold gradient-text" style="background: #1523EC;
+        background: linear-gradient(to right, #1523EC 0%, #1DAF68 58%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;  ">Your Subscription</h1>
         <p class="lead text-muted">Manage your plan and explore premium features.</p>
     </div>
     {% if user_subscription %}
-        <div class="card shadow-lg mb-4">
-            <div class="card-body text-center">
-                <h4 class="mb-2">Current Plan: <span class="badge bg-primary">{{ user_subscription.plan.name }}</span></h4>
-                <p class="mb-1"><strong>Start Date:</strong> {{ user_subscription.start_date|date:"M d, Y" }}</p>
-                <p class="mb-1"><strong>End Date:</strong> {{ user_subscription.end_date|date:"M d, Y" }}</p>
-                <p class="mb-1"><strong>Status:</strong> 
-                    {% if user_subscription.is_active %}
-                        <span class="badge bg-success">Active</span>
-                    {% else %}
-                        <span class="badge bg-danger">Inactive</span>
-                    {% endif %}
-                </p>
-                <a href="{% url 'subscription:upgrade' %}" class="btn btn-outline-primary mt-3">Upgrade / Change Plan</a>
-            </div>
+    <div class="card  shadow-lg mb-4" style="background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));">
+        <div class="card-body text-center">
+            <h4 class="mb-3 text-white">Current Plan: <span class="badge bg-primary mx-3 ">{{ user_subscription.plan.name }}</span></h4>
+            <p class="mb-1 text-white"><strong>Start Date:</strong> {{ user_subscription.start_date|date:"M d, Y" }}</p>
+            <p class="mb-1 text-white"><strong>End Date:</strong> {{ user_subscription.end_date|date:"M d, Y" }}</p>
+            <p class="mb-1 text-white"><strong>Status:</strong>
+                {% if user_subscription.is_active %}
+                <span class="badge bg-success">Active</span>
+                {% else %}
+                <span class="badge bg-danger">Inactive</span>
+                {% endif %}
+            </p>
+            <a href="{% url 'subscription:upgrade' %}" class="btn btn-outline-primary mt-3 text-white border-white">Upgrade / Change Plan</a>
         </div>
+    </div>
     {% else %}
-        <div class="alert alert-warning text-center mb-4">
-            You do not have an active subscription. <a href="{% url 'subscription:upgrade' %}">Upgrade now</a> to unlock premium features!
-        </div>
+    <div class="alert alert-warning text-center mb-4">
+        You do not have an active subscription. <a href="{% url 'subscription:upgrade' %}">Upgrade now</a> to unlock
+        premium features!
+    </div>
     {% endif %}
     <div class="text-center mt-4">
         <a href="{% url 'subscription:payment_history' %}" class="btn btn-secondary">

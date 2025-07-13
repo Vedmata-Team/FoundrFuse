@@ -1,30 +1,34 @@
 {% extends 'base.html' %}
 {% block title %}Upgrade Subscription | FoundrFuse{% endblock %}
 
+
 {% block content %}
-<div class="container py-5">
-    <h2 class="fw-bold mb-4 text-center">Upgrade Your Subscription</h2>
+<div class="container py-5" >
+    <h2 class="fw-bold my-4 text-center" style="background: #1523EC;
+        background: linear-gradient(to right, #1523EC 0%, #1DAF68 58%);
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;  font-size: 45px;">Upgrade Your Subscription</h2>
     {% if user_subscription %}
         <div class="alert alert-info text-center mb-4">
             Your current plan: <strong>{{ user_subscription.plan.name }}</strong>
             (expires {{ user_subscription.end_date|date:"Y-m-d" }})
         </div>
     {% endif %}
-    <div class="row justify-content-center">
+    <div class="row justify-content-center  mt-4">
         {% for plan in plans %}
-        <div class="col-md-4">
-            <div class="card shadow-lg mb-4 animated-on-scroll fade-in-up">
-                <div class="card-body text-center">
-                    <h5 class="card-title fw-bold mb-2">{{ plan.name }}</h5>
-                    <p class="card-text text-muted mb-3">{{ plan.description }}</p>
+        <div class="col-md-4  ">
+            <div class="card card-design shadow-lg  mb-4 animated-on-scroll fade-in-up ">
+                <div class="card-body card-content text-center">
+                    <h5 class=" text-white fw-bold mb-0 my-0">{{ plan.name }}</h5>
+                    <!-- <p class="card-text text-muted ">{{ plan.description }}</p> -->
                     {% if plan.features %}
-                        <ul class="list-group list-group-flush mb-3">
+                        <ul class=" list-group  align-items-start " style="font-size: 16px; ">
                             {% for feature in plan.features.splitlines %}
-                                <li class="list-group-item"><i class="fas fa-check text-success me-2"></i>{{ feature }}</li>
+                                <li class="list-group-item text-white"><i class="fas fa-check text-white me-2"></i>{{ feature }}</li>
                             {% endfor %}
                         </ul>
                     {% endif %}
-                    <p class="card-text fs-4 mb-3">
+                    <p class="card-text fs-4 ">
                         <strong>₹{{ plan.price }}</strong>
                         <span class="fs-6 text-secondary">/ {{ plan.duration_months }} month{{ plan.duration_months|pluralize }}</span>
                     </p>
@@ -42,8 +46,8 @@
         </div>
         {% endfor %}
     </div>
-    <div class="text-center mt-4">
-        <a href="{% url 'core:pricing' %}" class="btn btn-outline-secondary">
+    <div class="text-center mt-4 ">
+        <a href="{% url 'core:pricing' %}" class="btn btn-outline-primary  border-primary ">
             <i class="fas fa-arrow-left me-2"></i>Back to Pricing
         </a>
     </div>
