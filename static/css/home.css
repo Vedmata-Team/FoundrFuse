@@ -24,6 +24,27 @@
     text-align: center;
 }
 
+.hero-title .hero-line {
+  display: block;
+  white-space: nowrap;
+  font-size: inherit;
+  font-weight: inherit;
+  margin-bottom: 6px;
+}
+
+.hero-title .letter {
+  opacity: 0;
+  transform: translateY(30px);
+  display: inline-block;
+  transition: opacity 0.4s, transform 0.4s;
+  white-space: pre;
+}
+
+.hero-title .letter.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 .hero-text {
     font-size: 1.2rem;
     opacity: 0.9;

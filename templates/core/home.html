@@ -20,7 +20,10 @@
    <div class="container">
         <div class="hero-container">
                 <div class="hero-content">
-                    <h1 class="hero-title animated-on-scroll fade-in">Empowering<span> Ideas</span>, One <span>Match</span> at a Time</h1>
+                    <h1 class="hero-title animated-on-scroll fade-in">
+  <span class="hero-line">Empowering Ideas,</span>
+  <span class="hero-line">One Match at a Time</span>
+</h1>
                     <p class="hero-text animated-on-scroll fade-in delay-100">Discover a smarter, swipe-driven way to connect visionary founders with future-ready investors.</p>
                     <div class="hero-buttons animated-on-scroll fade-in delay-200">
                         <a href="{% url 'accounts:register' %}" class="btn btn-light">Get Started</a>
@@ -345,97 +348,6 @@
 
 {% block extra_js %}
 <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        // Create decorative elements
-        const createDecorativeElements = function() {
-            const containers = document.querySelectorAll('.hero-shapes, .how-it-works-shapes, .cta-shapes');
-            if (!containers.length) return;
-            
-            containers.forEach(container => {
-                // Create random decorative dots
-                for (let i = 0; i < 20; i++) {
-                    const dot = document.createElement('div');
-                    dot.style.position = 'absolute';
-                    dot.style.width = (2 + Math.random() * 8) + 'px';
-                    dot.style.height = dot.style.width;
-                    dot.style.borderRadius = '50%';
-                    dot.style.background = 'white';
-                    dot.style.opacity = (0.1 + Math.random() * 0.2).toString();
-                    
-                    // Random position
-                    dot.style.top = (Math.random() * 100) + '%';
-                    dot.style.left = (Math.random() * 100) + '%';
-                    
-                    // Animation
-                    dot.style.animation = `float ${3 + Math.random() * 7}s infinite ease-in-out`;
-                    dot.style.animationDelay = (Math.random() * 5) + 's';
-                    
-                    container.appendChild(dot);
-                }
-            });
-        };
-        
-        createDecorativeElements();
-        
-        // Animate elements when they enter the viewport
-        const animateElements = function() {
-            const elements = document.querySelectorAll('.animated-on-scroll');
-            
-            elements.forEach(element => {
-                const elementPosition = element.getBoundingClientRect().top;
-                const windowHeight = window.innerHeight;
-                
-                if (elementPosition < windowHeight - 50) {
-                    element.classList.add('is-visible');
-                }
-            });
-        };
-        
-        // Run animation check on load and scroll
-        animateElements();
-        window.addEventListener('scroll', animateElements);
-        
-        // Animated count for statistics
-        const animateCounter = function(counter, target) {
-            let count = 0;
-            const speed = target / 100;
-            
-            const updateCount = () => {
-                if (count < target) {
-                    count += speed;
-                    counter.innerText = Math.floor(count);
-                    setTimeout(updateCount, 10);
-                } else {
-                    counter.innerText = target;
-                }
-            };
-            
-            updateCount();
-        };
-        
-        // Mock swipe animation for hero mockup
-        const animateMockSwipe = function() {
-            const mockupCard = document.querySelector('.mockup-card');
-            if (!mockupCard) return;
-            
-            setInterval(() => {
-                // Random swipe direction
-                const isLike = Math.random() > 0.5;
-                
-                // Add swipe class
-                mockupCard.classList.add(isLike ? 'swipe-right' : 'swipe-left');
-                
-                // After animation, remove class
-                setTimeout(() => {
-                    mockupCard.classList.remove('swipe-right', 'swipe-left');
-                }, 1000);
-            }, 5000);
-        };
-        
-        animateMockSwipe();
-    });
-</script>
-<script>
 document.addEventListener("DOMContentLoaded", function() {
   function animateOnScroll() {
     document.querySelectorAll('.animated-scroll-up').forEach(function(el) {
@@ -447,6 +359,40 @@ document.addEventListener("DOMContentLoaded", function() {
   }
   animateOnScroll();
   window.addEventListener('scroll', animateOnScroll);
+});
+</script>
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  function animateHeroTitle() {
+    const lines = document.querySelectorAll('.hero-title .hero-line');
+    lines.forEach(line => {
+      const text = line.textContent;
+      line.innerHTML = '';
+      text.split('').forEach((char, i) => {
+        const span = document.createElement('span');
+        span.className = 'letter';
+        span.innerHTML = char === ' ' ? '&nbsp;' : char;
+        line.appendChild(span);
+      });
+    });
+
+    function showLetters() {
+      lines.forEach((line, lineIdx) => {
+        const letters = line.querySelectorAll('.letter');
+        letters.forEach((span, i) => {
+          span.classList.remove('visible');
+          setTimeout(() => {
+            span.classList.add('visible');
+          }, (lineIdx * 800) + i * 60); // Stagger lines and letters
+        });
+      });
+    }
+
+    showLetters();
+    setInterval(showLetters, 5000); // Repeat every 15 seconds
+  }
+
+  animateHeroTitle();
 });
 </script>
 {% endblock %}
