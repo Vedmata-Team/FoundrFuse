@@ -78,9 +78,11 @@
                         <a class="nav-link dropdown-toggle d-flex align-items-center" href="#" id="navbarDropdown"
                             role="button" data-bs-toggle="dropdown" aria-expanded="false">
                             {% if user.profile.profile_image %}
-                            <img src="{{ user.profile.profile_image.url }}" alt="Profile" class="navbar-profile-img me-2">
+                            <img src="{{ user.profile.profile_image.url }}" alt="Profile"
+                                class="navbar-profile-img me-2">
                             {% else %}
-                            <img src="{% static 'img/default-profile.png' %}" alt="Profile" class="navbar-profile-img me-2">
+                            <img src="{% static 'img/default-profile.png' %}" alt="Profile"
+                                class="navbar-profile-img me-2">
                             {% endif %}
                             {{ user.get_full_name|default:user.username }}
                             {% if user.profile.is_premium %}
@@ -159,58 +161,67 @@
 
     <!-- Footer -->
     <footer class="footer mt-5">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-4 mb-4">
-                    <h5>FoundrFuse</h5>
-                    <p>Empowering Ideas, One Match at a Time. FoundrFuse connects visionary founders with future-ready
-                        investors through our smart, swipe-based platform.</p>
-                    <div class="social-icons">
-                        <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
-                        <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+        <div class="container ">
+            <div class="">
+                <div class="row ">
+                    <div class="col-lg-4 mb-4 mr-5 mb-5">
+                        <div class="d-flex "  style="font-size: 34px;">
+                            <i class="fas fa-fire-alt me-2"></i>
+                            <h5 style="font-size: 34px;">FoundrFuse</h5>
+                            
+                        </div>
+                        <p>Empowering Ideas, One Match at a Time. FoundrFuse connects visionary founders with
+                            future-ready
+                            investors through our smart, swipe-based platform.</p>
+                        <div class="social-icons">
+                            <a href="#" class="social-icon"><i class="fab fa-linkedin-in"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="social-icon"><i class="fab fa-instagram"></i></a>
+                        </div>
+                    </div>
+                    <div class=" row d-flex">
+                        <div class="col-lg-2 col-md-3 col-6 mb-4 gap-x-8 ">
+                            <h5>Platform</h5>
+                            <ul class="footer-links">
+                                <li><a href="{% url 'core:home' %}">Home</a></li>
+                                <li><a href="{% url 'core:features' %}">Features</a></li>
+                                <li><a href="{% url 'core:pricing' %}">Pricing</a></li>
+                                <li><a href="{% url 'core:blog_list' %}">Blog</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-4 gap-x-8">
+                            <h5>Company</h5>
+                            <ul class="footer-links">
+                                <li><a href="{% url 'core:about' %}">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Contact</a></li>
+                                <li><a href="#">Press</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-4 gap-x-8 ">
+                            <h5>Resources</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Community</a></li>
+                                <li><a href="#">Webinars</a></li>
+                                <li><a href="#">Events</a></li>
+                            </ul>
+                        </div>
+                        <div class="col-lg-2 col-md-3 col-6 mb-4 gap-x-8 ">
+                            <h5>Legal</h5>
+                            <ul class="footer-links">
+                                <li><a href="#">Privacy</a></li>
+                                <li><a href="#">Terms</a></li>
+                                <li><a href="#">Cookie Policy</a></li>
+                                <li><a href="#">GDPR</a></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4">
-                    <h5>Platform</h5>
-                    <ul class="footer-links">
-                        <li><a href="{% url 'core:home' %}">Home</a></li>
-                        <li><a href="{% url 'core:features' %}">Features</a></li>
-                        <li><a href="{% url 'core:pricing' %}">Pricing</a></li>
-                        <li><a href="{% url 'core:blog_list' %}">Blog</a></li>
-                    </ul>
+                <div class="footer-bottom text-center">
+                    <p>&copy; {% now "Y" %} FoundrFuse. All rights reserved.</p>
                 </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4">
-                    <h5>Company</h5>
-                    <ul class="footer-links">
-                        <li><a href="{% url 'core:about' %}">About Us</a></li>
-                        <li><a href="#">Careers</a></li>
-                        <li><a href="#">Contact</a></li>
-                        <li><a href="#">Press</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4">
-                    <h5>Resources</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Help Center</a></li>
-                        <li><a href="#">Community</a></li>
-                        <li><a href="#">Webinars</a></li>
-                        <li><a href="#">Events</a></li>
-                    </ul>
-                </div>
-                <div class="col-lg-2 col-md-3 col-6 mb-4">
-                    <h5>Legal</h5>
-                    <ul class="footer-links">
-                        <li><a href="#">Privacy</a></li>
-                        <li><a href="#">Terms</a></li>
-                        <li><a href="#">Cookie Policy</a></li>
-                        <li><a href="#">GDPR</a></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="footer-bottom text-center">
-                <p>&copy; {% now "Y" %} FoundrFuse. All rights reserved.</p>
             </div>
         </div>
     </footer>
@@ -254,7 +265,7 @@
             <ul id="ff-chatbot-recommended-list"></ul>
         </div>
     </div>
-    
+
     <script>
         let ffFaqs = [];
 

@@ -661,7 +661,7 @@ p {
   font-weight: 800;
   font-size: 1.5rem;
   letter-spacing: 1px;
-  background: linear-gradient(90deg, #4a6bff 0%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -691,13 +691,13 @@ p {
   position: relative;
   font-weight: 600;
   font-size: 1.08rem;
-  color: #343a40;
+  color: #34403b;
   padding: 0.7rem 0.8rem;
   margin: 0 0.2rem;
   border-radius: 12px;
   transition:
     color 0.25s cubic-bezier(.4, 2, .6, 1),
-    background 0.25s cubic-bezier(.4, 2, .6, 1),
+     0.25s cubic-bezier(.4, 2, .6, 1),
     box-shadow 0.25s cubic-bezier(.4, 2, .6, 1),
     transform 0.18s cubic-bezier(.4, 2, .6, 1);
   overflow: hidden;
@@ -722,7 +722,7 @@ p {
   bottom: 8px;
   height: 3px;
   border-radius: 2px;
-  background: linear-gradient(90deg, #4a6bff 0%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   opacity: 0;
   transform: scaleX(0.4);
   transition: all 0.32s cubic-bezier(.4, 2, .6, 1);
@@ -742,7 +742,7 @@ p {
 /* Hover & Active Effects */
 .navbar-nav .nav-link:hover,
 .navbar-nav .nav-item.active .nav-link {
-  color: #4a6bff;
+  color: rgb(12, 182, 83);
   background: rgba(74, 107, 255, 0.08);
   box-shadow: 0 2px 12px #4a6bff22;
   transform: translateY(-2px) scale(1.07);
@@ -750,8 +750,8 @@ p {
 
 .navbar-nav .nav-link:hover i,
 .navbar-nav .nav-item.active .nav-link i {
-  color: #c04aff;
-  text-shadow: 0 2px 8px #c04aff44;
+  color: rgb(16, 129, 67);
+  text-shadow: 0 2px 8px #6ce3f8dc;
 }
 
 .navbar-nav .nav-link:hover::after,
@@ -782,7 +782,7 @@ p {
   padding: 0.7rem 1.2rem;
   transition:
     color 0.22s cubic-bezier(.4, 2, .6, 1),
-    background 0.22s cubic-bezier(.4, 2, .6, 1),
+     0.22s cubic-bezier(.4, 2, .6, 1),
     transform 0.18s cubic-bezier(.4, 2, .6, 1);
   display: flex;
   align-items: center;
@@ -792,7 +792,7 @@ p {
 .dropdown-item:hover,
 .dropdown-item:focus {
   color: #fff;
-  background: linear-gradient(90deg, #4a6bff 0%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   /* transform: scale(1.04) translateX(3px); */
 }
 
@@ -849,7 +849,7 @@ p {
   box-shadow: none;
   padding: 0.5rem 0.7rem;
   border-radius: 8px;
-  transition: background 0.2s;
+  transition: 0.2s;
 }
 
 .navbar-toggler:focus,
@@ -880,21 +880,21 @@ p {
 
 /* Register Button in Navbar */
 .navbar .btn-primary {
-  background: linear-gradient(90deg, #4a6bff 0%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   color: #fff;
   font-weight: 700;
   border-radius: 12px;
   box-shadow: 0 2px 12px #4a6bff22;
   padding: 0.7rem 1.5rem;
   margin-left: 1rem;
-  transition: background 0.22s, box-shadow 0.22s, transform 0.18s;
+  transition:  0.22s, box-shadow 0.22s, transform 0.18s;
   display: flex;
   align-items: center;
   gap: 0.5em;
 }
 
 .navbar .btn-primary:hover {
-  background: linear-gradient(90deg, #c04aff 0%, #4a6bff 100%);
+  background:linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   box-shadow: 0 4px 18px #c04aff33;
   transform: scale(1.06) translateY(-2px);
 }
@@ -903,7 +903,7 @@ p {
 .nav-link:hover,
 .nav-link.active {
   background: none;
-  color: #4a6bff !important;
+  color: #079955 !important;
   box-shadow: none;
 }
 
@@ -915,7 +915,7 @@ p {
 
 /* Footer */
 .footer {
-  background-color: var(--neutral-800);
+  background-color: var(  --neutral-700);
   color: white;
   padding: 3rem 0;
 }
@@ -927,7 +927,7 @@ p {
 }
 
 .footer-link {
-  color: var(--neutral-400);
+  color: white;
   display: block;
   margin-bottom: 0.5rem;
 }
@@ -942,6 +942,19 @@ p {
   gap: 1rem;
 }
 
+/* Change color of footer links */
+.footer-links a {
+    color: #8ef5c3; /* Change this to your desired color */
+    transition: color 0.2s;
+    text-decoration: none;
+}
+
+.footer-links a:hover,
+.footer-links a:focus {
+    color: #f6f6f8; /* Change this to your desired hover color */
+    text-decoration: underline;
+}
+
 .social-icon {
   display: flex;
   align-items: center;
@@ -950,12 +963,13 @@ p {
   height: 40px;
   border-radius: 50%;
   color: white;
-  background-color: var(--neutral-700);
+  background-color: rgb(19, 165, 92);
   transition: var(--transition-normal);
 }
 
 .social-icon:hover {
-  background-color: var(--primary-color);
+  background-color: white;
+  color :blue;
   transform: translateY(-3px);
 }
 
@@ -974,7 +988,7 @@ p {
   z-index: 9999;
   width: 64px;
   height: 64px;
-  background: linear-gradient(135deg, #6c47e6 60%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   border-radius: 50%;
   box-shadow: 0 4px 24px #6c47e644;
   display: flex;
@@ -1027,7 +1041,7 @@ p {
   right: 24px;
   width: 370px;
   max-width: 98vw;
-  height: 600px;
+  height: 540px;
   background: rgba(255, 255, 255, 0.85);
   backdrop-filter: blur(16px) saturate(180%);
   border-radius: 22px;
@@ -1041,7 +1055,7 @@ p {
 }
 
 #ff-chatbot-header {
-  background: linear-gradient(90deg, #6c47e6 60%, #c04aff 100%);
+  background:linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   color: #fff;
   padding: 18px 26px;
   font-weight: 700;
@@ -1066,7 +1080,7 @@ p {
   display: flex;
   align-items: center;
   justify-content: center;
-  transition: background 0.18s;
+  transition:0.18s;
 }
 
 #ff-chatbot-close:hover {
@@ -1111,7 +1125,7 @@ p {
 }
 
 .ff-chatbot-msg-user span {
-  background: linear-gradient(90deg, #6c47e6 60%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   color: #fff;
   border-bottom-right-radius: 4px;
 }
@@ -1152,7 +1166,7 @@ p {
 }
 
 #ff-chatbot-send {
-  background: linear-gradient(90deg, #6c47e6 60%, #c04aff 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   color: #fff;
   border: none;
   border-radius: 10px;
@@ -1165,7 +1179,7 @@ p {
 }
 
 #ff-chatbot-send:hover {
-  background: linear-gradient(90deg, #c04aff 60%, #6c47e6 100%);
+  background: linear-gradient(135deg, rgb(7, 58, 155), rgb(11, 240, 163));
   transform: translateY(-2px) scale(1.04);
 }
 
@@ -1215,7 +1229,7 @@ p {
   margin-bottom: 7px;
   padding: 9px 13px;
   cursor: pointer;
-  transition: background 0.18s, box-shadow 0.18s, color 0.18s;
+  transition:  0.18s, box-shadow 0.18s, color 0.18s;
   font-size: 0.99rem;
   color: #3a246b;
   box-shadow: 0 1px 4px #6c47e611;
