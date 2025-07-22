@@ -30,24 +30,59 @@ class UserSubscription(models.Model):
     
     def save(self, *args, **kwargs):
         # Set end date based on plan duration if it's not set
-        if not self.end_date:
+        if not self.end_date and self.plan:
             self.end_date = self.start_date + timedelta(days=self.plan.duration_months * 30)
         
+        # Check if subscription has expired
+        if self.end_date and self.end_date <= timezone.now():
+            self.is_active = False
+        
         # Update user's premium status
-        if self.is_active and self.end_date > timezone.now():
+        if self.is_active and self.end_date and self.end_date > timezone.now():
             self.user.profile.is_premium = True
+            self.user.profile.save()
+        elif not self.is_active:
+            self.user.profile.is_premium = False
             self.user.profile.save()
         
         super().save(*args, **kwargs)
     
     def check_status(self):
         """Check if subscription is still active based on end_date"""
-        if self.end_date <= timezone.now():
+        if self.end_date <= timezone.now() and self.is_active:
             self.is_active = False
             self.user.profile.is_premium = False
             self.user.profile.save()
-            self.save()
+            self.save(update_fields=['is_active'])
         return self.is_active
+        
+    def renew(self, months=None):
+        """Renew the subscription for the specified number of months or plan duration"""
+        if not months and self.plan:
+            months = self.plan.duration_months
+            
+        # If subscription has expired, start from now
+        if self.end_date <= timezone.now():
+            self.start_date = timezone.now()
+        # Otherwise extend from current end date
+        else:
+            self.start_date = self.end_date
+            
+        self.end_date = self.start_date + timedelta(days=months * 30)
+        self.is_active = True
+        self.save()
+        
+    def days_remaining(self):
+        """Return the number of days remaining in the subscription"""
+        if not self.is_active or self.end_date <= timezone.now():
+            return 0
+        
+        delta = self.end_date - timezone.now()
+        return max(0, delta.days)
+        
+    def is_expiring_soon(self, days=7):
+        """Check if subscription is expiring within the specified days"""
+        return self.is_active and self.days_remaining() <= days
 
 class PaymentHistory(models.Model):
     PAYMENT_METHOD_CHOICES = (

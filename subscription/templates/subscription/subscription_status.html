@@ -1,0 +1,46 @@
+{% if user_subscription %}
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body">
+        <h5 class="card-title">Your Subscription</h5>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Plan:</span>
+            <span>{{ user_subscription.plan.name }}</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Status:</span>
+            <span class="badge {% if user_subscription.is_active %}bg-success{% else %}bg-danger{% endif %}">
+                {% if user_subscription.is_active %}Active{% else %}Inactive{% endif %}
+            </span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Start Date:</span>
+            <span>{{ user_subscription.start_date|date:"M d, Y" }}</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center mb-3">
+            <span class="fw-bold">Expiry Date:</span>
+            <span>{{ user_subscription.end_date|date:"M d, Y" }}</span>
+        </div>
+        <div class="d-flex justify-content-between align-items-center">
+            <span class="fw-bold">Days Remaining:</span>
+            <span>{{ user_subscription.end_date|timeuntil }}</span>
+        </div>
+    </div>
+    <div class="card-footer bg-transparent border-0">
+        <div class="d-grid">
+            <a href="{% url 'subscription:upgrade' %}" class="btn btn-outline-primary">
+                Manage Subscription
+            </a>
+        </div>
+    </div>
+</div>
+{% else %}
+<div class="card border-0 shadow-sm mb-4">
+    <div class="card-body text-center">
+        <h5 class="card-title">No Active Subscription</h5>
+        <p class="card-text">Upgrade to premium to unlock all features.</p>
+        <a href="{% url 'subscription:upgrade' %}" class="btn btn-primary">
+            Upgrade Now
+        </a>
+    </div>
+</div>
+{% endif %}

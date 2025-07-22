@@ -49,6 +49,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'subscription.middleware.SubscriptionMiddleware',  # Check subscription status
 ]
 
 ROOT_URLCONF = 'FoundrFuse.urls'
@@ -65,6 +66,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'core.context_processors.site_settings',
+                'subscription.views.subscription_context',
             ],
         },
     },
@@ -177,3 +179,7 @@ LOGOUT_REDIRECT_URL = 'core:home'
 
 RAZORPAY_KEY_ID = os.environ.get('RAZORPAY_KEY_ID')
 RAZORPAY_KEY_SECRET = os.environ.get('RAZORPAY_KEY_SECRET')
+RAZORPAY_WEBHOOK_SECRET = os.environ.get('RAZORPAY_WEBHOOK_SECRET', 'your-webhook-secret-key')
+
+# Subscription settings
+SUBSCRIPTION_CHECK_ON_REQUEST = True  # Check subscription status on each request

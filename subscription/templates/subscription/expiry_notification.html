@@ -1,0 +1,7 @@
+{% if user_subscription and subscription_expiring_soon %}
+<div class="alert alert-warning alert-dismissible fade show" role="alert">
+    <strong>Subscription Expiring Soon!</strong> Your subscription will expire in {{ user_subscription.days_remaining }} days.
+    <a href="{% url 'subscription:upgrade' %}" class="alert-link">Renew now</a> to avoid interruption.
+    <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+</div>
+{% endif %}

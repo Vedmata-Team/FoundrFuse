@@ -15,6 +15,28 @@ import razorpay
 import uuid
 
 from .models import SubscriptionPlan, UserSubscription, PaymentHistory
+
+# Context processor to make subscription info available in all templates
+def subscription_context(request):
+    context = {
+        'user_subscription': None,
+        'subscription_expiring_soon': False,
+    }
+    
+    if request.user.is_authenticated:
+        # Get user's active subscription
+        user_subscription = UserSubscription.objects.filter(
+            user=request.user,
+            is_active=True,
+            end_date__gt=timezone.now()
+        ).first()
+        
+        context['user_subscription'] = user_subscription
+        
+        if user_subscription:
+            context['subscription_expiring_soon'] = user_subscription.is_expiring_soon()
+    
+    return context
 @login_required
 def subscription_home(request):
     # Check if user has an active subscription
@@ -119,16 +141,42 @@ def payment_verify(request):
 
         # Get the plan
         plan = SubscriptionPlan.objects.get(id=plan_id)
-
-        # Create subscription & record payment
-        subscription = UserSubscription.objects.create(
+        
+        # Check if user already has an active subscription
+        existing_subscription = UserSubscription.objects.filter(
             user=request.user,
-            plan=plan,
-            start_date=timezone.now(),
-            end_date=timezone.now() + timedelta(days=plan.duration_months * 30),
             is_active=True
-        )
+        ).first()
+        
+        if existing_subscription and existing_subscription.plan == plan:
+            # Renew existing subscription
+            existing_subscription.renew()
+            subscription = existing_subscription
+            messages.success(request, "Payment successful! Your subscription has been renewed.")
+        elif existing_subscription:
+            # Deactivate old subscription and create new one
+            existing_subscription.is_active = False
+            existing_subscription.save()
+            
+            # Create new subscription
+            subscription = UserSubscription.objects.create(
+                user=request.user,
+                plan=plan,
+                start_date=timezone.now(),
+                is_active=True
+            )
+            messages.success(request, "Payment successful! Your subscription has been upgraded.")
+        else:
+            # Create new subscription
+            subscription = UserSubscription.objects.create(
+                user=request.user,
+                plan=plan,
+                start_date=timezone.now(),
+                is_active=True
+            )
+            messages.success(request, "Payment successful! Your subscription has been activated.")
 
+        # Record payment
         PaymentHistory.objects.create(
             user=request.user,
             subscription=subscription,
@@ -137,10 +185,10 @@ def payment_verify(request):
             status='success'
         )
 
+        # Update user's premium status
         request.user.profile.is_premium = True
         request.user.profile.save()
 
-        messages.success(request, "Payment successful! Your subscription has been activated.")
         return redirect('subscription:payment_success')
 
     except razorpay.errors.SignatureVerificationError:
